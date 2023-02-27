@@ -1,0 +1,172 @@
+﻿<UserControl
+    x:Class="DefaultWidgets.Widgets.Weather"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:convertor="clr-namespace:DefaultWidgets.Convertor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DefaultWidgets.Widgets"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    d:DesignHeight="230"
+    d:DesignWidth="230"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  FluentWPF Controls  -->
+                <wpfui:ThemesDictionary Theme="Dark" />
+                <wpfui:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+            </Style>
+
+
+            <convertor:WeatherIconConvertor x:Key="WeatherIconConvertor" />
+            <convertor:Str2IntConvertor x:Key="Str2IntConvertor" />
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Height="20"
+                Margin="15,0"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <svgc:SvgViewbox IsHitTestVisible="False" Source="../Assets/Icons/msnWeather.svg" />
+                <TextBlock
+                    Margin="5,0"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
+                    msn
+                </TextBlock>
+                <TextBlock
+                    Margin="10,0"
+                    VerticalAlignment="Center"
+                    Text="{Binding Weather.responses[0].source.location.StateCode}" />
+            </StackPanel>
+            <Menu
+                Grid.Column="1"
+                Height="64"
+                Margin="0,0"
+                VerticalAlignment="Center"
+                Background="Transparent">
+                <MenuItem FontFamily="Segoe Fluent Icons" Header="&#xe70f;" />
+                <MenuItem
+                    Click="MenuItem_Click"
+                    FontFamily="Segoe Fluent Icons"
+                    Header="&#xe72c;" />
+            </Menu>
+        </Grid>
+        <StackPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            MaxHeight="80"
+            Orientation="Horizontal">
+            <!--<Image Margin="10" Width="56" Height="56" Source="{Binding Weather.responses[0].weather[0].current.urlIcon}"/>-->
+            <Viewbox>
+                <svgc:SvgViewbox Margin="10" Source="{Binding Weather.responses[0].weather[0].current.pvdrIcon, Converter={StaticResource WeatherIconConvertor}}" />
+            </Viewbox>
+
+            <TextBlock
+                Margin="0,10"
+                FontSize="40"
+                FontWeight="Light"
+                Text="{Binding Weather.responses[0].weather[0].current.temp, Converter={StaticResource Str2IntConvertor}}" />
+            <TextBlock
+                Margin="0,18"
+                FontSize="12"
+                Text="℃" />
+        </StackPanel>
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="2"
+            VerticalAlignment="Center">
+            <TextBlock
+                Margin="10,2"
+                FontSize="16"
+                Text="{Binding Weather.responses[0].weather[0].current.cap}"
+                TextAlignment="Right" />
+            <StackPanel
+                Margin="0,0,10,0"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <TextBlock Text="体感温度:" />
+                <TextBlock
+                    Margin="0"
+                    Text="{Binding Weather.responses[0].weather[0].current.feels, Converter={StaticResource Str2IntConvertor}}"
+                    TextAlignment="Right" />
+                <TextBlock Text="℃" />
+            </StackPanel>
+        </StackPanel>
+        <Border
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            Margin="5,0,5,5"
+            Background="{DynamicResource ControlFillColorSecondaryBrush}"
+            BorderBrush="#10000000"
+            BorderThickness="1"
+            CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="空气质量：" />
+                    <TextBlock Text="气压（百帕）：" />
+                    <TextBlock Text="湿度（%）：" />
+                    <TextBlock Text="风向：" />
+                    <TextBlock Text="风力：" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Weather.responses[0].weather[0].current.aqiSeverity}" />
+                    <TextBlock Text="{Binding Weather.responses[0].weather[0].current.baro}" />
+                    <!--  湿度  -->
+                    <TextBlock Text="{Binding Weather.responses[0].weather[0].current.rh}" />
+                    <TextBlock Text="{Binding Weather.responses[0].weather[0].current.pvdrWindDir}" />
+                    <TextBlock Text="{Binding Weather.responses[0].weather[0].current.pvdrWindSpd}" />
+                </StackPanel>
+                <!--<TextBlock Text="{Binding Weather.responses[0].weather[0].current.created}"/>-->
+                <TextBlock
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Foreground="{StaticResource TextFillColorSecondaryBrush}"
+                    Text="{Binding Weather.responses[0].weather[0].current.created}" />
+
+            </Grid>
+        </Border>
+        <!--<Border
+            Grid.Row="2" Grid.Column="1" Margin="0 0 2 5" BorderThickness="1" BorderBrush="#10000000"
+            Background="{DynamicResource ControlFillColorSecondaryBrush}"
+
+            CornerRadius="10">
+
+        </Border>
+        <Border Grid.Row="2" Grid.Column="2" Margin="0 0 5 5" BorderThickness="1" BorderBrush="#10000000"
+            Background="{DynamicResource ControlFillColorSecondaryBrush}"
+
+            CornerRadius="10">
+
+        </Border>-->
+    </Grid>
+</UserControl>

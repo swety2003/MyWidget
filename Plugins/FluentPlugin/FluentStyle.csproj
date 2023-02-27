@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	<EnableDynamicLoading>true</EnableDynamicLoading>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="SharpVectors" Version="1.8.0" />
+    <PackageReference Include="WPF-UI" Version="2.0.2" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\PluginSDK\PluginSDK.csproj">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</ProjectReference>
+	</ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Icons\aischedule.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\msnWeather.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<!--<Exec Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\Default&quot; /y/e" />-->
+		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot;"/>
+		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot;"/>
+
+
+
+		<Exec Condition=" '$(Configuration)' == 'Release' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+		<Exec Condition=" '$(Configuration)' == 'Debug' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+	
+	</Target>
+
+</Project>

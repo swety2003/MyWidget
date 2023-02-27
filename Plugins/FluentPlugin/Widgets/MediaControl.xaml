@@ -1,0 +1,95 @@
+﻿<UserControl
+    x:Class="DefaultWidgets.Widgets.MediaControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Loaded="WidgetBase_Loaded"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  FluentWPF Controls  -->
+                <wpfui:ThemesDictionary Theme="Light" />
+                <wpfui:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border Background="White" CornerRadius="8">
+        <StackPanel>
+            <StackPanel
+                Height="70"
+                Margin="5,2.5"
+                Orientation="Horizontal">
+                <Border
+                    Width="64"
+                    Height="64"
+                    Margin="0,0,0,0"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    CornerRadius="10">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding ImgSrc}" />
+                    </Border.Background>
+                </Border>
+                <StackPanel Width="150">
+
+                    <StackPanel Margin="0,20">
+                        <TextBlock
+                            FontSize="16"
+                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                            Text="{Binding MusicName}"
+                            TextAlignment="Center" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{Binding Singer}"
+                            TextAlignment="Center" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+            <Line
+                Stroke="{DynamicResource TextFillColorSecondaryBrush}"
+                StrokeThickness="0.5"
+                X2="300" />
+            <Border
+                Height="39"
+                Background="#10000000"
+                CornerRadius=" 0 0 10 10">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <!--<Button Height="22" Width="24" FontSize="12" Content="&#xE100;" Click="Button_Click"/>
+                    <Button Height="22" Width="24" FontSize="12" Content="&#xE102;" Click="Button_Click_1"/>
+                    <Button Height="22" Width="24" FontSize="12" Content="&#xE101;" Click="Button_Click_2" Cursor="Hand"/>-->
+                    <Menu Background="Transparent">
+                        <MenuItem
+                            Click="Button_Click"
+                            FontFamily="Segoe Fluent Icons"
+                            FontSize="12"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Header="&#xe100;" />
+                        <MenuItem
+                            Click="Button_Click_1"
+                            FontFamily="Segoe Fluent Icons"
+                            FontSize="12"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Header="&#xe102;" />
+                        <MenuItem
+                            Click="Button_Click_2"
+                            FontFamily="Segoe Fluent Icons"
+                            FontSize="12"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Header="&#xe101;" />
+                    </Menu>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Border>
+
+</UserControl>
