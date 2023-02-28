@@ -60,7 +60,7 @@ namespace PluginSDK
 
             var t = self?.Parent as MyThumb;
 
-            if (t==null)
+            if (t == null)
             {
                 return;
             }

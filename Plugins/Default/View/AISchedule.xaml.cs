@@ -1,5 +1,4 @@
 ﻿using Flurl.Http;
-using HandyControl.Controls;
 using PluginSDK;
 using System;
 using System.Collections.Generic;
@@ -24,7 +23,7 @@ namespace Default.View
 
         public Guid GUID { get; private set; }
 
-        public static CardInfo info = new CardInfo(null, "测试卡片", "描述", typeof(AISchedule));
+        public static CardInfo info = new CardInfo(null, "小爱课程表", "描述", typeof(AISchedule));
 
 
         public AISchedule(Guid g)
@@ -120,7 +119,7 @@ namespace Default.View
             catch (Exception ex)
             {
 
-                Growl.Error(ex.Message);
+                //Growl.Error(ex.Message);
 
             }
 

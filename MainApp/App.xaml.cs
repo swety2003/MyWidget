@@ -1,5 +1,4 @@
 ﻿using MainApp.Common;
-using MainApp.Model;
 using MainApp.View;
 using MainApp.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,21 +51,18 @@ namespace MainApp
                 ((context, services) =>
                 {
                     services.AddSingleton<WidgetView>();
-                    services.AddSingleton<WidgetViewVM>();
                     services.AddTransient<CardManage>();
-                    services.AddSingleton<CardManageVM>();
                     services.AddSingleton<Settings>();
-                    //services.AddSingleton<TermSessionManager>();
-                    //services.AddTransient<TerminalSession>();
-                    //services.AddSingleton();
 
                     #region ViewModel
-                    //services.AddSingleton<DashBoardVM>();
 
+                    services.AddSingleton<WidgetViewVM>();
+                    services.AddSingleton<CardManageVM>();
                     #endregion
 
                 }).Build();
 
+            var s = Panuon.WPF.UI.Resources.StyleKeys.ContentControlXStyle;
 
 
             if (File.Exists(CONFIG_FILE))

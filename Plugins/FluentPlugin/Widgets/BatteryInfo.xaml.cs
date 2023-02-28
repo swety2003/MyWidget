@@ -13,7 +13,7 @@ namespace DefaultWidgets.Widgets
     /// <summary>
     /// SearchBox.xaml 的交互逻辑
     /// </summary>
-    public partial class BatteryInfo : UserControl,ICard
+    public partial class BatteryInfo : UserControl, ICard
     {
         public int HeightPix => 2;
 

@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="clr-namespace:Default.Convertor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="clr-namespace:Default.ViewModel"
     d:DataContext="{d:DesignInstance Type=viewmodel:AISchedule}"
@@ -20,10 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <hc:Card hc:BorderElement.CornerRadius="8">
-        <hc:Card.Background>
-            <SolidColorBrush Color="{DynamicResource ThirdlyRegionColor}" />
-        </hc:Card.Background>
+    <Border Background="{DynamicResource BackgroundBrush16}" CornerRadius="8">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
@@ -55,14 +51,13 @@
                         Margin="0"
                         Padding="0"
                         VerticalAlignment="Center"
-                        hc:BorderElement.CornerRadius="8"
                         Background="Transparent"
                         BorderThickness="0"
                         Click="Button_Click"
                         Content="课程表"
                         Cursor="Hand"
                         FontSize="16"
-                        Foreground="Black" />
+                        Foreground="{DynamicResource TextBrush98}" />
 
                 </StackPanel>
 
@@ -78,25 +73,37 @@
                         FontSize="12"
                         Foreground="Gray"
                         TextAlignment="Right">
-                        <Run Text="{Binding Week}" />
+                        <TextBlock.Text>
+
+                            <MultiBinding StringFormat=" {0}{1}">
+                                <Binding Path="Week" />
+                                <Binding Path="Day" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+
+                        <!--<Run Text="{Binding Week}" />
                         <Run Text="/" />
-                        <Run Text="{Binding Day}" />
+                        <Run Text="{Binding Day}" />-->
                     </TextBlock>
 
                     <Button
+                        Padding="0"
                         HorizontalAlignment="Right"
                         Command="{Binding PreviousCommand}"
                         Content="&#xf744;"
-                        FontFamily="Segoe Fluent Icons"
-                        Foreground="{DynamicResource PrimaryTextBrush}"
-                        Style="{DynamicResource ButtonGroupItemHorizontalFirst}" />
+                        FontFamily="{DynamicResource SFI}"
+                        Foreground="{DynamicResource TextBrush84}"
+                        Style="{StaticResource SimpleBtnStyle}"
+                        ToolTip="上一天" />
                     <Button
+                        Padding="0"
                         HorizontalAlignment="Right"
                         Command="{Binding NextCommand}"
                         Content="&#xf746;"
-                        FontFamily="Segoe Fluent Icons"
-                        Foreground="{DynamicResource PrimaryTextBrush}"
-                        Style="{DynamicResource ButtonGroupItemHorizontalLast}" />
+                        FontFamily="{DynamicResource SFI}"
+                        Foreground="{DynamicResource TextBrush84}"
+                        Style="{StaticResource SimpleBtnStyle}"
+                        ToolTip="下一天" />
 
                 </StackPanel>
 
@@ -108,33 +115,43 @@
                     PlacementTarget="{Binding ElementName=sb}"
                     StaysOpen="False">
 
-                    <hc:Card Width="300" Padding="10">
+                    <Border
+                        Width="300"
+                        Padding="10"
+                        Background="{DynamicResource BackGroundBrush12}"
+                        BorderBrush="{DynamicResource BorderBrush24}"
+                        BorderThickness="1">
                         <StackPanel Margin="10,0">
 
                             <GroupBox
                                 FontSize="16"
+                                Foreground="{DynamicResource TextBrush98}"
                                 Header="课程表链接"
-                                Style="{DynamicResource GroupBoxOriginal}">
-                                <TextBox x:Name="url" />
+                                Style="{DynamicResource GroupBoxStyle1}">
+                                <TextBox
+                                    x:Name="url"
+                                    MinHeight="48"
+                                    VerticalContentAlignment="Top"
+                                    AcceptsReturn="True"
+                                    Style="{DynamicResource TextBoxStyle2}" />
                             </GroupBox>
                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
 
                                 <Button
-                                    Margin="4,10"
                                     HorizontalAlignment="Right"
                                     Click="Button_Click_1"
                                     Content="刷新"
-                                    Style="{DynamicResource ButtonPrimary}" />
+                                    Style="{DynamicResource SimpleBtnStyle}" />
                                 <Button
-                                    Margin="0,10"
                                     HorizontalAlignment="Right"
                                     Click="Button_Click_1"
                                     Content="导入"
-                                    Style="{DynamicResource ButtonPrimary}" />
+                                    Foreground="{DynamicResource PrimaryBrush}"
+                                    Style="{DynamicResource SimpleBtnStyle}" />
                             </StackPanel>
 
                         </StackPanel>
-                    </hc:Card>
+                    </Border>
                 </Popup>
 
             </Grid>
@@ -143,7 +160,6 @@
                 Grid.Row="1"
                 Margin="10,0,10,10"
                 HorizontalAlignment="Stretch"
-                hc:BorderElement.CornerRadius="15"
                 Background="Transparent"
                 BorderThickness="0"
                 ItemsSource="{Binding CI}"
@@ -184,7 +200,7 @@
                                         FontWeight="Bold"
                                         Text="{Binding name}" />
                                     <StackPanel Margin="0,2,0,0" Orientation="Horizontal">
-                                        <TextBlock Foreground="{DynamicResource SecondaryTextBrush}">
+                                        <TextBlock Foreground="{DynamicResource TextBrush84}">
                                             <Run Text="第" />
 
                                             <Run Text="{Binding sections}" />
@@ -211,9 +227,9 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="16"
-                Foreground="{DynamicResource SecondaryTextBrush}"
+                Foreground="{DynamicResource TextBrush84}"
                 Text="{Binding TableTip}" />
 
         </Grid>
-    </hc:Card>
+    </Border>
 </UserControl>

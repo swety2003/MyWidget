@@ -1,13 +1,10 @@
 ﻿using MainApp.Common;
-using MainApp.Model;
 using MainApp.ViewModel;
 using PluginSDK;
 using PluginSDK.Controls;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace MainApp.View
 {
@@ -43,8 +40,8 @@ namespace MainApp.View
 
                         MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
 
-                        Canvas.SetLeft(mt,item.Value.Pos.X);
-                        Canvas.SetTop(mt,item.Value.Pos.Y);
+                        Canvas.SetLeft(mt, item.Value.Pos.X);
+                        Canvas.SetTop(mt, item.Value.Pos.Y);
 
                         cv.Children.Add(mt);
 

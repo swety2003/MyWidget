@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HandyControl.Controls;
 using Newtonsoft.Json;
 using PluginSDK;
 using System;
@@ -94,7 +93,7 @@ namespace Default.ViewModel
             catch (Exception ex)
             {
 
-                Growl.Error(ex.Message);
+                //Growl.Error(ex.Message);
                 TableTip = "未设置课表";
 
             }

@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:MainApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
     xmlns:viewmodel="clr-namespace:MainApp.ViewModel"
     Title="CardManage"
     d:DataContext="{d:DesignInstance Type=viewmodel:CardManageVM}"
@@ -32,12 +33,7 @@
             SelectedValue="{Binding SelectedCI}">
             <ListBox.ContextMenu>
 
-                <ContextMenu
-                    pu:ContextMenuHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush22}"
-                    Background="{DynamicResource BackGroundBrush12}"
-                    BorderBrush="{DynamicResource BorderBrush60}"
-                    Foreground="{DynamicResource TextBrush84}">
-
+                <ContextMenu>
                     <MenuItem Command="{Binding AddCardToDesktopCommand}" Header="添加到桌面" />
                     <MenuItem Header="详情" />
                 </ContextMenu>

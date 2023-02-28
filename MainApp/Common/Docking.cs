@@ -1,11 +1,9 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Interop;
 
 namespace MainApp.Common

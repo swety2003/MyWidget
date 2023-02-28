@@ -23,7 +23,7 @@ namespace MainApp.Common
             SetParent(form, GetBackground());
         }
 
-        public static void SetFather(IntPtr form,IntPtr father)
+        public static void SetFather(IntPtr form, IntPtr father)
         {
             SetParent(form, father);
         }

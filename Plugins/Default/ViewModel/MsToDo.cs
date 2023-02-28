@@ -1,7 +1,6 @@
 ﻿using Azure.Identity;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HandyControl.Controls;
 using Microsoft.Graph;
 using System;
 using System.Threading.Tasks;
@@ -102,7 +101,7 @@ namespace Default.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    Growl.Error(ex.ToString());
+                    //Growl.Error(ex.ToString());
                 }
 
             });
@@ -117,7 +116,7 @@ namespace Default.ViewModel
                 await GetListsAsync();
                 Dispatcher.CurrentDispatcher.Invoke(() =>
                 {
-                    Growl.Info("列表更新成功！");
+                    //Growl.Info("列表更新成功！");
                 });
             });
 

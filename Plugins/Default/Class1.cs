@@ -1,8 +1,8 @@
 
+using Default.View;
 using PluginSDK;
 using System;
 using System.Collections.Generic;
-using Default.View;
 namespace Default
 {
 
@@ -12,10 +12,6 @@ namespace Default
     public class Class1 : IPlugin
     {
 
-        public Class1()
-        {
-            HandyControl.Controls.Badge b = new HandyControl.Controls.Badge();
-        }
         public Version version { get; } = new Version();
         public string url { get; } = "";
         public string author { get; } = "";
@@ -26,7 +22,7 @@ namespace Default
         public static List<CardInfo> cards { get; } = new List<CardInfo>()
         {
             //DevTest.info
-            AISchedule.info,BiliHelper.info,CountDown.info,Gallery.info,GenshinHelper.info,MsToDo.info,
+            AISchedule.info,BiliHelper.info,CountDown.info,GenshinHelper.info,MsToDo.info,
 
         };
 

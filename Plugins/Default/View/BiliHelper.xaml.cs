@@ -1,7 +1,6 @@
 ﻿using Default.CWindow;
 using Flurl;
 using Flurl.Http;
-using HandyControl.Controls;
 using PluginSDK;
 using System;
 using System.Collections.Generic;
@@ -99,13 +98,13 @@ namespace Default.View
                 }
                 catch (Exception ex)
                 {
-                    Growl.Error(ex.Message);
+                    //Growl.Error(ex.Message);
                     timer.Stop();
                 }
             }
             else if (tip)
             {
-                Growl.Error("哔哩哔哩:无效的Cookie!");
+                //Growl.Error("哔哩哔哩:无效的Cookie!");
                 vm.Loading = true;
                 timer.Stop();
             }
@@ -117,12 +116,12 @@ namespace Default.View
             dl.ShowDialog();
             vm.cfg.cookie = dl.Cookie;
 
-            if (!String.IsNullOrEmpty( GetMidFromCookie(dl.Cookie)))
+            if (!String.IsNullOrEmpty(GetMidFromCookie(dl.Cookie)))
             {
                 DataUpdate(true);
 
                 vm.cfg.Save(this.GetPluginConfigFilePath());
-                
+
             }
         }
     }

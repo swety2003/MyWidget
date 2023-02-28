@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Messaging;
 using DGP.Genshin.GamebarWidget.Model;
 
 namespace Default.ViewModel

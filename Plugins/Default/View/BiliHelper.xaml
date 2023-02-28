@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:convertor="clr-namespace:Default.Convertor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="clr-namespace:Default.ViewModel"
     d:DataContext="{d:DesignInstance Type=viewmodel:BiliHelper}"
@@ -19,7 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <hc:Card hc:BorderElement.CornerRadius="8">
+    <Border CornerRadius="8">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -135,7 +134,6 @@
                     Height="24"
                     Margin="4"
                     Padding="4"
-                    hc:BorderElement.CornerRadius="4"
                     Click="Button_Click"
                     Content="&#xe713;"
                     FontFamily="Segoe Fluent Icons"
@@ -176,5 +174,5 @@
             </Border>
 
         </Grid>
-    </hc:Card>
+    </Border>
 </UserControl>

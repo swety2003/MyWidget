@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:convertor="clr-namespace:Default.Convertor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="clr-namespace:Default.ViewModel"
     d:DataContext="{d:DesignInstance Type=viewmodel:MsToDo}"
@@ -20,7 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <hc:Card hc:BorderElement.CornerRadius="8" Background="{DynamicResource LightPrimaryBrush}">
+    <Border Background="{DynamicResource LightPrimaryBrush}" CornerRadius="8">
 
         <Grid Margin="4">
             <Grid.RowDefinitions>
@@ -52,7 +51,6 @@
                         Margin="2,0"
                         Padding="0"
                         VerticalAlignment="Center"
-                        hc:BorderElement.CornerRadius="8"
                         Background="Transparent"
                         BorderThickness="0"
                         Content="ToDo"
@@ -197,5 +195,5 @@
                 </StackPanel>
             </Border>
         </Grid>
-    </hc:Card>
+    </Border>
 </UserControl>

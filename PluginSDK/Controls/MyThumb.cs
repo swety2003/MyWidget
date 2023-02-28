@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -19,7 +18,7 @@ namespace PluginSDK.Controls
 
             while (parent != null)
             {
-                if (parent is T )
+                if (parent is T)
                 {
                     return (T)parent;
                 }
@@ -105,7 +104,7 @@ namespace PluginSDK.Controls
             Panel.SetZIndex(this, 0);
 
 
-            OnCardMoved?.Invoke(this,new Point(Canvas.GetLeft(Preview), Canvas.GetTop(Preview)));
+            OnCardMoved?.Invoke(this, new Point(Canvas.GetLeft(Preview), Canvas.GetTop(Preview)));
 
 
         }
@@ -154,7 +153,7 @@ namespace PluginSDK.Controls
             WidthProperty.OverrideMetadata(typeof(MyThumb), new FrameworkPropertyMetadata(defaultValue: unit));
 
             //TemplateProperty.OverrideMetadata(typeof(MyThumb), new FrameworkPropertyMetadata(defaultValue: Custom));
-}
+        }
 
 
 

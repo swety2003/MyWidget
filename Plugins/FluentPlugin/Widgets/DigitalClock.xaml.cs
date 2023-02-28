@@ -2,7 +2,6 @@
 using FluentStyle.Utils;
 using PluginSDK;
 using System;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -13,7 +12,7 @@ namespace DefaultWidgets.Widgets
     /// UserControl1.xaml 的交互逻辑
     /// </summary>
     /// 
-    partial class DigitalClock:UserControl, ICard
+    partial class DigitalClock : UserControl, ICard
     {
         public int HeightPix => 4;
 

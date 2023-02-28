@@ -1,7 +1,6 @@
 ﻿using Default.CWindow;
 using DGP.Genshin.GamebarWidget.MiHoYoAPI;
 using DGP.Genshin.GamebarWidget.Model;
-using HandyControl.Controls;
 using PluginSDK;
 using System;
 using System.Collections.Generic;
@@ -55,7 +54,7 @@ namespace Default.View
 
             if (mycookie == "" | mycookie == null)
             {
-                Growl.Info("未设置cookie!");
+                //Growl.Info("未设置cookie!");
                 vm.Loading = true;
 
                 return;
@@ -68,7 +67,7 @@ namespace Default.View
             //roleAndNotes.Clear();
             if (roles.Count < 1)
             {
-                Growl.Error("无效的Cookie或者无网络!");
+                //Growl.Error("无效的Cookie或者无网络!");
                 vm.Loading = true;
                 return;
             }

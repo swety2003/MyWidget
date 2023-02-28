@@ -67,7 +67,6 @@
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.7.0" />
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
-    <PackageReference Include="HandyControl" Version="3.4.0" />
     <PackageReference Include="Microsoft.Graph" Version="4.42.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1343.22" />
   </ItemGroup>
@@ -132,8 +131,8 @@
   </ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot;"/>
-		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot;"/>
+		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot;" />
+		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot;" />
 		
 		<Exec Condition=" '$(Configuration)' == 'Release' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
 		<Exec Condition=" '$(Configuration)' == 'Debug' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />

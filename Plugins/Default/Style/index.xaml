@@ -4,13 +4,15 @@
     xmlns:hc="https://handyorg.github.io/handycontrol">
 
 
-    <Style BasedOn="{StaticResource CardBaseStyle}" TargetType="hc:Card">
-        <Setter Property="BorderThickness" Value="0" />
-    </Style>
     <FontFamily x:Key="MyRemixIcon">/SideBarDemo;component/Resources/Fonts/#remixicon</FontFamily>
-    <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+    </ResourceDictionary.MergedDictionaries>-->
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="/PluginSDK;component/Styles/index.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

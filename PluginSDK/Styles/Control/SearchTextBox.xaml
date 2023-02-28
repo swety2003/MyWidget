@@ -7,7 +7,7 @@
     <SolidColorBrush x:Key="TextBox.Focus.Border" Color="{DynamicResource BorderColor60}" />
     <SolidColorBrush x:Key="TextBox.Static.Background" Color="{DynamicResource BackgroundColor22}" />
 
-    <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+    <Style x:Key="SearchTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="#303030" />
         <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -50,6 +50,7 @@
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource SFI}"
                                 FontWeight="Bold"
+                                Foreground="{TemplateBinding Foreground}"
                                 Text="&#xe721;" />
                         </Grid>
                     </Border>

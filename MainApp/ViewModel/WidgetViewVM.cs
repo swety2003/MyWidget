@@ -2,21 +2,15 @@
 using CommunityToolkit.Mvvm.Input;
 using MainApp.Common;
 using MainApp.Model;
-using MainApp.View;
 using PluginSDK;
 using PluginSDK.Controls;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace MainApp.ViewModel
 {
-    public partial class WidgetViewVM:ObservableObject
+    public partial class WidgetViewVM : ObservableObject
     {
         //[ObservableProperty]
         //private ObservableCollection<UIElement> activeCards = new ObservableCollection<UIElement>();

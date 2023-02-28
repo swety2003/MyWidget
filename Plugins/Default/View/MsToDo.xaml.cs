@@ -1,5 +1,4 @@
-﻿using HandyControl.Controls;
-using PluginSDK;
+﻿using PluginSDK;
 using System;
 using System.Windows.Controls;
 
@@ -59,7 +58,7 @@ namespace Default.View
             }
             catch (Exception ex)
             {
-                Growl.Error(ex.Message);
+                //Growl.Error(ex.Message);
             }
         }
     }

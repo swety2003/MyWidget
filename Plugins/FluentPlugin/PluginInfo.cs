@@ -3,7 +3,6 @@ using PluginSDK;
 using SharpVectors.Converters;
 using System;
 using System.Collections.Generic;
-using Wpf.Ui;
 namespace DefaultWidgets
 {
     public class Class1 : IPlugin

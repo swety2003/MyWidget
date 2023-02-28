@@ -19,5 +19,7 @@
         <ResourceDictionary Source="Control/TreeView.xaml" />
         <ResourceDictionary Source="Control/CheckBox.xaml" />
         <ResourceDictionary Source="Control/TreeViewItemContainer.xaml" />
+        <ResourceDictionary Source="Control/ContextMenu.xaml" />
+        <ResourceDictionary Source="Control/MyThumbStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
