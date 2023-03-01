@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\icon\pycharm-app.ico" />
+    <None Remove="Assets\icon\python-py.ico" />
     <None Remove="Assets\icon\vs-app.ico" />
     <None Remove="Assets\icon\vs-sln.ico" />
   </ItemGroup>
@@ -27,12 +29,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\icon\vs-app.ico">
+    <Content Include="Assets\icon\*.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <!--<Content Include="Assets\icon\vs-app.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\icon\vs-sln.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Content>-->
   </ItemGroup>
 
 </Project>

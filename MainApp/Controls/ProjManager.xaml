@@ -28,14 +28,23 @@
             FontFamily="{StaticResource SFI}"
             FontSize="24"
             Foreground="{DynamicResource TextBrush98}"
-            MouseUp="lb_MouseUp">
-            <ListBoxItem>
-                <Border Width="24" Height="24">
-                    <Border.Background>
-                        <ImageBrush ImageSource="{Binding SelectedType.Icon}" Stretch="Fill" />
-                    </Border.Background>
-                </Border>
-            </ListBoxItem>
+            ItemsSource="{Binding ProjMs}"
+            MouseUp="lb_MouseUp"
+            SelectedValue="{Binding SelectedType}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelChangeCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="24" Height="24">
+                        <Border.Background>
+                            <ImageBrush ImageSource="{Binding Icon}" Stretch="Fill" />
+                        </Border.Background>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
             <!--<ListBoxItem Content="" />-->
         </ListBox>
 
@@ -49,7 +58,7 @@
             Placement="Left"
             PlacementTarget="{Binding ElementName=lb}"
             StaysOpen="False"
-            VerticalOffset="-48">
+            VerticalOffset="-64">
 
             <Border
                 Padding="20"

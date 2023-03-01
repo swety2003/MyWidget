@@ -58,6 +58,11 @@
                         </Border>
                     </Button>
 
+                    <Grid
+                        Height="2"
+                        Margin="4,2"
+                        Background="{DynamicResource BorderBrush26}" />
+
                     <ui:ProjManager />
 
 
