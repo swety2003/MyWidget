@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\icon\vs-app.ico" />
+    <None Remove="Assets\icon\vs-sln.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
@@ -18,8 +23,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Styles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\icon\vs-app.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon\vs-sln.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

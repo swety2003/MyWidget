@@ -1,0 +1,146 @@
+﻿<UserControl
+    x:Class="MainApp.Controls.ProjManager"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:MainApp.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:viewmodel="clr-namespace:MainApp.ViewModel"
+    d:DataContext="{d:DesignInstance Type=viewmodel:ProjManagerVM}"
+    d:DesignHeight="450"
+    d:DesignWidth="48"
+    mc:Ignorable="d">
+    <Grid>
+
+        <ListBox
+            x:Name="lb"
+            Padding="0"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            pu:ListBoxHelper.ItemsHeight="48"
+            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush20}"
+            pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush26}"
+            pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource AccentBrush}"
+            Background="Transparent"
+            BorderThickness="0"
+            FontFamily="{StaticResource SFI}"
+            FontSize="24"
+            Foreground="{DynamicResource TextBrush98}"
+            MouseUp="lb_MouseUp">
+            <ListBoxItem>
+                <Border Width="24" Height="24">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding SelectedType.Icon}" Stretch="Fill" />
+                    </Border.Background>
+                </Border>
+            </ListBoxItem>
+            <!--<ListBoxItem Content="" />-->
+        </ListBox>
+
+
+        <Popup
+            x:Name="content_pop"
+            Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=2}, Path=ActualHeight}"
+            MaxWidth="400"
+            HorizontalOffset="0"
+            IsOpen="False"
+            Placement="Left"
+            PlacementTarget="{Binding ElementName=lb}"
+            StaysOpen="False"
+            VerticalOffset="-48">
+
+            <Border
+                Padding="20"
+                Background="{DynamicResource BackgroundBrush16}"
+                BorderBrush="{DynamicResource BorderBrush26}"
+                BorderThickness="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Background="{DynamicResource BackgroundBrush16}">
+
+                        <TextBlock
+                            Margin="0,0,0,10"
+                            HorizontalAlignment="Left"
+                            FontSize="32"
+                            Foreground="{DynamicResource TextBrush98}"
+                            Text="{Binding SelectedType.Name}" />
+
+                        <TextBox
+                            Padding="4"
+                            FontSize="20"
+                            Foreground="{DynamicResource TextBrush98}"
+                            Style="{StaticResource SearchTextBox}" />
+                    </StackPanel>
+
+                    <ListBox
+                        Grid.Row="1"
+                        Margin="0,20,0,0"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        pu:ListBoxHelper.ItemsBackground="{DynamicResource BackGroundBrush12}"
+                        pu:ListBoxHelper.ItemsBorderThickness="2"
+                        pu:ListBoxHelper.ItemsHeight="48"
+                        pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush20}"
+                        pu:ListBoxHelper.ItemsMargin="0 0 0 2"
+                        pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush20}"
+                        pu:ListBoxHelper.ItemsSelectedBorderBrush="{DynamicResource PrimaryBrush}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="{DynamicResource TextBrush98}"
+                        ItemsSource="{Binding SelectedType.ProjInfos}"
+                        SelectedValue="{Binding SelctedInfo}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding OpenCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Border
+                                        Grid.RowSpan="2"
+                                        Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                                        Margin="0,0,10,0">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding ico}" />
+
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        FontSize="14"
+                                        FontWeight="Bold"
+                                        Text="{Binding name}" />
+
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextBrush84}"
+                                        Text="{Binding path}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

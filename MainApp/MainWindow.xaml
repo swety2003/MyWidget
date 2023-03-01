@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+    xmlns:ui="clr-namespace:MainApp.Controls"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -57,35 +58,12 @@
                         </Border>
                     </Button>
 
-                    <ListBox
-                        Padding="0"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        pu:ListBoxHelper.ItemsHeight="48"
-                        pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush20}"
-                        pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush26}"
-                        pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource AccentBrush}"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        FontFamily="{StaticResource SFI}"
-                        FontSize="24"
-                        Foreground="{DynamicResource TextBrush98}">
-                        <!--<ItemsControl.ItemContainerStyle>
-                            <Style BasedOn="{StaticResource {x:Static purs:StyleKeys.ButtonStyle}}" TargetType="Button">
-                                <Setter Property="pu:ButtonHelper.ClickForeground" Value="{DynamicResource PrimaryBrush}" />
-                                <Setter Property="Height" Value="48" />
-                                <Setter Property="Foreground" Value="{DynamicResource TextBrush98}" />
-                                <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource BackgroundBrush24}" />
-                                <Setter Property="Background" Value="Transparent" />
+                    <ui:ProjManager />
 
-                            </Style>
-                        </ItemsControl.ItemContainerStyle>-->
-                        <ListBoxItem Content="" />
-                        <ListBoxItem Content="" />
-                    </ListBox>
 
                 </StackPanel>
 
+                <!--  底部区域  -->
                 <StackPanel VerticalAlignment="Bottom">
                     <Button
                         Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualWidth}"
@@ -102,6 +80,8 @@
                         Foreground="{DynamicResource TextBrush98}">
                         
                     </Button>
+
+
 
                     <Button
                         Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualWidth}"
@@ -126,96 +106,6 @@
 
         <Frame Grid.Column="2" Source="/View/WidgetView.xaml" />
 
-        <Grid Grid.Column="2">
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="240" MinWidth="240" />
-                    <ColumnDefinition />
-
-                </Grid.ColumnDefinitions>
-
-                <Border
-                    Padding="20"
-                    Background="{DynamicResource BackgroundBrush16}"
-                    BorderBrush="{DynamicResource BorderBrush26}"
-                    BorderThickness="1">
-
-                    <StackPanel>
-
-                        <StackPanel Background="{DynamicResource BackgroundBrush16}">
-
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                FontSize="32"
-                                Foreground="{DynamicResource TextBrush98}"
-                                Text="Visual Studio 2022" />
-
-                            <TextBox
-                                Padding="4"
-                                FontSize="20"
-                                Foreground="{DynamicResource TextBrush98}"
-                                Style="{StaticResource SearchTextBox}" />
-                        </StackPanel>
-                        <ContentPresenter />
-
-                        <ListBox
-                            Margin="0,20,0,0"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"
-                            pu:ListBoxHelper.ItemsBackground="{DynamicResource BackGroundBrush12}"
-                            pu:ListBoxHelper.ItemsBorderThickness="2"
-                            pu:ListBoxHelper.ItemsHeight="48"
-                            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush20}"
-                            pu:ListBoxHelper.ItemsMargin="0 0 0 2"
-                            pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush20}"
-                            pu:ListBoxHelper.ItemsSelectedBorderBrush="{DynamicResource BackgroundBrush44}"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Foreground="{DynamicResource TextBrush98}">
-                            <ListBoxItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Border
-                                        Grid.RowSpan="2"
-                                        Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
-                                        Margin="0,0,10,0"
-                                        Background="Gray" />
-
-                                    <TextBlock
-                                        Grid.Column="1"
-                                        FontSize="14"
-                                        FontWeight="Bold"
-                                        Text="Demo.sln" />
-
-                                    <TextBlock
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        FontSize="12"
-                                        Foreground="{DynamicResource TextBrush84}"
-                                        Text="D:\Source\Repos\SideBarDemo " />
-                                </Grid>
-                            </ListBoxItem>
-                            <ListBoxItem />
-                        </ListBox>
-                    </StackPanel>
-                </Border>
-
-                <GridSplitter
-                    Grid.Column="0"
-                    Width="1"
-                    Background="{DynamicResource BorderBrush44}" />
-
-            </Grid>
-
-        </Grid>
 
     </Grid>
 </Window>
