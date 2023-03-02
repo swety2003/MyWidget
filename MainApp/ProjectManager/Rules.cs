@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace MainApp.ProjectManager
 {
 
 
-    public interface IProjM
+    public interface IProjM: INotifyPropertyChanged
     {
         public string Icon { get; set; }
         public string Name { get; set; }
@@ -17,6 +18,9 @@ namespace MainApp.ProjectManager
         public Task Update();
 
         public void Active(ProjInfo selected);
+
+        public void OpenInExplorer(ProjInfo selected);
+
 
         public void SetFolders(string[] folders);
     }

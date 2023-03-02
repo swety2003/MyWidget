@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MainApp.ProjectManager
-{
-    internal class PycharmManage:IProjM
+using MainApp.ProjectManager;
+
+internal class PycharmManage : IProjM
     {
         public PycharmManage()
         {
         }
 
         string[] baseFolder = { "D:/Source/PythonProjects", };
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public string Icon { get; set; } = "/Assets/icon/pycharm-app.ico";
 
@@ -45,6 +48,8 @@ namespace MainApp.ProjectManager
                 }
 
                 ProjInfos = projInfos;
+
+                PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(ProjInfos)));
             });
         }
 
@@ -57,5 +62,11 @@ namespace MainApp.ProjectManager
         {
             baseFolder = folder;
         }
+
+        public void OpenInExplorer(ProjInfo selected)
+        {
+            Process.Start("explorer.exe", Path.GetFullPath(selected.path));
+
+        }
     }
-}
+

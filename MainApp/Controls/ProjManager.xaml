@@ -12,6 +12,11 @@
     d:DesignHeight="450"
     d:DesignWidth="48"
     mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding SelfLoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
 
         <ListBox
@@ -51,12 +56,13 @@
 
         <Popup
             x:Name="content_pop"
+            Width="400"
             Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=2}, Path=ActualHeight}"
-            MaxWidth="400"
             HorizontalOffset="0"
             IsOpen="False"
             Placement="Left"
             PlacementTarget="{Binding ElementName=lb}"
+            PopupAnimation="Slide"
             StaysOpen="False"
             VerticalOffset="-64">
 
@@ -147,6 +153,12 @@
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Command="{Binding OpenCommand}" Header="打开" />
+                                <MenuItem Command="{Binding OpenInExplorerCommand}" Header="打开文件位置" />
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                     </ListBox>
                 </Grid>
             </Border>

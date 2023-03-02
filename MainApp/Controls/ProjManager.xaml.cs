@@ -21,10 +21,13 @@ namespace MainApp.Controls
     /// </summary>
     public partial class ProjManager : UserControl
     {
+        ProjManagerVM vm;
         public ProjManager()
         {
             InitializeComponent();
-            DataContext= new ProjManagerVM();
+
+            vm = new ProjManagerVM();
+            DataContext = vm;
         }
 
         private void lb_ItemClick(object sender, RoutedEventArgs e)

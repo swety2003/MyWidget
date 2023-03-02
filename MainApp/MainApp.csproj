@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\icon\node-app.ico" />
     <None Remove="Assets\icon\pycharm-app.ico" />
     <None Remove="Assets\icon\python-py.ico" />
     <None Remove="Assets\icon\vs-app.ico" />
@@ -16,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.5.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
@@ -38,6 +40,16 @@
     <Content Include="Assets\icon\vs-sln.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Assets\scripts\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\scripts\*.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
