@@ -11,7 +11,7 @@ namespace Default.View
     public partial class MsToDo : UserControl, ICard
     {
 
-        public static CardInfo info = new CardInfo(null, "测试卡片", "描述", typeof(MsToDo));
+        public static CardInfo info = new CardInfo(null, "微软待办", "描述", typeof(MsToDo));
 
         public int HeightPix => 5;
 

@@ -16,7 +16,7 @@ namespace Default.View
     /// </summary>
     public partial class GenshinHelper : UserControl, ICard
     {
-        public static CardInfo info = new CardInfo(null, "测试卡片", "描述", typeof(GenshinHelper));
+        public static CardInfo info = new CardInfo(null, "原神助手", "描述", typeof(GenshinHelper));
 
 
         public int HeightPix => 3;

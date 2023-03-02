@@ -45,5 +45,10 @@ namespace DefaultWidgets
         {
             return cards;
         }
+
+        public List<SideBarItemInfo> GetAllSBItems()
+        {
+            return new List<SideBarItemInfo>();
+        }
     }
 }

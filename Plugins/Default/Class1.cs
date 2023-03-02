@@ -37,6 +37,9 @@ namespace Default
             return cards;
         }
 
-
+        public List<SideBarItemInfo> GetAllSBItems()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

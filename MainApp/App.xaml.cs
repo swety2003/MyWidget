@@ -30,6 +30,7 @@ namespace MainApp
         public static IEnumerable<IPlugin> Plugins = new ObservableCollection<IPlugin>();
 
         public static ObservableCollection<CardInfo> CardInfos = new ObservableCollection<CardInfo>();
+        public static ObservableCollection<SideBarItemInfo> SideBarItemInfos = new ObservableCollection<SideBarItemInfo>();
 
         public static T GetService<T>() where T : class
         {
@@ -102,6 +103,12 @@ namespace MainApp
                 {
                     //var a = Activator.CreateInstance(c.mainView);
                     CardInfos.Add(c);
+                }
+
+
+                foreach (var s in item.GetAllSBItems())
+                {
+                    SideBarItemInfos.Add(s);
                 }
             }
         }

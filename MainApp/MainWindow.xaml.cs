@@ -43,6 +43,19 @@ namespace MainApp
 
             da = new DockArea(this);
             da.Show();
+
+            LoadSBI();
+        }
+
+
+
+        void LoadSBI()
+        {
+            foreach (var item in App.SideBarItemInfos)
+            {
+
+                sb_container.Children.Add(Activator.CreateInstance(item.MainView) as UIElement);
+            }
         }
 
 

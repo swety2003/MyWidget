@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Assets\scripts\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\scripts\*.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\icon\node-app.ico" />
+    <None Remove="Assets\icon\pycharm-app.ico" />
+    <None Remove="Assets\icon\python-py.ico" />
+    <None Remove="Assets\icon\vs-app.ico" />
+    <None Remove="Assets\icon\vs-sln.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\icon\node-app.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon\pycharm-app.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon\python-py.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon\vs-app.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon\vs-sln.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CS-Script.Core" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <ProjectReference Include="..\..\PluginSDK\PluginSDK.csproj">
+		  <Private>false</Private>
+		  <ExcludeAssets>runtime</ExcludeAssets>
+	  </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\ProjManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<!--<Exec Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\Default&quot; /y/e" />-->
+		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot;" />
+		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot;" />
+
+
+
+		<Exec Condition=" '$(Configuration)' == 'Release' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+		<Exec Condition=" '$(Configuration)' == 'Debug' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+
+	</Target>
+</Project>

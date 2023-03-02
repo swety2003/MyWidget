@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
-    xmlns:ui="clr-namespace:MainApp.Controls"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -63,7 +62,7 @@
                         Margin="4,2"
                         Background="{DynamicResource BorderBrush26}" />
 
-                    <ui:ProjManager />
+                    <StackPanel x:Name="sb_container" />
 
 
                 </StackPanel>

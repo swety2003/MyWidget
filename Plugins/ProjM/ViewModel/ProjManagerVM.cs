@@ -1,26 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MainApp.ProjectManager;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Projm.ProjectManager;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using Microsoft.CodeAnalysis;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Emit;
 using System.Reflection;
-using System.Diagnostics;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Microsoft.CodeAnalysis.Scripting;
-using Newtonsoft.Json;
-using System.Collections;
+using System.Threading.Tasks;
 
-namespace MainApp.ViewModel
+namespace Projm.ViewModel
 {
-    partial class ProjManagerVM:ObservableObject
+    partial class ProjManagerVM : ObservableObject
     {
         [ObservableProperty]
         IProjM selectedType;
@@ -41,7 +34,7 @@ namespace MainApp.ViewModel
 
         public async Task LoadScript()
         {
-            
+
             var tempList = new List<IProjM>();
             var scriptFolder = "Assets/scripts";
             if (Directory.Exists(scriptFolder))
@@ -61,7 +54,9 @@ namespace MainApp.ViewModel
 
                             refs.Add(MetadataReference.CreateFromFile(asmName.Location));
                         }
-                        catch { }
+                        catch (Exception ex) { }
+
+                        refs.Add(MetadataReference.CreateFromFile(@"D:\Source\Repos\MyWidget\MainApp\bin\Debug\net6.0-windows\Plugins\ProjM\PluginSDK.dll"));
                     }
 
                     var compilation = CSharpCompilation.Create(
@@ -74,7 +69,7 @@ namespace MainApp.ViewModel
 
                     var emitResult = compilation.Emit(memSteam);
 
-                    if (!emitResult.Success )
+                    if (!emitResult.Success)
                     {
                         continue;
                     }
@@ -88,11 +83,11 @@ namespace MainApp.ViewModel
                     {
                         if (t.GetInterface("IProjM") != null)
                         {
-                            var obj = (IProjM)Activator.CreateInstance(t);
+                            var obj = Activator.CreateInstance(t);
 
                             if (obj != null)
                             {
-                                tempList.Add(obj);
+                                tempList.Add(obj as IProjM );
                             }
                         }
                     }
@@ -130,7 +125,7 @@ namespace MainApp.ViewModel
         }
 
         [RelayCommand]
-        void OpenInExplorer() 
+        void OpenInExplorer()
         {
 
             SelectedType.OpenInExplorer(SelctedInfo);

@@ -1,33 +1,34 @@
-﻿using MainApp.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PluginSDK;
+using Projm.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace MainApp.Controls
+namespace Projm.Controls
 {
     /// <summary>
     /// ProjManager.xaml 的交互逻辑
     /// </summary>
-    public partial class ProjManager : UserControl
+    public partial class ProjManager : UserControl, ISideBarItem
     {
-        ProjManagerVM vm;
+
+        public static SideBarItemInfo info = new SideBarItemInfo("1", "好", typeof(ProjManager));
+
         public ProjManager()
         {
             InitializeComponent();
 
-            vm = new ProjManagerVM();
-            DataContext = vm;
+            DataContext =new ProjManagerVM();
+        }
+
+        public void OnDisabled()
+        {
+
+        }
+
+        public void OnEnabled()
+        {
+
         }
 
         private void lb_ItemClick(object sender, RoutedEventArgs e)

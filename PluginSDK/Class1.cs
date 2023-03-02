@@ -19,6 +19,9 @@ namespace PluginSDK
         public string author { get; }
 
         public List<CardInfo> GetAllCards();
+
+
+        public List<SideBarItemInfo> GetAllSBItems();
     }
 
     public interface ICard
@@ -37,6 +40,15 @@ namespace PluginSDK
         //public void OnAppClosed();
 
     }
+
+    public interface ISideBarItem
+    {
+        public void OnEnabled();
+        public void OnDisabled();
+
+    }
+    public record SideBarItemInfo(string Name, string Description, Type MainView);
+
 
     public static class UCExt
     {

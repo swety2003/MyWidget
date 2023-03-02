@@ -13,7 +13,7 @@ namespace Default.View
     /// </summary>
     public partial class CountDown : UserControl, ICard
     {
-        public static CardInfo info = new CardInfo(null, "测试卡片", "描述", typeof(CountDown));
+        public static CardInfo info = new CardInfo(null, "倒计时", "描述", typeof(CountDown));
 
 
         public int HeightPix => 3;
