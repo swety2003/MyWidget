@@ -1,7 +1,7 @@
 using PluginSDK;
-using System.Collections.Generic;
-using System;
 using Projm.Controls;
+using System;
+using System.Collections.Generic;
 
 namespace ProjM
 {

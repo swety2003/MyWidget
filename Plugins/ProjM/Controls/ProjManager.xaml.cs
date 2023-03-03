@@ -1,6 +1,5 @@
 ﻿using PluginSDK;
 using Projm.ViewModel;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -18,7 +17,7 @@ namespace Projm.Controls
         {
             InitializeComponent();
 
-            DataContext =new ProjManagerVM();
+            DataContext = new ProjManagerVM();
         }
 
         public void OnDisabled()
@@ -31,15 +30,19 @@ namespace Projm.Controls
 
         }
 
-        private void lb_ItemClick(object sender, RoutedEventArgs e)
-        {
-        }
 
         private void lb_MouseUp(object sender, MouseButtonEventArgs e)
         {
 
             content_pop.IsOpen = true;
             content_pop.Focus();
+            tb.Focus();
+
+        }
+
+        private void content_pop_Closed(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

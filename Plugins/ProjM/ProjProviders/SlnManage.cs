@@ -1,15 +1,15 @@
-﻿using System;
+﻿using ProjM;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
-using MainApp.ProjectManager;
 
-class SlnManage: IProjM
+class SlnManage : IProjM
 {
+
+    static string selfp = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
     public SlnManage()
     {
 
@@ -24,8 +24,8 @@ class SlnManage: IProjM
         baseFolder = folders;
     }
 
-    public string Icon { get; set; }= "/Assets/icon/vs-app.ico";
-        //= new BitmapImage(new Uri("/Assets/icon/vs-sln.ico",UriKind.Relative));
+    public string Icon { get; set; } = Path.Combine(selfp, "Assets/icon/vs-app.ico");
+    //= new BitmapImage(new Uri("/Assets/icon/vs-sln.ico",UriKind.Relative));
 
     public string Name { get; set; } = "VisualStudio2022";
 
@@ -47,7 +47,7 @@ class SlnManage: IProjM
                     {
                         if (i.ToLower().EndsWith(".sln"))
                         {
-                            projInfos.Add(new ProjInfo(Path.GetFileName(i), i, "Assets/icon/vs-sln.ico"));
+                            projInfos.Add(new ProjInfo(Path.GetFileName(i), i, Path.Combine(selfp, "Assets/icon/vs-sln.ico")));
 
                             break;
                         }

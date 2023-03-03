@@ -7,44 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Assets\scripts\*.cs" />
+    <Compile Remove="ProjProviders\**" />
+    <EmbeddedResource Remove="ProjProviders\**" />
+    <None Remove="Assets\icon\*.ico" />
+    <None Remove="Assets\scripts\*.lua" />
+    <None Remove="ProjProviders\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\scripts\*.cs">
+    <Content Include="Assets\icon\*.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Assets\icon\node-app.ico" />
-    <None Remove="Assets\icon\pycharm-app.ico" />
-    <None Remove="Assets\icon\python-py.ico" />
-    <None Remove="Assets\icon\vs-app.ico" />
-    <None Remove="Assets\icon\vs-sln.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\icon\node-app.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\icon\pycharm-app.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\icon\python-py.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\icon\vs-app.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\icon\vs-sln.ico">
+    <Content Include="Assets\scripts\*.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CS-Script.Core" Version="2.0.0" />
+    <Page Remove="ProjProviders\**" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="NLua" Version="1.6.2" />
+  </ItemGroup>
+
 
   <ItemGroup>
 	  <ProjectReference Include="..\..\PluginSDK\PluginSDK.csproj">

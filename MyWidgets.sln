@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Default", "Plugins\Default\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentStyle", "Plugins\FluentPlugin\FluentStyle.csproj", "{FFA64F6C-F438-4AB0-A74A-099C76C8F6CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjM", "Plugins\ProjM\ProjM.csproj", "{C8F52009-7899-46D0-A495-C5471AEEF46F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjM", "Plugins\ProjM\ProjM.csproj", "{C8F52009-7899-46D0-A495-C5471AEEF46F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

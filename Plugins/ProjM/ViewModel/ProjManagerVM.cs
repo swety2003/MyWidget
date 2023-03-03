@@ -1,10 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Projm.ProjectManager;
-using System;
-using System.Collections.Generic;
+using ProjM;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -16,90 +12,41 @@ namespace Projm.ViewModel
     partial class ProjManagerVM : ObservableObject
     {
         [ObservableProperty]
-        IProjM selectedType;
+        ProjMBase selectedType;
 
         [ObservableProperty]
-        ObservableCollection<IProjM> projMs = new ObservableCollection<IProjM>();
+        ObservableCollection<ProjMBase> projMs = new ObservableCollection<ProjMBase>();
 
         public ProjManagerVM()
         {
             //projMs.Add(new PycharmManage());
             //projMs.Add(new SlnManage());
 
-            SelfLoadedCommand = new AsyncRelayCommand(LoadScript);
+            SelfLoadedCommand = new AsyncRelayCommand(LoadProvider);
         }
 
         public AsyncRelayCommand SelfLoadedCommand { get; set; }
 
 
-        public async Task LoadScript()
+        public async Task LoadProvider()
         {
-
-            var tempList = new List<IProjM>();
-            var scriptFolder = "Assets/scripts";
+            var scriptFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "", "Assets/scripts");
+            scriptFolder = Path.GetFullPath(scriptFolder);
             if (Directory.Exists(scriptFolder))
             {
-                var scripts = Directory.GetFiles(scriptFolder).Where((p) => p.ToLower().EndsWith(".cs")).ToList();
+                var scripts = Directory.GetFiles(scriptFolder).Where((p) => p.ToLower().EndsWith(".lua")).ToList();
                 foreach (var script in scripts)
                 {
-                    //await Task.Delay(1000);
-
-                    List<MetadataReference> refs = new List<MetadataReference>();
-
-                    var a = AppDomain.CurrentDomain.GetAssemblies();
-                    foreach (var asmName in a)
+                    try
                     {
-                        try
-                        {
-
-                            refs.Add(MetadataReference.CreateFromFile(asmName.Location));
-                        }
-                        catch (Exception ex) { }
-
-                        refs.Add(MetadataReference.CreateFromFile(@"D:\Source\Repos\MyWidget\MainApp\bin\Debug\net6.0-windows\Plugins\ProjM\PluginSDK.dll"));
+                        ProjMs.Add(new ProjMBase(script));
                     }
-
-                    var compilation = CSharpCompilation.Create(
-                                                    null,
-                                                    new[] { CSharpSyntaxTree.ParseText(File.ReadAllText(script)) },
-                                                    refs,
-                                                    new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
-
-                    using var memSteam = new MemoryStream();
-
-                    var emitResult = compilation.Emit(memSteam);
-
-                    if (!emitResult.Success)
-                    {
-                        continue;
-                    }
-
-                    memSteam.Seek(0, SeekOrigin.Begin);
-
-                    var asm = Assembly.Load(memSteam.ToArray());
-
-                    Type[] types = asm.GetTypes();
-                    foreach (var t in types)
-                    {
-                        if (t.GetInterface("IProjM") != null)
-                        {
-                            var obj = Activator.CreateInstance(t);
-
-                            if (obj != null)
-                            {
-                                tempList.Add(obj as IProjM );
-                            }
-                        }
-                    }
-
+                    catch { }
                 }
-            }
-            foreach (var item in tempList)
-            {
-                ProjMs.Add(item);
-            }
-        }
 
+            }
+
+        }
 
         [ObservableProperty]
         ProjInfo selctedInfo;
@@ -111,7 +58,16 @@ namespace Projm.ViewModel
             {
                 return;
             }
-            SelectedType?.Active(SelctedInfo);
+            try
+            {
+
+                SelectedType?.OnActive(SelctedInfo);
+            }
+            catch (System.Exception)
+            {
+
+
+            }
         }
 
         [RelayCommand]
@@ -121,14 +77,19 @@ namespace Projm.ViewModel
             {
                 return;
             }
-            SelectedType.Update();
+            SelectedType.OnUpdate();
         }
 
         [RelayCommand]
         void OpenInExplorer()
         {
+            try
+            {
 
-            SelectedType.OpenInExplorer(SelctedInfo);
+                SelectedType.OpenInExplorer(SelctedInfo);
+            }
+            catch { }
+
 
         }
     }

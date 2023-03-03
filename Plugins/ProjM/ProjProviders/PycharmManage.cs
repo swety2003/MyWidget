@@ -1,28 +1,29 @@
-﻿using System;
+﻿using ProjM;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
-using Projm.ProjectManager;
 
-public class NodeProjectM : IProjM
+internal class PycharmManage : IProjM
 {
-    public NodeProjectM()
+
+    static string selfp = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
+    public PycharmManage()
     {
     }
 
-    string[] baseFolder = { "D:/Source/Nodejs", };
+    string[] baseFolder = { "D:/Source/PythonProjects", };
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public string Icon { get; set; } = "/Assets/icon/node-app.ico";
+    public string Icon { get; set; } = Path.Combine(selfp, "Assets/icon/pycharm-app.ico");
 
     //= new BitmapImage(new Uri("/Assets/icon/vs-sln.ico",UriKind.Relative));
 
-    public string Name { get; set; } = "NodeJS";
+    public string Name { get; set; } = "Pycharm";
 
     public IEnumerable<ProjInfo> ProjInfos { get; set; }
 
@@ -39,16 +40,16 @@ public class NodeProjectM : IProjM
                 {
                     var f = Directory.GetDirectories(d);
 
-                    //if (f.Select((s) => s.ToLower() == ".idea").Count() != 0)
-                    //{
-                        projInfos.Add(new ProjInfo(Path.GetFileName(d), d, "/Assets/icon/python-py.ico"));
-                    //}
+                    if (f.Select((s) => s.ToLower() == ".idea").Count() != 0)
+                    {
+                        projInfos.Add(new ProjInfo(Path.GetFileName(d), d, Path.Combine(selfp, "Assets/icon/python-py.ico")));
+                    }
                 }
             }
 
             ProjInfos = projInfos;
 
-            PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(ProjInfos)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ProjInfos)));
         });
     }
 
@@ -68,3 +69,4 @@ public class NodeProjectM : IProjM
 
     }
 }
+
