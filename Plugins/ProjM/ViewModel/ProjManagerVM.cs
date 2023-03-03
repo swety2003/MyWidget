@@ -1,11 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ProjM;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Projm.ViewModel
 {
@@ -41,7 +44,10 @@ namespace Projm.ViewModel
                     {
                         ProjMs.Add(new ProjMBase(script));
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
 
             }
@@ -60,12 +66,10 @@ namespace Projm.ViewModel
             }
             try
             {
-
                 SelectedType?.OnActive(SelctedInfo);
             }
             catch (System.Exception)
             {
-
 
             }
         }
@@ -79,6 +83,19 @@ namespace Projm.ViewModel
             }
             SelectedType.OnUpdate();
         }
+
+        [RelayCommand]
+        void EditScript()
+        {
+            Process.Start("explorer.exe", SelectedType.script_path);
+        }
+        [RelayCommand]
+        void ReScan()
+        {
+
+            SelectedType?.LoadScript();
+        }
+
 
         [RelayCommand]
         void OpenInExplorer()

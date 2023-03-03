@@ -14,7 +14,7 @@ function OnUpdate()
             local str = f[j].lower(f[j])
             if (string.sub(str,-4)==".sln") then
                 path=f[j]
-                item:AddInfo(Path.GetFileName(f[j]),path,fileico)
+                item:AddInfo(Path.GetFileName(path),path,fileico)
             end
         end
     end

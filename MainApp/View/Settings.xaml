@@ -20,7 +20,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid Background="{DynamicResource BackgroundBrush24}">
+        <Grid Background="{DynamicResource BackgroundBrush16}">
             <Border Padding="10,0,10,0">
                 <ListBox
                     x:Name="lb"
@@ -45,6 +45,10 @@
 
                     <ListBoxItem>
                         卡片管理
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        侧栏管理
                     </ListBoxItem>
 
                     <ListBoxItem>

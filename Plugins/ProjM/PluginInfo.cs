@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace ProjM
 {
-    public class Class1 : IPlugin
+    public class PluginInfo : IPlugin
     {
         public Version version { get; } = new Version();
         public string url { get; } = "";
         public string author { get; } = "";
 
 
-        public Class1()
+        public PluginInfo()
         {
         }
 
@@ -30,7 +30,7 @@ namespace ProjM
 
         public List<CardInfo> GetAllCards()
         {
-            return new List<CardInfo> { };
+            return null;
         }
 
 

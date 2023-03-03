@@ -94,12 +94,29 @@
 
                     <StackPanel Background="{DynamicResource BackgroundBrush16}">
 
-                        <TextBlock
-                            Margin="0,0,0,10"
-                            HorizontalAlignment="Left"
-                            FontSize="32"
-                            Foreground="{DynamicResource TextBrush98}"
-                            Text="{Binding SelectedType.Name}" />
+                        <Grid Margin="0,0,0,10">
+
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                FontSize="32"
+                                Foreground="{DynamicResource TextBrush98}"
+                                Text="{Binding SelectedType.Name}" />
+
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <Button
+                                    Content=""
+                                    FontFamily="{StaticResource SFI}"
+                                    FontSize="16"
+                                    Style="{StaticResource SimpleBtnStyle}" />
+
+                                <Button
+                                    Command="{Binding EditScriptCommand}"
+                                    Content=""
+                                    FontFamily="{StaticResource SFI}"
+                                    FontSize="16"
+                                    Style="{StaticResource SimpleBtnStyle}" />
+                            </StackPanel>
+                        </Grid>
 
                         <TextBox
                             Name="tb"

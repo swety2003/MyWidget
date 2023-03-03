@@ -12,9 +12,19 @@ namespace ProjM
 
     public class ProjMBase : INotifyPropertyChanged
     {
+        public string script_path;
 
         public ProjMBase(string script_path)
         {
+            this.script_path = script_path;
+
+            //var info = env["info"] as ProjInfo;
+            LoadScript();
+        }
+
+        public void LoadScript()
+        {
+
             Lua env = new Lua();
             env.LoadCLRPackage();
             env.State.Encoding = Encoding.UTF8;
@@ -31,9 +41,8 @@ namespace ProjM
 
             Update = env["OnUpdate"] as LuaFunction;
             Active = env["OnActive"] as LuaFunction;
-
-            //var info = env["info"] as ProjInfo;
         }
+
         public string Icon { get; set; } = "";
 
         public string Name { get; set; } = "";
@@ -66,7 +75,12 @@ namespace ProjM
 
         public void OpenInExplorer(ProjInfo selected)
         {
-            Process.Start("explorer.exe", Path.GetDirectoryName(selected.path));
+            string dir = "";
+            if (Directory.Exists(selected.path)) dir = selected.path;
+            
+            else dir = Path.GetDirectoryName(selected.path);
+
+            Process.Start("explorer.exe", dir);
 
         }
     }

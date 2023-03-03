@@ -90,27 +90,28 @@ namespace MainApp
             {
                 Plugins = new PluginLoader().Load();
 
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
 
-            foreach (var item in Plugins)
-            {
-
-                foreach (var c in item.GetAllCards())
+                foreach (var item in Plugins)
                 {
-                    //var a = Activator.CreateInstance(c.mainView);
-                    CardInfos.Add(c);
-                }
+
+                    foreach (var c in item.GetAllCards())
+                    {
+                        //var a = Activator.CreateInstance(c.mainView);
+                        CardInfos.Add(c);
+                    }
 
 
-                foreach (var s in item.GetAllSBItems())
-                {
-                    SideBarItemInfos.Add(s);
+                    foreach (var s in item.GetAllSBItems())
+                    {
+                        SideBarItemInfos.Add(s);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"加载插件出错：{ex.Message}");
+            }
+
         }
 
 
