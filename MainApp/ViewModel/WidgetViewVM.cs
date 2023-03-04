@@ -16,6 +16,7 @@ namespace MainApp.ViewModel
         //[ObservableProperty]
         //private ObservableCollection<UIElement> activeCards = new ObservableCollection<UIElement>();
         ILoggerFactory loggerFactory;
+
         public WidgetViewVM(ILoggerFactory loggerFactory)
         {
             this.loggerFactory = loggerFactory;
@@ -31,7 +32,7 @@ namespace MainApp.ViewModel
                 return;
             }
 
-            var wc = Activator.CreateInstance(ci.MainView, Guid.NewGuid(),loggerFactory) as ICard ?? throw new Exception();
+            var wc = Activator.CreateInstance(ci.MainView, Guid.NewGuid(), loggerFactory) as ICard ?? throw new Exception();
 
 
             MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
@@ -59,7 +60,7 @@ namespace MainApp.ViewModel
             var Thumb = o as MyThumb;
             if (Thumb != null)
             {
-
+                Thumb.GetCard().OnDisabled();
                 cv?.Children?.Remove(Thumb);
                 Config?.instances.Remove(Thumb.GetCard().GUID);
             }
@@ -71,7 +72,8 @@ namespace MainApp.ViewModel
             var thumb = o as MyThumb;
             if (thumb != null)
             {
-                thumb.SetLocked();
+                var r = thumb.SetLocked();
+                Config.instances[thumb.GetCard().GUID].Locked = r;
             }
         }
     }

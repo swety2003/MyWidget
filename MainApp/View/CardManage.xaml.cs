@@ -14,5 +14,6 @@ namespace MainApp.View
 
             DataContext = App.GetService<CardManageVM>();
         }
+
     }
 }

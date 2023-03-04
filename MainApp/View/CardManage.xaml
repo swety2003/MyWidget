@@ -2,7 +2,9 @@
     x:Class="MainApp.View.CardManage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cv="clr-namespace:MainApp.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:MainApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
@@ -13,18 +15,23 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <Page.Resources>
+        <cv:UIElement2RenderBitmap x:Key="UIElement2RenderBitmap" />
+    </Page.Resources>
 
-    <Grid>
+    <Grid x:Name="gd">
 
         <ListBox
             Grid.Row="1"
             HorizontalContentAlignment="Stretch"
             VerticalContentAlignment="Stretch"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
             pu:ListBoxHelper.ItemsBackground="{DynamicResource BackgroundBrush18}"
             pu:ListBoxHelper.ItemsBorderThickness="2"
             pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush18}"
             pu:ListBoxHelper.ItemsHoverBorderBrush="{DynamicResource BorderBrush44}"
             pu:ListBoxHelper.ItemsMargin="4"
+            pu:ListBoxHelper.ItemsPadding="0"
             pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush18}"
             Background="{DynamicResource BackgroundBrush16}"
             BorderThickness="0"
@@ -35,7 +42,7 @@
 
                 <ContextMenu>
                     <MenuItem Command="{Binding AddCardToDesktopCommand}" Header="添加到桌面" />
-                    <MenuItem Header="详情" />
+                    <MenuItem Command="{Binding GetCardDetailCommand}" Header="详情" />
                 </ContextMenu>
             </ListBox.ContextMenu>
             <ListBox.ItemTemplate>
@@ -43,7 +50,6 @@
                     <Border
                         MinWidth="180"
                         MinHeight="80"
-                        Padding="4"
                         Background="#01000000"
                         BorderThickness="0">
 
@@ -53,7 +59,7 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
-                            <Grid Margin="0,0,14,0">
+                            <Grid Margin="0,0,14,0" Background="{DynamicResource BackgroundBrush22}">
 
                                 <TextBlock
                                     HorizontalAlignment="Center"
@@ -62,7 +68,7 @@
                                     FontSize="40"
                                     Text="" />
                             </Grid>
-                            <StackPanel Grid.Column="1">
+                            <StackPanel Grid.Column="1" Margin="4">
 
                                 <TextBlock FontSize="16" Text="{Binding Name}" />
 
@@ -83,5 +89,99 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
+
+        <Grid
+            x:Name="pop"
+            Background="{DynamicResource BackgroundBrush16}"
+            Visibility="{Binding PopOpen, FallbackValue=Hidden}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border Padding="10">
+                <Grid>
+
+                    <TextBlock
+                        HorizontalAlignment="Left"
+                        FontSize="18"
+                        Foreground="{DynamicResource TextBrush98}"
+                        Text="详情" />
+
+                    <Button
+                        HorizontalAlignment="Right"
+                        BorderThickness="0"
+                        Command="{Binding CloseDetailCommand}"
+                        Content=""
+                        FontFamily="{StaticResource SFI}"
+                        Style="{StaticResource SimpleBtnStyle}" />
+                </Grid>
+            </Border>
+            <ListBox
+                Grid.Row="1"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                pu:ListBoxHelper.ItemsBackground="{DynamicResource BackgroundBrush18}"
+                pu:ListBoxHelper.ItemsBorderThickness="2"
+                pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush18}"
+                pu:ListBoxHelper.ItemsHoverBorderBrush="{DynamicResource BorderBrush44}"
+                pu:ListBoxHelper.ItemsMargin="4"
+                pu:ListBoxHelper.ItemsPadding="0"
+                pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush18}"
+                Background="Transparent"
+                BorderThickness="0"
+                ItemsSource="{Binding CardInstances}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+
+                            <Border
+                                Margin="4"
+                                Background="{DynamicResource BackGroundBrush12}"
+                                BorderThickness="1">
+
+                                <Image
+                                    MaxWidth="200"
+                                    MaxHeight="200"
+                                    Source="{Binding Converter={StaticResource ResourceKey=UIElement2RenderBitmap}}"
+                                    Stretch="Uniform" />
+                            </Border>
+
+                            <Grid Grid.Column="1" Margin="10,4">
+                                <Grid>
+                                    <TextBlock
+                                        FontSize="16"
+                                        Foreground="{DynamicResource TextBrush98}"
+                                        Text="{Binding CardGuid, StringFormat=GUID:{0}}" />
+
+
+                                    <UniformGrid
+                                        Margin="4"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Rows="1">
+                                        <Button
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.SetCardLockCommand}"
+                                            CommandParameter="{Binding}"
+                                            Content="锁定/解锁"
+                                            Style="{StaticResource SimpleBtnStyle}" />
+                                        <Button
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.CloseCardCommand}"
+                                            CommandParameter="{Binding}"
+                                            Content="关闭"
+                                            Style="{StaticResource SimpleBtnStyle}" />
+                                    </UniformGrid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </Page>

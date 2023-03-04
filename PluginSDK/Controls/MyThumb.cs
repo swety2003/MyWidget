@@ -17,8 +17,8 @@ namespace PluginSDK.Controls
         public bool Locked
         {
             get { return _locked; }
-            set 
-            { 
+            set
+            {
                 _locked = value;
                 if (value)
                 {
@@ -28,14 +28,21 @@ namespace PluginSDK.Controls
                 else
                 {
                     this.IsHitTestVisible = true;
-                    this.Background = new SolidColorBrush(Color.FromArgb(1,0,0,0)) ;
+                    this.Background = new SolidColorBrush(Color.FromArgb(1, 0, 0, 0));
                 }
             }
         }
 
+        public Guid CardGuid => (Content as ICard).GUID;
+
         public bool SetLocked()
         {
             Locked = !Locked;
+            return Locked;
+        }
+        public bool SetLocked(bool l)
+        {
+            Locked = l;
             return Locked;
         }
 

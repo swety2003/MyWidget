@@ -2,7 +2,10 @@
 using MyDesktopCards.ViewModel;
 using PluginSDK;
 using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 
 namespace MyDesktopCards.View
 {
@@ -24,9 +27,9 @@ namespace MyDesktopCards.View
 
         }
 
-        public int HeightPix => 5;
+        public int HeightPix => 4;
 
-        public int WidthPix => 10;
+        public int WidthPix => 9;
 
         public Guid GUID { get; private set; }
 
@@ -41,5 +44,22 @@ namespace MyDesktopCards.View
             DataContext = vm;
             vm.Active = true;
         }
+
+
+        //public void OverrideUI()
+        //{
+
+        //    DependencyObject rootElement;
+        //    using (FileStream fs = new FileStream(@"D:\Source\Repos\MyWidget\MainApp\Assets\override\DigitalClock.xaml", FileMode.Open))
+        //    {
+        //        rootElement = (DependencyObject)XamlReader.Load(fs);
+        //    }
+        //    Content = rootElement;
+        //}
+
+        //private void StackPanel_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
+        //    OverrideUI();
+        //}
     }
 }

@@ -13,9 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Assets\override\DigitalClock.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Assets\avatar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Assets\override\DigitalClock.xaml" />
   </ItemGroup>
 
   <ItemGroup>

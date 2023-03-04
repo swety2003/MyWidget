@@ -1,7 +1,6 @@
 ﻿
 using MainApp.Common;
 using MainApp.View;
-using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -56,7 +55,7 @@ namespace MainApp
 
         void LoadSBI()
         {
-            
+
             foreach (var item in App.GetService<PluginLoader>().SideBarItemInfos)
             {
 

@@ -1,5 +1,4 @@
 ﻿<UserControl
-    x:Class="MyDesktopCards.View.DigitalClock"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -35,7 +34,7 @@
                     Margin="5,0"
                     VerticalAlignment="Bottom"
                     FontSize="45"
-                    Foreground="#c85961"
+                    Foreground="Green"
                     Text="{Binding Second}" />
             </StackPanel>
             <TextBlock FontSize="15">

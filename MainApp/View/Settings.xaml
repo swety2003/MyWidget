@@ -21,7 +21,10 @@
         </Grid.RowDefinitions>
 
         <Grid Background="{DynamicResource BackgroundBrush16}">
-            <Border Padding="10,0,10,0">
+            <Border
+                Padding="16,4"
+                BorderBrush="{DynamicResource BorderBrush26}"
+                BorderThickness="0,0,0,1">
                 <ListBox
                     x:Name="lb"
                     HorizontalAlignment="Center"

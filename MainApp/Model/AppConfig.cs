@@ -15,6 +15,9 @@ namespace MainApp.Model
     {
         public string Wid { get; set; }
         public Point Pos { get; set; }
+        public string CanOverrideUI { get; set; }
+        public bool Locked { get; set; }
+
         public Card(string wid, Point pos)
         {
             Wid = wid;

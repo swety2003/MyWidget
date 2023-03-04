@@ -19,7 +19,8 @@ namespace MyDesktopCards
         public static List<CardInfo> infos { get; } = new List<CardInfo>()
         {
             //DevTest.info
-            DigitalClock.info
+            DigitalClock.info,
+            HardWareMonitor.info,
         };
 
 

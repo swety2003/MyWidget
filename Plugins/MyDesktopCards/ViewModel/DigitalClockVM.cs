@@ -40,7 +40,7 @@ namespace MyDesktopCards.ViewModel
         }
 
 
-        DispatcherTimer _Timer = new DispatcherTimer { Interval = new TimeSpan(1000) };
+        DispatcherTimer _Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.5) };
 
 
 
