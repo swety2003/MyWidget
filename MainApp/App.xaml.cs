@@ -5,12 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using PluginSDK;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace MainApp
 {
@@ -20,17 +19,12 @@ namespace MainApp
     public partial class App : Application
     {
 
-        public static Model.AppConfig appConfig;
 
         static IHost AppHost
         {
             get;
         }
 
-        public static IEnumerable<IPlugin> Plugins = new ObservableCollection<IPlugin>();
-
-        public static ObservableCollection<CardInfo> CardInfos = new ObservableCollection<CardInfo>();
-        public static ObservableCollection<SideBarItemInfo> SideBarItemInfos = new ObservableCollection<SideBarItemInfo>();
 
         public static T GetService<T>() where T : class
         {
@@ -45,15 +39,27 @@ namespace MainApp
 
         static App()
         {
-            AppHost = Host.CreateDefaultBuilder()
 
-                .ConfigureLogging(logging => logging.SetMinimumLevel(LogLevel.Debug))
+            AppHost = Host.CreateDefaultBuilder()
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders()
+                    .AddSimpleConsole(options =>
+                    {
+                        // 一条日志消息展示在同一行
+                        options.SingleLine = true;
+                        options.IncludeScopes = true;
+                        options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+                        options.UseUtcTimestamp = false;
+                    });
+                    logging.SetMinimumLevel(LogLevel.Debug);
+
+                })
                 .UseContentRoot(AppContext.BaseDirectory).ConfigureServices
                 ((context, services) =>
                 {
-                    services.AddSingleton<WidgetView>();
-                    services.AddTransient<CardManage>();
-                    services.AddSingleton<Settings>();
+                    services.AddSingleton<PluginLoader>();
+                    services.AddSingleton<AppConfigManager>();
 
                     #region ViewModel
 
@@ -61,56 +67,46 @@ namespace MainApp
                     services.AddSingleton<CardManageVM>();
                     #endregion
 
+                    services.AddSingleton<WidgetView>();
+                    services.AddTransient<CardManage>();
+                    services.AddSingleton<Settings>();
+
+
+
+
+
                 }).Build();
 
-            var s = Panuon.WPF.UI.Resources.StyleKeys.ContentControlXStyle;
 
-
-            if (File.Exists(CONFIG_FILE))
-            {
-                appConfig = JsonConvert.DeserializeObject<Model.AppConfig>(File.ReadAllText(CONFIG_FILE)) ?? new Model.AppConfig();
-            }
-            else
-            {
-                appConfig = new Model.AppConfig();
-            }
         }
 
 
-        const string CONFIG_FILE = "config.json";
 
         protected override void OnStartup(StartupEventArgs e)
         {
+
+
+            bool createNew;
+            Mutex mutex = new Mutex(true, "swety.widget.app", out createNew);
+            if (!createNew)
+            {
+                MessageBox.Show("Application is already run!");
+                this.Shutdown();
+            }
+
+
+            Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+
+
+
+            App.GetService<AppConfigManager>().Load();
+
+            App.GetService<PluginLoader>().Load();
+
             base.OnStartup(e);
 
 
 
-
-            try
-            {
-                Plugins = new PluginLoader().Load();
-
-
-                foreach (var item in Plugins)
-                {
-
-                    foreach (var c in item.GetAllCards())
-                    {
-                        //var a = Activator.CreateInstance(c.mainView);
-                        CardInfos.Add(c);
-                    }
-
-
-                    foreach (var s in item.GetAllSBItems())
-                    {
-                        SideBarItemInfos.Add(s);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"加载插件出错：{ex.Message}");
-            }
 
         }
 
@@ -121,9 +117,20 @@ namespace MainApp
 
             base.OnExit(e);
 
-            File.WriteAllText(CONFIG_FILE, JsonConvert.SerializeObject(appConfig));
+            App.GetService<AppConfigManager>().Save();
+
+        }
 
 
+        void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+#if !DEBUG
+            MessageBox.Show($"我们很抱歉，当前应用程序遇到一些问题，该操作已经终止:{e.Exception.Message}", "意外的操作", MessageBoxButton.OK, MessageBoxImage.Information);//这里通常需要给用户一些较为友好的提示，并且后续可能的操作
+
+            File.WriteAllText("err.log", JsonConvert.SerializeObject(e.Exception));
+            
+            e.Handled = true;
+#endif
         }
     }
 }

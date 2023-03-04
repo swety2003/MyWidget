@@ -37,24 +37,25 @@
             Grid.Column="0"
             HorizontalAlignment="Stretch"
             Background="{DynamicResource BackGroundBrush12}"
-            BorderBrush="{DynamicResource BorderBrush22}"
-            BorderThickness="0,0,0,0">
+            BorderBrush="{DynamicResource BorderBrush44}"
+            BorderThickness="0,0,1,0">
             <Grid>
                 <StackPanel>
                     <Button
-                        Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualWidth}"
-                        Padding="8"
+                        Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}"
+                        Margin="6"
+                        Padding="0"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
-                        pu:ButtonHelper.HoverBackground="{DynamicResource BackgroundBrush18}"
-                        Background="Transparent"
-                        BorderThickness="0">
+                        pu:ButtonHelper.CornerRadius="16"
+                        pu:ButtonHelper.HoverBorderBrush="{DynamicResource PrimaryBrush}"
+                        BorderBrush="Transparent"
+                        BorderThickness="2">
 
-                        <Border CornerRadius="24">
-                            <Border.Background>
-                                <ImageBrush ImageSource="C:\Users\SwetyCore\Desktop\avatar.png" />
-                            </Border.Background>
-                        </Border>
+                        <Button.Background>
+
+                            <ImageBrush ImageSource="Assets\avatar.png" />
+                        </Button.Background>
                     </Button>
 
                     <Grid
@@ -108,7 +109,7 @@
 
 
 
-        <Frame Grid.Column="2" Source="/View/WidgetView.xaml" />
+        <Frame x:Name="frame" Grid.Column="2" />
 
 
     </Grid>

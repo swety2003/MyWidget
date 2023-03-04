@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Windows;
 
 namespace MainApp.Common
 {
@@ -37,7 +38,10 @@ namespace MainApp.Common
             IntPtr defView = FindWindowExA(workerW, IntPtr.Zero, "SHELLDLL_DefView", "");
             var background = FindWindowExA(defView, IntPtr.Zero, "SysListView32", "FolderView");
 
-            if (background == IntPtr.Zero) throw new Exception("FolderView handle is null");
+            if (background == IntPtr.Zero)
+            {
+                MessageBox.Show("找不到SysListView32的Handle，程序将以普通模式启动，若想恢复，请尝试重启 explorer.exe后重新打开本软件！");
+            };
 
             return background;
         }

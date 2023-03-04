@@ -77,7 +77,7 @@ namespace ProjM
         {
             string dir = "";
             if (Directory.Exists(selected.path)) dir = selected.path;
-            
+
             else dir = Path.GetDirectoryName(selected.path);
 
             Process.Start("explorer.exe", dir);

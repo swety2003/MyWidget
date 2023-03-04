@@ -1,9 +1,9 @@
+using MyDesktopCards.View;
 using PluginSDK;
-using Projm.Controls;
 using System;
 using System.Collections.Generic;
 
-namespace ProjM
+namespace MyDesktopCards
 {
     public class PluginInfo : IPlugin
     {
@@ -16,27 +16,26 @@ namespace ProjM
         {
         }
 
-        public static List<SideBarItemInfo> sbis { get; } = new List<SideBarItemInfo>()
+        public static List<CardInfo> infos { get; } = new List<CardInfo>()
         {
             //DevTest.info
-            ProjManager.info
-
+            DigitalClock.info
         };
 
 
 
-        public string name => "项目管理器";
+        public string name => "桌面卡片";
 
 
         public List<CardInfo> GetAllCards()
         {
-            return new List<CardInfo>(); ;
+            return infos;
         }
 
 
         public List<SideBarItemInfo> GetAllSBItems()
         {
-            return sbis;
+            return new List<SideBarItemInfo>();
         }
     }
 }

@@ -12,6 +12,33 @@ namespace PluginSDK.Controls
     [ContentProperty(name: "Content")]
     public class MyThumb : Thumb
     {
+        private bool _locked;
+
+        public bool Locked
+        {
+            get { return _locked; }
+            set 
+            { 
+                _locked = value;
+                if (value)
+                {
+                    this.IsHitTestVisible = false;
+                    this.Background = new SolidColorBrush(Colors.Transparent); ;
+                }
+                else
+                {
+                    this.IsHitTestVisible = true;
+                    this.Background = new SolidColorBrush(Color.FromArgb(1,0,0,0)) ;
+                }
+            }
+        }
+
+        public bool SetLocked()
+        {
+            Locked = !Locked;
+            return Locked;
+        }
+
         public static T GetParentObject<T>(DependencyObject obj) where T : FrameworkElement
         {
             DependencyObject parent = VisualTreeHelper.GetParent(obj);

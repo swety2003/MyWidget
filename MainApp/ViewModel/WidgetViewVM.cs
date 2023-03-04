@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MainApp.Common;
 using MainApp.Model;
+using Microsoft.Extensions.Logging;
 using PluginSDK;
 using PluginSDK.Controls;
 using System;
@@ -14,38 +15,42 @@ namespace MainApp.ViewModel
     {
         //[ObservableProperty]
         //private ObservableCollection<UIElement> activeCards = new ObservableCollection<UIElement>();
+        ILoggerFactory loggerFactory;
+        public WidgetViewVM(ILoggerFactory loggerFactory)
+        {
+            this.loggerFactory = loggerFactory;
+        }
+        public Canvas? cv;
 
-        public static Canvas cv;
+        public AppConfig Config => App.GetService<AppConfigManager>().Config;
 
-        public static void CreateCard(CardInfo? ci)
+        public void CreateCard(CardInfo? ci)
         {
             if (ci == null)
             {
                 return;
             }
-            //var cards = App.GetService<WidgetViewVM>().ActiveCards;
 
-            var wc = Activator.CreateInstance(ci.MainView, System.Guid.NewGuid()) as ICard ?? throw new Exception();
+            var wc = Activator.CreateInstance(ci.MainView, Guid.NewGuid(),loggerFactory) as ICard ?? throw new Exception();
 
 
             MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
 
 
             wc.OnEnabled();
-            //cards.Add(mt);
-            cv.Children.Add(mt);
+            cv?.Children.Add(mt);
 
             var card = new Card(ci.MainView.FullName, new Point());
 
             mt.OnCardMoved += Mt_OnCardMoved;
 
-            App.appConfig.instances.Add(wc.GUID, card);
+            Config.instances.Add(wc.GUID, card);
         }
 
-        private static void Mt_OnCardMoved(MyThumb sender, System.Windows.Point pos)
+        private void Mt_OnCardMoved(MyThumb sender, Point pos)
         {
 
-            App.appConfig.instances[sender.GetCard().GUID].Pos = pos;
+            Config.instances[sender.GetCard().GUID].Pos = pos;
         }
 
         [RelayCommand]
@@ -55,8 +60,18 @@ namespace MainApp.ViewModel
             if (Thumb != null)
             {
 
-                cv.Children?.Remove(Thumb);
-                App.appConfig?.instances.Remove(Thumb.GetCard().GUID);
+                cv?.Children?.Remove(Thumb);
+                Config?.instances.Remove(Thumb.GetCard().GUID);
+            }
+        }
+
+        [RelayCommand]
+        void LockCard(object o)
+        {
+            var thumb = o as MyThumb;
+            if (thumb != null)
+            {
+                thumb.SetLocked();
             }
         }
     }

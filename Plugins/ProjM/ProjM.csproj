@@ -29,32 +29,36 @@
 
 
   <ItemGroup>
-    <PackageReference Include="NLua" Version="1.6.2" />
+	  <PackageReference Include="NLua" Version="1.6.2">
+		  <Private>true</Private>
+	  </PackageReference>
   </ItemGroup>
 
 
-  <ItemGroup>
-	  <ProjectReference Include="..\..\PluginSDK\PluginSDK.csproj">
-		  <Private>false</Private>
-		  <ExcludeAssets>runtime</ExcludeAssets>
-	  </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
+    <ItemGroup>
     <Compile Update="Controls\ProjManager.xaml.cs">
-      <SubType>Code</SubType>
+        <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
+    </ItemGroup>
+
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\PluginSDK\PluginSDK.csproj">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</ProjectReference>
+	</ItemGroup>
+
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<!--<Exec Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\Default&quot; /y/e" />-->
-		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot;" />
-		<Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot;" />
+	    <!--<Exec Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\Default&quot; /y/e" />-->
+	    <Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot;" />
+	    <Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot;" />
 
 
 
-		<Exec Condition=" '$(Configuration)' == 'Release' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
-		<Exec Condition=" '$(Configuration)' == 'Debug' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+	    <Exec Condition=" '$(Configuration)' == 'Release' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+	    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
 
-	</Target>
+    </Target>
 </Project>

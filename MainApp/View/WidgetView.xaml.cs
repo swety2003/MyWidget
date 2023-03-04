@@ -1,8 +1,11 @@
 ﻿using MainApp.Common;
+using MainApp.Model;
 using MainApp.ViewModel;
+using Microsoft.Extensions.Logging;
 using PluginSDK;
 using PluginSDK.Controls;
 using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,21 +16,28 @@ namespace MainApp.View
     /// </summary>
     public partial class WidgetView : Page
     {
-        public WidgetView()
+        AppConfig appConfig;
+        ObservableCollection<CardInfo> cardInfos;
+        ILoggerFactory loggerFactory;
+
+        public WidgetView(ILoggerFactory loggerFactory)
         {
             InitializeComponent();
-            var vm = App.GetService<WidgetViewVM>();
-            WidgetViewVM.cv = cv;
-            DataContext = vm;
+            DataContext = App.GetService<WidgetViewVM>();
+            appConfig = App.GetService<AppConfigManager>().Config;
+            cardInfos = App.GetService<PluginLoader>().CardInfos;
+            this.loggerFactory = loggerFactory;
+
+            App.GetService<WidgetViewVM>().cv = cv;
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            foreach (var item in App.appConfig.instances)
+            foreach (var item in appConfig.instances)
             {
-                foreach (var ci in App.CardInfos)
+                foreach (var ci in cardInfos)
                 {
                     //插件标识
                     var wid = ci.MainView.FullName;
@@ -35,7 +45,7 @@ namespace MainApp.View
 
                     if (item.Value.Wid == wid)
                     {
-                        var wc = Activator.CreateInstance(ci.MainView, item.Key) as ICard ?? throw new Exception();
+                        var wc = Activator.CreateInstance(ci.MainView, item.Key, loggerFactory) as ICard ?? throw new Exception();
 
 
                         MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
@@ -73,7 +83,7 @@ namespace MainApp.View
         private void Mt_OnCardMoved(MyThumb sender, Point pos)
         {
 
-            App.appConfig.instances[sender.GetCard().GUID].Pos = pos;
+            appConfig.instances[sender.GetCard().GUID].Pos = pos;
         }
     }
 }

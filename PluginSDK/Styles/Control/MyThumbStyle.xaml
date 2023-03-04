@@ -4,6 +4,7 @@
     xmlns:ui="clr-namespace:PluginSDK.Controls">
     <Style TargetType="ui:MyThumb">
         <Setter Property="Background" Value="#01000000" />
+        <!--<Setter Property="IsHitTestVisible" Value="False" />-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ui:MyThumb">
@@ -21,10 +22,19 @@
             <Setter.Value>
                 <ContextMenu>
                     <MenuItem
-                        Height="42"
                         Command="{Binding CloseCardCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget}"
                         Header="关闭" />
+
+                    <MenuItem
+                        Command="{Binding LockCardCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget}"
+                        Header="锁定卡片" />
+
+                    <MenuItem
+                        Command="{Binding CloseCardCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget}"
+                        Header="设置" />
                 </ContextMenu>
             </Setter.Value>
         </Setter>

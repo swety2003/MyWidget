@@ -1,6 +1,7 @@
 ﻿
 using MainApp.Common;
 using MainApp.View;
+using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -22,7 +23,7 @@ namespace MainApp
 
         }
 
-        DockArea da;
+        DockArea? da;
 
         protected override void OnSourceInitialized(EventArgs e)
         {
@@ -44,14 +45,19 @@ namespace MainApp
             da = new DockArea(this);
             da.Show();
 
+            frame.Navigate(App.GetService<WidgetView>());
+
             LoadSBI();
+
+
         }
 
 
 
         void LoadSBI()
         {
-            foreach (var item in App.SideBarItemInfos)
+            
+            foreach (var item in App.GetService<PluginLoader>().SideBarItemInfos)
             {
 
                 sb_container.Children.Add(Activator.CreateInstance(item.MainView) as UIElement);
