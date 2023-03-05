@@ -14,7 +14,7 @@
         <ResourceDictionary Source="Control/TextBox.xaml" />
         <ResourceDictionary Source="Control/ListBox.xaml" />
         <ResourceDictionary Source="Control/ListBoxItemContainer.xaml" />
-        <ResourceDictionary Source="Control/ScrollBar.xaml" />
+        <!--<ResourceDictionary Source="Control/ScrollBar.xaml" />-->
         <ResourceDictionary Source="Control/GroupBox.xaml" />
         <ResourceDictionary Source="Control/TreeView.xaml" />
         <ResourceDictionary Source="Control/CheckBox.xaml" />

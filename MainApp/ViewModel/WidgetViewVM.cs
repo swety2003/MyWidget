@@ -46,6 +46,9 @@ namespace MainApp.ViewModel
             mt.OnCardMoved += Mt_OnCardMoved;
 
             Config.instances.Add(wc.GUID, card);
+
+
+            App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
         }
 
         private void Mt_OnCardMoved(MyThumb sender, Point pos)
@@ -64,6 +67,8 @@ namespace MainApp.ViewModel
                 cv?.Children?.Remove(Thumb);
                 Config?.instances.Remove(Thumb.GetCard().GUID);
             }
+
+            App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
         }
 
         [RelayCommand]

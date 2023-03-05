@@ -67,6 +67,9 @@ namespace MainApp.View
                 }
             }
 
+
+            App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
+
             //foreach (var item in App.CardInfos)
             //{
 

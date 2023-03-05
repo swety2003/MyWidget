@@ -14,7 +14,7 @@ namespace MyDesktopCards.View
     /// </summary>
     public partial class DigitalClock : UserControl, ICard
     {
-        internal static CardInfo info = new CardInfo(null, "数字时钟", "", typeof(DigitalClock));
+        internal static CardInfo info = new CardInfo(null, "数字时钟", "简单的时钟", typeof(DigitalClock));
         private DigitalClockVM vm;
 
 

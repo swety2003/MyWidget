@@ -21,7 +21,7 @@ namespace MainApp.ViewModel
 
 
         [ObservableProperty]
-        Visibility popOpen = Visibility.Collapsed;
+        Visibility popOpen = Visibility.Visible;
 
         [RelayCommand]
         void GetCardDetail()
@@ -33,21 +33,23 @@ namespace MainApp.ViewModel
                 var thumb = card as MyThumb;
                 if (thumb != null)
                 {
-                    if (thumb.GetCard().GetType() == SelectedCI.MainView)
-                    {
-                        CardInstances.Add(thumb);
-                    }
+
+                    CardInstances.Add(thumb);
+                    //if (thumb.GetCard().GetType() == SelectedCI.MainView)
+                    //{
+                    //    CardInstances.Add(thumb);
+                    //}
                 }
             }
 
             PopOpen = Visibility.Visible;
         }
-        [RelayCommand]
-        void CloseDetail()
-        {
 
-            PopOpen = Visibility.Collapsed;
-        }
+        //[RelayCommand]
+        //void OpenInstalledCardPanel()
+        //{
+        //    PopOpen = Visibility.Visible;
+        //}
 
         [RelayCommand]
         void CloseCard(MyThumb card)
@@ -68,9 +70,12 @@ namespace MainApp.ViewModel
             card?.SetLocked();
         }
         [RelayCommand]
-        void AddCardToDesktop()
+        void AddCardToDesktop(object? info)
         {
-            App.GetService<WidgetViewVM>().CreateCard(SelectedCI);
+            App.GetService<WidgetViewVM>().CreateCard(info as CardInfo);
+
+
+            GetCardDetail();
         }
         [RelayCommand]
         void ShowCardSetting(MyThumb? thumb)

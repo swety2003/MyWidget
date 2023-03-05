@@ -72,17 +72,17 @@
                 <StackPanel VerticalAlignment="Bottom">
                     <Button
                         Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualWidth}"
+                        Margin="0"
                         Padding="8"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-                        pu:ButtonHelper.ClickForeground="{DynamicResource AccentBrush}"
-                        pu:ButtonHelper.HoverBackground="{DynamicResource BackgroundBrush18}"
                         Background="Transparent"
                         BorderThickness="0"
                         Click="SettingBtn_Click"
                         FontFamily="{StaticResource SFI}"
                         FontSize="24"
-                        Foreground="{DynamicResource TextBrush98}">
+                        Foreground="{DynamicResource TextBrush98}"
+                        Style="{DynamicResource SimpleBtnStyle}">
                         
                     </Button>
 
@@ -90,17 +90,17 @@
 
                     <Button
                         Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualWidth}"
+                        Margin="0"
                         Padding="8"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-                        pu:ButtonHelper.ClickForeground="{DynamicResource AccentBrush}"
-                        pu:ButtonHelper.HoverBackground="{DynamicResource BackgroundBrush18}"
                         Background="Transparent"
                         BorderThickness="0"
                         Click="ExitBtn_Click"
                         FontFamily="{StaticResource SFI}"
                         FontSize="20"
-                        Foreground="{DynamicResource TextBrush98}">
+                        Foreground="{DynamicResource TextBrush98}"
+                        Style="{DynamicResource SimpleBtnStyle}">
                         
                     </Button>
                 </StackPanel>
