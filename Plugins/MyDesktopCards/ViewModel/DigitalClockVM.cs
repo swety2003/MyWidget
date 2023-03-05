@@ -1,47 +1,41 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MyDesktopCards.Common;
 using System;
 using System.Windows.Threading;
 
 namespace MyDesktopCards.ViewModel
 {
-    internal partial class DigitalClockVM : ObservableObject
+    internal partial class DigitalClockVM : SimpleVM
     {
+
         [ObservableProperty]
-        string _HourAndMinute;
-        [ObservableProperty]
-        string _Second;
-        [ObservableProperty]
-        string _Date;
-        [ObservableProperty]
-        string _Week;
+        DateTime _NowTime;
+
         [ObservableProperty]
         string _Hello;
 
-        private bool _active;
-
-        public bool Active
+        public DigitalClockVM()
         {
-            get { return _active; }
-            set
-            {
-                _active = value;
+            _Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.5) };
+            this.OnActiveChanged += DigitalClockVM_OnActiveChanged;
 
-                if (value)
-                {
-                    _Timer.Tick += _Timer_Tick;
-                    _Timer.Start();
-                }
-                else
-                {
-                    _Timer.Tick -= _Timer_Tick;
-                    _Timer.Stop();
-                }
-            }
         }
 
+        private void DigitalClockVM_OnActiveChanged(object? sender, bool e)
+        {
+            if (e)
+            {
+                _Timer.Start();
+                _Timer.Tick += _Timer_Tick;
+            }
+            else
+            {
+                _Timer.Stop();
 
-        DispatcherTimer _Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.5) };
+                _Timer.Tick -= _Timer_Tick;
 
+            }
+        }
 
 
         public string GetWeek(DateTime dt)
@@ -51,9 +45,9 @@ namespace MyDesktopCards.ViewModel
 
             return week;
         }
-        private string GetNow()
+        private string GetNow(DateTime dt)
         {
-            int a = DateTime.Now.Hour;
+            int a = dt.Hour;
             if (a < 6)
             {
                 return "夜深了,";
@@ -78,12 +72,13 @@ namespace MyDesktopCards.ViewModel
         }
         private void _Timer_Tick(object? sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
-            this.Date = now.ToString("D");
-            this.HourAndMinute = now.ToString("t");
-            this.Second = $":{now.ToString("ss")}";
-            this.Week = GetWeek(now);
-            this.Hello = $"{GetNow()}{System.Environment.UserName}";
+            NowTime = DateTime.Now;
+            //this.Date = now.ToString("D");
+            //this.HourAndMinute = now.ToString("t");
+            //this.Second = $":{now.ToString("ss")}";
+            //this.Week = GetWeek(now);
+            this.Hello = $"{GetNow(NowTime)}{System.Environment.UserName}";
+
             TimeSpan m_WorkTimeTemp = new TimeSpan(Convert.ToInt64(Environment.TickCount) * 10000);
         }
     }

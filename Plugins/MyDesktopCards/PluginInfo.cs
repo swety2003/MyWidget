@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using MyDesktopCards.View;
 using PluginSDK;
 using System;
@@ -21,6 +22,7 @@ namespace MyDesktopCards
             //DevTest.info
             DigitalClock.info,
             HardWareMonitor.info,
+            AISchedule.info,
         };
 
 

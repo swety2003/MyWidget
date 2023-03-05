@@ -32,7 +32,7 @@
                         Header="锁定卡片" />
 
                     <MenuItem
-                        Command="{Binding CloseCardCommand}"
+                        Command="{Binding ShowCardSettingCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget}"
                         Header="设置" />
                 </ContextMenu>

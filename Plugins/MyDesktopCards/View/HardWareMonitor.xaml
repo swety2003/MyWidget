@@ -20,7 +20,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <Grid>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />

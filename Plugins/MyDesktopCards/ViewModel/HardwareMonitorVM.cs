@@ -1,40 +1,20 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CZGL.SystemInfo;
+using MyDesktopCards.Common;
 using System;
 using System.Windows.Threading;
 
 namespace MyDesktopCards.ViewModel
 {
-    internal partial class HardwareMonitorVM : ObservableObject
+    internal partial class HardwareMonitorVM : SimpleVM
     {
 
 
 
-        DispatcherTimer _Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
         private CPUTime v1;
         private NetworkInfo network;
         private Rate oldRate;
 
-        private bool _active;
-        public bool Active
-        {
-            get { return _active; }
-            set
-            {
-                _active = value;
-
-                if (value)
-                {
-                    _Timer.Tick += _Timer_Tick;
-                    _Timer.Start();
-                }
-                else
-                {
-                    _Timer.Tick -= _Timer_Tick;
-                    _Timer.Stop();
-                }
-            }
-        }
 
         public HardwareMonitorVM()
         {
@@ -42,6 +22,26 @@ namespace MyDesktopCards.ViewModel
             network = NetworkInfo.TryGetRealNetworkInfo() ?? throw new Exception();
             oldRate = network.GetIpv4Speed();
 
+            OnActiveChanged += HardwareMonitorVM_OnActiveChanged;
+
+        }
+
+        private void HardwareMonitorVM_OnActiveChanged(object? sender, bool e)
+        {
+            if (e)
+            {
+
+                _Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+                _Timer.Tick += _Timer_Tick;
+                _Timer.Start();
+            }
+            else
+            {
+
+                _Timer.Tick -= _Timer_Tick;
+
+                _Timer.Stop();
+            }
         }
 
         public record NetItem(string size, string type);

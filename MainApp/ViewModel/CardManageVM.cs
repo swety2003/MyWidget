@@ -72,5 +72,11 @@ namespace MainApp.ViewModel
         {
             App.GetService<WidgetViewVM>().CreateCard(SelectedCI);
         }
+        [RelayCommand]
+        void ShowCardSetting(MyThumb? thumb)
+        {
+            //App.GetService<WidgetViewVM>().ShowCardSettingCommand(thumb);
+
+        }
     }
 }

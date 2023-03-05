@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using PluginSDK.Controls;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,12 @@ namespace PluginSDK
 
         public List<CardInfo> GetAllCards();
 
-
         public List<SideBarItemInfo> GetAllSBItems();
     }
 
     public interface ICard
     {
+
         public int HeightPix { get; }
         public int WidthPix { get; }
 
@@ -35,6 +36,8 @@ namespace PluginSDK
 
         public void OnEnabled();
         public void OnDisabled();
+
+        public void ShowSetting();
 
 
         //public void OnAppClosed();

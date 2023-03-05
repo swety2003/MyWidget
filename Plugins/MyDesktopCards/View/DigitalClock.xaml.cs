@@ -45,6 +45,11 @@ namespace MyDesktopCards.View
             vm.Active = true;
         }
 
+        public void ShowSetting()
+        {
+
+        }
+
 
         //public void OverrideUI()
         //{

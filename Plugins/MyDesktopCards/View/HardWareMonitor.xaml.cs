@@ -43,5 +43,10 @@ namespace MyDesktopCards.View
             vm.Active = true;
             DataContext = vm;
         }
+
+        public void ShowSetting()
+        {
+
+        }
     }
 }

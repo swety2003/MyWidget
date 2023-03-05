@@ -76,5 +76,12 @@ namespace MainApp.ViewModel
                 Config.instances[thumb.GetCard().GUID].Locked = r;
             }
         }
+
+
+        [RelayCommand]
+        void ShowCardSetting(MyThumb? thumb)
+        {
+            thumb?.GetCard().ShowSetting();
+        }
     }
 }
