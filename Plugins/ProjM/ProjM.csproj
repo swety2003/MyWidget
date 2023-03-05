@@ -27,11 +27,14 @@
     <Page Remove="ProjProviders\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="*.dll" />
+    <Content Include="runtimes\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
-	  <PackageReference Include="NLua" Version="1.6.2">
-		  <Private>true</Private>
-	  </PackageReference>
+	  <PackageReference Include="NLua" Version="1.6.2" />
   </ItemGroup>
 
 
@@ -47,6 +50,16 @@
 			<Private>false</Private>
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</ProjectReference>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Content Update="*.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+		<Content Update="runtimes\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 

@@ -93,7 +93,7 @@
         <Setter Property="pu:ButtonHelper.ClickBackground" Value="{DynamicResource BackgroundBrush16}" />
         <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource BorderBrush22}" />
         <Setter Property="Margin" Value="4" />
-        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="Padding" Value="10,6" />
 
     </Style>
 </ResourceDictionary>

@@ -56,6 +56,7 @@ namespace MainApp
                 .UseContentRoot(AppContext.BaseDirectory).ConfigureServices
                 ((context, services) =>
                 {
+                    services.AddSingleton<NavigationService>();
                     services.AddSingleton<PluginLoader>();
                     services.AddSingleton<AppConfigManager>();
 
@@ -63,11 +64,16 @@ namespace MainApp
 
                     services.AddSingleton<WidgetViewVM>();
                     services.AddSingleton<CardManageVM>();
+                    services.AddSingleton<InstalledCardsVM>();
+
                     #endregion
 
                     services.AddSingleton<WidgetView>();
                     services.AddTransient<CardManage>();
                     services.AddSingleton<Settings>();
+                    services.AddSingleton<AboutPage>();
+                    services.AddSingleton<InstalledCards>();
+                    services.AddSingleton<SideBarManage>();
 
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainApp.Common;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,6 +12,8 @@ namespace MainApp.View
     {
         public Settings()
         {
+
+
             InitializeComponent();
 
         }
@@ -20,7 +23,14 @@ namespace MainApp.View
             base.OnSourceInitialized(e);
 
 
-            fm?.Navigate(App.GetService<CardManage>());
+            var ns = App.GetService<NavigationService>();
+
+            ns.Init(this);
+
+            ns?.NavigateTo(App.GetService<CardManage>());
+
+            lb.SelectedIndex = 0;
+
         }
 
 
@@ -30,10 +40,17 @@ namespace MainApp.View
 
             var i = lb.SelectedIndex;
 
+            var ns = App.GetService<NavigationService>();
+
             switch (i)
             {
                 case 0:
-                    fm?.Navigate(App.GetService<CardManage>()); break;
+                    ns.NavigateTo(App.GetService<CardManage>()); break;
+                case 1:
+                    ns.NavigateTo(App.GetService<SideBarManage>()); break;
+                case 2:
+                    ns.NavigateTo(App.GetService<AboutPage>()); break;
+
                 default:
                     break;
             }

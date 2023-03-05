@@ -13,8 +13,6 @@ namespace MainApp.ViewModel
     {
         public ObservableCollection<CardInfo> CardInfos => App.GetService<PluginLoader>().CardInfos;
 
-        [ObservableProperty]
-        CardInfo? selectedCI;
 
         [ObservableProperty]
         ObservableCollection<MyThumb>? cardInstances;
@@ -35,21 +33,18 @@ namespace MainApp.ViewModel
                 {
 
                     CardInstances.Add(thumb);
-                    //if (thumb.GetCard().GetType() == SelectedCI.MainView)
-                    //{
-                    //    CardInstances.Add(thumb);
-                    //}
+
                 }
             }
 
             PopOpen = Visibility.Visible;
         }
 
-        //[RelayCommand]
-        //void OpenInstalledCardPanel()
-        //{
-        //    PopOpen = Visibility.Visible;
-        //}
+        [RelayCommand]
+        void OpenInstalledCardPanel()
+        {
+            App.GetService<NavigationService>().NavigateToSub(App.GetService<InstalledCards>());
+        }
 
         [RelayCommand]
         void CloseCard(MyThumb card)
@@ -59,9 +54,6 @@ namespace MainApp.ViewModel
 
 
             GetCardDetail();
-            //SelectedCard.GetCard().OnDisabled();
-            //cv?.Children?.Remove(SelectedCard);
-            //Config?.instances.Remove(SelectedCard.GetCard().GUID);
         }
 
         [RelayCommand]
@@ -69,14 +61,7 @@ namespace MainApp.ViewModel
         {
             card?.SetLocked();
         }
-        [RelayCommand]
-        void AddCardToDesktop(object? info)
-        {
-            App.GetService<WidgetViewVM>().CreateCard(info as CardInfo);
 
-
-            GetCardDetail();
-        }
         [RelayCommand]
         void ShowCardSetting(MyThumb? thumb)
         {
