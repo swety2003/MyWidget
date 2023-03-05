@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Flurl.Http;
+using Microsoft.Extensions.Logging;
 using PluginSDK;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -30,7 +32,7 @@ namespace MyDesktopCards.SettingView
         public AIScheduleSetting(ICard card)
         {
             InitializeComponent();
-            DataContext = new AIScheduleSettingVM(card);
+            DataContext = new AIScheduleSettingVM(card,this);
         }
 
 
@@ -38,16 +40,21 @@ namespace MyDesktopCards.SettingView
 
     public partial class AIScheduleSettingVM:ObservableObject
     {
+        ILogger<AIScheduleSettingVM> logger;
+
         [ObservableProperty]
         string shareUrl = "";
         private ICard card;
-
-        public AIScheduleSettingVM(ICard card)
+        AIScheduleSetting view;
+        public AIScheduleSettingVM(ICard card, AIScheduleSetting view)
         {
 
             this.card = card;
+            this.view = view;
 
             ImportTableCommand = new AsyncRelayCommand(ImportTable);
+
+            logger = Logger.CreateLogger<AIScheduleSettingVM>();
         }
 
         public AsyncRelayCommand ImportTableCommand { get; set; }
@@ -87,6 +94,29 @@ namespace MyDesktopCards.SettingView
 
             }
         }
+
+
+        [ObservableProperty]
+        string overrideUIFile = "";
+
+        [RelayCommand]
+        void OverrideUI()
+        {
+            try
+            {
+                (card as ICanOverrideUI)?.OverrideUI(OverrideUIFile);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                logger.LogError(ex.ToString());
+                
+            }
+        }
+
+
+
 
     }
 }

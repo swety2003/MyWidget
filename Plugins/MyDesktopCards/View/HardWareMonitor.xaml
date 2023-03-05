@@ -13,9 +13,8 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/PluginSDK;component/Styles/index.xaml" />
+                <ResourceDictionary Source="/MyDesktopCards;component/Assets/index.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

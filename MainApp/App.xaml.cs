@@ -18,8 +18,6 @@ namespace MainApp
     /// </summary>
     public partial class App : Application
     {
-
-
         static IHost AppHost
         {
             get;

@@ -32,7 +32,7 @@ namespace MainApp.ViewModel
                 return;
             }
 
-            var wc = Activator.CreateInstance(ci.MainView, Guid.NewGuid(), loggerFactory) as ICard ?? throw new Exception();
+            var wc = Activator.CreateInstance(ci.MainView, Guid.NewGuid()) as ICard ?? throw new Exception();
 
 
             MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };

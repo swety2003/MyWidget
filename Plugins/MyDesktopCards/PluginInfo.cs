@@ -29,6 +29,7 @@ namespace MyDesktopCards
 
         public string name => "×ÀÃæ¿¨Æ¬";
 
+        public ILoggerFactory LoggerFactory { get; set; }
 
         public List<CardInfo> GetAllCards()
         {

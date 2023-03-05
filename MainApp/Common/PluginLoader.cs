@@ -15,9 +15,10 @@ namespace MainApp.Common
     {
         private readonly ILogger<PluginLoader> _logger;
 
-        public PluginLoader(ILogger<PluginLoader> logger)
+        public PluginLoader(ILoggerFactory loggerFactory)
         {
-            _logger = logger;
+            _logger = loggerFactory.CreateLogger<PluginLoader>();
+            Logger.LoggerFactory = loggerFactory;
         }
 
 

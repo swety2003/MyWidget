@@ -45,8 +45,11 @@ namespace MainApp.View
 
                     if (item.Value.Wid == wid)
                     {
-                        var wc = Activator.CreateInstance(ci.MainView, item.Key, loggerFactory) as ICard ?? throw new Exception();
-
+                        var wc = Activator.CreateInstance(ci.MainView, item.Key) as ICard;
+                        if (wc == null)
+                        {
+                            wc = Activator.CreateInstance(ci.MainView) as ICard ?? throw new Exception($"加载{ci.MainView.FullName}失败！");
+                        }
 
                         MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
 
@@ -58,6 +61,7 @@ namespace MainApp.View
                         wc.OnEnabled();
 
                         mt.OnCardMoved += Mt_OnCardMoved;
+
 
                     }
                 }

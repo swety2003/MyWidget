@@ -9,7 +9,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ui:MyThumb">
                     <Border
-                        Padding="4"
+                        Padding="0"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">

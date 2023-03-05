@@ -10,7 +10,6 @@
     Width="800"
     Height="450"
     Background="{DynamicResource BackGroundBrush12}"
-    FontSize="16"
     Foreground="{DynamicResource TextBrush98}"
     mc:Ignorable="d">
     <Window.Resources>
@@ -23,8 +22,8 @@
     </Window.Resources>
     <DockPanel>
         <Border
-            Padding="4"
-            BorderBrush="{DynamicResource BorderBrush26}"
+            Padding="8"
+            BorderBrush="{DynamicResource TextBrush84}"
             BorderThickness="0,0,0,2"
             DockPanel.Dock="Top">
 
@@ -36,32 +35,97 @@
                 <TextBlock
                     Margin="10,0"
                     VerticalAlignment="Center"
-                    FontSize="18"
+                    FontSize="22"
                     Text="设置" />
             </StackPanel>
         </Border>
-        <StackPanel>
+        <StackPanel Margin="14,4">
             <GroupBox
-                Background="Transparent"
+                Background="{DynamicResource BackgroundBrush18}"
+                BorderBrush="{DynamicResource AccentBrush}"
                 BorderThickness="0"
-                Header="课程表链接">
+                Style="{StaticResource SettingItem}">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock
+                            Margin="0,2,4,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{StaticResource SFI}"
+                            FontSize="18"
+                            Text="" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Text="课程表链接" />
+                    </StackPanel>
+                </GroupBox.Header>
                 <StackPanel>
 
                     <TextBox
+                        MinHeight="64"
                         Margin="0,4"
+                        Padding="2,4"
                         VerticalContentAlignment="Top"
+                        pu:TextBoxHelper.Watermark="输入链接"
                         AcceptsReturn="True"
                         BorderThickness="1"
-                        MinLines="4"
                         Style="{StaticResource SimpleTextBox}"
-                        Text="{Binding ShareUrl}" />
+                        Text="{Binding ShareUrl}"
+                        TextWrapping="Wrap" />
                     <Button
+                        Margin="0,4"
                         Command="{Binding ImportTableCommand}"
                         Content="导入"
+                        FontSize="18"
+                        Foreground="{DynamicResource PrimaryBrush}"
                         Style="{StaticResource SimpleBtnStyle}" />
                 </StackPanel>
             </GroupBox>
 
+
+            <GroupBox
+                Background="{DynamicResource BackgroundBrush18}"
+                BorderBrush="{DynamicResource AccentBrush}"
+                BorderThickness="0"
+                Style="{StaticResource SettingItem}">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock
+                            Margin="0,2,4,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{StaticResource SFI}"
+                            FontSize="18"
+                            Text="" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Text="重写卡片样式" />
+                    </StackPanel>
+                </GroupBox.Header>
+                <StackPanel>
+
+                    <TextBox
+                        MinHeight="64"
+                        Margin="0,4"
+                        Padding="2,4"
+                        VerticalContentAlignment="Top"
+                        pu:TextBoxHelper.Watermark="xaml文件路径"
+                        AcceptsReturn="True"
+                        BorderThickness="1"
+                        Style="{StaticResource SimpleTextBox}"
+                        Text="{Binding OverrideUIFile}"
+                        TextWrapping="Wrap" />
+                    <Button
+                        Margin="0,4"
+                        Command="{Binding OverrideUICommand}"
+                        Content="覆盖"
+                        FontSize="18"
+                        Foreground="{DynamicResource PrimaryBrush}"
+                        Style="{StaticResource SimpleBtnStyle}" />
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
     </DockPanel>
 </Window>

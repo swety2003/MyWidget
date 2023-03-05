@@ -24,6 +24,10 @@
 		<ProjectReference Include="..\..\Vendor\CZGL.SystemInfo\CZGL.SystemInfo.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Style\" />
+	</ItemGroup>
+
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<!--<Exec Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\Default&quot; /y/e" />-->

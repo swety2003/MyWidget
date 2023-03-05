@@ -13,13 +13,13 @@ namespace MyDesktopCards.View
     {
         internal static CardInfo info = new CardInfo(null, "性能监控", "", typeof(HardWareMonitor));
 
-        private ILogger<HardWareMonitor> logger;
+        private ILogger<HardWareMonitor> logger => Logger.CreateLogger<HardWareMonitor>();
         private HardwareMonitorVM vm;
 
-        public HardWareMonitor(Guid guid, ILoggerFactory loggerFactory)
+        public HardWareMonitor(Guid guid)
         {
             GUID = guid;
-            logger = loggerFactory.CreateLogger<HardWareMonitor>();
+
             InitializeComponent();
 
         }

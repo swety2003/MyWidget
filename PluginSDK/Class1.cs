@@ -50,7 +50,32 @@ namespace PluginSDK
         public void OnDisabled();
 
     }
+
     public record SideBarItemInfo(string Name, string Description, Type MainView);
+
+    public static class Logger
+    {
+
+        private static ILoggerFactory? _loggerFactory;
+
+        public static ILoggerFactory? LoggerFactory
+        {
+            get { return _loggerFactory; }
+            set 
+            {
+                if (_loggerFactory == null)
+                {
+                    _loggerFactory = value;
+                }
+            }
+        }
+
+        public static ILogger<T> CreateLogger<T>()
+        {
+            return LoggerFactory?.CreateLogger<T>() ?? throw new Exception("Logger.LoggerFactory Œ¥≥ı ºªØ£°");
+        }
+
+    }
 
 
     public static class UCExt
@@ -86,5 +111,8 @@ namespace PluginSDK
         }
     }
 
-
+    public interface ICanOverrideUI
+    {
+        void OverrideUI(string xaml_file_path);
+    }
 }

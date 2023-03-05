@@ -17,12 +17,12 @@ namespace MyDesktopCards.View
         internal static CardInfo info = new CardInfo(null, "数字时钟", "", typeof(DigitalClock));
         private DigitalClockVM vm;
 
-        ILogger logger;
 
-        public DigitalClock(Guid guid, ILoggerFactory loggerFactory)
+        private ILogger<DigitalClock> _logger => Logger.CreateLogger<DigitalClock>();
+
+        public DigitalClock(Guid guid)
         {
             GUID = guid;
-            logger = loggerFactory.CreateLogger<DigitalClock>();
             InitializeComponent();
 
         }

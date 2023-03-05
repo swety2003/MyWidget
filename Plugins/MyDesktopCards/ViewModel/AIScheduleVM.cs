@@ -154,6 +154,10 @@ namespace MyDesktopCards.ViewModel
             {
                 timestamp /= 1000;
             }
+            if (timestamp==0)
+            {
+                return DateTime.Now.AddDays(-7);
+            }
 
             System.DateTime startTime = new System.DateTime(1970, 1, 1);
             var time = startTime.AddSeconds(timestamp);
@@ -171,6 +175,13 @@ namespace MyDesktopCards.ViewModel
         private void Next()
         {
             targetTime = targetTime.AddDays(+1);
+            LoadTable();
+        }
+
+        [RelayCommand]
+        private void Reload()
+        {
+            targetTime= DateTime.Now;
             LoadTable();
         }
 

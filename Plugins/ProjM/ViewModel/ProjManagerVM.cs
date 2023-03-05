@@ -1,5 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Logging;
+using PluginSDK;
+using Projm.Controls;
 using ProjM;
 using System;
 using System.Collections.ObjectModel;
@@ -14,6 +17,9 @@ namespace Projm.ViewModel
 {
     partial class ProjManagerVM : ObservableObject
     {
+
+        public ILogger<ProjManagerVM> _logger => Logger.CreateLogger<ProjManagerVM>();
+
         [ObservableProperty]
         ProjMBase selectedType;
 
@@ -22,8 +28,6 @@ namespace Projm.ViewModel
 
         public ProjManagerVM()
         {
-            //projMs.Add(new PycharmManage());
-            //projMs.Add(new SlnManage());
 
             SelfLoadedCommand = new AsyncRelayCommand(LoadProvider);
         }
@@ -68,9 +72,9 @@ namespace Projm.ViewModel
             {
                 SelectedType?.OnActive(SelctedInfo);
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-
+                _logger.LogError($"{ex.Message}");
             }
         }
 

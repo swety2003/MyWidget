@@ -17,7 +17,7 @@
         <ResourceDictionary>
             <cv:Time2WeekConverter x:Key="Time2WeekConverter" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/PluginSDK;component/Styles/index.xaml" />
+                <ResourceDictionary Source="/MyDesktopCards;component/Assets/index.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
