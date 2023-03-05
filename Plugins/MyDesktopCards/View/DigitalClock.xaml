@@ -31,13 +31,13 @@
                     Margin="-5,-20"
                     FontFamily="Microsoft YaHei Light"
                     FontSize="130"
-                    Text="{Binding NowTime, StringFormat={}{0:HH:MM}}" />
+                    Text="{Binding NowTime, StringFormat={}{0:HH:mm}, ConverterCulture=Zh-CN}" />
                 <TextBlock
                     Margin="5,0"
                     VerticalAlignment="Bottom"
                     FontSize="45"
                     Foreground="#c85961"
-                    Text="{Binding NowTime, StringFormat={}:{0:ss}}" />
+                    Text="{Binding NowTime, StringFormat={}:{0:ss}, ConverterCulture=Zh-CN}" />
             </StackPanel>
             <TextBlock FontSize="15">
 
