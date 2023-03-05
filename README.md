@@ -3,4 +3,4 @@ Windows桌面小部件
 
 
 ## Preview
-[](/docs/images/preview.png)
+![img](/docs/images/preview.png)
