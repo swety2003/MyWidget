@@ -7,12 +7,15 @@
     xmlns:local="clr-namespace:SpineViewer.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:monoGameControls="clr-namespace:SpineViewer.MonoGameControls"
+    xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    Name="win"
     Title="PlayerW"
     Width="300"
     Height="300"
     Background="Transparent"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
+    ShowInTaskbar="False"
     WindowStyle="None"
     mc:Ignorable="d">
     <Window.Resources>
@@ -32,6 +35,7 @@
         <ContextMenu>
             <MenuItem Click="btPlay_Click" Header="播放/暂停" />
             <MenuItem Click="btSetting_Click" Header="设置" />
+            <MenuItem Click="btnExit_Click" Header="退出" />
         </ContextMenu>
     </Window.ContextMenu>
 
@@ -40,11 +44,11 @@
             <i:ChangePropertyAction
                 PropertyName="BorderBrush"
                 TargetName="bd"
-                Value="{DynamicResource Brush24}" />
+                Value="#30FFFFFF" />
             <i:ChangePropertyAction
-                PropertyName="Background"
+                PropertyName="Visibility"
                 TargetName="capton"
-                Value="{DynamicResource Brush24}" />
+                Value="Visible" />
         </i:EventTrigger>
         <i:EventTrigger EventName="Deactivated">
             <i:ChangePropertyAction
@@ -52,9 +56,9 @@
                 TargetName="bd"
                 Value="Transparent" />
             <i:ChangePropertyAction
-                PropertyName="Background"
+                PropertyName="Visibility"
                 TargetName="capton"
-                Value="Transparent" />
+                Value="Hidden" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -69,40 +73,37 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+
             <Border
                 Name="capton"
                 Height="32"
-                CornerRadius="4 4 0 0"
-                MouseLeftButtonDown="Border_MouseLeftButtonDown" />
-
+                Panel.ZIndex="10"
+                Background="#30FFFFFF"
+                CornerRadius="2 2 0 0"
+                MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                <ToggleButton
+                    Width="32"
+                    HorizontalAlignment="Right"
+                    pu:ToggleButtonHelper.CheckedContent=""
+                    pu:ToggleButtonHelper.CornerRadius="8"
+                    pu:ToggleButtonHelper.HoverForeground="{DynamicResource AccentBrush}"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Content=""
+                    Cursor="Hand"
+                    FontFamily="{StaticResource SFI}"
+                    Foreground="{DynamicResource Brush98}"
+                    IsChecked="{Binding ElementName=win, Path=Topmost}"
+                    ToolTip="置顶" />
+            </Border>
 
             <monoGameControls:MonoGameContentControl
                 x:Name="monoGameControl"
-                Grid.Row="1"
+                Grid.RowSpan="2"
                 MouseDown="monoGameControl_MouseDown"
                 MouseMove="monoGameControl_MouseMove"
                 MouseUp="monoGameControl_MouseUp" />
 
-
-            <Border
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Visibility="Collapsed">
-                <StackPanel
-                    Margin="0,0,0,2"
-                    HorizontalAlignment="Center"
-                    Orientation="Horizontal">
-                    <Button
-                        Click="btSetting_Click"
-                        Content="Setting"
-                        Style="{StaticResource SimpleBtnStyle}" />
-                    <Button
-                        x:Name="btPlay"
-                        Click="btPlay_Click"
-                        Content="Play"
-                        Style="{StaticResource SimpleBtnStyle}" />
-                </StackPanel>
-            </Border>
 
         </Grid>
     </Border>

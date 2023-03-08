@@ -153,5 +153,15 @@ namespace SpineViewer.View
         {
             this.DragMove();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+
+            _vm.RemoveSpine();
+
+            _vm.OnExiting(null,null);
+            this.Close();
+            
+        }
     }
 }
