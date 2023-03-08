@@ -38,5 +38,10 @@ namespace ProjM
         {
             return sbis;
         }
+
+        public List<WindowInfo> GetAllWindows()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

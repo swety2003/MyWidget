@@ -15,7 +15,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="30"
-            Foreground="{DynamicResource TextBrush98}"
+            Foreground="{DynamicResource Brush98}"
             Text="施工中..." />
     </Grid>
 </Page>

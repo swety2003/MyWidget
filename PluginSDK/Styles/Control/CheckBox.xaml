@@ -7,7 +7,7 @@
                     <Rectangle
                         Margin="2"
                         SnapsToDevicePixels="true"
-                        Stroke="{DynamicResource TextBrush70}"
+                        Stroke="{DynamicResource Brush70}"
                         StrokeDashArray="1 2"
                         StrokeThickness="1" />
                 </ControlTemplate>
@@ -21,7 +21,7 @@
                     <Rectangle
                         Margin="18,0,0,0"
                         SnapsToDevicePixels="true"
-                        Stroke="{DynamicResource TextBrush70}"
+                        Stroke="{DynamicResource Brush70}"
                         StrokeDashArray="1 2"
                         StrokeThickness="1" />
                 </ControlTemplate>
@@ -30,21 +30,21 @@
     </Style>
     <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070" />
-    <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="{DynamicResource TextColor84}" />
-    <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="{DynamicResource BackgroundColor20}" />
+    <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="{DynamicResource Color84}" />
+    <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="{DynamicResource Color20}" />
     <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="{DynamicResource AccentColor}" />
-    <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="{DynamicResource TextColor98}" />
-    <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="{DynamicResource BackGroundColor12}" />
+    <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="{DynamicResource Color98}" />
+    <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="{DynamicResource Color12}" />
     <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="{DynamicResource AccentColor}" />
-    <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="{DynamicResource TextColor84}" />
-    <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="{DynamicResource BackgroundColor20}" />
-    <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="{DynamicResource BorderColor44}" />
-    <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="{DynamicResource TextColor70}" />
+    <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="{DynamicResource Color84}" />
+    <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="{DynamicResource Color20}" />
+    <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="{DynamicResource Color44}" />
+    <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="{DynamicResource Color70}" />
     <Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
-        <Setter Property="Background" Value="{DynamicResource BackGroundBrush12}" />
+        <Setter Property="Background" Value="{DynamicResource Brush12}" />
         <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush84}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush84}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>

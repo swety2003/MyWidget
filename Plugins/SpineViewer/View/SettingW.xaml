@@ -1,0 +1,78 @@
+﻿<Window
+    x:Class="SpineViewer.View.SettingW"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SpineViewer.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="SettingW"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+
+    <StackPanel Background="WhiteSmoke">
+        <DockPanel Margin="6,9,6,0">
+            <TextBlock
+                Width="96"
+                VerticalAlignment="Center"
+                Text="Atlas File:" />
+            <Button
+                x:Name="btBrowseAtlas"
+                Width="24"
+                BorderThickness="0,1,1,1"
+                Click="btBrowseAtlas_Click"
+                Content="..."
+                DockPanel.Dock="Right" />
+            <TextBox x:Name="txtAtlasFile" Padding="2" />
+        </DockPanel>
+        <DockPanel Margin="6,3,6,0">
+            <TextBlock
+                Width="96"
+                VerticalAlignment="Center"
+                Text="Spine File:" />
+            <Button
+                x:Name="btBrowseSpine"
+                Width="24"
+                BorderThickness="0,1,1,1"
+                Click="btBrowseSpine_Click"
+                Content="..."
+                DockPanel.Dock="Right" />
+            <TextBox x:Name="txtSpineFile" Padding="2" />
+        </DockPanel>
+        <StackPanel Margin="6,3,6,0" Orientation="Horizontal">
+            <TextBlock
+                Width="96"
+                VerticalAlignment="Center"
+                Text="Loader Version:" />
+            <ComboBox x:Name="cboVersion" Width="80" />
+            <TextBlock
+                Margin="12,0,0,0"
+                VerticalAlignment="Center"
+                Text="File Version: " />
+            <TextBlock
+                x:Name="txtFileVersion"
+                VerticalAlignment="Center"
+                Text="" />
+        </StackPanel>
+        <StackPanel Margin="6,3,6,0" Orientation="Horizontal">
+            <TextBlock
+                Width="96"
+                VerticalAlignment="Center"
+                Text="Texture:" />
+            <CheckBox
+                x:Name="chkPremultiAlpha"
+                Margin="0,3"
+                VerticalAlignment="Center"
+                Content="PremultiAlpha"
+                IsChecked="True" />
+        </StackPanel>
+        <StackPanel Height="24" />
+        <StackPanel Margin="6,3" HorizontalAlignment="Right">
+            <Button
+                x:Name="btOpen"
+                Width="48"
+                Click="btOpen_Click"
+                Content="Open" />
+        </StackPanel>
+    </StackPanel>
+</Window>

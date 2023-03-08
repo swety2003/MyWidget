@@ -26,6 +26,7 @@ namespace MainApp.Common
 
         public ObservableCollection<CardInfo> CardInfos = new ObservableCollection<CardInfo>();
         public ObservableCollection<SideBarItemInfo> SideBarItemInfos = new ObservableCollection<SideBarItemInfo>();
+        public ObservableCollection<WindowInfo> WindowInfos = new ObservableCollection<WindowInfo>();
 
 
         IEnumerable<IPlugin> CreatePluginInstances(Assembly assembly)
@@ -118,6 +119,22 @@ namespace MainApp.Common
                 catch (Exception ex)
                 {
                     _logger.LogWarning($"加载{item.name}.GetAllSBItems() 时发生错误：{ex.Message}");
+
+                }
+
+
+                try
+                {
+
+                    foreach (var s in item.GetAllWindows())
+                    {
+                        WindowInfos.Add(s);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning($"加载{item.name}.GetAllWindows() 时发生错误：{ex.Message}");
 
                 }
             }

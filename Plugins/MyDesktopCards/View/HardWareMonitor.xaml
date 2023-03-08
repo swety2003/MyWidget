@@ -9,7 +9,7 @@
     d:DataContext="{d:DesignInstance Type=viewmodel:HardwareMonitorVM}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Foreground="{DynamicResource TextBrush98}"
+    Foreground="{DynamicResource Brush98}"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>

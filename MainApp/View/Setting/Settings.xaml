@@ -12,9 +12,9 @@
     Title="设置"
     Width="800"
     Height="450"
-    Background="{DynamicResource BackGroundBrush12}"
+    Background="{DynamicResource Brush12}"
     FontSize="16"
-    Foreground="{DynamicResource TextBrush98}"
+    Foreground="{DynamicResource Brush98}"
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
         <Grid Grid.RowSpan="2">
             <Border
                 Margin="10,92,10,0"
-                BorderBrush="{DynamicResource BorderBrush26}"
+                BorderBrush="{DynamicResource Brush26}"
                 BorderThickness="0">
                 <ListBox
                     x:Name="lb"
@@ -39,16 +39,16 @@
                     HorizontalContentAlignment="Left"
                     pu:ListBoxHelper.ItemsBorderThickness="6 0 0 0"
                     pu:ListBoxHelper.ItemsCornerRadius="4"
-                    pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush22}"
-                    pu:ListBoxHelper.ItemsHoverBorderBrush="{DynamicResource BackgroundBrush22}"
+                    pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource Brush22}"
+                    pu:ListBoxHelper.ItemsHoverBorderBrush="{DynamicResource Brush22}"
                     pu:ListBoxHelper.ItemsMargin="4"
                     pu:ListBoxHelper.ItemsPadding="10,8"
-                    pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush18}"
+                    pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource Brush18}"
                     pu:ListBoxHelper.ItemsSelectedBorderBrush="{DynamicResource PrimaryBrush}"
-                    pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource TextBrush98}"
+                    pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource Brush98}"
                     Background="Transparent"
                     BorderThickness="0"
-                    Foreground="{DynamicResource TextBrush70}"
+                    Foreground="{DynamicResource Brush70}"
                     SelectionChanged="ListBox_SelectionChanged">
 
 
@@ -76,13 +76,13 @@
                     x:Name="nav_menu"
                     d:ItemsSource="{d:SampleData ItemCount=5}"
                     pu:ListBoxHelper.ItemsHoverBackground="Transparent"
-                    pu:ListBoxHelper.ItemsHoverForeground="{DynamicResource TextBrush98}"
+                    pu:ListBoxHelper.ItemsHoverForeground="{DynamicResource Brush98}"
                     pu:ListBoxHelper.ItemsSelectedBackground="Transparent"
-                    pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource TextBrush98}"
+                    pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource Brush98}"
                     Background="Transparent"
                     BorderThickness="0"
                     FontSize="24"
-                    Foreground="{DynamicResource TextBrush70}"
+                    Foreground="{DynamicResource Brush70}"
                     SelectedIndex="0">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>

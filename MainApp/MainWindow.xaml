@@ -36,8 +36,8 @@
         <Border
             Grid.Column="0"
             HorizontalAlignment="Stretch"
-            Background="{DynamicResource BackGroundBrush12}"
-            BorderBrush="{DynamicResource BorderBrush44}"
+            Background="{DynamicResource Brush12}"
+            BorderBrush="{DynamicResource Brush44}"
             BorderThickness="0,0,1,0">
             <Grid>
                 <StackPanel>
@@ -61,7 +61,7 @@
                     <Grid
                         Height="2"
                         Margin="4,2"
-                        Background="{DynamicResource BorderBrush26}" />
+                        Background="{DynamicResource Brush26}" />
 
                     <StackPanel x:Name="sb_container" />
 
@@ -81,7 +81,7 @@
                         Click="SettingBtn_Click"
                         FontFamily="{StaticResource SFI}"
                         FontSize="24"
-                        Foreground="{DynamicResource TextBrush98}"
+                        Foreground="{DynamicResource Brush98}"
                         Style="{DynamicResource SimpleBtnStyle}">
                         
                     </Button>
@@ -99,7 +99,7 @@
                         Click="ExitBtn_Click"
                         FontFamily="{StaticResource SFI}"
                         FontSize="20"
-                        Foreground="{DynamicResource TextBrush98}"
+                        Foreground="{DynamicResource Brush98}"
                         Style="{DynamicResource SimpleBtnStyle}">
                         
                     </Button>

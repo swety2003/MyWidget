@@ -8,7 +8,7 @@
         <Setter Property="Width" Value="42" />
         <Setter Property="FontFamily" Value="Segoe Fluent Icons" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush98}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush98}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
@@ -27,10 +27,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BackgroundBrush24}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource Brush24}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BackgroundBrush24}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource Brush24}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -43,7 +43,7 @@
         <Setter Property="Padding" Value="4,2" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush98}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush98}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -61,16 +61,16 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BackgroundBrush24}" />
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource BorderBrush44}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource Brush24}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource Brush44}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BackgroundBrush16}" />
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource BorderBrush44}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource Brush16}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource Brush44}" />
 
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource TextBrush23}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Brush23}" />
 
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -86,12 +86,12 @@
         TargetType="Button">
         <Setter Property="BorderThickness" Value="0,1,0,0" />
         <Setter Property="pu:ButtonHelper.CornerRadius" Value="4" />
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush18}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush98}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush22}" />
+        <Setter Property="Background" Value="{DynamicResource Brush18}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush98}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush22}" />
         <Setter Property="pu:ButtonHelper.ClickBorderBrush" Value="Transparent" />
-        <Setter Property="pu:ButtonHelper.ClickBackground" Value="{DynamicResource BackgroundBrush16}" />
-        <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource BorderBrush22}" />
+        <Setter Property="pu:ButtonHelper.ClickBackground" Value="{DynamicResource Brush16}" />
+        <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource Brush22}" />
         <Setter Property="Margin" Value="4" />
         <Setter Property="Padding" Value="10,6" />
 

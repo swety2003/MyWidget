@@ -20,7 +20,7 @@
                             VerticalAlignment="Center"
                             Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}">
                             <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource TextColor57}" />
+                                <SolidColorBrush Color="{DynamicResource Color57}" />
                             </Path.Fill>
                         </Path>
                         <VisualStateManager.VisualStateGroups>
@@ -30,10 +30,10 @@
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource BackgroundColor60}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource Color60}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource TextColor23}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource Color23}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
 
@@ -41,7 +41,7 @@
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource TextColor23}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource Color23}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -78,10 +78,10 @@
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackgroundBrush60}" />
+                            <Setter Property="Background" Value="{DynamicResource Brush60}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter Property="Background" Value="{DynamicResource BackgroundBrush26}" />
+                            <Setter Property="Background" Value="{DynamicResource Brush26}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -96,7 +96,7 @@
                 <RowDefinition Height="0.00001*" />
                 <RowDefinition MaxHeight="18" />
             </Grid.RowDefinitions>
-            <Border Grid.RowSpan="3" Background="{DynamicResource BackgroundBrush18}" />
+            <Border Grid.RowSpan="3" Background="{DynamicResource Brush18}" />
             <RepeatButton
                 Grid.Row="0"
                 Height="18"
@@ -136,7 +136,7 @@
                 <ColumnDefinition Width="0.00001*" />
                 <ColumnDefinition MaxWidth="18" />
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="3" Background="{DynamicResource BackgroundBrush18}" />
+            <Border Grid.ColumnSpan="3" Background="{DynamicResource Brush18}" />
             <RepeatButton
                 Grid.Column="0"
                 Width="18"

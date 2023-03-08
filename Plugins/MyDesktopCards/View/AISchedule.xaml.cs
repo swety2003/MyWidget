@@ -42,8 +42,6 @@ namespace MyDesktopCards.View
         public int WidthPix => 6;
 
         public Guid GUID { get; private set; }
-
-        private ILogger<AISchedule> logger;
         internal static CardInfo info = new CardInfo(null,"小爱课程表","是一个课程表捏",typeof(AISchedule));
         private AIScheduleVM vm;
 

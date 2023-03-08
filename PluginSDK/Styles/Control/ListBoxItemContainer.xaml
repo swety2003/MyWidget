@@ -6,19 +6,19 @@
                     <Rectangle
                         Margin="1"
                         SnapsToDevicePixels="true"
-                        Stroke="{DynamicResource TextBrush70}"
+                        Stroke="{DynamicResource Brush70}"
                         StrokeDashArray="1 2"
                         StrokeThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="Item.MouseOver.Background" Color="{DynamicResource BackgroundColor24}" />
-    <SolidColorBrush x:Key="Item.MouseOver.Border" Color="{DynamicResource BackgroundColor24}" />
-    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="{DynamicResource BackgroundColor26}" />
-    <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="{DynamicResource BorderColor44}" />
-    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="{DynamicResource BackgroundColor22}" />
-    <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="{DynamicResource BorderColor24}" />
+    <SolidColorBrush x:Key="Item.MouseOver.Background" Color="{DynamicResource Color24}" />
+    <SolidColorBrush x:Key="Item.MouseOver.Border" Color="{DynamicResource Color24}" />
+    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="{DynamicResource Color26}" />
+    <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="{DynamicResource Color44}" />
+    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="{DynamicResource Color22}" />
+    <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="{DynamicResource Color24}" />
     <Style x:Key="ListBoxItemContainerStyle1" TargetType="{x:Type ListBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Padding" Value="4,2" />
@@ -68,7 +68,7 @@
                             <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Item.SelectedActive.Border}" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Bd" Property="TextElement.Foreground" Value="{DynamicResource TextBrush70}" />
+                            <Setter TargetName="Bd" Property="TextElement.Foreground" Value="{DynamicResource Brush70}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

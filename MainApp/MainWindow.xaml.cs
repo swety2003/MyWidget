@@ -1,6 +1,7 @@
 ﻿
 using MainApp.Common;
 using MainApp.View;
+using PluginSDK;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -48,6 +49,8 @@ namespace MainApp
 
             LoadSBI();
 
+            LoadWindow();
+
 
         }
 
@@ -60,6 +63,17 @@ namespace MainApp
             {
 
                 sb_container.Children.Add(Activator.CreateInstance(item.MainView) as UIElement);
+            }
+        }
+
+        void LoadWindow()
+        {
+            foreach (var item in App.GetService<PluginLoader>().WindowInfos)
+            {
+                var w = Activator.CreateInstance(item.MainView) as Window;
+
+                w?.Show();
+                (w as IWindow)?.OnEnabled();
             }
         }
 

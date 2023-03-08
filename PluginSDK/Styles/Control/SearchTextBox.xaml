@@ -2,10 +2,10 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Font/FontIcon.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <SolidColorBrush x:Key="TextBox.Static.Border" Color="{DynamicResource BorderColor26}" />
-    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="{DynamicResource BorderColor60}" />
-    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="{DynamicResource BorderColor60}" />
-    <SolidColorBrush x:Key="TextBox.Static.Background" Color="{DynamicResource BackgroundColor22}" />
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="{DynamicResource Color26}" />
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="{DynamicResource Color60}" />
+    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="{DynamicResource Color60}" />
+    <SolidColorBrush x:Key="TextBox.Static.Background" Color="{DynamicResource Color22}" />
 
     <Style x:Key="SearchTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="#303030" />
@@ -63,7 +63,7 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource TextBox.MouseOver.Border}" />
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BackGroundBrush12}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource Brush12}" />
 
                         </Trigger>
                         <MultiTrigger>
@@ -79,7 +79,7 @@
 
 
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BackGroundBrush12}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource Brush12}" />
 
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">

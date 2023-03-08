@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using PluginSDK;
 using Projm.ViewModel;
+using System;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -13,6 +14,8 @@ namespace Projm.Controls
     {
 
         public static SideBarItemInfo info = new SideBarItemInfo("1", "好", typeof(ProjManager));
+
+        public Guid GUID => throw new NotImplementedException();
 
         public ProjManager()
         {
@@ -44,6 +47,11 @@ namespace Projm.Controls
         private void content_pop_Closed(object sender, System.EventArgs e)
         {
 
+        }
+
+        public void ShowSetting()
+        {
+            throw new NotImplementedException();
         }
     }
 }

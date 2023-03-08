@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="DefaultBackGroundColor">#1f1f1f</Color>
+    <Color x:Key="BackGroundColor12">#1A1a1a</Color>
+    <Color x:Key="PrimaryColor">#7160e8</Color>
+    <Color x:Key="AccentColor">#007fdc</Color>
+
+    <!--  Control Area  -->
+    <Color x:Key="Color100">#000</Color>
+    <Color x:Key="Color98">#555</Color>
+    <Color x:Key="Color96">#aaa</Color>
+    <Color x:Key="Color94">#fff</Color>
+    <Color x:Key="Color92">#141414</Color>
+    <Color x:Key="Color90">#191919</Color>
+    <Color x:Key="Color88">#1e1e1e</Color>
+    <Color x:Key="Color86">#232323</Color>
+    <Color x:Key="Color84">#282828</Color>
+    <Color x:Key="Color82">#2d2d2d</Color>
+    <Color x:Key="Color80">#333333</Color>
+    <Color x:Key="Color78">#383838</Color>
+    <Color x:Key="Color76">#3d3d3d</Color>
+    <Color x:Key="Color74">#424242</Color>
+    <Color x:Key="Color72">#474747</Color>
+    <Color x:Key="Color70">#4c4c4c</Color>
+    <Color x:Key="Color68">#515151</Color>
+    <Color x:Key="Color66">#565656</Color>
+    <Color x:Key="Color64">#5b5b5b</Color>
+    <Color x:Key="Color62">#606060</Color>
+    <Color x:Key="Color60">#666666</Color>
+    <Color x:Key="Color58">#6b6b6b</Color>
+    <Color x:Key="Color56">#707070</Color>
+    <Color x:Key="Color54">#757575</Color>
+    <Color x:Key="Color52">#7a7a7a</Color>
+    <Color x:Key="Color50">#7f7f7f</Color>
+    <Color x:Key="Color48">#848484</Color>
+    <Color x:Key="Color46">#898989</Color>
+    <Color x:Key="Color44">#8e8e8e</Color>
+    <Color x:Key="Color42">#939393</Color>
+    <Color x:Key="Color40">#999999</Color>
+    <Color x:Key="Color38">#9e9e9e</Color>
+    <Color x:Key="Color36">#a3a3a3</Color>
+    <Color x:Key="Color34">#a8a8a8</Color>
+    <Color x:Key="Color32">#adadad</Color>
+    <Color x:Key="Color30">#b2b2b2</Color>
+    <Color x:Key="Color28">#b7b7b7</Color>
+    <Color x:Key="Color26">#bcbcbc</Color>
+    <Color x:Key="Color24">#c1c1c1</Color>
+    <Color x:Key="Color22">#c6c6c6</Color>
+    <Color x:Key="Color20">#cccccc</Color>
+    <Color x:Key="Color18">#d1d1d1</Color>
+    <Color x:Key="Color16">#d6d6d6</Color>
+    <Color x:Key="Color14">#dbdbdb</Color>
+    <Color x:Key="Color12">#e0e0e0</Color>
+    <Color x:Key="Color10">#e5e5e5</Color>
+    <Color x:Key="Color8">#eaeaea</Color>
+    <Color x:Key="Color6">#efefef</Color>
+    <Color x:Key="Color4">#f4f4f4</Color>
+    <Color x:Key="Color2">#f9f9f9</Color>
+
+
+
+
+    <Color x:Key="DarkDangerColor">#861b2d</Color>
+    <Color x:Key="DangerColor">#b0555c</Color>
+    <Color x:Key="SuccessColor">#9ae69a</Color>
+
+
+
+
+
+
+</ResourceDictionary>

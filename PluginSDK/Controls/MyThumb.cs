@@ -75,7 +75,8 @@ namespace PluginSDK.Controls
         {
             Background = new SolidColorBrush(Color.FromArgb(32, 0, 0, 0)),
             BorderThickness = new Thickness(2),
-            BorderBrush = (Brush)Application.Current.FindResource("BorderBrush60"),
+
+            BorderBrush = (Brush)Application.Current.FindResource("Brush60"),
 
             //BorderBrush = new SolidColorBrush(Color.FromRgb(112, 112, 112)),
         };
@@ -126,6 +127,9 @@ namespace PluginSDK.Controls
 
         }
 
+
+
+
         private void MyThumb_DragCompleted(object sender, DragCompletedEventArgs e)
         {
 
@@ -157,6 +161,9 @@ namespace PluginSDK.Controls
 
         private void MyThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
+
+
+
             if (!this.GetCanvas().Children.Contains(Preview))
             {
                 this.GetCanvas().Children.Add(Preview);

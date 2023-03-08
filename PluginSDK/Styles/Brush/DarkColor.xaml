@@ -6,33 +6,56 @@
     <Color x:Key="AccentColor">#007fdc</Color>
 
     <!--  Control Area  -->
-    <Color x:Key="BackgroundColor24">#3d3d3d</Color>
-    <Color x:Key="BackgroundColor26">#424242</Color>
-    <Color x:Key="BackgroundColor18">#2e2e2e</Color>
-    <Color x:Key="BackgroundColor16">#1f1f1f</Color>
-    <Color x:Key="BackgroundColor44">#707070</Color>
-    <Color x:Key="BackgroundColor22">#383838</Color>
-    <Color x:Key="BackgroundColor20">#333333</Color>
-    <Color x:Key="BackgroundColor60">#999999</Color>
-
-
-
-    <Color x:Key="SplitColor24">#3d3d3d</Color>
-
-
-
-    <Color x:Key="BorderColor44">#707070</Color>
-    <Color x:Key="BorderColor22">#383838</Color>
-    <Color x:Key="BorderColor24">#3d3d3d</Color>
-    <Color x:Key="BorderColor26">#424242</Color>
-    <Color x:Key="BorderColor60">#999999</Color>
-
-
-    <Color x:Key="TextColor84">#d6d6d6</Color>
-    <Color x:Key="TextColor23">#3b3b3b</Color>
-    <Color x:Key="TextColor98">#fafafa</Color>
-    <Color x:Key="TextColor70">#b2b2b2</Color>
-    <Color x:Key="TextColor57">#929292</Color>
+    <Color x:Key="Color0">#000</Color>
+    <Color x:Key="Color2">#555</Color>
+    <Color x:Key="Color4">#aaa</Color>
+    <Color x:Key="Color6">#fff</Color>
+    <Color x:Key="Color8">#141414</Color>
+    <Color x:Key="Color10">#191919</Color>
+    <Color x:Key="Color12">#1e1e1e</Color>
+    <Color x:Key="Color14">#232323</Color>
+    <Color x:Key="Color16">#282828</Color>
+    <Color x:Key="Color18">#2d2d2d</Color>
+    <Color x:Key="Color20">#333333</Color>
+    <Color x:Key="Color22">#383838</Color>
+    <Color x:Key="Color24">#3d3d3d</Color>
+    <Color x:Key="Color26">#424242</Color>
+    <Color x:Key="Color28">#474747</Color>
+    <Color x:Key="Color30">#4c4c4c</Color>
+    <Color x:Key="Color32">#515151</Color>
+    <Color x:Key="Color34">#565656</Color>
+    <Color x:Key="Color36">#5b5b5b</Color>
+    <Color x:Key="Color38">#606060</Color>
+    <Color x:Key="Color40">#666666</Color>
+    <Color x:Key="Color42">#6b6b6b</Color>
+    <Color x:Key="Color44">#707070</Color>
+    <Color x:Key="Color46">#757575</Color>
+    <Color x:Key="Color48">#7a7a7a</Color>
+    <Color x:Key="Color50">#7f7f7f</Color>
+    <Color x:Key="Color52">#848484</Color>
+    <Color x:Key="Color54">#898989</Color>
+    <Color x:Key="Color56">#8e8e8e</Color>
+    <Color x:Key="Color58">#939393</Color>
+    <Color x:Key="Color60">#999999</Color>
+    <Color x:Key="Color62">#9e9e9e</Color>
+    <Color x:Key="Color64">#a3a3a3</Color>
+    <Color x:Key="Color66">#a8a8a8</Color>
+    <Color x:Key="Color68">#adadad</Color>
+    <Color x:Key="Color70">#b2b2b2</Color>
+    <Color x:Key="Color72">#b7b7b7</Color>
+    <Color x:Key="Color74">#bcbcbc</Color>
+    <Color x:Key="Color76">#c1c1c1</Color>
+    <Color x:Key="Color78">#c6c6c6</Color>
+    <Color x:Key="Color80">#cccccc</Color>
+    <Color x:Key="Color82">#d1d1d1</Color>
+    <Color x:Key="Color84">#d6d6d6</Color>
+    <Color x:Key="Color86">#dbdbdb</Color>
+    <Color x:Key="Color88">#e0e0e0</Color>
+    <Color x:Key="Color90">#e5e5e5</Color>
+    <Color x:Key="Color92">#eaeaea</Color>
+    <Color x:Key="Color94">#efefef</Color>
+    <Color x:Key="Color96">#f4f4f4</Color>
+    <Color x:Key="Color98">#f9f9f9</Color>
 
 
 
@@ -43,20 +66,6 @@
     <Color x:Key="SuccessColor">#9ae69a</Color>
 
 
-    <!--<Color x:Key="PrimaryTextColor">white</Color>
-    <Color x:Key="SecondaryTextColor">#3d3d3d</Color>
-    <Color x:Key="ThirdlyTextColor">#d6d6d6</Color>
-    <Color x:Key="ReverseTextColor">white</Color>
-    <Color x:Key="BorderColor">#3d3d3d</Color>
-    <Color x:Key="BorderColor1">#383838</Color>
-    <Color x:Key="ComboxDisabledColor">#333333</Color>
-    <Color x:Key="SecondaryBorderColor">#707070</Color>
-    <Color x:Key="LightBorderColor">#999999</Color>
-    <Color x:Key="RegionColor">#1f1f1f</Color>
-    <Color x:Key="SecondaryRegionColor">#424242</Color>
-    <Color x:Key="ThirdlyRegionColor">#2e2e2e</Color>
-
-    <Color x:Key="ToolBarButtonHoverColor">#3d3d3d</Color>-->
 
 
 

@@ -21,37 +21,46 @@ namespace PluginSDK
 
         public List<CardInfo> GetAllCards();
 
+        public List<WindowInfo> GetAllWindows();
+
         public List<SideBarItemInfo> GetAllSBItems();
     }
-
-    public interface ICard
+    public interface IViewBase
     {
 
-        public int HeightPix { get; }
-        public int WidthPix { get; }
-
         public Guid GUID { get; }
-
-
 
         public void OnEnabled();
         public void OnDisabled();
 
         public void ShowSetting();
+    }
 
 
-        //public void OnAppClosed();
+    public interface ICard: IViewBase
+    {
+
+        public int HeightPix { get; }
+        public int WidthPix { get; }
+
 
     }
 
-    public interface ISideBarItem
+    public interface IWindow: IViewBase
     {
-        public void OnEnabled();
-        public void OnDisabled();
+
+
+
+    }
+
+    public interface ISideBarItem: IViewBase
+    {
+
 
     }
 
     public record SideBarItemInfo(string Name, string Description, Type MainView);
+    public record WindowInfo(string Name, string Description, Type MainView);
 
     public static class Logger
     {

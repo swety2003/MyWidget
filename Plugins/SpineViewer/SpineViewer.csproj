@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewModel\**" />
+    <EmbeddedResource Remove="ViewModel\**" />
+    <None Remove="ViewModel\**" />
+    <Page Remove="ViewModel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.1.303" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	<PackageReference Include="MonoGame.Content.Builder" Version="3.7.0.8" />
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\PluginSDK\PluginSDK.csproj">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</ProjectReference>
+	</ItemGroup>
+
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	    <!--<Exec Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\Default&quot; /y/e" />-->
+	    <Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot;" />
+	    <Exec IgnoreExitCode="true" Command="mkdir &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot;" />
+
+
+
+	    <Exec Condition=" '$(Configuration)' == 'Release' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Release\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+	    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="xcopy &quot;$(TargetDir)&quot; &quot;$(SolutionDir)MainApp\bin\Debug\net6.0-windows\Plugins\$(ProjectName)&quot; /y/e" />
+
+    </Target>
+
+</Project>

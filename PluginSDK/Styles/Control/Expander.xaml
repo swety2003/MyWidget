@@ -2,16 +2,16 @@
 
     <SolidColorBrush x:Key="Expander.Static.Circle.Stroke" Color="#FF333333" />
     <SolidColorBrush x:Key="Expander.Static.Circle.Fill" Color="#FFFFFFFF" />
-    <SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="{DynamicResource TextColor84}" />
+    <SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="{DynamicResource Color84}" />
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="#FF5593FF" />
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="#FFF3F9FF" />
-    <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="{DynamicResource TextColor98}" />
+    <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="{DynamicResource Color98}" />
     <SolidColorBrush x:Key="Expander.Pressed.Circle.Stroke" Color="#FF3C77DD" />
     <SolidColorBrush x:Key="Expander.Pressed.Circle.Fill" Color="#FFD9ECFF" />
-    <SolidColorBrush x:Key="Expander.Pressed.Arrow.Stroke" Color="{DynamicResource TextColor84}" />
+    <SolidColorBrush x:Key="Expander.Pressed.Arrow.Stroke" Color="{DynamicResource Color84}" />
     <SolidColorBrush x:Key="Expander.Disabled.Circle.Stroke" Color="#FFBCBCBC" />
     <SolidColorBrush x:Key="Expander.Disabled.Circle.Fill" Color="#FFE6E6E6" />
-    <SolidColorBrush x:Key="Expander.Disabled.Arrow.Stroke" Color="{DynamicResource TextColor57}" />
+    <SolidColorBrush x:Key="Expander.Disabled.Arrow.Stroke" Color="{DynamicResource Color57}" />
     <Style x:Key="ExpanderHeaderFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -253,7 +253,7 @@
         </Setter>
     </Style>
     <Style x:Key="ExpanderStyle1" TargetType="{x:Type Expander}">
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush84}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush84}" />
         <Setter Property="Background" Value="{DynamicResource DefaultBackGroundBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />

@@ -11,7 +11,7 @@
     d:DataContext="{d:DesignInstance Type=viewmodel:DigitalClockVM}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Foreground="{DynamicResource TextBrush98}"
+    Foreground="{DynamicResource Brush98}"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -31,19 +31,19 @@
                     Margin="-5,-20"
                     FontFamily="Microsoft YaHei Light"
                     FontSize="130"
-                    Text="{Binding NowTime, StringFormat={}{0:HH:mm}, ConverterCulture=Zh-CN}" />
+                    Text="{Binding NowTime, StringFormat={}{0:HH:mm}, ConverterCulture=Zh-CN, FallbackValue=00:00}" />
                 <TextBlock
                     Margin="5,0"
                     VerticalAlignment="Bottom"
                     FontSize="45"
                     Foreground="#c85961"
-                    Text="{Binding NowTime, StringFormat={}:{0:ss}, ConverterCulture=Zh-CN}" />
+                    Text="{Binding NowTime, StringFormat={}:{0:ss}, ConverterCulture=Zh-CN, FallbackValue=:00}" />
             </StackPanel>
             <TextBlock FontSize="15">
 
 
 
-                <Run Text="{Binding NowTime, StringFormat={}{0:D}, ConverterCulture=Zh-CN}" />
+                <Run Text="{Binding NowTime, StringFormat={}{0:D}, ConverterCulture=Zh-CN, FallbackValue=2022-03-03}" />
 
             </TextBlock>
         </StackPanel>

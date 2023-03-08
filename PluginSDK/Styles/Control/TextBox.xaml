@@ -7,9 +7,9 @@
         x:Key="SimpleTextBox"
         BasedOn="{StaticResource {x:Static purs:StyleKeys.TextBoxStyle}}"
         TargetType="TextBox">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush16}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush26}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush98}" />
+        <Setter Property="Background" Value="{DynamicResource Brush16}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush26}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush98}" />
     </Style>
 
 </ResourceDictionary>

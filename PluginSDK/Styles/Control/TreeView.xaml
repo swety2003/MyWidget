@@ -6,7 +6,7 @@
         <Setter Property="BorderBrush" Value="{StaticResource ListBorder}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush98}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush98}" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
@@ -34,7 +34,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource BackgroundBrush26}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource Brush26}" />
                         </Trigger>
                         <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
                             <Setter TargetName="_tv_scrollviewer_" Property="CanContentScroll" Value="true" />

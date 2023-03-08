@@ -9,8 +9,8 @@
     Title="AIScheduleSetting"
     Width="800"
     Height="450"
-    Background="{DynamicResource BackGroundBrush12}"
-    Foreground="{DynamicResource TextBrush98}"
+    Background="{DynamicResource Brush12}"
+    Foreground="{DynamicResource Brush98}"
     mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary>
@@ -23,7 +23,7 @@
     <DockPanel>
         <Border
             Padding="8"
-            BorderBrush="{DynamicResource TextBrush84}"
+            BorderBrush="{DynamicResource Brush84}"
             BorderThickness="0,0,0,2"
             DockPanel.Dock="Top">
 
@@ -41,7 +41,7 @@
         </Border>
         <StackPanel Margin="14,4">
             <GroupBox
-                Background="{DynamicResource BackgroundBrush18}"
+                Background="{DynamicResource Brush18}"
                 BorderBrush="{DynamicResource AccentBrush}"
                 BorderThickness="0"
                 Style="{StaticResource SettingItem}">
@@ -85,7 +85,7 @@
 
 
             <GroupBox
-                Background="{DynamicResource BackgroundBrush18}"
+                Background="{DynamicResource Brush18}"
                 BorderBrush="{DynamicResource AccentBrush}"
                 BorderThickness="0"
                 Style="{StaticResource SettingItem}">

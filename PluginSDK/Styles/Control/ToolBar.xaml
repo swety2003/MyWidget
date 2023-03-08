@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
 
-    <SolidColorBrush x:Key="thumbStroke" Color="{DynamicResource TextColor57}" />
+    <SolidColorBrush x:Key="thumbStroke" Color="{DynamicResource Color57}" />
     <SolidColorBrush x:Key="ToolBarButtonHover" Color="{DynamicResource ToolBarButtonHoverColor}" />
     <SolidColorBrush x:Key="ToolBarMenuBorder" Color="#FFB6BDC5" />
     <SolidColorBrush x:Key="ToolBarSubMenuBackground" Color="#FFEEF5FD" />

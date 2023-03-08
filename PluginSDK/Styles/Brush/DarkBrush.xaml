@@ -2,30 +2,64 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="DarkColor.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <SolidColorBrush x:Key="DefaultBackGroundBrush" Color="{StaticResource DefaultBackGroundColor}" />
     <SolidColorBrush x:Key="BackGroundBrush12" Color="{StaticResource BackGroundColor12}" />
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
     <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
-    <SolidColorBrush x:Key="BackgroundBrush24" Color="{StaticResource BackgroundColor24}" />
-    <SolidColorBrush x:Key="BackgroundBrush26" Color="{StaticResource BackgroundColor26}" />
-    <SolidColorBrush x:Key="BackgroundBrush18" Color="{StaticResource BackgroundColor18}" />
-    <SolidColorBrush x:Key="BackgroundBrush16" Color="{StaticResource BackgroundColor16}" />
-    <SolidColorBrush x:Key="BackgroundBrush44" Color="{StaticResource BackgroundColor44}" />
-    <SolidColorBrush x:Key="BackgroundBrush22" Color="{StaticResource BackgroundColor22}" />
-    <SolidColorBrush x:Key="BackgroundBrush20" Color="{StaticResource BackgroundColor20}" />
-    <SolidColorBrush x:Key="BackgroundBrush60" Color="{StaticResource BackgroundColor60}" />
-    <SolidColorBrush x:Key="SplitBrush24" Color="{StaticResource SplitColor24}" />
-    <SolidColorBrush x:Key="BorderBrush44" Color="{StaticResource BorderColor44}" />
-    <SolidColorBrush x:Key="BorderBrush22" Color="{StaticResource BorderColor22}" />
-    <SolidColorBrush x:Key="BorderBrush24" Color="{StaticResource BorderColor24}" />
-    <SolidColorBrush x:Key="BorderBrush26" Color="{StaticResource BorderColor26}" />
-    <SolidColorBrush x:Key="BorderBrush60" Color="{StaticResource BorderColor60}" />
-    <SolidColorBrush x:Key="TextBrush84" Color="{StaticResource TextColor84}" />
-    <SolidColorBrush x:Key="TextBrush23" Color="{StaticResource TextColor23}" />
-    <SolidColorBrush x:Key="TextBrush98" Color="{StaticResource TextColor98}" />
-    <SolidColorBrush x:Key="TextBrush70" Color="{StaticResource TextColor70}" />
-    <SolidColorBrush x:Key="TextBrush57" Color="{StaticResource TextColor57}" />
     <SolidColorBrush x:Key="DarkDangerBrush" Color="{StaticResource DarkDangerColor}" />
     <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource DangerColor}" />
     <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}" />
+
+
+    <SolidColorBrush x:Key="Brush0" Color="{StaticResource Color0}" />
+    <SolidColorBrush x:Key="Brush2" Color="{StaticResource Color2}" />
+    <SolidColorBrush x:Key="Brush4" Color="{StaticResource Color4}" />
+    <SolidColorBrush x:Key="Brush6" Color="{StaticResource Color6}" />
+    <SolidColorBrush x:Key="Brush8" Color="{StaticResource Color8}" />
+    <SolidColorBrush x:Key="Brush10" Color="{StaticResource Color10}" />
+    <SolidColorBrush x:Key="Brush12" Color="{StaticResource Color12}" />
+    <SolidColorBrush x:Key="Brush14" Color="{StaticResource Color14}" />
+    <SolidColorBrush x:Key="Brush16" Color="{StaticResource Color16}" />
+    <SolidColorBrush x:Key="Brush18" Color="{StaticResource Color18}" />
+    <SolidColorBrush x:Key="Brush20" Color="{StaticResource Color20}" />
+    <SolidColorBrush x:Key="Brush22" Color="{StaticResource Color22}" />
+    <SolidColorBrush x:Key="Brush24" Color="{StaticResource Color24}" />
+    <SolidColorBrush x:Key="Brush26" Color="{StaticResource Color26}" />
+    <SolidColorBrush x:Key="Brush28" Color="{StaticResource Color28}" />
+    <SolidColorBrush x:Key="Brush30" Color="{StaticResource Color30}" />
+    <SolidColorBrush x:Key="Brush32" Color="{StaticResource Color32}" />
+    <SolidColorBrush x:Key="Brush34" Color="{StaticResource Color34}" />
+    <SolidColorBrush x:Key="Brush36" Color="{StaticResource Color36}" />
+    <SolidColorBrush x:Key="Brush38" Color="{StaticResource Color38}" />
+    <SolidColorBrush x:Key="Brush40" Color="{StaticResource Color40}" />
+    <SolidColorBrush x:Key="Brush42" Color="{StaticResource Color42}" />
+    <SolidColorBrush x:Key="Brush44" Color="{StaticResource Color44}" />
+    <SolidColorBrush x:Key="Brush46" Color="{StaticResource Color46}" />
+    <SolidColorBrush x:Key="Brush48" Color="{StaticResource Color48}" />
+    <SolidColorBrush x:Key="Brush50" Color="{StaticResource Color50}" />
+    <SolidColorBrush x:Key="Brush52" Color="{StaticResource Color52}" />
+    <SolidColorBrush x:Key="Brush54" Color="{StaticResource Color54}" />
+    <SolidColorBrush x:Key="Brush56" Color="{StaticResource Color56}" />
+    <SolidColorBrush x:Key="Brush58" Color="{StaticResource Color58}" />
+    <SolidColorBrush x:Key="Brush60" Color="{StaticResource Color60}" />
+    <SolidColorBrush x:Key="Brush62" Color="{StaticResource Color62}" />
+    <SolidColorBrush x:Key="Brush64" Color="{StaticResource Color64}" />
+    <SolidColorBrush x:Key="Brush66" Color="{StaticResource Color66}" />
+    <SolidColorBrush x:Key="Brush68" Color="{StaticResource Color68}" />
+    <SolidColorBrush x:Key="Brush70" Color="{StaticResource Color70}" />
+    <SolidColorBrush x:Key="Brush72" Color="{StaticResource Color72}" />
+    <SolidColorBrush x:Key="Brush74" Color="{StaticResource Color74}" />
+    <SolidColorBrush x:Key="Brush76" Color="{StaticResource Color76}" />
+    <SolidColorBrush x:Key="Brush78" Color="{StaticResource Color78}" />
+    <SolidColorBrush x:Key="Brush80" Color="{StaticResource Color80}" />
+    <SolidColorBrush x:Key="Brush82" Color="{StaticResource Color82}" />
+    <SolidColorBrush x:Key="Brush84" Color="{StaticResource Color84}" />
+    <SolidColorBrush x:Key="Brush86" Color="{StaticResource Color86}" />
+    <SolidColorBrush x:Key="Brush88" Color="{StaticResource Color88}" />
+    <SolidColorBrush x:Key="Brush90" Color="{StaticResource Color90}" />
+    <SolidColorBrush x:Key="Brush92" Color="{StaticResource Color92}" />
+    <SolidColorBrush x:Key="Brush94" Color="{StaticResource Color94}" />
+    <SolidColorBrush x:Key="Brush96" Color="{StaticResource Color96}" />
+    <SolidColorBrush x:Key="Brush98" Color="{StaticResource Color98}" />
+
+
 </ResourceDictionary>

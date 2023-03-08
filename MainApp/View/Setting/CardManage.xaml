@@ -36,7 +36,7 @@
                     <TextBlock
                         VerticalAlignment="Center"
                         FontSize="16"
-                        Foreground="{DynamicResource TextBrush84}"
+                        Foreground="{DynamicResource Brush84}"
                         Text="已启用的卡片" />
 
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
@@ -63,14 +63,14 @@
                 Grid.Row="1"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"
-                pu:ListBoxHelper.ItemsBackground="{DynamicResource BackgroundBrush18}"
-                pu:ListBoxHelper.ItemsBorderBrush="{DynamicResource BackGroundBrush12}"
+                pu:ListBoxHelper.ItemsBackground="{DynamicResource Brush18}"
+                pu:ListBoxHelper.ItemsBorderBrush="{DynamicResource Brush12}"
                 pu:ListBoxHelper.ItemsBorderThickness="1"
                 pu:ListBoxHelper.ItemsCornerRadius="4"
-                pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource BackgroundBrush20}"
+                pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource Brush20}"
                 pu:ListBoxHelper.ItemsMargin="4"
                 pu:ListBoxHelper.ItemsPadding="0"
-                pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource BackgroundBrush20}"
+                pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource Brush20}"
                 Background="Transparent"
                 BorderThickness="0"
                 ItemsSource="{Binding CardInstances}">
@@ -80,7 +80,7 @@
                             <TextBlock
                                 Margin="0,0,0,8"
                                 FontSize="18"
-                                Foreground="{DynamicResource TextBrush98}"
+                                Foreground="{DynamicResource Brush98}"
                                 Text="还没有启用桌面卡片喔" />
                             <Button
                                 Padding="0,10"
@@ -101,7 +101,7 @@
 
                             <Border
                                 Margin="4"
-                                Background="{DynamicResource BackGroundBrush12}"
+                                Background="{DynamicResource Brush12}"
                                 BorderThickness="1">
 
                                 <Image
@@ -116,7 +116,7 @@
                                 <Grid>
                                     <TextBlock
                                         FontSize="16"
-                                        Foreground="{DynamicResource TextBrush98}"
+                                        Foreground="{DynamicResource Brush98}"
                                         Text="{Binding CardGuid, StringFormat=GUID:{0}}" />
 
 
@@ -126,8 +126,8 @@
                                         VerticalAlignment="Bottom"
                                         Rows="1">
                                         <Button
-                                            Background="{DynamicResource BackgroundBrush26}"
-                                            BorderBrush="{DynamicResource BorderBrush44}"
+                                            Background="{DynamicResource Brush26}"
+                                            BorderBrush="{DynamicResource Brush44}"
                                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.SetCardLockCommand}"
                                             CommandParameter="{Binding}"
                                             Content="锁定/解锁"
@@ -136,7 +136,7 @@
                                             pu:ButtonHelper.ClickBackground="{DynamicResource DarkDangerBrush}"
                                             pu:ButtonHelper.HoverBackground="{DynamicResource DangerBrush}"
                                             Background="{DynamicResource DarkDangerBrush}"
-                                            BorderBrush="{DynamicResource BorderBrush44}"
+                                            BorderBrush="{DynamicResource Brush44}"
                                             BorderThickness="0"
                                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.CloseCardCommand}"
                                             CommandParameter="{Binding}"
