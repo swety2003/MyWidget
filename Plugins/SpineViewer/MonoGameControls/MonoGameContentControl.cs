@@ -33,13 +33,19 @@ namespace SpineViewer.MonoGameControls
     public sealed class MonoGameContentControl : ContentControl, IDisposable
     {
         private static readonly MonoGameGraphicsDeviceService _graphicsDeviceService = new MonoGameGraphicsDeviceService();
+
+        //实例数量
         private int _instanceCount;
+        //
         private IMonoGameViewModel _viewModel;
+
         private readonly GameTime _gameTime = new GameTime();
         private readonly Stopwatch _stopwatch = new Stopwatch();
+
         private D3DImage _direct3DImage;
         private RenderTarget2D _renderTarget;
         private SharpDX.Direct3D9.Texture _renderTargetD3D9;
+
         private bool _isFirstLoad = true;
         private bool _isInitialized;
 
@@ -49,8 +55,10 @@ namespace SpineViewer.MonoGameControls
                 return;
 
             _instanceCount++;
+
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
+
             DataContextChanged += (sender, args) =>
             {
                 _viewModel = args.NewValue as IMonoGameViewModel;
@@ -58,6 +66,7 @@ namespace SpineViewer.MonoGameControls
                 if (_viewModel != null)
                     _viewModel.GraphicsDeviceService = _graphicsDeviceService;
             };
+
             SizeChanged += (sender, args) => _viewModel?.SizeChanged(sender, args);
         }
 
@@ -111,20 +120,22 @@ namespace SpineViewer.MonoGameControls
             if (_isInitialized)
                 return;
 
-            //if (Application.Current.MainWindow == null)
-            //    throw new InvalidOperationException("The application must have a MainWindow");
+            if (_viewModel==null)
+            {
+                throw new Exception("ViewModel 不能为null！");
+            }
 
             //Application.Current.MainWindow.Closing += (sender, args) => _viewModel?.OnExiting(this, EventArgs.Empty);
-            PlayerW.Instance.ContentRendered += (sender, args) =>
-            {
-                if (_isFirstLoad)
-                {
-                    _graphicsDeviceService.StartDirect3D(PlayerW.Instance);
-                    _viewModel?.Initialize();
-                    _viewModel?.LoadContent();
-                    _isFirstLoad = false;
-                }
-            };
+            //PlayerW.Instance.ContentRendered += (sender, args) =>
+            //{
+            //    if (_isFirstLoad)
+            //    {
+            //        _graphicsDeviceService.StartDirect3D(PlayerW.Instance);
+            //        _viewModel?.Initialize();
+            //        _viewModel?.LoadContent();
+            //        _isFirstLoad = false;
+            //    }
+            //};
 
             _direct3DImage = new D3DImage();
 

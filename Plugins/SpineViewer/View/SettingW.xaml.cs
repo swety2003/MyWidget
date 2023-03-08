@@ -2,6 +2,8 @@
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using SpineViewer.Common;
+using SpineViewer.Model;
+using SpineViewer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -40,12 +42,17 @@ namespace SpineViewer.View
             new SwVersion(3, 7, 94),
             new SwVersion(3, 8, 95)
         };
+
         private SwVersion _curVersion = new SwVersion();
 
-        public SettingW()
+
+        PlayerVM playerVM;
+        public SettingW(PlayerVM playerVM)
         {
             InitializeComponent();
             cboVersion.ItemsSource = Versions;
+            this.playerVM = playerVM;
+            debug_view.DataContext= playerVM.PlayerData;
         }
 
         private void btBrowseAtlas_Click(object sender, RoutedEventArgs e)
@@ -147,23 +154,17 @@ namespace SpineViewer.View
             PremultipledAlpha = chkPremultiAlpha.IsChecked == true;
             DialogResult = true;
         }
+
+        private void btUnloadSpine_Click(object sender, RoutedEventArgs e)
+        {
+            playerVM.RemoveSpine();
+        }
+
+        private void btApplySpine_Click(object sender, RoutedEventArgs e)
+        {
+            playerVM.ApplySpine();
+
+        }
     }
 
-    public class SpineJsonHeader
-    {
-        public SpineJsonHeaderSkeleton Skeleton { get; set; }
-    }
-
-    public class SpineJsonHeaderSkeleton
-    {
-        public string Hash { get; set; }
-        [JsonProperty("spine")]
-        public string Version { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Width { get; set; }
-        public double Height { get; set; }
-        public string Images { get; set; }
-        public string Audio { get; set; }
-    }
 }

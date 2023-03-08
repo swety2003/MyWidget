@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using PluginSDK;
+using SpineViewer.MonoGameControls;
 using SpineViewer.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -43,15 +44,19 @@ namespace SpineViewer.View
             DataContext = _vm;
         }
 
+
+        private bool _isFirstLoad = true;
         private void PlayerW_ContentRendered(object? sender, EventArgs e)
         {
-            //if (_isFirstLoad)
-            //{
-            //    _graphicsDeviceService.StartDirect3D(PlayerW.Instance);
-            //    _viewModel?.Initialize();
-            //    _viewModel?.LoadContent();
-            //    _isFirstLoad = false;
-            //}
+            if (_isFirstLoad)
+            {
+                var _graphicsDeviceService = _vm.GraphicsDeviceService as MonoGameGraphicsDeviceService;
+
+                _graphicsDeviceService?.StartDirect3D(this);
+                _vm?.Initialize();
+                _vm?.LoadContent();
+                _isFirstLoad = false;
+            }
         }
 
         public Guid GUID { get; private set; }
@@ -75,7 +80,7 @@ namespace SpineViewer.View
 
         public void ShowSetting()
         {
-            SettingW dlg = new SettingW();
+            SettingW dlg = new SettingW(_vm);
             if (dlg.ShowDialog() == true)
             {
                 _vm.AddSpine(dlg.AtlasFile, dlg.SpineFile, dlg.LoaderVersion, dlg.PremultipledAlpha);
@@ -105,7 +110,6 @@ namespace SpineViewer.View
         #region MonoGameControl Mouse Handler
         bool monoControl_Mouse = false;
         Point monoControl_MousePos;
-        private bool _isFirstLoad;
 
         private void monoGameControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -141,6 +145,13 @@ namespace SpineViewer.View
         private void btSetting_Click(object sender, RoutedEventArgs e)
         {
             this.ShowSetting();
+
+
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

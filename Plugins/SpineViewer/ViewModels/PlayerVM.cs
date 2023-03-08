@@ -25,6 +25,7 @@ namespace SpineViewer.ViewModels
 
         public PlayerVM()
         {
+
         }
 
         public override void LoadContent()
@@ -66,10 +67,12 @@ namespace SpineViewer.ViewModels
                 _player = null;
             }
         }
+        
         public void RemoveSpine()
         {
             if (_player != null) _player.RemoveFlag = true;
         }
+        
         public void ApplySpine()
         {
             if (_player != null)

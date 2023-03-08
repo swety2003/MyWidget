@@ -7,10 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Content\**" />
     <Compile Remove="ViewModel\**" />
+    <EmbeddedResource Remove="Content\**" />
     <EmbeddedResource Remove="ViewModel\**" />
+    <None Remove="Content\**" />
     <None Remove="ViewModel\**" />
+    <Page Remove="Content\**" />
     <Page Remove="ViewModel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="View\PlayerV.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="View\PlayerV.xaml" />
   </ItemGroup>
 
   <ItemGroup>

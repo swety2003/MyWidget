@@ -10,6 +10,7 @@ namespace SpineViewer.MonoGameControls
     {
         IGraphicsDeviceService GraphicsDeviceService { get; set; }
 
+        
         void Initialize();
         void LoadContent();
         void UnloadContent();
@@ -26,6 +27,7 @@ namespace SpineViewer.MonoGameControls
     {
         public MonoGameViewModel()
         {
+            
         }
 
         public void Dispose()
