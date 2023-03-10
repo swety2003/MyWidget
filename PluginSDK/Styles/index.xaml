@@ -20,6 +20,7 @@
         <ResourceDictionary Source="Control/CheckBox.xaml" />
         <ResourceDictionary Source="Control/TreeViewItemContainer.xaml" />
         <ResourceDictionary Source="Control/ContextMenu.xaml" />
-        <ResourceDictionary Source="Control/MyThumbStyle.xaml" />
+        <ResourceDictionary Source="Control/CardControl.xaml" />
+        <ResourceDictionary Source="Control/CardWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

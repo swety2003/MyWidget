@@ -14,17 +14,17 @@ namespace MainApp.ViewModel
 {
     public partial class WidgetViewVM : ObservableObject
     {
+
+        private AppConfig Config => App.GetService<AppConfigManager>().Config;
         //[ObservableProperty]
         //private ObservableCollection<UIElement> activeCards = new ObservableCollection<UIElement>();
-        ILoggerFactory loggerFactory;
 
-        public WidgetViewVM(ILoggerFactory loggerFactory)
+        private CardManageService CardManagerService = App.GetService<CardManageService>();
+
+        public WidgetViewVM()
         {
-            this.loggerFactory = loggerFactory;
         }
-        public Canvas? cv;
 
-        public AppConfig Config => App.GetService<AppConfigManager>().Config;
 
         public void CreateCard(CardInfo? ci)
         {
@@ -33,80 +33,23 @@ namespace MainApp.ViewModel
                 return;
             }
 
-            if (ci.MainView.IsAssignableFrom(typeof(ICard)))
-            {
+            CardManagerService.Create(ci);
 
-                var wc = Activator.CreateInstance(ci.MainView, Guid.NewGuid()) as ICard;
-
-
-                CardControl mt = new CardControl { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
-
-
-                wc.OnEnabled();
-                cv?.Children.Add(mt);
-
-                var card = new Card(ci.MainView.FullName, new Point());
-
-                mt.OnCardMoved += Mt_OnCardMoved;
-
-                Config.instances.Add(wc.GUID, card);
-
-
-                App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
-            }
-            else
-            {
-                var wc = Activator.CreateInstance(ci.MainView, Guid.NewGuid()) as IWindow;
-                var win = (wc as Window);
-                win.Show();
-
-                win.LocationChanged += Win_LocationChanged;
-
-                App.GetService<CardWindowManage>().Add(wc);
-
-                var card = new Card(ci.MainView.FullName, new Point());
-
-                Config.instances.Add(wc.GUID, card);
-            }
+            App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
+            
 
         }
 
-        private void Win_LocationChanged(object? sender, EventArgs e)
-        {
-            var w = sender as Window;
-            Config.instances[w.GetIWindow().GUID].Pos = new Point(w.Left,w.Top) ;
-        }
 
-        private void Mt_OnCardMoved(CardControl sender, Point pos)
-        {
-            Config.instances[sender.GetCard().GUID].Pos = pos;
-        }
+
+        // 被 CardControl 使用
 
         [RelayCommand]
         void CloseCard(object o)
         {
-            if (o is CardControl)
-            {
 
-                var Thumb = o as CardControl;
-                if (Thumb != null)
-                {
-                    Thumb.GetCard().OnDisabled();
-                    cv?.Children?.Remove(Thumb);
-                    Config?.instances.Remove(Thumb.GetCard().GUID);
-                }
-            }
-            else if (o is Window)
-            {
-                var w = o as Window;
-                var iw = w.GetIWindow();
-
-                iw.OnDisabled();
-                w.Close();
-                Config?.instances.Remove(w.GetIWindow().GUID);
-                App.GetService<CardWindowManage>().Remove(iw);
-
-            }
+            var thumb = o as CardControl;
+            CardManagerService.Remove(thumb.Content as ICard);
 
             App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
         }

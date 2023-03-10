@@ -2,6 +2,7 @@
 using MyDesktopCards.ViewModel;
 using PluginSDK;
 using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MyDesktopCards.View
@@ -11,6 +12,8 @@ namespace MyDesktopCards.View
     /// </summary>
     public partial class HardWareMonitor : UserControl, ICard
     {
+
+        CardInfo ICard.info => info;
         internal static CardInfo info = new CardInfo(null, "资源监控", "硬件占用监控", typeof(HardWareMonitor));
 
         private ILogger<HardWareMonitor> logger => Logger.CreateLogger<HardWareMonitor>();
@@ -47,6 +50,12 @@ namespace MyDesktopCards.View
         public void ShowSetting()
         {
 
+        }
+
+
+        public UIElement GetUIElement()
+        {
+            return this as UIElement;
         }
     }
 }

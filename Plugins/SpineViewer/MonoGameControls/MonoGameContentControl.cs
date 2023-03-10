@@ -124,17 +124,6 @@ namespace SpineViewer.MonoGameControls
                 throw new Exception("ViewModel 不能为null！");
             }
 
-            //Application.Current.MainWindow.Closing += (sender, args) => _viewModel?.OnExiting(this, EventArgs.Empty);
-            //PlayerW.Instance.ContentRendered += (sender, args) =>
-            //{
-            //    if (_isFirstLoad)
-            //    {
-            //        _graphicsDeviceService.StartDirect3D(PlayerW.Instance);
-            //        _viewModel?.Initialize();
-            //        _viewModel?.LoadContent();
-            //        _isFirstLoad = false;
-            //    }
-            //};
 
             _direct3DImage = new D3DImage();
 

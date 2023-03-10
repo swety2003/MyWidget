@@ -7,6 +7,7 @@ using PluginSDK.Controls;
 using System.Collections.ObjectModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MainApp.ViewModel
 {
@@ -16,7 +17,7 @@ namespace MainApp.ViewModel
 
 
         [ObservableProperty]
-        ObservableCollection<IPreviewable>? cardInstances;
+        ObservableCollection<ICard>? cardInstances;
 
 
         [ObservableProperty]
@@ -25,18 +26,20 @@ namespace MainApp.ViewModel
         [RelayCommand]
         void GetCardDetail()
         {
-            CardInstances = new ObservableCollection<IPreviewable>();
-            var activeCards = App.GetService<WidgetView>().cv.Children;
+            CardInstances = new ObservableCollection<ICard>();
 
-            var activeCardWindows = App.GetService<CardWindowManage>().AllCardWindows;
+            var activeCards = App.GetService<CardManageService>().ActiveCards;
             foreach (var card in activeCards)
             {
-                
-                CardInstances.Add(card as IPreviewable);
-            }
-            foreach (var item in activeCardWindows)
-            {
-                CardInstances.Add(item);
+                if (card!=null)
+                {
+
+                    CardInstances.Add(card);
+                }
+                else
+                {
+                    // Todo logger 
+                }
             }
             PopOpen = Visibility.Visible;
         }
@@ -48,41 +51,28 @@ namespace MainApp.ViewModel
         }
 
         [RelayCommand]
-        void CloseCard(object card)
+        void CloseCard(ICard card)
         {
-            if (card is CardControl)
-            {
+            App.GetService<CardManageService>().Remove(card);
 
-                CardControl t = (CardControl)card;
-
-                var wvvm = App.GetService<WidgetViewVM>();
-                wvvm.CloseCardCommand.Execute(t);
-
-
-                GetCardDetail();
-            }
-            else if(card is Window)
-            {
-                var w = (Window)card;
-
-                
-            }
+            GetCardDetail();
         }
 
         [RelayCommand]
-        void SetCardLock(object? card)
+        void SetCardLock(ICard? card)
         {
-            if (card is CardControl)
+            var uc = card as UserControl; if (uc != null)
             {
+                var cc = uc.Parent as CardControl;
 
-                CardControl t = (CardControl)card;
-                t?.SetLocked();
+                cc?.SetLocked();
             }
         }
 
         [RelayCommand]
         void ShowCardSetting(object? thumb)
         {
+            // todo ShowCardSetting
             //App.GetService<WidgetViewVM>().ShowCardSettingCommand(thumb);
 
         }

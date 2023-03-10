@@ -59,7 +59,7 @@ namespace MainApp
                     services.AddSingleton<NavigationService>();
                     services.AddSingleton<PluginLoader>();
                     services.AddSingleton<AppConfigManager>();
-                    services.AddSingleton<CardWindowManage>();
+                    services.AddSingleton<CardManageService>();
 
                     #region ViewModel
 

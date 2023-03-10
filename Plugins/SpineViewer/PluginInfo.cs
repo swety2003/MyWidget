@@ -23,7 +23,10 @@ namespace SpineViewer
             //    View.PlayerV.info,
             //};
 
-            throw new NotImplementedException();
+            return new List<CardInfo>
+            {
+                SpinePlayer.info,
+            };
         }
 
         public List<SideBarItemInfo> GetAllSBItems()
@@ -32,12 +35,5 @@ namespace SpineViewer
         }
 
 
-        List<CardInfo> IPlugin.GetAllWindows()
-        {
-            return new List<CardInfo>
-            {
-                PlayerW.info,
-            };
-        }
     }
 }

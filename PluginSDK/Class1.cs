@@ -11,7 +11,7 @@ namespace PluginSDK
 {
 
 
-    public record CardInfo(ImageSource Icon, string Name, string Description, Type MainView);
+    public record CardInfo(ImageSource Icon, string Name, string Description, Type MainView,CardType CardType=CardType.UserControl);
 
     public interface IPlugin
     {
@@ -21,8 +21,6 @@ namespace PluginSDK
         public string author { get; }
 
         public List<CardInfo> GetAllCards();
-
-        public List<CardInfo> GetAllWindows();
 
         public List<SideBarItemInfo> GetAllSBItems();
     }
@@ -38,24 +36,22 @@ namespace PluginSDK
         public void ShowSetting();
     }
 
+    public enum CardType
+    {
+        Window,UserControl
+    }
 
-    public interface ICard: IViewBase
+    public interface ICard: IViewBase,IPreviewable
     {
 
         public int HeightPix { get; }
         public int WidthPix { get; }
 
+        public CardInfo info { get; }
 
     }
 
     
-
-    public interface IWindow: IViewBase, IPreviewable
-    {
-
-
-
-    }
 
     public interface ISideBarItem: IViewBase
     {
@@ -123,46 +119,22 @@ namespace PluginSDK
         }
     }
 
-    public static class WindowExt
+    public static class ICardExt
     {
-        public static string GetPluginConfigFilePath(this Window self)
-        {
-            var @card = self as IWindow;
-
-            var abl = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
-
-            var ret = Path.Combine(abl, "Configs", $"{card.GUID}.json");
-
-            if (!Directory.Exists(Path.GetDirectoryName(ret)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(ret));
-            }
-            return ret;
-        }
-
-
-        public static IWindow GetIWindow(this Window self)
+        public static CardControl GetCardControl(this ICard card)
         {
 
-            return self as IWindow;
+            var c = (card as UserControl).Parent as CardControl;
+            return c;
         }
 
-        //public static void ResizeCard(this UserControl self, int h, int w)
-        //{
+        public static CardWindow GetCardWindow(this ICard card)
+        {
 
-        //    var t = self?.Parent as MyThumb;
-
-        //    if (t == null)
-        //    {
-        //        return;
-        //    }
-
-
-        //    t.HeightPix = h;
-        //    t.WidthPix = w;
-        //}
+            var win = (card as UserControl).Parent as CardWindow;
+            return win;
+        }
     }
-
 
     public interface ICanOverrideUI
     {

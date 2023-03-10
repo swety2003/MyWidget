@@ -7,8 +7,11 @@ using System.Windows;
 
 namespace PluginSDK.Controls
 {
-    internal class CardWindow : Window
+    public class CardWindow : Window
     {
-
+        public ICard GetCard()
+        {
+            return this.Content as ICard;
+        }
     }
 }

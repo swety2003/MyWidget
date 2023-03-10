@@ -2,6 +2,7 @@
 using MainApp.Model;
 using MainApp.ViewModel;
 using Microsoft.Extensions.Logging;
+using Panuon.WPF.UI;
 using PluginSDK;
 using PluginSDK.Controls;
 using System;
@@ -28,7 +29,6 @@ namespace MainApp.View
             cardInfos = App.GetService<PluginLoader>().CardInfos;
             this.loggerFactory = loggerFactory;
 
-            App.GetService<WidgetViewVM>().cv = cv;
         }
 
         public override void OnApplyTemplate()
@@ -45,25 +45,11 @@ namespace MainApp.View
 
                     if (item.Value.Wid == wid)
                     {
-                        if (ci.MainView.IsAssignableFrom(typeof(ICard)))
+                        if (ci.MainView.GetInterface("ICard")!=null)
                         {
+                            App.GetService<CardManageService>().Create(ci,item);
 
-                            var wc = Activator.CreateInstance(ci.MainView, item.Key) as ICard;
-                            if (wc == null)
-                            {
-                                wc = Activator.CreateInstance(ci.MainView) as ICard ?? throw new Exception($"加载{ci.MainView.FullName}失败！");
-                            }
-
-                            CardControl mt = new CardControl { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
-
-                            Canvas.SetLeft(mt, item.Value.Pos.X);
-                            Canvas.SetTop(mt, item.Value.Pos.Y);
-
-                            cv.Children.Add(mt);
-
-                            wc.OnEnabled();
-
-                            mt.OnCardMoved += Mt_OnCardMoved;
+                            break;
                         }
 
 
@@ -74,27 +60,8 @@ namespace MainApp.View
 
             App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
 
-            //foreach (var item in App.CardInfos)
-            //{
-
-            //    //var wc = Activator.CreateInstance(item.MainView, System.Guid.NewGuid()) as ICard ?? throw new Exception();
 
 
-            //    //MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
-
-            //    //cv.Children.Add(mt);
-
-            //    //wc.OnEnabled();
-
-
-            //}
-
-        }
-
-        private void Mt_OnCardMoved(CardControl sender, Point pos)
-        {
-
-            appConfig.instances[sender.GetCard().GUID].Pos = pos;
         }
     }
 }

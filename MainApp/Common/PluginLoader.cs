@@ -121,22 +121,6 @@ namespace MainApp.Common
                     _logger.LogWarning($"加载{item.name}.GetAllSBItems() 时发生错误：{ex.Message}");
 
                 }
-
-
-                try
-                {
-
-                    foreach (var s in item.GetAllWindows())
-                    {
-                        CardInfos.Add(s);
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogWarning($"加载{item.name}.GetAllWindows() 时发生错误：{ex.Message}");
-
-                }
             }
 
 

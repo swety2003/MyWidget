@@ -19,49 +19,66 @@ using System.Windows.Shapes;
 namespace SpineViewer.View
 {
     /// <summary>
-    /// PlayerW.xaml 的交互逻辑
+    /// SpinePlayer.xaml 的交互逻辑
     /// </summary>
-    public partial class PlayerW : Window,IWindow
+    public partial class SpinePlayer : UserControl, ICard, IPreviewable
     {
-
+        Window? window => this.Parent as Window;
         private PlayerVM _vm = new PlayerVM();
-        public static CardInfo info = new CardInfo(null,"SpineViewerW","",typeof(PlayerW));
+        public static CardInfo info = new CardInfo(null,"SpineViewer","",typeof(SpinePlayer),CardType.Window);
 
-        public PlayerW(Guid guid)
+        public SpinePlayer(Guid guid)
         {
             InitializeComponent();
             GUID = guid;
-            ContentRendered += PlayerW_ContentRendered;
-            DataContext = _vm;
         }
 
 
         private bool _isFirstLoad = true;
 
-        private void PlayerW_ContentRendered(object? sender, EventArgs e)
-        {
-            if (_isFirstLoad)
-            {
-                var _graphicsDeviceService = _vm.GraphicsDeviceService as MonoGameGraphicsDeviceService;
-
-                _graphicsDeviceService?.StartDirect3D(this);
-                _vm?.Initialize();
-                _vm?.LoadContent();
-                _isFirstLoad = false;
-            }
-        }
-
         public Guid GUID { get; private set; }
+
+        public int HeightPix => (int)this.Height;
+
+        public int WidthPix => (int)this.Width;
+
+        CardInfo ICard.info => info;
 
         public void OnDisabled()
         {
 
-            _vm?.OnExiting(this, EventArgs.Empty);
+            _vm.RemoveSpine();
+
+            _vm.OnExiting(null, null);
         }
 
         public void OnEnabled()
         {
+            if (window==null)
+            {
+                throw new Exception("找不到父窗口！");
+            }
+            DataContext = _vm;
+            if (_isFirstLoad)
+            {
+                monoGameControl = new MonoGameContentControl();
+                monoGameContainer.Child= monoGameControl;
+                monoGameControl.MouseMove += monoGameControl_MouseMove;
+                monoGameControl.MouseDown += monoGameControl_MouseDown;
+                monoGameControl.MouseUp += monoGameControl_MouseUp;
 
+
+
+                var _graphicsDeviceService = _vm.GraphicsDeviceService as MonoGameGraphicsDeviceService;
+
+                _graphicsDeviceService?.StartDirect3D(window);
+                _vm?.Initialize();
+                _vm?.LoadContent();
+                _isFirstLoad = false;
+
+
+
+            }
         }
 
         public void ShowSetting()
@@ -86,14 +103,11 @@ namespace SpineViewer.View
             _vm.IsPausing = !_vm.IsPausing;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
 
         #region MonoGameControl Mouse Handler
         bool monoControl_Mouse = false;
         Point monoControl_MousePos;
+        private MonoGameContentControl monoGameControl;
 
         private void monoGameControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -133,24 +147,27 @@ namespace SpineViewer.View
 
         }
 
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-
-            _vm.RemoveSpine();
-
-            _vm.OnExiting(null,null);
-            this.Close();
-            
-        }
 
         public UIElement GetUIElement()
         {
             return this.Content as UIElement;
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            window?.DragMove();
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            window.Topmost = true;
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            window.Topmost = false;
+
         }
     }
 }
