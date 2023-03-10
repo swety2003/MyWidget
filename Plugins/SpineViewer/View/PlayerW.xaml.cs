@@ -23,29 +23,21 @@ namespace SpineViewer.View
     /// </summary>
     public partial class PlayerW : Window,IWindow
     {
-        public static PlayerW Instance { get; private set; }
 
         private PlayerVM _vm = new PlayerVM();
-        public static WindowInfo info = new WindowInfo("SpineViewerW","",typeof(PlayerW));
-        public PlayerW()
+        public static CardInfo info = new CardInfo(null,"SpineViewerW","",typeof(PlayerW));
+
+        public PlayerW(Guid guid)
         {
             InitializeComponent();
-            //GUID= guid;
-            if (Instance==null)
-            {
-
-                Instance = this;
-            }
-            else
-            {
-                throw new Exception("");
-            }
+            GUID = guid;
             ContentRendered += PlayerW_ContentRendered;
             DataContext = _vm;
         }
 
 
         private bool _isFirstLoad = true;
+
         private void PlayerW_ContentRendered(object? sender, EventArgs e)
         {
             if (_isFirstLoad)
@@ -69,22 +61,14 @@ namespace SpineViewer.View
 
         public void OnEnabled()
         {
-            //if (_isFirstLoad)
-            //{
-            //    //_graphicsDeviceService.StartDirect3D(Application.Current.MainWindow);
-            //    _vm?.Initialize();
-            //    _vm?.LoadContent();
-            //    _isFirstLoad = false;
-            //}
+
         }
 
         public void ShowSetting()
         {
             SettingW dlg = new SettingW(_vm);
-            if (dlg.ShowDialog() == true)
-            {
-                _vm.AddSpine(dlg.AtlasFile, dlg.SpineFile, dlg.LoaderVersion, dlg.PremultipledAlpha);
-            }
+
+            dlg.ShowDialog();
         }
 
         private void btUnloadSpine_Click(object sender, RoutedEventArgs e)
@@ -162,6 +146,11 @@ namespace SpineViewer.View
             _vm.OnExiting(null,null);
             this.Close();
             
+        }
+
+        public UIElement GetUIElement()
+        {
+            return this.Content as UIElement;
         }
     }
 }

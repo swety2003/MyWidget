@@ -17,6 +17,7 @@ namespace MainApp.ViewModel
         public ObservableCollection<CardInfo> CardInfos => App.GetService<PluginLoader>().CardInfos;
 
 
+
         [RelayCommand]
         void AddCardToDesktop(object? info)
         {

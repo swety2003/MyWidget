@@ -6,7 +6,7 @@ namespace MainApp.Common
 {
     public static class ThumbExt
     {
-        public static ICard GetCard(this MyThumb self)
+        public static ICard GetCard(this CardControl self)
         {
             ICard? card = self.Content as ICard;
 

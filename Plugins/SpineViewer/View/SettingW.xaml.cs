@@ -150,9 +150,12 @@ namespace SpineViewer.View
         {
             AtlasFile = txtAtlasFile.Text;
             SpineFile = txtSpineFile.Text;
-            LoaderVersion = cboVersion.SelectedItem as SwVersion;
-            PremultipledAlpha = chkPremultiAlpha.IsChecked == true;
-            DialogResult = true;
+            LoaderVersion = (SwVersion)cboVersion.SelectedItem;
+            //PremultipledAlpha = chkPremultiAlpha.IsChecked == true;
+            //PremultipledAlpha 为 true 会在多个实例时崩溃，原因未知
+            PremultipledAlpha = false;
+
+            playerVM.AddSpine(AtlasFile, SpineFile, LoaderVersion, PremultipledAlpha);
         }
 
         private void btUnloadSpine_Click(object sender, RoutedEventArgs e)

@@ -2,12 +2,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:PluginSDK.Controls">
-    <Style TargetType="ui:MyThumb">
+    <Style TargetType="ui:CardControl">
         <Setter Property="Background" Value="#01000000" />
         <!--<Setter Property="IsHitTestVisible" Value="False" />-->
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="ui:MyThumb">
+                <ControlTemplate TargetType="ui:CardControl">
                     <Border
                         Padding="0"
                         Background="{TemplateBinding Background}"

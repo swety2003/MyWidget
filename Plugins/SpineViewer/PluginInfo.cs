@@ -31,10 +31,11 @@ namespace SpineViewer
             throw new NotImplementedException();
         }
 
-        public List<WindowInfo> GetAllWindows()
+
+        List<CardInfo> IPlugin.GetAllWindows()
         {
-            return new List<WindowInfo> 
-            { 
+            return new List<CardInfo>
+            {
                 PlayerW.info,
             };
         }

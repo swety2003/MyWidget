@@ -59,6 +59,7 @@ namespace MainApp
                     services.AddSingleton<NavigationService>();
                     services.AddSingleton<PluginLoader>();
                     services.AddSingleton<AppConfigManager>();
+                    services.AddSingleton<CardWindowManage>();
 
                     #region ViewModel
 
@@ -70,10 +71,11 @@ namespace MainApp
 
                     services.AddSingleton<WidgetView>();
                     services.AddTransient<CardManage>();
-                    services.AddSingleton<Settings>();
-                    services.AddSingleton<AboutPage>();
-                    services.AddSingleton<InstalledCards>();
-                    services.AddSingleton<SideBarManage>();
+
+                    services.AddTransient<Settings>();
+                    services.AddTransient<AboutPage>();
+                    services.AddTransient<InstalledCards>();
+                    services.AddTransient<SideBarManage>();
 
 
 

@@ -45,22 +45,26 @@ namespace MainApp.View
 
                     if (item.Value.Wid == wid)
                     {
-                        var wc = Activator.CreateInstance(ci.MainView, item.Key) as ICard;
-                        if (wc == null)
+                        if (ci.MainView.IsAssignableFrom(typeof(ICard)))
                         {
-                            wc = Activator.CreateInstance(ci.MainView) as ICard ?? throw new Exception($"加载{ci.MainView.FullName}失败！");
+
+                            var wc = Activator.CreateInstance(ci.MainView, item.Key) as ICard;
+                            if (wc == null)
+                            {
+                                wc = Activator.CreateInstance(ci.MainView) as ICard ?? throw new Exception($"加载{ci.MainView.FullName}失败！");
+                            }
+
+                            CardControl mt = new CardControl { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
+
+                            Canvas.SetLeft(mt, item.Value.Pos.X);
+                            Canvas.SetTop(mt, item.Value.Pos.Y);
+
+                            cv.Children.Add(mt);
+
+                            wc.OnEnabled();
+
+                            mt.OnCardMoved += Mt_OnCardMoved;
                         }
-
-                        MyThumb mt = new MyThumb { Content = wc, HeightPix = wc.HeightPix, WidthPix = wc.WidthPix };
-
-                        Canvas.SetLeft(mt, item.Value.Pos.X);
-                        Canvas.SetTop(mt, item.Value.Pos.Y);
-
-                        cv.Children.Add(mt);
-
-                        wc.OnEnabled();
-
-                        mt.OnCardMoved += Mt_OnCardMoved;
 
 
                     }
@@ -87,7 +91,7 @@ namespace MainApp.View
 
         }
 
-        private void Mt_OnCardMoved(MyThumb sender, Point pos)
+        private void Mt_OnCardMoved(CardControl sender, Point pos)
         {
 
             appConfig.instances[sender.GetCard().GUID].Pos = pos;

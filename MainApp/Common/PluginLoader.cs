@@ -25,8 +25,8 @@ namespace MainApp.Common
         public IEnumerable<IPlugin> Plugins = new ObservableCollection<IPlugin>();
 
         public ObservableCollection<CardInfo> CardInfos = new ObservableCollection<CardInfo>();
+
         public ObservableCollection<SideBarItemInfo> SideBarItemInfos = new ObservableCollection<SideBarItemInfo>();
-        public ObservableCollection<WindowInfo> WindowInfos = new ObservableCollection<WindowInfo>();
 
 
         IEnumerable<IPlugin> CreatePluginInstances(Assembly assembly)
@@ -128,7 +128,7 @@ namespace MainApp.Common
 
                     foreach (var s in item.GetAllWindows())
                     {
-                        WindowInfos.Add(s);
+                        CardInfos.Add(s);
                     }
 
                 }

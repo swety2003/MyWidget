@@ -39,7 +39,7 @@ namespace ProjM
             return sbis;
         }
 
-        public List<WindowInfo> GetAllWindows()
+        public List<CardInfo> GetAllWindows()
         {
             throw new NotImplementedException();
         }

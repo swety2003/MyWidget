@@ -32,12 +32,12 @@ namespace SpineViewer.MonoGameControls
 {
     public sealed class MonoGameContentControl : ContentControl, IDisposable
     {
-        private static readonly MonoGameGraphicsDeviceService _graphicsDeviceService = new MonoGameGraphicsDeviceService();
+        private readonly MonoGameGraphicsDeviceService _graphicsDeviceService = new MonoGameGraphicsDeviceService();
 
         //实例数量
         private int _instanceCount;
         //
-        private IMonoGameViewModel _viewModel;
+        private IMonoGameViewModel? _viewModel;
 
         private readonly GameTime _gameTime = new GameTime();
         private readonly Stopwatch _stopwatch = new Stopwatch();
@@ -46,7 +46,6 @@ namespace SpineViewer.MonoGameControls
         private RenderTarget2D _renderTarget;
         private SharpDX.Direct3D9.Texture _renderTargetD3D9;
 
-        private bool _isFirstLoad = true;
         private bool _isInitialized;
 
         public MonoGameContentControl()
@@ -70,7 +69,7 @@ namespace SpineViewer.MonoGameControls
             SizeChanged += (sender, args) => _viewModel?.SizeChanged(sender, args);
         }
 
-        public static GraphicsDevice GraphicsDevice => _graphicsDeviceService?.GraphicsDevice;
+        public GraphicsDevice GraphicsDevice => _graphicsDeviceService.GraphicsDevice;
 
         #region IDisposable
         public bool IsDisposed { get; private set; }

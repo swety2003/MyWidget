@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 namespace PluginSDK.Controls
 {
     [ContentProperty(name: "Content")]
-    public class MyThumb : Thumb
+    public class CardControl : Thumb, IPreviewable
     {
         private bool _locked;
 
@@ -40,6 +40,7 @@ namespace PluginSDK.Controls
             Locked = !Locked;
             return Locked;
         }
+
         public bool SetLocked(bool l)
         {
             Locked = l;
@@ -65,13 +66,12 @@ namespace PluginSDK.Controls
             throw new InvalidOperationException();
         }
 
-
         Canvas GetCanvas()
         {
             return GetParentObject<Canvas>(this);
         }
 
-        static MyThumb Preview = new MyThumb
+        static CardControl Preview = new CardControl
         {
             Background = new SolidColorBrush(Color.FromArgb(32, 0, 0, 0)),
             BorderThickness = new Thickness(2),
@@ -81,7 +81,7 @@ namespace PluginSDK.Controls
             //BorderBrush = new SolidColorBrush(Color.FromRgb(112, 112, 112)),
         };
 
-        public delegate void CardMovedHandler(MyThumb sender, Point pos);
+        public delegate void CardMovedHandler(CardControl sender, Point pos);
 
         public event CardMovedHandler? OnCardMoved;
 
@@ -115,7 +115,7 @@ namespace PluginSDK.Controls
         static double unit = 48;
         // Create a new metadata instance with a modified default value.
 
-        public MyThumb()
+        public CardControl()
         {
             DragDelta += MyThumb_DragDelta;
             DragStarted += MyThumb_DragStarted;
@@ -126,9 +126,6 @@ namespace PluginSDK.Controls
 
 
         }
-
-
-
 
         private void MyThumb_DragCompleted(object sender, DragCompletedEventArgs e)
         {
@@ -158,7 +155,6 @@ namespace PluginSDK.Controls
 
         }
 
-
         private void MyThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
 
@@ -180,18 +176,18 @@ namespace PluginSDK.Controls
             CacPreview();
         }
 
+        public UIElement GetUIElement()
+        {
+            return this as UIElement;
+        }
+
         //static ControlTemplate Custom = new ControlTemplate { Template=  };
 
-        static MyThumb()
+        static CardControl()
         {
 
-
-
-
-
-
-            HeightProperty.OverrideMetadata(typeof(MyThumb), new FrameworkPropertyMetadata(defaultValue: unit));
-            WidthProperty.OverrideMetadata(typeof(MyThumb), new FrameworkPropertyMetadata(defaultValue: unit));
+            HeightProperty.OverrideMetadata(typeof(CardControl), new FrameworkPropertyMetadata(defaultValue: unit));
+            WidthProperty.OverrideMetadata(typeof(CardControl), new FrameworkPropertyMetadata(defaultValue: unit));
 
             //TemplateProperty.OverrideMetadata(typeof(MyThumb), new FrameworkPropertyMetadata(defaultValue: Custom));
         }
@@ -206,7 +202,7 @@ namespace PluginSDK.Controls
 
         // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(MyThumb), new PropertyMetadata(null));
+            DependencyProperty.Register("Content", typeof(object), typeof(CardControl), new PropertyMetadata(null));
 
 
 
@@ -219,9 +215,9 @@ namespace PluginSDK.Controls
 
         // Using a DependencyProperty as the backing store for HeightPix.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeightPixProperty =
-            DependencyProperty.Register("HeightPix", typeof(int), typeof(MyThumb), new PropertyMetadata(1, (s, e) =>
+            DependencyProperty.Register("HeightPix", typeof(int), typeof(CardControl), new PropertyMetadata(1, (s, e) =>
             {
-                var self = s as MyThumb;
+                var self = s as CardControl;
                 self.Height = (int)e.NewValue * unit;
             }));
 
@@ -236,9 +232,9 @@ namespace PluginSDK.Controls
 
         // Using a DependencyProperty as the backing store for WidthPix.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WidthPixProperty =
-            DependencyProperty.Register("WidthPix", typeof(int), typeof(MyThumb), new PropertyMetadata(1, (s, e) =>
+            DependencyProperty.Register("WidthPix", typeof(int), typeof(CardControl), new PropertyMetadata(1, (s, e) =>
             {
-                var self = s as MyThumb;
+                var self = s as CardControl;
                 self.Width = (int)e.NewValue * unit;
             }));
 

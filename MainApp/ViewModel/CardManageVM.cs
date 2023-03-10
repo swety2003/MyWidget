@@ -5,6 +5,7 @@ using MainApp.View;
 using PluginSDK;
 using PluginSDK.Controls;
 using System.Collections.ObjectModel;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 
 namespace MainApp.ViewModel
@@ -15,7 +16,7 @@ namespace MainApp.ViewModel
 
 
         [ObservableProperty]
-        ObservableCollection<MyThumb>? cardInstances;
+        ObservableCollection<IPreviewable>? cardInstances;
 
 
         [ObservableProperty]
@@ -24,19 +25,19 @@ namespace MainApp.ViewModel
         [RelayCommand]
         void GetCardDetail()
         {
-            CardInstances = new ObservableCollection<MyThumb>();
+            CardInstances = new ObservableCollection<IPreviewable>();
             var activeCards = App.GetService<WidgetView>().cv.Children;
+
+            var activeCardWindows = App.GetService<CardWindowManage>().AllCardWindows;
             foreach (var card in activeCards)
             {
-                var thumb = card as MyThumb;
-                if (thumb != null)
-                {
-
-                    CardInstances.Add(thumb);
-
-                }
+                
+                CardInstances.Add(card as IPreviewable);
             }
-
+            foreach (var item in activeCardWindows)
+            {
+                CardInstances.Add(item);
+            }
             PopOpen = Visibility.Visible;
         }
 
@@ -47,23 +48,40 @@ namespace MainApp.ViewModel
         }
 
         [RelayCommand]
-        void CloseCard(MyThumb card)
+        void CloseCard(object card)
         {
-            var wvvm = App.GetService<WidgetViewVM>();
-            wvvm.CloseCardCommand.Execute(card);
+            if (card is CardControl)
+            {
+
+                CardControl t = (CardControl)card;
+
+                var wvvm = App.GetService<WidgetViewVM>();
+                wvvm.CloseCardCommand.Execute(t);
 
 
-            GetCardDetail();
+                GetCardDetail();
+            }
+            else if(card is Window)
+            {
+                var w = (Window)card;
+
+                
+            }
         }
 
         [RelayCommand]
-        void SetCardLock(MyThumb? card)
+        void SetCardLock(object? card)
         {
-            card?.SetLocked();
+            if (card is CardControl)
+            {
+
+                CardControl t = (CardControl)card;
+                t?.SetLocked();
+            }
         }
 
         [RelayCommand]
-        void ShowCardSetting(MyThumb? thumb)
+        void ShowCardSetting(object? thumb)
         {
             //App.GetService<WidgetViewVM>().ShowCardSettingCommand(thumb);
 

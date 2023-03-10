@@ -212,7 +212,10 @@
                                 <TextBlock Text="Origin Size: " />
                                 <TextBlock Text="{Binding OriginSize}" />
                             </StackPanel>
-                            <StackPanel Margin="6,3,3,0" Orientation="Horizontal">
+                            <StackPanel
+                                Margin="6,3,3,0"
+                                Orientation="Horizontal"
+                                Visibility="Collapsed">
                                 <TextBlock Text="Premultipled-Alpha: " />
                                 <TextBlock Text="{Binding PremultipledAlpha}" />
                             </StackPanel>

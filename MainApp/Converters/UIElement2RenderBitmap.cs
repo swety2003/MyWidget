@@ -1,4 +1,5 @@
-﻿using PluginSDK.Controls;
+﻿using PluginSDK;
+using PluginSDK.Controls;
 using System;
 using System.Globalization;
 using System.Windows;
@@ -16,7 +17,7 @@ namespace MainApp.Converters
             try
             {
 
-                MyThumb elt = (MyThumb)value;
+                UIElement elt = ((IPreviewable)value).GetUIElement() ;
 
                 //PresentationSource source = PresentationSource.FromVisual(elt);
                 RenderTargetBitmap rtb = new RenderTargetBitmap((int)elt.RenderSize.Width,

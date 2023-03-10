@@ -3,6 +3,7 @@ using PluginSDK.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -21,10 +22,11 @@ namespace PluginSDK
 
         public List<CardInfo> GetAllCards();
 
-        public List<WindowInfo> GetAllWindows();
+        public List<CardInfo> GetAllWindows();
 
         public List<SideBarItemInfo> GetAllSBItems();
     }
+
     public interface IViewBase
     {
 
@@ -46,7 +48,9 @@ namespace PluginSDK
 
     }
 
-    public interface IWindow: IViewBase
+    
+
+    public interface IWindow: IViewBase, IPreviewable
     {
 
 
@@ -60,7 +64,6 @@ namespace PluginSDK
     }
 
     public record SideBarItemInfo(string Name, string Description, Type MainView);
-    public record WindowInfo(string Name, string Description, Type MainView);
 
     public static class Logger
     {
@@ -107,7 +110,7 @@ namespace PluginSDK
         public static void ResizeCard(this UserControl self, int h, int w)
         {
 
-            var t = self?.Parent as MyThumb;
+            var t = self?.Parent as CardControl;
 
             if (t == null)
             {
@@ -120,8 +123,57 @@ namespace PluginSDK
         }
     }
 
+    public static class WindowExt
+    {
+        public static string GetPluginConfigFilePath(this Window self)
+        {
+            var @card = self as IWindow;
+
+            var abl = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
+
+            var ret = Path.Combine(abl, "Configs", $"{card.GUID}.json");
+
+            if (!Directory.Exists(Path.GetDirectoryName(ret)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(ret));
+            }
+            return ret;
+        }
+
+
+        public static IWindow GetIWindow(this Window self)
+        {
+
+            return self as IWindow;
+        }
+
+        //public static void ResizeCard(this UserControl self, int h, int w)
+        //{
+
+        //    var t = self?.Parent as MyThumb;
+
+        //    if (t == null)
+        //    {
+        //        return;
+        //    }
+
+
+        //    t.HeightPix = h;
+        //    t.WidthPix = w;
+        //}
+    }
+
+
     public interface ICanOverrideUI
     {
         void OverrideUI(string xaml_file_path);
+    }
+
+
+    public interface IPreviewable
+    {
+        public UIElement GetUIElement();
+
+        
     }
 }

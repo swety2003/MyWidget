@@ -68,13 +68,13 @@ namespace MainApp
 
         void LoadWindow()
         {
-            foreach (var item in App.GetService<PluginLoader>().WindowInfos)
-            {
-                var w = Activator.CreateInstance(item.MainView) as Window;
+            //foreach (var item in App.GetService<PluginLoader>().WindowInfos)
+            //{
+            //    var w = Activator.CreateInstance(item.MainView) as Window;
 
-                w?.Show();
-                (w as IWindow)?.OnEnabled();
-            }
+            //    w?.Show();
+            //    (w as IWindow)?.OnEnabled();
+            //}
         }
 
 
