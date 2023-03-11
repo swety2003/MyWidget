@@ -23,6 +23,9 @@ namespace SpineViewer.View
     /// </summary>
     public partial class SpinePlayer : UserControl, ICard, IPreviewable
     {
+
+        public CardInfo CI => info;
+
         Window? window => this.Parent as Window;
         private PlayerVM _vm = new PlayerVM();
         public static CardInfo info = new CardInfo(null,"SpineViewer","",typeof(SpinePlayer),CardType.Window);
@@ -42,7 +45,6 @@ namespace SpineViewer.View
 
         public int WidthPix => (int)this.Width;
 
-        CardInfo ICard.info => info;
 
         public void OnDisabled()
         {

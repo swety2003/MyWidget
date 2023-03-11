@@ -114,11 +114,34 @@
 
                             <Grid Grid.Column="1" Margin="10,4">
                                 <Grid>
-                                    <TextBlock
-                                        FontSize="16"
-                                        Foreground="{DynamicResource Brush98}"
-                                        Text="{Binding CardGuid, StringFormat=GUID:{0}}" />
+                                    <StackPanel>
+                                        <Grid>
 
+                                            <TextBlock
+                                                FontSize="18"
+                                                Foreground="{DynamicResource Brush98}"
+                                                Text="{Binding CI.Name}" />
+                                            <Border
+                                                Margin="4,0"
+                                                Padding="4,2"
+                                                HorizontalAlignment="Right"
+                                                BorderBrush="{DynamicResource AccentBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="7">
+                                                <TextBlock
+                                                    FontSize="14"
+                                                    Foreground="{DynamicResource AccentBrush}"
+                                                    Text="{Binding CI.CardType}" />
+
+                                            </Border>
+                                        </Grid>
+
+                                        <TextBlock
+                                            FontSize="14"
+                                            Foreground="{DynamicResource Brush84}"
+                                            Text="{Binding CI.Description}" />
+
+                                    </StackPanel>
 
                                     <UniformGrid
                                         Margin="4"

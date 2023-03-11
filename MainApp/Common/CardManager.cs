@@ -80,14 +80,13 @@ namespace MainApp.Common
 
         public void Remove(ICard card)
         {
-            activateCards.Remove(card);
 
 
-            switch (card.info.CardType)
+            switch (card.CI.CardType)
             {
                 case CardType.Window:
 
-                    var w = (card as UserControl).Parent as Window;
+                    var w = card.GetCardWindow();
                     if (w!=null)
                     {
                         w.Close();
@@ -97,7 +96,7 @@ namespace MainApp.Common
                 case CardType.UserControl:
                     //var cc = (card as UserControl).Parent as CardControl;
 
-                    canvas.Children.Remove(cc);
+                    canvas.Children.Remove(card.GetCardControl());
                     break;
                 default:
                     break;
@@ -107,6 +106,12 @@ namespace MainApp.Common
 
             PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(ActiveCards)));
 
+
+            activateCards.Remove(card);
+
+
+
+            Config.instances.Remove(card.GUID);
         }
 
 

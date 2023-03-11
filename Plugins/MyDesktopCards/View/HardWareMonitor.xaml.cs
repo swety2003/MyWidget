@@ -13,7 +13,8 @@ namespace MyDesktopCards.View
     public partial class HardWareMonitor : UserControl, ICard
     {
 
-        CardInfo ICard.info => info;
+        public CardInfo CI => info;
+
         internal static CardInfo info = new CardInfo(null, "资源监控", "硬件占用监控", typeof(HardWareMonitor));
 
         private ILogger<HardWareMonitor> logger => Logger.CreateLogger<HardWareMonitor>();
