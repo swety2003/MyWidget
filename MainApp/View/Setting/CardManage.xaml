@@ -97,20 +97,23 @@
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-
-
                             <Border
                                 Margin="4"
-                                Background="{DynamicResource Brush12}"
-                                BorderThickness="1">
+                                Background="Black"
+                                CornerRadius="4">
 
-                                <Image
-                                    Width="180"
-                                    Height="80"
-                                    RenderOptions.BitmapScalingMode="Fant"
-                                    Source="{Binding Converter={StaticResource ResourceKey=UIElement2RenderBitmap}}"
-                                    Stretch="Uniform" />
+                                <controls:CornerClip CornerRadius="4">
+
+                                    <Image
+                                        Width="180"
+                                        Height="80"
+                                        RenderOptions.BitmapScalingMode="Fant"
+                                        Source="{Binding Converter={StaticResource ResourceKey=UIElement2RenderBitmap}}"
+                                        Stretch="Uniform" />
+                                </controls:CornerClip>
                             </Border>
+
+
 
                             <Grid Grid.Column="1" Margin="10,4">
                                 <Grid>
@@ -122,14 +125,15 @@
                                                 Foreground="{DynamicResource Brush98}"
                                                 Text="{Binding CI.Name}" />
                                             <Border
-                                                Margin="4,0"
-                                                Padding="4,2"
+                                                Margin="4"
+                                                Padding="4,0"
                                                 HorizontalAlignment="Right"
                                                 BorderBrush="{DynamicResource AccentBrush}"
                                                 BorderThickness="1"
                                                 CornerRadius="7">
                                                 <TextBlock
-                                                    FontSize="14"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="12"
                                                     Foreground="{DynamicResource AccentBrush}"
                                                     Text="{Binding CI.CardType}" />
 

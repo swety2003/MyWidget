@@ -36,8 +36,7 @@
             Background="Transparent"
             BorderThickness="0"
             Foreground="{DynamicResource Brush98}"
-            ItemsSource="{Binding CardInfos}"
-            SelectedValue="{Binding SelectedCI}">
+            ItemsSource="{Binding CardInfos}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border

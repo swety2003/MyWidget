@@ -55,7 +55,7 @@ namespace MainApp.Common
 
                         CardControl mt = new CardControl { Content = card, HeightPix = card.HeightPix, WidthPix = card.WidthPix };
                         mt.OnCardMoved += Mt_OnCardMoved;
-                        canvas.Children.Add(card as UIElement);
+                        canvas.Children.Add(mt as UIElement);
                     }
                     break;
                 default:
@@ -72,7 +72,7 @@ namespace MainApp.Common
 
             PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(ActiveCards)));
 
-            var c = new Card(ci.MainView.FullName,new Point(0,0));
+            var c = new Card(ci.MainView.FullName,ci.CardType,new Point(0,0));
 
             Config.instances.Add(guid, c);
 

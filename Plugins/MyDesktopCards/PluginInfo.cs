@@ -42,9 +42,5 @@ namespace MyDesktopCards
             return new List<SideBarItemInfo>();
         }
 
-        public List<CardInfo> GetAllWindows()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

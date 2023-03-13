@@ -43,7 +43,7 @@ namespace MainApp.View
                     var wid = ci.MainView.FullName;
 
 
-                    if (item.Value.Wid == wid)
+                    if (item.Value.Wid == wid&&item.Value.CardType==ci.CardType)
                     {
                         if (ci.MainView.GetInterface("ICard")!=null)
                         {

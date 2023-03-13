@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PluginSDK;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -14,13 +15,15 @@ namespace MainApp.Model
     public class Card
     {
         public string Wid { get; set; }
+        public CardType CardType { get; }
         public Point Pos { get; set; }
         public string CanOverrideUI { get; set; }
         public bool Locked { get; set; }
 
-        public Card(string wid, Point pos)
+        public Card(string wid, CardType CardType , Point pos)
         {
             Wid = wid;
+            this.CardType = CardType;
             Pos = pos;
         }
     }
