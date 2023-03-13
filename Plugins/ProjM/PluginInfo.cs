@@ -39,9 +39,5 @@ namespace ProjM
             return sbis;
         }
 
-        public List<CardInfo> GetAllWindows()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
