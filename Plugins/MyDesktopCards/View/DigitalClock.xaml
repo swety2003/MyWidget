@@ -31,15 +31,16 @@
                     Margin="-5,-20"
                     FontFamily="Microsoft YaHei Light"
                     FontSize="130"
+                    Foreground="{DynamicResource OnBackgroundBrush}"
                     Text="{Binding NowTime, StringFormat={}{0:HH:mm}, ConverterCulture=Zh-CN, FallbackValue=00:00}" />
                 <TextBlock
                     Margin="5,0"
                     VerticalAlignment="Bottom"
                     FontSize="45"
-                    Foreground="#c85961"
+                    Foreground="{DynamicResource TertiaryBrush}"
                     Text="{Binding NowTime, StringFormat={}:{0:ss}, ConverterCulture=Zh-CN, FallbackValue=:00}" />
             </StackPanel>
-            <TextBlock FontSize="15">
+            <TextBlock FontSize="15" Foreground="{DynamicResource OnBackgroundBrush}">
 
 
 

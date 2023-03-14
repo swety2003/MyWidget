@@ -1,9 +1,19 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ct="clr-namespace:PluginSDK.Converters">
     <ResourceDictionary.MergedDictionaries>
 
+        <ResourceDictionary>
+
+            <ct:CornerRadiusCac x:Key="CornerRadiusCac" />
+        </ResourceDictionary>
 
         <ResourceDictionary Source="Font/FontIcon.xaml" />
         <ResourceDictionary Source="Brush/DarkBrush.xaml" />
+
+        <ResourceDictionary Source="NewBrush/DarkBrush.xaml" />
+        <!--<ResourceDictionary Source="NewBrush/LightBrush.xaml" />-->
         <ResourceDictionary Source="Control/Button.xaml" />
         <ResourceDictionary Source="Control/MenuItem.xaml" />
         <ResourceDictionary Source="Control/ToolBar.xaml" />

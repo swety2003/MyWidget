@@ -13,6 +13,7 @@
     Height="450"
     AllowsTransparency="True"
     Background="Transparent"
+    Foreground="{DynamicResource OnBackgroundBrush}"
     ResizeMode="NoResize"
     WindowState="Normal"
     WindowStyle="None"
@@ -36,8 +37,8 @@
         <Border
             Grid.Column="0"
             HorizontalAlignment="Stretch"
-            Background="{DynamicResource Brush12}"
-            BorderBrush="{DynamicResource Brush44}"
+            Background="{DynamicResource BackgroundBrush}"
+            BorderBrush="{DynamicResource OutlineBrush}"
             BorderThickness="0,0,1,0">
             <Grid>
                 <StackPanel>
@@ -60,8 +61,8 @@
 
                     <Grid
                         Height="2"
-                        Margin="4,2"
-                        Background="{DynamicResource Brush26}" />
+                        Margin="2"
+                        Background="{DynamicResource OutlineBrush}" />
 
                     <StackPanel x:Name="sb_container" />
 
@@ -70,37 +71,27 @@
 
                 <!--  底部区域  -->
                 <StackPanel VerticalAlignment="Bottom">
-                    <Button
-                        Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualWidth}"
-                        Margin="0"
-                        Padding="8"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Click="SettingBtn_Click"
-                        FontFamily="{StaticResource SFI}"
-                        FontSize="24"
-                        Foreground="{DynamicResource Brush98}"
-                        Style="{DynamicResource SimpleBtnStyle}">
+                    <StackPanel.Resources>
+                        <Style BasedOn="{StaticResource SimpleBtnStyle}" TargetType="Button">
+                            <Setter Property="Height" Value="40" />
+                            <Setter Property="Padding" Value="8" />
+                            <Setter Property="FontSize" Value="24" />
+                            <Setter Property="FontFamily" Value="{StaticResource SFI}" />
+                            <Setter Property="Foreground" Value="{DynamicResource OnBackgroundBrush}" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="ForceCursor" Value="{DynamicResource OnBackgroundBrush}" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource SurfaceVariantBrush}" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Click="SettingBtn_Click">
                         
                     </Button>
 
 
 
-                    <Button
-                        Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=ActualWidth}"
-                        Margin="0"
-                        Padding="8"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Click="ExitBtn_Click"
-                        FontFamily="{StaticResource SFI}"
-                        FontSize="20"
-                        Foreground="{DynamicResource Brush98}"
-                        Style="{DynamicResource SimpleBtnStyle}">
+                    <Button Click="ExitBtn_Click" FontSize="18">
                         
                     </Button>
                 </StackPanel>

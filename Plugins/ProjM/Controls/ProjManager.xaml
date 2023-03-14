@@ -38,14 +38,12 @@
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             pu:ListBoxHelper.ItemsHeight="48"
-            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource Brush20}"
-            pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource Brush26}"
-            pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource AccentBrush}"
+            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SecondaryBrush}"
+            pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource PrimaryBrush}"
             Background="Transparent"
             BorderThickness="0"
             FontFamily="{StaticResource SFI}"
             FontSize="24"
-            Foreground="{DynamicResource Brush98}"
             ItemsSource="{Binding ProjMs}"
             MouseUp="lb_MouseUp"
             SelectedValue="{Binding SelectedType}">
@@ -82,8 +80,8 @@
 
             <Border
                 Padding="20"
-                Background="{DynamicResource Brush16}"
-                BorderBrush="{DynamicResource Brush26}"
+                Background="{DynamicResource BackgroundBrush}"
+                BorderBrush="{DynamicResource OutlineBrush}"
                 BorderThickness="1">
 
                 <Grid>
@@ -92,14 +90,14 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <StackPanel Background="{DynamicResource Brush16}">
+                    <StackPanel>
 
                         <Grid Margin="0,0,0,10">
 
                             <TextBlock
                                 HorizontalAlignment="Left"
                                 FontSize="32"
-                                Foreground="{DynamicResource Brush98}"
+                                Foreground="{DynamicResource OnBackgroundBrush}"
                                 Text="{Binding SelectedType.Name}" />
 
                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
@@ -122,7 +120,7 @@
                             Name="tb"
                             Padding="4"
                             FontSize="20"
-                            Foreground="{DynamicResource Brush98}"
+                            Foreground="{DynamicResource OnBackgroundBrush}"
                             Style="{StaticResource SearchTextBox}" />
                     </StackPanel>
 
@@ -131,16 +129,16 @@
                         Margin="0,20,0,0"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
-                        pu:ListBoxHelper.ItemsBackground="{DynamicResource Brush12}"
+                        pu:ListBoxHelper.ItemsBackground="Transparent"
                         pu:ListBoxHelper.ItemsBorderThickness="2"
                         pu:ListBoxHelper.ItemsHeight="48"
-                        pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource Brush20}"
+                        pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SurfaceVariantBrush}"
                         pu:ListBoxHelper.ItemsMargin="0 0 0 2"
-                        pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource Brush20}"
+                        pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource SurfaceVariantBrush}"
                         pu:ListBoxHelper.ItemsSelectedBorderBrush="{DynamicResource PrimaryBrush}"
                         Background="Transparent"
                         BorderThickness="0"
-                        Foreground="{DynamicResource Brush98}"
+                        Foreground="{DynamicResource OnBackgroundBrush}"
                         SelectedValue="{Binding SelctedInfo}">
                         <ListBox.ItemsSource>
                             <MultiBinding Converter="{StaticResource SearchFilter}">
@@ -185,7 +183,7 @@
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         FontSize="12"
-                                        Foreground="{DynamicResource Brush84}"
+                                        Foreground="{DynamicResource OnSurfaceVariantBrush}"
                                         Text="{Binding path}" />
                                 </Grid>
                             </DataTemplate>

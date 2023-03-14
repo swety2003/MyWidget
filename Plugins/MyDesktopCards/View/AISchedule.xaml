@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:MyDesktopCards.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:sdkcontrol="clr-namespace:PluginSDK.Controls;assembly=PluginSDK"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Foreground="{DynamicResource Brush98}"
@@ -18,144 +19,153 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Background="{DynamicResource Brush12}">
+    <Border Background="{DynamicResource SurfaceBrush}" CornerRadius="12">
+
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-            <Grid Height="38px" VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+                <Grid Height="38px" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel
-                    Grid.Column="0"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <Border
-                        Width="30"
-                        Height="30"
-                        Margin="4,4"
-                        RenderOptions.BitmapScalingMode="Fant">
-                        <!--<Border.Background>
+                    <StackPanel
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Border
+                            Width="30"
+                            Height="30"
+                            Margin="4,4"
+                            RenderOptions.BitmapScalingMode="Fant">
+                            <!--<Border.Background>
                             <ImageBrush ImageSource="/Assets/schedule-logo.png" />
                         </Border.Background>-->
-                    </Border>
+                        </Border>
 
-                    <Button
-                        Grid.Column="2"
+                        <Button
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            Command="{Binding ReloadCommand}"
+                            Content="课程表"
+                            Cursor="Hand"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource OnSurfaceBrush}" />
+
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="8,0"
+                        HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Background="Transparent"
-                        Command="{Binding ReloadCommand}"
-                        Content="课程表"
-                        Cursor="Hand"
-                        FontSize="16"
-                        Foreground="{DynamicResource Brush98}" />
-
-                </StackPanel>
-
-                <StackPanel
-                    Grid.Column="1"
-                    Margin="8,0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        Margin="8"
-                        VerticalAlignment="Center"
-                        FontSize="12"
-                        Foreground="Gray"
-                        TextAlignment="Right">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat=" {0}/{1}">
-                                <Binding Path="Week" />
-                                <Binding Path="Day" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                        <!--<Run Text="{Binding Week}" />
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Margin="8"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="{DynamicResource OnSurfaceVariantBrush}"
+                            TextAlignment="Right">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat=" {0}/{1}">
+                                    <Binding Path="Week" />
+                                    <Binding Path="Day" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                            <!--<Run Text="{Binding Week}" />
                         <Run Text="/" />
                         <Run Text="{Binding Day}" />-->
-                    </TextBlock>
+                        </TextBlock>
 
-                    <Button
-                        HorizontalAlignment="Right"
-                        Command="{Binding PreviousCommand}"
-                        Content="&#xf744;"
-                        FontFamily="Segoe Fluent Icons"
-                        Foreground="{DynamicResource Brush98}"
-                        Style="{DynamicResource SimpleBtnStyle}" />
-                    <Button
-                        HorizontalAlignment="Right"
-                        Command="{Binding NextCommand}"
-                        Content="&#xf746;"
-                        FontFamily="Segoe Fluent Icons"
-                        Foreground="{DynamicResource Brush98}"
-                        Style="{DynamicResource SimpleBtnStyle}" />
+                        <sdkcontrol:CornerClip CornerRadius="17">
+                            <UniformGrid Rows="1">
 
-                </StackPanel>
+                                <Button
+                                    Margin="0"
+                                    pu:ButtonHelper.CornerRadius="0"
+                                    Command="{Binding PreviousCommand}"
+                                    Content="&#xf744;"
+                                    FontFamily="{StaticResource SFI}"
+                                    Style="{DynamicResource SimpleBtnStyle}" />
+                                <Button
+                                    Margin="0"
+                                    pu:ButtonHelper.CornerRadius="0"
+                                    Command="{Binding NextCommand}"
+                                    Content="&#xf746;"
+                                    FontFamily="{StaticResource SFI}"
+                                    Style="{DynamicResource SimpleBtnStyle}" />
+                            </UniformGrid>
+                        </sdkcontrol:CornerClip>
+
+
+                    </StackPanel>
 
 
 
-            </Grid>
+                </Grid>
 
-            <ItemsControl
-                Grid.Row="1"
-                Margin="10,0,10,10"
-                HorizontalAlignment="Stretch"
-                Background="Transparent"
-                BorderThickness="0"
-                ItemsSource="{Binding CI}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border
-                            Margin="0,4"
-                            Padding="8,4"
-                            HorizontalAlignment="Stretch"
-                            BorderBrush="{DynamicResource Brush24}"
-                            BorderThickness="2"
-                            CornerRadius="2">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock
-                                        FontSize="10"
-                                        Foreground="{DynamicResource Brush84}"
-                                        TextAlignment="Right"
-                                        TextTrimming="CharacterEllipsis">
-                                        <TextBlock.Text>
-                                            <MultiBinding Converter="{StaticResource ClassTimeConvertor}">
-                                                <Binding Path="sections" />
-                                                <Binding Path="DataContext.AllSections" RelativeSource="{RelativeSource AncestorType=ItemsControl, Mode=FindAncestor}" />
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                        <!--<Run Text="{Binding sections, Converter={StaticResource ClassTimeConvertor}, ConverterParameter={Binding Sections}}" />-->
-                                    </TextBlock>
-                                </StackPanel>
-                                <Border
-                                    Grid.Column="1"
-                                    Width="4"
-                                    Margin="8,0"
-                                    Background="{Binding style, Converter={StaticResource ClassColorConvertor}}"
-                                    CornerRadius="2" />
-                                <StackPanel Grid.Column="2">
-                                    <TextBlock
-                                        HorizontalAlignment="Left"
-                                        FontSize="14"
-                                        FontWeight="Bold"
-                                        Foreground="{DynamicResource Brush98}"
-                                        Text="{Binding name}"
-                                        TextTrimming="CharacterEllipsis" />
-                                    <StackPanel Margin="0,2,0,0" Orientation="Horizontal">
-                                        <TextBlock Foreground="{DynamicResource Brush84}">
-                                            <!--<Run Text="第" />
+                <ItemsControl
+                    Grid.Row="1"
+                    Margin="10,0,10,10"
+                    HorizontalAlignment="Stretch"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    ItemsSource="{Binding CI}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Margin="0,4"
+                                Padding="8,4"
+                                HorizontalAlignment="Stretch"
+                                BorderBrush="{DynamicResource Brush24}"
+                                BorderThickness="2"
+                                CornerRadius="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                        <TextBlock
+                                            FontSize="10"
+                                            Foreground="{DynamicResource Brush84}"
+                                            TextAlignment="Right"
+                                            TextTrimming="CharacterEllipsis">
+                                            <TextBlock.Text>
+                                                <MultiBinding Converter="{StaticResource ClassTimeConvertor}">
+                                                    <Binding Path="sections" />
+                                                    <Binding Path="DataContext.AllSections" RelativeSource="{RelativeSource AncestorType=ItemsControl, Mode=FindAncestor}" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                            <!--<Run Text="{Binding sections, Converter={StaticResource ClassTimeConvertor}, ConverterParameter={Binding Sections}}" />-->
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <Border
+                                        Grid.Column="1"
+                                        Width="4"
+                                        Margin="8,0"
+                                        Background="{Binding style, Converter={StaticResource ClassColorConvertor}}"
+                                        CornerRadius="2" />
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            FontSize="14"
+                                            FontWeight="Bold"
+                                            Foreground="{DynamicResource Brush98}"
+                                            Text="{Binding name}"
+                                            TextTrimming="CharacterEllipsis" />
+                                        <StackPanel Margin="0,2,0,0" Orientation="Horizontal">
+                                            <TextBlock Foreground="{DynamicResource Brush84}">
+                                                <!--<Run Text="第" />
 
                                             <Run Text="{Binding sections}" />
                                             <Run Text="节" />
@@ -164,33 +174,34 @@
                                             <Run Text="{Binding position}" />
                                             <Run Text="|" />
                                             <Run Text="{Binding teacher}" />-->
-                                            <TextBlock.Text>
-                                                <MultiBinding StringFormat="第{0}节|{1}|{2}">
-                                                    <Binding Path="sections" />
-                                                    <Binding Path="position" />
-                                                    <Binding Path="teacher" />
-                                                </MultiBinding>
-                                            </TextBlock.Text>
-                                        </TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="第{0}节|{1}|{2}">
+                                                        <Binding Path="sections" />
+                                                        <Binding Path="position" />
+                                                        <Binding Path="teacher" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </StackPanel>
                                     </StackPanel>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
+                                </Grid>
+                            </Border>
 
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
 
-            <TextBlock
-                Grid.RowSpan="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Foreground="{DynamicResource Brush84}"
-                Text="{Binding TableTip}" />
 
+                <TextBlock
+                    Grid.RowSpan="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Foreground="{DynamicResource OnSurfaceVariantBrush}"
+                    Text="{Binding TableTip}" />
+
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>

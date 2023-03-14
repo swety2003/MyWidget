@@ -22,6 +22,7 @@ namespace PluginSDK
             this.Description = Description;
             this.MainView = MainView;
             this.CardType = CardType;
+
         }
 
         public ImageSource Icon { get; }

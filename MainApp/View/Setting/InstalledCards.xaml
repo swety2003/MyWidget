@@ -25,15 +25,16 @@
             HorizontalContentAlignment="Stretch"
             VerticalContentAlignment="Stretch"
             d:ItemsSource="{d:SampleData ItemCount=5}"
-            pu:ListBoxHelper.ItemsBackground="{DynamicResource Brush18}"
+            pu:ListBoxHelper.ItemsBackground="{DynamicResource SurfaceBrush}"
             pu:ListBoxHelper.ItemsBorderThickness="2"
-            pu:ListBoxHelper.ItemsCornerRadius="4"
-            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource Brush18}"
-            pu:ListBoxHelper.ItemsHoverBorderBrush="{DynamicResource Brush44}"
+            pu:ListBoxHelper.ItemsCornerRadius="8"
+            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SurfaceBrush}"
+            pu:ListBoxHelper.ItemsHoverBorderBrush="{DynamicResource PrimaryBrush}"
             pu:ListBoxHelper.ItemsMargin="4"
             pu:ListBoxHelper.ItemsPadding="0"
-            pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource Brush18}"
+            pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource SurfaceBrush}"
             Background="Transparent"
+            BorderBrush="{DynamicResource OutlineBrush}"
             BorderThickness="0"
             Foreground="{DynamicResource Brush98}"
             ItemsSource="{Binding CardInfos}">
@@ -56,7 +57,7 @@
                                 Width="72"
                                 Height="72"
                                 Margin="0,14,0,12"
-                                Background="{DynamicResource Brush22}"
+                                Background="{DynamicResource SurfaceVariantBrush}"
                                 CornerRadius="4">
 
                                 <TextBlock
@@ -64,6 +65,7 @@
                                     VerticalAlignment="Center"
                                     FontFamily="{StaticResource SFI}"
                                     FontSize="40"
+                                    Foreground="{DynamicResource OnSurfaceVariantBrush}"
                                     Text="" />
                             </Border>
                             <StackPanel Grid.Row="1" Margin="4">
@@ -72,12 +74,14 @@
                                     Margin="0,2"
                                     HorizontalAlignment="Center"
                                     FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource OnBackgroundBrush}"
                                     Text="{Binding Name}" />
 
                                 <TextBlock
                                     Margin="0,2"
                                     HorizontalAlignment="Center"
-                                    Foreground="{DynamicResource Brush70}"
+                                    Foreground="{DynamicResource OnSurfaceBrush}"
                                     Text="{Binding Description}" />
 
 
@@ -92,7 +96,7 @@
                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.AddCardToDesktopCommand}"
                                 CommandParameter="{Binding}"
                                 Content="添加到桌面"
-                                Foreground="{DynamicResource AccentBrush}"
+                                Cursor="Hand"
                                 Style="{StaticResource SimpleBtnStyle}" />
                         </Grid>
                     </Border>
