@@ -22,6 +22,8 @@ namespace MainApp
         {
             InitializeComponent();
 
+            App.GetService<SideBarManageService>().Container = sb_container;
+
         }
 
         DockArea? da;
@@ -48,24 +50,24 @@ namespace MainApp
 
             frame.Navigate(App.GetService<WidgetView>());
 
-            LoadSBI();
+            //LoadSBI();
 
 
         }
 
 
 
-        void LoadSBI()
-        {
+        //void LoadSBI()
+        //{
 
-            foreach (var item in App.GetService<PluginLoader>().SideBarItemInfos)
-            {
-                var sbi = Activator.CreateInstance(item.MainView, this.sb_container_pop) as ISideBarItem;
-                sb_container.Children.Add(sbi as UIElement);
+        //    foreach (var item in App.GetService<PluginLoader>().SideBarItemInfos)
+        //    {
+        //        var sbi = Activator.CreateInstance(item.MainView, this.sb_container_pop) as ISideBarItem;
+        //        sb_container.Children.Add(sbi as UIElement);
 
-                sbi?.OnEnabled();
-            }
-        }
+        //        sbi?.OnEnabled();
+        //    }
+        //}
 
 
 

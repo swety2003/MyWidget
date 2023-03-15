@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Styles\Brush\**" />
+    <EmbeddedResource Remove="Styles\Brush\**" />
+    <None Remove="Styles\Brush\**" />
+    <Page Remove="Styles\Brush\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />

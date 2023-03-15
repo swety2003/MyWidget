@@ -27,7 +27,7 @@ namespace ChatGPT
     {
         public Config AppConfig { get; set; }
 
-        internal static SideBarItemInfo info = new SideBarItemInfo("ChatGPT-GUI","",typeof(MainView));
+        internal static SideBarItemInfo info = new SideBarItemInfo("ChatGPT-GUI","一个简单的ChatGPT对话程序",typeof(MainView));
 
         MainViewModel vm;
 
@@ -51,6 +51,8 @@ namespace ChatGPT
         public void OnEnabled()
         {
             AppConfig =  ConfigBase.Load<Config>(this.GetPluginConfigFilePath())??new Config();
+
+            vm.LoadedCommand.Execute(this);
         }
 
         public void ShowSetting()

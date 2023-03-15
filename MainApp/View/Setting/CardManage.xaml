@@ -21,7 +21,7 @@
         <cv:UIElement2RenderBitmap x:Key="UIElement2RenderBitmap" />
     </Page.Resources>
 
-    <Grid x:Name="gd" Margin="8">
+    <Grid x:Name="gd" Margin="8,0">
 
 
         <Grid Name="enabledCardPanel">
@@ -66,7 +66,7 @@
                 pu:ListBoxHelper.ItemsBackground="{DynamicResource SurfaceBrush}"
                 pu:ListBoxHelper.ItemsBorderBrush="{DynamicResource OutlineBrush}"
                 pu:ListBoxHelper.ItemsBorderThickness="2"
-                pu:ListBoxHelper.ItemsCornerRadius="12"
+                pu:ListBoxHelper.ItemsCornerRadius="16"
                 pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SurfaceBrush}"
                 pu:ListBoxHelper.ItemsMargin="6"
                 pu:ListBoxHelper.ItemsPadding="0"
@@ -101,9 +101,9 @@
                                 Margin="4"
                                 Padding="8"
                                 Background="Black"
-                                CornerRadius="4">
+                                CornerRadius="12">
 
-                                <controls:CornerClip CornerRadius="4">
+                                <controls:CornerClip CornerRadius="12">
 
                                     <Image
                                         Width="180"

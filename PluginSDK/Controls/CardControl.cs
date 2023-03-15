@@ -76,7 +76,7 @@ namespace PluginSDK.Controls
             Background = new SolidColorBrush(Color.FromArgb(32, 0, 0, 0)),
             BorderThickness = new Thickness(2),
 
-            BorderBrush = (Brush)Application.Current.FindResource("Brush60"),
+            BorderBrush = (Brush)Application.Current.FindResource("OutlineBrush"),
 
             //BorderBrush = new SolidColorBrush(Color.FromRgb(112, 112, 112)),
         };

@@ -1,10 +1,12 @@
 ﻿using MainApp.Common;
 using MainApp.View;
+using MainApp.View.Setting;
 using MainApp.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using PluginSDK.Styles;
 using System;
 using System.IO;
 using System.Threading;
@@ -60,17 +62,21 @@ namespace MainApp
                     services.AddSingleton<PluginLoader>();
                     services.AddSingleton<AppConfigManager>();
                     services.AddSingleton<CardManageService>();
+                    services.AddSingleton<SideBarManageService>();
 
                     #region ViewModel
 
                     services.AddSingleton<WidgetViewVM>();
                     services.AddSingleton<CardManageVM>();
                     services.AddSingleton<InstalledCardsVM>();
+                    services.AddSingleton<PreferenceVM>();
+                    services.AddSingleton<SideBarManageVM>();
 
                     #endregion
 
                     services.AddSingleton<WidgetView>();
                     services.AddTransient<CardManage>();
+                    services.AddTransient<PreferencePage>();
 
                     services.AddTransient<Settings>();
                     services.AddTransient<AboutPage>();
@@ -108,6 +114,10 @@ namespace MainApp
             App.GetService<AppConfigManager>().Load();
 
             App.GetService<PluginLoader>().Load();
+
+
+
+            Theme.SetTheme(App.GetService<AppConfigManager>().Config.ThemeType);
 
             base.OnStartup(e);
 

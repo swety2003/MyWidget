@@ -1,4 +1,5 @@
 ﻿using MainApp.Common;
+using MainApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace MainApp.View
         public SideBarManage()
         {
             InitializeComponent();
+
+            DataContext = App.GetService<SideBarManageVM>();
         }
 
         public PageFlags PageFlag => PageFlags.Root;

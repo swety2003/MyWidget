@@ -7,8 +7,6 @@
     xmlns:local="clr-namespace:ChatGPT_GUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:ChatGPT_GUI.ViewModels"
-    Width="306"
-    Height="178"
     d:DataContext="{d:DesignInstance Type=viewmodels:SettingViewModel}"
     Foreground="{DynamicResource OnBackgroundBrush}"
     mc:Ignorable="d">

@@ -1,4 +1,5 @@
 ﻿using MainApp.Common;
+using MainApp.View.Setting;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,7 +50,10 @@ namespace MainApp.View
                 case 1:
                     ns.NavigateTo(App.GetService<SideBarManage>()); break;
                 case 2:
+                    ns.NavigateTo(App.GetService<PreferencePage>()); break;
+                case 3:
                     ns.NavigateTo(App.GetService<AboutPage>()); break;
+
 
                 default:
                     break;

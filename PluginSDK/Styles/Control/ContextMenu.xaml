@@ -5,9 +5,7 @@
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI">
     <Style BasedOn="{StaticResource {x:Static purs:StyleKeys.ContextMenuStyle}}" TargetType="ContextMenu">
         <Setter Property="pu:ContextMenuHelper.ItemsHoverBackground" Value="{DynamicResource Brush22}" />
-        <!--<Setter Property="pu:ContextMenuHelper.ItemsHoverBorderBrush" Value="{DynamicResource Brush60}" />
-        <Setter Property="pu:ContextMenuHelper.ItemsBorderThickness" Value="1" />
-        <Setter Property="Padding" Value="2" />-->
+
         <Setter Property="BorderBrush" Value="{DynamicResource Brush44}" />
         <Setter Property="Foreground" Value="{DynamicResource Brush84}" />
         <Setter Property="Background" Value="{DynamicResource Brush18}" />

@@ -114,7 +114,7 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Height" Value="48" />
         <Setter Property="Foreground" Value="{DynamicResource OnBackgroundBrush}" />
-        <Setter Property="pu:ButtonHelper.HoverForeground" Value="{DynamicResource OnPrimaryBrush}" />
+        <Setter Property="pu:ButtonHelper.HoverForeground" Value="{DynamicResource OnSecondaryBrush}" />
         <Setter Property="pu:ButtonHelper.ClickBorderBrush" Value="Transparent" />
         <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource SecondaryBrush}" />
         <Setter Property="pu:ButtonHelper.ClickBackground" Value="{DynamicResource PrimaryBrush}" />

@@ -15,7 +15,7 @@ namespace Projm.Controls
     public partial class ProjManager : UserControl, ISideBarItem
     {
 
-        public static SideBarItemInfo info = new SideBarItemInfo("1", "好", typeof(ProjManager));
+        public static SideBarItemInfo info = new SideBarItemInfo("项目管理器", "基于lua脚本自定义扫描规则的项目管理", typeof(ProjManager));
 
         public Guid GUID => throw new NotImplementedException();
 

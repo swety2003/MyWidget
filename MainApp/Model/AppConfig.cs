@@ -1,4 +1,5 @@
 ﻿using PluginSDK;
+using PluginSDK.Styles;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -9,7 +10,7 @@ namespace MainApp.Model
     {
         public Dictionary<Guid, Card> instances = new Dictionary<Guid, Card>();
 
-
+        public ThemeType ThemeType { get; set; } = ThemeType.Light;
     }
 
     public class Card

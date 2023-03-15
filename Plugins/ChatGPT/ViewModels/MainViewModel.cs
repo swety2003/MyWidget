@@ -25,7 +25,7 @@ public partial class MainViewModel: ObservableRecipient {
         this.view = view;
         IsActive = true;
         RingVisibility = Visibility.Collapsed;
-        StateMessage = "[等待A (用户)]";
+        StateMessage = "[初始化]";
 
     }
 
@@ -35,7 +35,9 @@ public partial class MainViewModel: ObservableRecipient {
 
         try
         {
-            logger = logger ?? PluginSDK.Logger.LoggerFactory.CreateLogger<MainViewModel>();
+            ChatList?.Clear();
+
+            logger = logger ?? PluginSDK.Logger.CreateLogger<MainViewModel>();
 
             OpenAIService = new OpenAIService(new OpenAiOptions() { ApiKey = view.AppConfig.API_Key });
         }

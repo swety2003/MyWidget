@@ -25,10 +25,10 @@
             HorizontalContentAlignment="Stretch"
             VerticalContentAlignment="Stretch"
             d:ItemsSource="{d:SampleData ItemCount=5}"
-            pu:ListBoxHelper.ItemsBackground="{DynamicResource SurfaceBrush}"
+            pu:ListBoxHelper.ItemsBackground="{DynamicResource SecondaryContainerBrush}"
             pu:ListBoxHelper.ItemsBorderThickness="2"
-            pu:ListBoxHelper.ItemsCornerRadius="8"
-            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SurfaceBrush}"
+            pu:ListBoxHelper.ItemsCornerRadius="16"
+            pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SecondaryContainerBrush}"
             pu:ListBoxHelper.ItemsHoverBorderBrush="{DynamicResource PrimaryBrush}"
             pu:ListBoxHelper.ItemsMargin="4"
             pu:ListBoxHelper.ItemsPadding="0"
@@ -75,13 +75,13 @@
                                     HorizontalAlignment="Center"
                                     FontSize="16"
                                     FontWeight="Bold"
-                                    Foreground="{DynamicResource OnBackgroundBrush}"
+                                    Foreground="{DynamicResource PrimaryBrush}"
                                     Text="{Binding Name}" />
 
                                 <TextBlock
                                     Margin="0,2"
                                     HorizontalAlignment="Center"
-                                    Foreground="{DynamicResource OnSurfaceBrush}"
+                                    Foreground="{DynamicResource OnSurfaceVariantBrush}"
                                     Text="{Binding Description}" />
 
 

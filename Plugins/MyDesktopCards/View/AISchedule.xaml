@@ -125,7 +125,7 @@
                                 Margin="0,4"
                                 Padding="8,4"
                                 HorizontalAlignment="Stretch"
-                                BorderBrush="{DynamicResource Brush24}"
+                                BorderBrush="{DynamicResource OnBackgroundBrush}"
                                 BorderThickness="2"
                                 CornerRadius="2">
                                 <Grid>
@@ -137,7 +137,7 @@
                                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
                                         <TextBlock
                                             FontSize="10"
-                                            Foreground="{DynamicResource Brush84}"
+                                            Foreground="{DynamicResource OnSurfaceBrush}"
                                             TextAlignment="Right"
                                             TextTrimming="CharacterEllipsis">
                                             <TextBlock.Text>

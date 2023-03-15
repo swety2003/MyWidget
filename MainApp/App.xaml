@@ -8,10 +8,13 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
+
+
+
                 <ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
 
-                <ResourceDictionary Source="/PluginSDK;component/Styles/index.xaml" />
 
+                <ResourceDictionary Source="/PluginSDK;component/Styles/index.xaml" />
                 <!--<ResourceDictionary Source="/Styles/MyThumbStyle.xaml" />-->
 
             </ResourceDictionary.MergedDictionaries>

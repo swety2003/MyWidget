@@ -59,6 +59,10 @@
                     </ListBoxItem>
 
                     <ListBoxItem>
+                        首选项
+                    </ListBoxItem>
+
+                    <ListBoxItem>
                         关于
                     </ListBoxItem>
                 </ListBox>
@@ -80,7 +84,7 @@
                     Background="Transparent"
                     BorderThickness="0"
                     FontSize="24"
-                    Foreground="{DynamicResource OnBackgroundBrush}"
+                    Foreground="{DynamicResource OnSurfaceVariantBrush}"
                     SelectedIndex="0">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
