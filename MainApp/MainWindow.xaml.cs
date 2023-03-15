@@ -5,6 +5,7 @@ using PluginSDK;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 //using System.Windows.Forms;
 using System.Windows.Interop;
 
@@ -59,8 +60,10 @@ namespace MainApp
 
             foreach (var item in App.GetService<PluginLoader>().SideBarItemInfos)
             {
+                var sbi = Activator.CreateInstance(item.MainView, this.sb_container_pop) as ISideBarItem;
+                sb_container.Children.Add(sbi as UIElement);
 
-                sb_container.Children.Add(Activator.CreateInstance(item.MainView) as UIElement);
+                sbi?.OnEnabled();
             }
         }
 
@@ -89,5 +92,9 @@ namespace MainApp
             App.Current.Shutdown();
         }
 
+        private void sb_container_pop_Closed(object sender, EventArgs e)
+        {
+            (sender as Popup).Child = null;
+        }
     }
 }

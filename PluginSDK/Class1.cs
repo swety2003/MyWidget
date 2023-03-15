@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace PluginSDK
@@ -77,7 +78,7 @@ namespace PluginSDK
     public interface ISideBarItem: IViewBase
     {
 
-
+        Popup Popup { get; }
     }
 
     public record SideBarItemInfo(string Name, string Description, Type MainView);
@@ -109,13 +110,20 @@ namespace PluginSDK
 
     public static class UCExt
     {
-        public static string GetPluginConfigFilePath(this UserControl self)
+
+        public static string GetPluginConfigFilePath(this IViewBase self)
         {
-            var @card = self as ICard;
+            string ret;
 
             var abl = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
-
-            var ret = Path.Combine(abl, "Configs", $"{card.GUID}.json");
+            try
+            {
+                ret = Path.Combine(abl, "Configs", $"{self.GUID}.json");
+            }
+            catch (Exception ex)
+            {
+                ret = Path.Combine(abl, "Configs", $"config.json");
+            }
 
             if (!Directory.Exists(Path.GetDirectoryName(ret)))
             {
@@ -144,7 +152,6 @@ namespace PluginSDK
     {
         public static CardControl GetCardControl(this ICard card)
         {
-
             var c = (card as UserControl).Parent as CardControl;
             return c;
         }
@@ -154,6 +161,15 @@ namespace PluginSDK
 
             var win = (card as UserControl).Parent as CardWindow;
             return win;
+        }
+    }
+
+    public static class ISideBarItemExt
+    {
+        public static void Show(this ISideBarItem card,UIElement view)
+        {
+            card.Popup.Child = view;
+            card.Popup.IsOpen = true;
         }
     }
 

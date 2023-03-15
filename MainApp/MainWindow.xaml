@@ -65,7 +65,18 @@
                         Background="{DynamicResource OutlineBrush}" />
 
                     <StackPanel x:Name="sb_container" />
-
+                    <Popup
+                        x:Name="sb_container_pop"
+                        Width="400"
+                        Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=2}, Path=ActualHeight}"
+                        Closed="sb_container_pop_Closed"
+                        HorizontalOffset="0"
+                        IsOpen="False"
+                        Placement="Left"
+                        PlacementTarget="{Binding ElementName=sb_container}"
+                        PopupAnimation="Slide"
+                        StaysOpen="False"
+                        VerticalOffset="-64" />
 
                 </StackPanel>
 

@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using PluginSDK;
 using Projm.ViewModel;
+using ProjM.Controls;
 using System;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 namespace Projm.Controls
@@ -17,11 +19,17 @@ namespace Projm.Controls
 
         public Guid GUID => throw new NotImplementedException();
 
-        public ProjManager()
+        public Popup Popup { get; }
+
+        ProjManagerVM vm = new ProjManagerVM();
+
+        public ProjManager(Popup pop)
         {
             InitializeComponent();
 
-            DataContext = new ProjManagerVM();
+            DataContext = vm;
+
+            Popup = pop;
         }
 
         public void OnDisabled()
@@ -34,18 +42,11 @@ namespace Projm.Controls
 
         }
 
-
+        private PopupView popupView = new PopupView();
         private void lb_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
-            content_pop.IsOpen = true;
-            content_pop.Focus();
-            tb.Focus();
-
-        }
-
-        private void content_pop_Closed(object sender, System.EventArgs e)
-        {
+            popupView.DataContext = vm;
+            this.Show(popupView);
 
         }
 

@@ -92,7 +92,7 @@
         x:Key="SimpleBtnStyle"
         BasedOn="{StaticResource {x:Static purs:StyleKeys.ButtonStyle}}"
         TargetType="Button">
-        <Setter Property="pu:ButtonHelper.CornerRadius" Value="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource CornerRadiusCac}, Path=ActualHeight}" />
+        <Setter Property="pu:ButtonHelper.CornerRadius" Value="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource CornerRadiusCac}, Path=ActualHeight, FallbackValue=8}" />
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource OnPrimaryBrush}" />
         <Setter Property="pu:ButtonHelper.ClickBorderBrush" Value="Transparent" />
@@ -100,6 +100,24 @@
         <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource Brush22}" />-->
         <Setter Property="Margin" Value="4" />
         <Setter Property="Padding" Value="10,6" />
+
+    </Style>
+
+
+    <Style
+        x:Key="SideBarBtnStyle"
+        BasedOn="{StaticResource {x:Static purs:StyleKeys.ButtonStyle}}"
+        TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Foreground" Value="{DynamicResource OnBackgroundBrush}" />
+        <Setter Property="pu:ButtonHelper.HoverForeground" Value="{DynamicResource OnPrimaryBrush}" />
+        <Setter Property="pu:ButtonHelper.ClickBorderBrush" Value="Transparent" />
+        <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource SecondaryBrush}" />
+        <Setter Property="pu:ButtonHelper.ClickBackground" Value="{DynamicResource PrimaryBrush}" />
 
     </Style>
 </ResourceDictionary>

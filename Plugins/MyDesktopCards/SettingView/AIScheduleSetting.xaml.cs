@@ -74,7 +74,7 @@ namespace MyDesktopCards.SettingView
                 var tokens = linkToken.Split('&');
                 var a = $"https://i.ai.mi.com/course-multi/table?ctId={tokens[4]}&userId={tokens[0]}&deviceId={tokens[1]}&sourceName=course-app-browser";
 
-                var t = (card as UserControl).GetPluginConfigFilePath();
+                var t = card.GetPluginConfigFilePath();
                 var tf = Path.GetDirectoryName(t);
                 if (!Directory.Exists(tf))
                 {
