@@ -19,7 +19,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Border Background="{DynamicResource SurfaceBrush}" CornerRadius="12">
+    <Border
+        Margin="10"
+        Background="{DynamicResource SurfaceBrush}"
+        CornerRadius="12">
 
         <Grid>
             <Grid>

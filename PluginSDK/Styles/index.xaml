@@ -7,7 +7,7 @@
 
         <!--<st:Theme Type="Light" />-->
 
-        <ResourceDictionary Source="NewBrush/DarkBrush.xaml" />
+        <!--<ResourceDictionary Source="NewBrush/DarkBrush.xaml" />-->
 
         <ResourceDictionary>
 
