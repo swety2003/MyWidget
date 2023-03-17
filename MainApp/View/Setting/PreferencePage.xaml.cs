@@ -44,16 +44,17 @@ namespace MainApp.View.Setting
 
         public PreferenceVM()
         {
-
+            SelectedThemeIndex = AllTheme.ToList().IndexOf(config.ThemeType.ToString());
         }
 
-        private string themeType;
+        [ObservableProperty]
+        int selectedThemeIndex = 0;
 
-        public ThemeType ThemeType
-        {
-            get { return (ThemeType)Enum.Parse(typeof(ThemeType),themeType); }
-            set { themeType = value.ToString(); this.OnPropertyChanged(nameof(ThemeType)); }
-        }
+        //public ThemeType ThemeType
+        //{
+        //    get { return config.ThemeType; }
+        //    set { config.ThemeType = value; this.OnPropertyChanged(nameof(ThemeType)); }
+        //}
 
         public string[] AllTheme => Enum.GetNames(typeof(ThemeType));
 
@@ -61,8 +62,8 @@ namespace MainApp.View.Setting
         [RelayCommand]
         void SaveConfig()
         {
-            config.ThemeType = ThemeType;
-            Theme.SetTheme(ThemeType);
+            config.ThemeType = Enum.Parse<ThemeType>(AllTheme[SelectedThemeIndex]);
+            Theme.SetTheme(config.ThemeType);
         }
 
 

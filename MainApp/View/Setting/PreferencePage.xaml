@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:MainApp.View.Setting"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
-    Title="搜选项"
+    Title="首选项"
     d:DataContext="{d:DesignInstance Type=local:PreferenceVM}"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -25,7 +25,7 @@
                         VerticalAlignment="Center"
                         FontWeight="Bold"
                         Foreground="{DynamicResource PrimaryBrush}"
-                        Text="主题" />
+                        Text="主题(重启生效)" />
 
 
                     <Button
@@ -39,7 +39,8 @@
                 <ListBox
                     MinWidth="200"
                     Padding="8"
-                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
+                    d:ItemsSource="{d:SampleData ItemCount=5}"
                     pu:ListBoxHelper.CornerRadius="16"
                     pu:ListBoxHelper.ItemsCornerRadius="14"
                     pu:ListBoxHelper.ItemsHoverBackground="Transparent"
@@ -50,20 +51,20 @@
                     BorderThickness="0"
                     Foreground="{DynamicResource OnSurfaceVariantBrush}"
                     ItemsSource="{Binding AllTheme}"
-                    SelectedValue="{Binding ThemeType}"
+                    SelectedIndex="{Binding SelectedThemeIndex}"
                     SelectionMode="Single">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border Padding="8,8,8,8">
                                 <StackPanel>
 
-                                    <TextBlock
+                                    <!--<TextBlock
                                         Margin="0,0,0,8"
                                         HorizontalAlignment="Center"
                                         FontFamily="{StaticResource SFI}"
                                         FontSize="24"
                                         FontWeight="Bold"
-                                        Text="" />
+                                        Text="" />-->
                                     <TextBlock Text="{Binding}" />
                                 </StackPanel>
                             </Border>
@@ -75,11 +76,11 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
 
-                    <ListBox.ItemsPanel>
+                    <!--<ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Rows="1" />
                         </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
+                    </ListBox.ItemsPanel>-->
                 </ListBox>
 
 

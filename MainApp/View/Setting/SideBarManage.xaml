@@ -27,9 +27,9 @@
                             <DockPanel HorizontalAlignment="Left">
                                 <TextBlock
                                     DockPanel.Dock="Top"
-                                    Foreground="{DynamicResource OnSecondaryContainerBrush}"
-                                    Text="{Binding Name}" />
-                                <TextBlock FontSize="14" Text="{Binding Description}" />
+                                    Foreground="{DynamicResource PrimaryBrush}"
+                                    Text="{Binding Item.Name}" />
+                                <TextBlock FontSize="14" Text="{Binding Item.Description}" />
 
                             </DockPanel>
 
@@ -41,7 +41,8 @@
                                 Background="Transparent"
                                 FontFamily="{DynamicResource SFI}"
                                 FontSize="48"
-                                Foreground="{DynamicResource OnBackgroundBrush}">
+                                Foreground="{DynamicResource OnBackgroundBrush}"
+                                IsChecked="{Binding Enabled}">
                                 
                             </ToggleButton>
                         </Grid>

@@ -11,12 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace MainApp.Common
 {
     internal class SideBarManageService
     {
         ILogger<SideBarManageService> logger;
+
+        internal Popup ContainerPop;
 
         public SideBarManageService(ILogger<SideBarManageService> logger)
         {
@@ -38,7 +41,7 @@ namespace MainApp.Common
         {
 
 
-            var card = Activator.CreateInstance(ci.MainView) as ISideBarItem;
+            var card = Activator.CreateInstance(ci.MainView, ContainerPop) as ISideBarItem;
 
 
             logger.LogDebug($"创建了{ci.Name}侧栏图标");
@@ -59,9 +62,6 @@ namespace MainApp.Common
 
         public void Remove(ISideBarItem card)
         {
-
-
-
             card.OnDisabled();
 
 
@@ -75,5 +75,24 @@ namespace MainApp.Common
             //Config.instances.Remove(card.GUID);
         }
 
+        internal void Remove(SideBarItemInfo info)
+        {
+            foreach (var item in activateItems)
+            {
+                if (item.Info==info)
+                {
+                    Remove(item);
+                }
+            }
+        }
+
+        internal bool Query(SideBarItemInfo info)
+        {
+            foreach (var item in activateItems)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

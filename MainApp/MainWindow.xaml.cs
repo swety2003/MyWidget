@@ -22,7 +22,10 @@ namespace MainApp
         {
             InitializeComponent();
 
+
+
             App.GetService<SideBarManageService>().Container = sb_container;
+            App.GetService<SideBarManageService>().ContainerPop = sb_container_pop;
 
         }
 
@@ -50,7 +53,7 @@ namespace MainApp
 
             frame.Navigate(App.GetService<WidgetView>());
 
-            LoadSBI();
+            //LoadSBI();
 
 
         }
