@@ -24,7 +24,7 @@ namespace SpineViewer.View
     public partial class SpinePlayer : UserControl, ICard, IPreviewable
     {
 
-        public CardInfo CI => info;
+        public CardInfo Info => info;
 
         Window? window => this.Parent as Window;
         private PlayerVM _vm = new PlayerVM();

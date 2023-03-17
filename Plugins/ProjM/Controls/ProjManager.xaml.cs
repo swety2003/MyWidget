@@ -21,6 +21,8 @@ namespace Projm.Controls
 
         public Popup Popup { get; }
 
+        public SideBarItemInfo Info => info;
+
         ProjManagerVM vm = new ProjManagerVM();
 
         public ProjManager(Popup pop)

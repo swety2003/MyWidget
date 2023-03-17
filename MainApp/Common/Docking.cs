@@ -203,7 +203,10 @@ namespace MainApp.Common
                 data.hWnd = hwndSource.Handle;
 
                 data.uCallbackMessage = _callbackId;
+
+
                 SHAppBarMessage((int)ABMsg.ABM_NEW, ref data);
+
                 hwndSource.AddHook(WndProc);
 
                 Update(value);
@@ -252,8 +255,9 @@ namespace MainApp.Common
                 {
                     if (wParam.ToInt32() == (int)ABNotify.ABN_POSCHANGED)
                     {
+                        var self_bound = new Rect(new Size(_window.Width*DPIHelper.GetScale(),_window.Height));
                         var hwndSource = _hwndSourceTask.Task.Result;
-                        var bounds = TransformToAppBar(hwndSource.Handle, _window.RestoreBounds, Edge);
+                        var bounds = TransformToAppBar(hwndSource.Handle, self_bound, Edge);
                         Resize(_window, bounds);
                         handled = true;
                     }
@@ -264,10 +268,10 @@ namespace MainApp.Common
 
             private static void Resize(Window window, Rect bounds)
             {
-                window.Left = bounds.Left;
-                window.Top = bounds.Top;
-                window.Width = bounds.Width;
-                window.Height = bounds.Height;
+                //window.Left = bounds.Left;
+                //window.Top = bounds.Top;
+                //window.Width = bounds.Width;
+                //window.Height = bounds.Height;
             }
 
             private Rect TransformToAppBar(IntPtr hWnd, Rect area, AppBarEdge edge)
@@ -394,6 +398,28 @@ namespace MainApp.Common
             public const int GWL_EXSTYLE = -20;
 
             public const int WS_EX_TOOLWINDOW = 0x00000080;
+        }
+
+
+
+        public static class DPIHelper
+        {
+            public static double GetScale()
+            {
+                var win = Application.Current.MainWindow;
+                var interopWindow = new WindowInteropHelper(win);
+                var hwnd = interopWindow.Handle;
+
+                var presentationSource = PresentationSource.FromVisual(win);
+                double dpiX = 1.0;
+                double dpiY = 1.0;
+                if (presentationSource != null)
+                {
+                    dpiX = presentationSource.CompositionTarget.TransformToDevice.M11;
+                    dpiY = presentationSource.CompositionTarget.TransformToDevice.M22;
+                }
+                return dpiX;
+            }
         }
     }
 

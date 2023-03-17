@@ -28,7 +28,7 @@ namespace MyDesktopCards.View
     public partial class AISchedule : UserControl,ICard,ICanOverrideUI
     {
 
-        public CardInfo CI => info;
+        public CardInfo Info => info;
 
         private ILogger<AISchedule>_logger=> Logger.CreateLogger<AISchedule>();
 

@@ -29,6 +29,9 @@ namespace ChatGPT
 
         internal static SideBarItemInfo info = new SideBarItemInfo("ChatGPT-GUI","一个简单的ChatGPT对话程序",typeof(MainView));
 
+
+        public SideBarItemInfo Info => info;
+
         MainViewModel vm;
 
         public MainView(Popup pop)

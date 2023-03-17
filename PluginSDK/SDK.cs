@@ -69,7 +69,7 @@ namespace PluginSDK
         public int WidthPix { get; }
 
         // 不能使用 CardInfo ICard.CI => info; ，否则无法绑定成功
-        public CardInfo CI { get; }
+        public CardInfo Info { get; }
 
     }
 
@@ -79,6 +79,8 @@ namespace PluginSDK
     {
 
         Popup Popup { get; }
+
+        public SideBarItemInfo Info { get; }
     }
 
     public record SideBarItemInfo(string Name, string Description, Type MainView);

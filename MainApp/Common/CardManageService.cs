@@ -82,7 +82,7 @@ namespace MainApp.Common
         {
 
 
-            switch (card.CI.CardType)
+            switch (card.Info.CardType)
             {
                 case CardType.Window:
 
