@@ -10,7 +10,6 @@
     xmlns:sdkcontrol="clr-namespace:PluginSDK.Controls;assembly=PluginSDK"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Foreground="{DynamicResource Brush98}"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -27,11 +26,11 @@
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40" />
+                    <RowDefinition Height="auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Grid Height="38px" VerticalAlignment="Center">
+                <Grid VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition />
@@ -47,9 +46,9 @@
                             Height="30"
                             Margin="4,4"
                             RenderOptions.BitmapScalingMode="Fant">
-                            <!--<Border.Background>
-                            <ImageBrush ImageSource="/Assets/schedule-logo.png" />
-                        </Border.Background>-->
+                            <Border.Background>
+                                <ImageBrush ImageSource="/MyDesktopCards;component/View/schedule-logo.png" />
+                            </Border.Background>
                         </Border>
 
                         <Button
@@ -94,16 +93,20 @@
                                 <Button
                                     Margin="0"
                                     pu:ButtonHelper.CornerRadius="0"
+                                    Background="Transparent"
                                     Command="{Binding PreviousCommand}"
                                     Content="&#xf744;"
                                     FontFamily="{StaticResource SFI}"
+                                    Foreground="{DynamicResource OnBackgroundBrush}"
                                     Style="{DynamicResource SimpleBtnStyle}" />
                                 <Button
                                     Margin="0"
                                     pu:ButtonHelper.CornerRadius="0"
+                                    Background="Transparent"
                                     Command="{Binding NextCommand}"
                                     Content="&#xf746;"
                                     FontFamily="{StaticResource SFI}"
+                                    Foreground="{DynamicResource OnBackgroundBrush}"
                                     Style="{DynamicResource SimpleBtnStyle}" />
                             </UniformGrid>
                         </sdkcontrol:CornerClip>
@@ -117,7 +120,7 @@
 
                 <ItemsControl
                     Grid.Row="1"
-                    Margin="10,0,10,10"
+                    Margin="10,0,10,0"
                     HorizontalAlignment="Stretch"
                     Background="Transparent"
                     BorderThickness="0"
@@ -125,12 +128,12 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border
-                                Margin="0,4"
+                                Margin="0,2"
                                 Padding="8,4"
                                 HorizontalAlignment="Stretch"
-                                BorderBrush="{DynamicResource OnBackgroundBrush}"
+                                Background="{DynamicResource PrimaryContainerBrush}"
                                 BorderThickness="2"
-                                CornerRadius="2">
+                                CornerRadius="16">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />

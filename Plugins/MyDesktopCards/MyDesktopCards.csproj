@@ -10,12 +10,14 @@
 
   <ItemGroup>
     <None Remove="Assets\schedule-logo.png" />
+    <None Remove="View\schedule-logo.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\schedule-logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Assets\schedule-logo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\schedule-logo.png" />
   </ItemGroup>
 
 	<ItemGroup>

@@ -24,8 +24,8 @@ namespace MainApp
 
 
 
-            App.GetService<SideBarManageService>().Container = sb_container;
-            App.GetService<SideBarManageService>().ContainerPop = sb_container_pop;
+            //App.GetService<SideBarManageService>().Container = sb_container;
+            //App.GetService<SideBarManageService>().ContainerPop = sb_container_pop;
 
         }
 
@@ -40,7 +40,9 @@ namespace MainApp
             //_screen = Screen.PrimaryScreen;
 
             Height = SystemParameters.WorkArea.Height;
-            Width = SystemParameters.WorkArea.Width;
+            //Width = SystemParameters.WorkArea.Width;
+
+            WindowState = WindowState.Maximized;
 
             Left = 0;
             Top = 0;
@@ -60,19 +62,6 @@ namespace MainApp
 
 
 
-        void LoadSBI()
-        {
-
-            foreach (var item in App.GetService<PluginLoader>().SideBarItemInfos)
-            {
-                var sbi = Activator.CreateInstance(item.MainView, this.sb_container_pop) as ISideBarItem;
-                sb_container.Children.Add(sbi as UIElement);
-
-                sbi?.OnEnabled();
-            }
-        }
-
-
 
 
 
@@ -83,23 +72,23 @@ namespace MainApp
         }
 
 
-        private void SettingBtn_Click(object sender, RoutedEventArgs e)
-        {
+        //private void SettingBtn_Click(object sender, RoutedEventArgs e)
+        //{
 
-            new Settings().ShowDialog();
-        }
+        //    new Settings().ShowDialog();
+        //}
 
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //da.Close();
+        //private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //da.Close();
 
 
-            App.Current.Shutdown();
-        }
+        //    App.Current.Shutdown();
+        //}
 
-        private void sb_container_pop_Closed(object sender, EventArgs e)
-        {
-            (sender as Popup).Child = null;
-        }
+        //private void sb_container_pop_Closed(object sender, EventArgs e)
+        //{
+        //    (sender as Popup).Child = null;
+        //}
     }
 }

@@ -6,15 +6,88 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MainApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     Title="DockArea"
     Width="48"
     Height="450"
     cm:DesktopAppBar.AppBar="Left"
-    AllowsTransparency="True"
-    Background="Transparent"
+    ShowInTaskbar="False"
     WindowStyle="None"
     mc:Ignorable="d">
-    <Grid />
 
+    <Border
+        Grid.Column="0"
+        HorizontalAlignment="Stretch"
+        Background="{DynamicResource BackgroundBrush}"
+        BorderBrush="{DynamicResource OutlineBrush}"
+        BorderThickness="0,0,1,0">
+        <Grid>
+            <StackPanel>
+                <Button
+                    Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}"
+                    Margin="6"
+                    Padding="0"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    pu:ButtonHelper.CornerRadius="16"
+                    pu:ButtonHelper.HoverBorderBrush="{DynamicResource PrimaryBrush}"
+                    BorderBrush="Transparent"
+                    BorderThickness="2">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="/Assets/avatar.png" />
+                    </Button.Background>
+                </Button>
+
+                <Grid
+                    Height="2"
+                    Margin="2"
+                    Background="{DynamicResource OutlineBrush}" />
+
+                <StackPanel x:Name="sb_container" />
+                <Popup
+                    x:Name="sb_container_pop"
+                    Width="400"
+                    Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=2}, Path=ActualHeight}"
+                    Closed="sb_container_pop_Closed"
+                    HorizontalOffset="0"
+                    IsOpen="False"
+                    Placement="Left"
+                    PlacementTarget="{Binding ElementName=sb_container}"
+                    PopupAnimation="Slide"
+                    StaysOpen="False"
+                    VerticalOffset="-64" />
+
+            </StackPanel>
+
+            <!--  底部区域  -->
+            <StackPanel VerticalAlignment="Bottom">
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource SimpleBtnStyle}" TargetType="Button">
+                        <Setter Property="Height" Value="40" />
+                        <Setter Property="Padding" Value="8" />
+                        <Setter Property="FontSize" Value="24" />
+                        <Setter Property="FontFamily" Value="{StaticResource SFI}" />
+                        <Setter Property="Foreground" Value="{DynamicResource OnBackgroundBrush}" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="ForceCursor" Value="{DynamicResource OnBackgroundBrush}" />
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource SurfaceVariantBrush}" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button Click="SettingBtn_Click">
+                    
+                </Button>
+
+
+
+                <Button Click="ExitBtn_Click" FontSize="18">
+                    
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 
 </Window>

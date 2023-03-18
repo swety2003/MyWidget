@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MyDesktopCards.Common;
 using MyDesktopCards.ViewModel;
 using PluginSDK;
 using System;
@@ -46,6 +47,8 @@ namespace MyDesktopCards.View
             vm = new HardwareMonitorVM();
             vm.Active = true;
             DataContext = vm;
+
+            this.TryLoadCustomeStyle();
         }
 
         public void ShowSetting()

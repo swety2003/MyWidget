@@ -8,7 +8,7 @@
         <!--<st:Theme Type="Light" />-->
 
         <!--  仅供开发  -->
-        <ResourceDictionary Source="NewBrush/DarkBrush.xaml" />
+        <!--<ResourceDictionary Source="NewBrush/DarkBrush.xaml" />-->
 
         <ResourceDictionary>
 

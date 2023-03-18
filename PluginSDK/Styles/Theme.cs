@@ -45,8 +45,10 @@ namespace PluginSDK.Styles
 
         public static void SetTheme(ThemeType themeType)
         {
-            Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Remove(Instance);
-            Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Add(new Theme { Type = themeType });
+            //Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Remove(Instance);
+            //Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Add(new Theme { Type = themeType });
+            Application.Current.Resources.MergedDictionaries.Remove(Instance);
+            Application.Current.Resources.MergedDictionaries.Add(new Theme { Type = themeType });
         }
     }
 

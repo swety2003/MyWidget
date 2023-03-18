@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MyDesktopCards.Common;
 using MyDesktopCards.ViewModel;
 using PluginSDK;
 using System;
@@ -43,6 +44,8 @@ namespace MyDesktopCards.View
             vm = new DigitalClockVM();
             DataContext = vm;
             vm.Active = true;
+
+            this.TryLoadCustomeStyle();
         }
 
         public void ShowSetting()

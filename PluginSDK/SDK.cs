@@ -12,26 +12,26 @@ namespace PluginSDK
 {
 
 
-    //public record CardInfo(ImageSource Icon, string Name, string Description, Type MainView,CardType CardType=CardType.UserControl);
+    public record CardInfo(ImageSource Icon, string Name, string Description, Type MainView, CardType CardType = CardType.UserControl);
 
-    public class CardInfo
-    {
-        public CardInfo(ImageSource Icon, string Name, string Description, Type MainView, CardType CardType = CardType.UserControl)
-        {
-            this.Icon = Icon;
-            this.Name = Name;
-            this.Description = Description;
-            this.MainView = MainView;
-            this.CardType = CardType;
+    //public class CardInfo
+    //{
+    //    public CardInfo(ImageSource Icon, string Name, string Description, Type MainView, CardType CardType = CardType.UserControl)
+    //    {
+    //        this.Icon = Icon;
+    //        this.Name = Name;
+    //        this.Description = Description;
+    //        this.MainView = MainView;
+    //        this.CardType = CardType;
 
-        }
+    //    }
 
-        public ImageSource Icon { get; }
-        public string Name { get; }
-        public string Description { get; }
-        public Type MainView { get; }
-        public CardType CardType { get; }
-    }
+    //    public ImageSource Icon { get; }
+    //    public string Name { get; }
+    //    public string Description { get; }
+    //    public Type MainView { get; }
+    //    public CardType CardType { get; }
+    //}
 
 
     public interface IPlugin
@@ -68,7 +68,7 @@ namespace PluginSDK
         public int HeightPix { get; }
         public int WidthPix { get; }
 
-        // 不能使用 CardInfo ICard.CI => info; ，否则无法绑定成功
+        // 不能使用 CardInfo ICard.Info => info; ，否则无法绑定成功
         public CardInfo Info { get; }
 
     }
@@ -202,10 +202,6 @@ namespace PluginSDK
         }
     }
 
-    public interface ICanOverrideUI
-    {
-        void OverrideUI(string xaml_file_path);
-    }
 
 
     public interface IPreviewable

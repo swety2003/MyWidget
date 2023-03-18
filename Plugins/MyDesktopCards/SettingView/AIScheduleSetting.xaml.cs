@@ -95,33 +95,12 @@ namespace MyDesktopCards.SettingView
         {
             await ImportTable();
 
-            OverrideUI();
         }
 
         [ObservableProperty]
         string overrideUIFile = "";
 
-        [RelayCommand]
-        void OverrideUI()
-        {
-            if (string.IsNullOrEmpty(OverrideUIFile))
-            {
-                return;
-            }
-            try
-            {
-                (card as ICanOverrideUI)?.OverrideUI(OverrideUIFile);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-                logger.LogError(ex.ToString());
-
-            }
-        }
-
-
+       
 
 
     }

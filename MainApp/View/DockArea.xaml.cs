@@ -1,6 +1,7 @@
 ﻿using MainApp.Common;
 using System;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 
 namespace MainApp.View
@@ -14,10 +15,16 @@ namespace MainApp.View
         public DockArea(MainWindow f)
         {
             InitializeComponent();
+
             mw = f;
             Left = f.Left;
             Top = f.Top;
             Height = f.Height;
+
+
+
+            App.GetService<SideBarManageService>().Container = sb_container;
+            App.GetService<SideBarManageService>().ContainerPop = sb_container_pop;
         }
 
         protected override void OnSourceInitialized(EventArgs e)
@@ -25,11 +32,31 @@ namespace MainApp.View
             base.OnSourceInitialized(e);
 
 
-            var handle = new WindowInteropHelper(this).Handle;
-            var father = new WindowInteropHelper(mw).Handle;
+            //var handle = new WindowInteropHelper(this).Handle;
+            //var father = new WindowInteropHelper(mw).Handle;
 
-            PInvoke.SetFather(handle, father);
+            //PInvoke.SetFather(handle, father);
 
+        }
+
+        private void SettingBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            new Settings().ShowDialog();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //da.Close();
+            Common.DesktopAppBar.SetAppBar(this, AppBarEdge.None);
+            this.Close();
+
+            App.Current.Shutdown();
+        }
+
+        private void sb_container_pop_Closed(object sender, EventArgs e)
+        {
+            (sender as Popup).Child = null;
         }
     }
 }

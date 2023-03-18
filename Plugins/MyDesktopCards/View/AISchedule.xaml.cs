@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MyDesktopCards.Common;
 using MyDesktopCards.Model;
 using MyDesktopCards.SettingView;
 using MyDesktopCards.ViewModel;
@@ -14,7 +15,7 @@ namespace MyDesktopCards.View
     /// <summary>
     /// AISchedule.xaml 的交互逻辑
     /// </summary>
-    public partial class AISchedule : UserControl, ICard, ICanOverrideUI
+    public partial class AISchedule : UserControl, ICard
     {
 
         public CardInfo Info => info;
@@ -50,6 +51,7 @@ namespace MyDesktopCards.View
             vm = new AIScheduleVM(this);
             DataContext = vm;
             vm.Active = true;
+            this.TryLoadCustomeStyle();
 
         }
 
@@ -58,18 +60,6 @@ namespace MyDesktopCards.View
             new AIScheduleSetting(this).Show();
         }
 
-        public void OverrideUI(string xaml_file_path)
-        {
-
-            DependencyObject rootElement;
-            using (FileStream fs = new FileStream(xaml_file_path, FileMode.Open))
-            {
-                rootElement = (DependencyObject)XamlReader.Load(fs);
-            }
-            Content = rootElement;
-
-
-        }
 
         public UIElement GetUIElement()
         {

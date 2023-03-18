@@ -66,8 +66,8 @@
                 pu:ListBoxHelper.ItemsBackground="{DynamicResource SecondaryContainerBrush}"
                 pu:ListBoxHelper.ItemsCornerRadius="16"
                 pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SecondaryContainerBrush}"
-                pu:ListBoxHelper.ItemsMargin="6"
-                pu:ListBoxHelper.ItemsPadding="8"
+                pu:ListBoxHelper.ItemsMargin="0 6"
+                pu:ListBoxHelper.ItemsPadding="4"
                 pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource SecondaryContainerBrush}"
                 Background="Transparent"
                 BorderThickness="0"
@@ -98,7 +98,6 @@
                             <Border
                                 Margin="4"
                                 Padding="8"
-                                Background="Black"
                                 CornerRadius="12">
 
                                 <controls:CornerClip CornerRadius="12">
@@ -114,7 +113,7 @@
 
 
 
-                            <Grid Grid.Column="1" Margin="10,4">
+                            <Grid Grid.Column="1" Margin="10,0">
                                 <Grid>
                                     <StackPanel>
                                         <Grid>
@@ -148,7 +147,7 @@
                                     </StackPanel>
 
                                     <UniformGrid
-                                        Margin="4,4,0,4"
+                                        Margin="4,4,0,0"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Rows="1">
