@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -189,5 +190,11 @@ namespace MyDesktopCards.Model
             public string e { get; set; }
         }
 
+    }
+
+    public class AIScheduleConfig:ConfigBase
+    {
+        public string TableUrl { get; set; }
+        public string OverrideFile { get; set; }
     }
 }

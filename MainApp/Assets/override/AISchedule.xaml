@@ -13,7 +13,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/MyDesktopCards;component/Assets/index.xaml" />
+                <ResourceDictionary Source="/MyDesktopCards;component/Style/index.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -53,7 +53,7 @@
                         Content="课程表"
                         Cursor="Hand"
                         FontSize="16"
-                        Foreground="{DynamicResource Brush98}" />
+                        Foreground="{DynamicResource OnBackgroundBrush}" />
 
                 </StackPanel>
 

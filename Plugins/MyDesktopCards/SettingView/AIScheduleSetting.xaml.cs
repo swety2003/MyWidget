@@ -46,22 +46,27 @@ namespace MyDesktopCards.SettingView
         string shareUrl = "";
         private ICard card;
         AIScheduleSetting view;
+
         public AIScheduleSettingVM(ICard card, AIScheduleSetting view)
         {
 
             this.card = card;
             this.view = view;
 
-            ImportTableCommand = new AsyncRelayCommand(ImportTable);
+            ApplySettingCommand = new AsyncRelayCommand(ApplySettings);
 
             logger = Logger.CreateLogger<AIScheduleSettingVM>();
         }
 
-        public AsyncRelayCommand ImportTableCommand { get; set; }
+        //public AsyncRelayCommand ImportTableCommand { get; set; }
 
 
         async Task ImportTable()
         {
+            if (String.IsNullOrEmpty(ShareUrl))
+            {
+                return;
+            }
             try
             {
                 var strPath = ShareUrl.Substring(ShareUrl.IndexOf("linkToken=") + "linkToken=".Length);
@@ -96,12 +101,25 @@ namespace MyDesktopCards.SettingView
         }
 
 
+        public AsyncRelayCommand ApplySettingCommand { get;set; }
+
+        async Task ApplySettings()
+        {
+            await ImportTable();
+
+            OverrideUI();
+        }
+
         [ObservableProperty]
         string overrideUIFile = "";
 
         [RelayCommand]
         void OverrideUI()
         {
+            if (string.IsNullOrEmpty(OverrideUIFile))
+            {
+                return;
+            }
             try
             {
                 (card as ICanOverrideUI)?.OverrideUI(OverrideUIFile);

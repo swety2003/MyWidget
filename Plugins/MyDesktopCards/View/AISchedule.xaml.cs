@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MyDesktopCards.Model;
 using MyDesktopCards.SettingView;
 using MyDesktopCards.ViewModel;
 using PluginSDK;
@@ -30,6 +31,8 @@ namespace MyDesktopCards.View
 
         public CardInfo Info => info;
 
+        Model.AIScheduleConfig Config { get; set; }
+
         private ILogger<AISchedule>_logger=> Logger.CreateLogger<AISchedule>();
 
         public AISchedule(Guid guid)
@@ -54,6 +57,7 @@ namespace MyDesktopCards.View
 
         public void OnEnabled()
         {
+            ConfigBase.Load<AIScheduleConfig>(this.GetPluginConfigFilePath());
 
             vm = new AIScheduleVM(this);
             DataContext = vm;
