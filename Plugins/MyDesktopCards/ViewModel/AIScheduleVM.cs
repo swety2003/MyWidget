@@ -9,16 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 using static MyDesktopCards.Model.ClassTableData;
 
 namespace MyDesktopCards.ViewModel
 {
-    internal partial class AIScheduleVM: SimpleVM
+    internal partial class AIScheduleVM : SimpleVM
     {
         private AISchedule view;
         private DateTime targetTime;
@@ -80,7 +76,7 @@ namespace MyDesktopCards.ViewModel
             }
             else
             {
-                _Timer.Tick-= _Timer_Tick;
+                _Timer.Tick -= _Timer_Tick;
                 _Timer.Stop();
             }
         }
@@ -90,7 +86,7 @@ namespace MyDesktopCards.ViewModel
             LoadTable();
         }
 
-        public List<sectionTime> AllSections { get; private set; }= new List<sectionTime>();
+        public List<sectionTime> AllSections { get; private set; } = new List<sectionTime>();
 
         public async void LoadTable()
         {
@@ -150,11 +146,11 @@ namespace MyDesktopCards.ViewModel
 
             long timestamp = long.Parse(timeStamp);
 
-            if (timeStamp.Length==13)
+            if (timeStamp.Length == 13)
             {
                 timestamp /= 1000;
             }
-            if (timestamp==0)
+            if (timestamp == 0)
             {
                 return DateTime.Now.AddDays(-7);
             }
@@ -181,7 +177,7 @@ namespace MyDesktopCards.ViewModel
         [RelayCommand]
         private void Reload()
         {
-            targetTime= DateTime.Now;
+            targetTime = DateTime.Now;
             LoadTable();
         }
 

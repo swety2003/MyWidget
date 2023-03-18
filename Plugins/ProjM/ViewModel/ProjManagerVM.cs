@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using PluginSDK;
-using Projm.Controls;
 using ProjM;
 using System;
 using System.Collections.ObjectModel;

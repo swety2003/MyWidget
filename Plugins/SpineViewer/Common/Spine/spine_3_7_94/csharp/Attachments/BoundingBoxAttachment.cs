@@ -27,13 +27,14 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using System;
-
-namespace SpineViewer.Common.Spine_3_7_94 {
-	/// <summary>Attachment that has a polygon for bounds checking.</summary>
-	public class BoundingBoxAttachment : VertexAttachment {
-		public BoundingBoxAttachment (string name)
-			: base(name) {
-		}
-	}
+namespace SpineViewer.Common.Spine_3_7_94
+{
+    /// <summary>Attachment that has a polygon for bounds checking.</summary>
+    public class BoundingBoxAttachment : VertexAttachment
+    {
+        public BoundingBoxAttachment(string name)
+            : base(name)
+        {
+        }
+    }
 }

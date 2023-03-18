@@ -28,8 +28,10 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace SpineViewer.Common.Spine_3_6 {
-	public interface IUpdatable {
-		void Update ();
-	}
+namespace SpineViewer.Common.Spine_3_6
+{
+    public interface IUpdatable
+    {
+        void Update();
+    }
 }

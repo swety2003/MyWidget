@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ChatGPT
 {
-    public class PluginInfo:IPlugin
+    public class PluginInfo : IPlugin
     {
         public Version version { get; } = new Version();
         public string url { get; } = "";

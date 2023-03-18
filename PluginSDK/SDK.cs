@@ -59,10 +59,10 @@ namespace PluginSDK
 
     public enum CardType
     {
-        Window,UserControl
+        Window, UserControl
     }
 
-    public interface ICard: IViewBase,IPreviewable
+    public interface ICard : IViewBase, IPreviewable
     {
 
         public int HeightPix { get; }
@@ -73,9 +73,9 @@ namespace PluginSDK
 
     }
 
-    
 
-    public interface ISideBarItem: IViewBase
+
+    public interface ISideBarItem : IViewBase
     {
 
         Popup Popup { get; }
@@ -93,7 +93,7 @@ namespace PluginSDK
         public static ILoggerFactory? LoggerFactory
         {
             get { return _loggerFactory; }
-            set 
+            set
             {
                 if (_loggerFactory == null)
                 {
@@ -195,7 +195,7 @@ namespace PluginSDK
 
     public static class ISideBarItemExt
     {
-        public static void Show(this ISideBarItem card,UIElement view)
+        public static void Show(this ISideBarItem card, UIElement view)
         {
             card.Popup.Child = view;
             card.Popup.IsOpen = true;
@@ -212,6 +212,6 @@ namespace PluginSDK
     {
         public UIElement GetUIElement();
 
-        
+
     }
 }

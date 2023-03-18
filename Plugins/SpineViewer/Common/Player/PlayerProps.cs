@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpineViewer.Common.Player
 {
@@ -16,7 +12,7 @@ namespace SpineViewer.Common.Player
         public float Y { get; set; }
         public float Rotation { get; set; }
         public float Scale { get; set; } = 1f;
-        
+
         public bool UseAlpha { get; set; }
 
         // Skeleton

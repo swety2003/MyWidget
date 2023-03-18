@@ -28,7 +28,7 @@
         IComparer<T> _Comparer;
         public IComparer<T> Comparer
         {
-            get { if (_Comparer == null) _Comparer = Comparer<T>.Default; return _Comparer;  }
+            get { if (_Comparer == null) _Comparer = Comparer<T>.Default; return _Comparer; }
             set
             {
                 _Comparer = value;

@@ -27,8 +27,10 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace SpineViewer.Common.Spine_3_8_95 {
-	public enum BlendMode {
-		Normal, Additive, Multiply, Screen
-	}
+namespace SpineViewer.Common.Spine_3_8_95
+{
+    public enum BlendMode
+    {
+        Normal, Additive, Multiply, Screen
+    }
 }

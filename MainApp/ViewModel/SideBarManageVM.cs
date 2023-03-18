@@ -1,18 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MainApp.Common;
 using PluginSDK;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MainApp.ViewModel
 {
-    public class SideBarInstanceInfo:INotifyPropertyChanged
+    public class SideBarInstanceInfo : INotifyPropertyChanged
     {
         public SideBarInstanceInfo(SideBarItemInfo Item, bool Enabled)
         {
@@ -27,8 +21,8 @@ namespace MainApp.ViewModel
         public bool Enabled
         {
             get { return enabled; }
-            set 
-            { 
+            set
+            {
                 if (value)
                 {
                     App.GetService<SideBarManageService>().Create(Item);
@@ -47,7 +41,7 @@ namespace MainApp.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 
-    public partial class SideBarManageVM:ObservableObject
+    public partial class SideBarManageVM : ObservableObject
     {
         public SideBarManageVM()
         {
@@ -60,7 +54,7 @@ namespace MainApp.ViewModel
 
             foreach (var item in sbii)
             {
-                InstalledItems.Add(new SideBarInstanceInfo(item,false));
+                InstalledItems.Add(new SideBarInstanceInfo(item, false));
             }
 
         }

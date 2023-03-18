@@ -27,19 +27,21 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using System;
+namespace SpineViewer.Common.Spine_3_8_95
+{
+    /// <summary>Attachment that has a polygon for bounds checking.</summary>
+    public class BoundingBoxAttachment : VertexAttachment
+    {
+        public BoundingBoxAttachment(string name)
+            : base(name)
+        {
+        }
 
-namespace SpineViewer.Common.Spine_3_8_95 {
-	/// <summary>Attachment that has a polygon for bounds checking.</summary>
-	public class BoundingBoxAttachment : VertexAttachment {
-		public BoundingBoxAttachment (string name)
-			: base(name) {
-		}
-
-		public override Attachment Copy () {
-			BoundingBoxAttachment copy = new BoundingBoxAttachment(this.Name);
-			CopyTo(copy);
-			return copy;
-		}
-	}
+        public override Attachment Copy()
+        {
+            BoundingBoxAttachment copy = new BoundingBoxAttachment(this.Name);
+            CopyTo(copy);
+            return copy;
+        }
+    }
 }

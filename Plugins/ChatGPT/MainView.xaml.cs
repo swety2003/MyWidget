@@ -3,20 +3,9 @@ using ChatGPT_GUI;
 using ChatGPT_GUI.ViewModels;
 using PluginSDK;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ChatGPT
 {
@@ -27,7 +16,7 @@ namespace ChatGPT
     {
         public Config AppConfig { get; set; }
 
-        internal static SideBarItemInfo info = new SideBarItemInfo("ChatGPT-GUI","一个简单的ChatGPT对话程序",typeof(MainView));
+        internal static SideBarItemInfo info = new SideBarItemInfo("ChatGPT-GUI", "一个简单的ChatGPT对话程序", typeof(MainView));
 
 
         public SideBarItemInfo Info => info;
@@ -53,7 +42,7 @@ namespace ChatGPT
 
         public void OnEnabled()
         {
-            AppConfig =  ConfigBase.Load<Config>(this.GetPluginConfigFilePath())??new Config();
+            AppConfig = ConfigBase.Load<Config>(this.GetPluginConfigFilePath()) ?? new Config();
 
             vm.LoadedCommand.Execute(this);
         }
@@ -67,7 +56,7 @@ namespace ChatGPT
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            pop_view.DataContext= vm;
+            pop_view.DataContext = vm;
             this.Show(pop_view);
         }
     }

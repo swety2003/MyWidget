@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace SpineViewer.Common.Player
 {
-    public abstract class Player: IDisposable
+    public abstract class Player : IDisposable
     {
         public PlayerInfo Info { get; set; }
         public PlayerProps Props { get; set; }

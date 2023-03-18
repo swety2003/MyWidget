@@ -27,8 +27,10 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace SpineViewer.Common.Spine_3_8_95 {
-	public enum AttachmentType {
-		Region, Boundingbox, Mesh, Linkedmesh, Path, Point, Clipping
-	}
+namespace SpineViewer.Common.Spine_3_8_95
+{
+    public enum AttachmentType
+    {
+        Region, Boundingbox, Mesh, Linkedmesh, Path, Point, Clipping
+    }
 }

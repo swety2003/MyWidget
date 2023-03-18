@@ -2,10 +2,8 @@
 using MyDesktopCards.ViewModel;
 using PluginSDK;
 using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Markup;
 
 namespace MyDesktopCards.View
 {

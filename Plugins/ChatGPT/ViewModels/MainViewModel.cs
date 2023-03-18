@@ -15,12 +15,14 @@ using System.Windows;
 
 namespace ChatGPT_GUI.ViewModels;
 
-public partial class MainViewModel: ObservableRecipient {
+public partial class MainViewModel : ObservableRecipient
+{
 
 
     ILogger<MainViewModel>? logger;
 
-    public MainViewModel(MainView view) {
+    public MainViewModel(MainView view)
+    {
 
         this.view = view;
         IsActive = true;
@@ -31,7 +33,8 @@ public partial class MainViewModel: ObservableRecipient {
 
 
     [RelayCommand]
-    async void Loaded() {
+    async void Loaded()
+    {
 
         try
         {
@@ -47,7 +50,7 @@ public partial class MainViewModel: ObservableRecipient {
 
         }
         //MessageBox.Show("你好，欢迎使用猫娘模拟器");
-        
+
     }
 
     [ObservableProperty]
@@ -57,23 +60,27 @@ public partial class MainViewModel: ObservableRecipient {
 
 
     [RelayCommand(CanExecute = nameof(IsSendMethod))]
-    async void Ask() {
+    async void Ask()
+    {
         await action(Message, false);
     }
 
     [RelayCommand]
-    void ShowSetting() {
+    void ShowSetting()
+    {
 
         view.ShowSetting();
     }
 
-    bool IsSendMethod() {
+    bool IsSendMethod()
+    {
         return IsSend;
     }
 
 
     [RelayCommand(CanExecute = nameof(IsSendMethod))]
-    async void SetSystem(string message) {
+    async void SetSystem(string message)
+    {
         await action(message, true);
         Message = "";
     }
@@ -91,25 +98,30 @@ public partial class MainViewModel: ObservableRecipient {
     private bool isSend = true;
     private readonly MainView view;
 
-    partial void OnIsSendChanged(bool value) {
+    partial void OnIsSendChanged(bool value)
+    {
         AskCommand.NotifyCanExecuteChanged();
         SetSystemCommand.NotifyCanExecuteChanged();
     }
 
 
-    async Task action(string message,bool issystem) {
+    async Task action(string message, bool issystem)
+    {
         IsSend = false;
         RingVisibility = Visibility.Visible;
         StateMessage = "[等待B (AI)]";
-        ChatList.Add(new ChatModel() {
+        ChatList.Add(new ChatModel()
+        {
             Type = ChatType.User,
             DateTime = DateTime.Now.AddSeconds(1),
             Message = message
         });
         var messagelist = new List<OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage>();
-        
-        foreach (var chat in ChatList) {
-            switch (chat.Type) {
+
+        foreach (var chat in ChatList)
+        {
+            switch (chat.Type)
+            {
                 case ChatType.User:
                     //用户的回答
                     messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromUser(chat.Message));
@@ -128,25 +140,32 @@ public partial class MainViewModel: ObservableRecipient {
             messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromSystem(message));
         else
             messagelist.Add(OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.FromUser(message));
-        try {
-            var result = await OpenAIService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest() {
+        try
+        {
+            var result = await OpenAIService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest()
+            {
                 Messages = messagelist,
                 Model = OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo0301
-                
+
             });
-            if (result.Successful) {
+            if (result.Successful)
+            {
                 string str = "";
-                result.Choices.ForEach((val) => {
+                result.Choices.ForEach((val) =>
+                {
                     str += string.IsNullOrWhiteSpace(val.Message.Content) ? "" : val.Message.Content;
                 });
-                ChatList.Add(new ChatModel() {
+                ChatList.Add(new ChatModel()
+                {
                     Type = ChatType.AI,
                     DateTime = DateTime.Now.AddSeconds(1),
                     Message = str
                 });
             }
-            else {
-                if (result.Error == null) {
+            else
+            {
+                if (result.Error == null)
+                {
                     throw new Exception("Unknown Error");
                 }
                 MessageBox.Show($"{result.Error.Message}");
@@ -155,13 +174,13 @@ public partial class MainViewModel: ObservableRecipient {
             StateMessage = "[等待A (用户)]";
             IsSend = true;
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             logger?.LogError(ex.Message, ex);
             RingVisibility = Visibility.Collapsed;
             StateMessage = "[等待A (用户)]";
             IsSend = true;
         }
-        
+
     }
 }

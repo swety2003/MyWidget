@@ -5,13 +5,13 @@ using PluginSDK;
 using System.ComponentModel;
 
 namespace ChatGPT_GUI.ViewModels;
-public partial class SettingViewModel:ObservableObject 
+public partial class SettingViewModel : ObservableObject
 {
 
     public SettingViewModel(MainView view)
     {
         Appcfg = view.AppConfig;
-        if (view.AppConfig.API_Key!=null)
+        if (view.AppConfig.API_Key != null)
         {
 
             ApiKey = view.AppConfig.API_Key;
@@ -29,7 +29,7 @@ public partial class SettingViewModel:ObservableObject
         base.OnPropertyChanged(e);
         if (_apiKey != null)
         {
-            Appcfg.API_Key= _apiKey;
+            Appcfg.API_Key = _apiKey;
 
             Appcfg.Save(view.GetPluginConfigFilePath());
         }

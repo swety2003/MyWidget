@@ -1,14 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace MyDesktopCards.Common
 {
-    internal abstract class SimpleVM:ObservableObject
+    internal abstract class SimpleVM : ObservableObject
     {
         public DispatcherTimer? _Timer { get; set; }
 
@@ -24,7 +20,7 @@ namespace MyDesktopCards.Common
                 _active = value;
 
                 OnActiveChanged?.Invoke(this, value);
-                
+
             }
         }
 

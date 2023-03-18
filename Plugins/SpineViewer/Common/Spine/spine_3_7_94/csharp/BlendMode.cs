@@ -27,8 +27,10 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace SpineViewer.Common.Spine_3_7_94 {
-	public enum BlendMode {
-		Normal, Additive, Multiply, Screen
-	}
+namespace SpineViewer.Common.Spine_3_7_94
+{
+    public enum BlendMode
+    {
+        Normal, Additive, Multiply, Screen
+    }
 }

@@ -28,8 +28,10 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace SpineViewer.Common.Spine_3_6 {
-	public enum AttachmentType {
-		Region, Boundingbox, Mesh, Linkedmesh, Path, Point, Clipping
-	}
+namespace SpineViewer.Common.Spine_3_6
+{
+    public enum AttachmentType
+    {
+        Region, Boundingbox, Mesh, Linkedmesh, Path, Point, Clipping
+    }
 }

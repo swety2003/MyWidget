@@ -27,19 +27,17 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using System;
 using System.IO;
-using System.Text;
-using System.Collections;
-using System.Globalization;
-using System.Collections.Generic;
 
-namespace SpineViewer.Common.Spine_3_8_95 {
-	public static class Json {
-		public static object Deserialize (TextReader text) {
-			var parser = new SharpJson.JsonDecoder();
-			parser.parseNumbersAsFloat = true;
-			return parser.Decode(text.ReadToEnd());
-		}
-	}
+namespace SpineViewer.Common.Spine_3_8_95
+{
+    public static class Json
+    {
+        public static object Deserialize(TextReader text)
+        {
+            var parser = new SharpJson.JsonDecoder();
+            parser.parseNumbersAsFloat = true;
+            return parser.Decode(text.ReadToEnd());
+        }
+    }
 }

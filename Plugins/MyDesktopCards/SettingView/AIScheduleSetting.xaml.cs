@@ -4,21 +4,9 @@ using Flurl.Http;
 using Microsoft.Extensions.Logging;
 using PluginSDK;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace MyDesktopCards.SettingView
 {
@@ -32,13 +20,13 @@ namespace MyDesktopCards.SettingView
         public AIScheduleSetting(ICard card)
         {
             InitializeComponent();
-            DataContext = new AIScheduleSettingVM(card,this);
+            DataContext = new AIScheduleSettingVM(card, this);
         }
 
 
     }
 
-    public partial class AIScheduleSettingVM:ObservableObject
+    public partial class AIScheduleSettingVM : ObservableObject
     {
         ILogger<AIScheduleSettingVM> logger;
 
@@ -90,7 +78,7 @@ namespace MyDesktopCards.SettingView
 
                 MessageBox.Show("导入完成！");
 
-               
+
             }
             catch (Exception ex)
             {
@@ -101,7 +89,7 @@ namespace MyDesktopCards.SettingView
         }
 
 
-        public AsyncRelayCommand ApplySettingCommand { get;set; }
+        public AsyncRelayCommand ApplySettingCommand { get; set; }
 
         async Task ApplySettings()
         {
@@ -129,7 +117,7 @@ namespace MyDesktopCards.SettingView
                 MessageBox.Show(ex.Message);
 
                 logger.LogError(ex.ToString());
-                
+
             }
         }
 

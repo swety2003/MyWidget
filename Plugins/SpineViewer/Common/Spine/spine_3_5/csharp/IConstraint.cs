@@ -28,13 +28,15 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace SpineViewer.Common.Spine_3_5 {
-	
-	/// <summary>The interface for all constraints.</summary>
-	public interface IConstraint : IUpdatable {
-		/// <summary>The ordinal for the order a skeleton's constraints will be applied.</summary>
-		int Order { get; }
+namespace SpineViewer.Common.Spine_3_5
+{
 
-	}
+    /// <summary>The interface for all constraints.</summary>
+    public interface IConstraint : IUpdatable
+    {
+        /// <summary>The ordinal for the order a skeleton's constraints will be applied.</summary>
+        int Order { get; }
+
+    }
 
 }

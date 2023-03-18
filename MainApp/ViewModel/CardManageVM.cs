@@ -5,7 +5,6 @@ using MainApp.View;
 using PluginSDK;
 using PluginSDK.Controls;
 using System.Collections.ObjectModel;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -31,7 +30,7 @@ namespace MainApp.ViewModel
             var activeCards = App.GetService<CardManageService>().ActiveCards;
             foreach (var card in activeCards)
             {
-                if (card!=null)
+                if (card != null)
                 {
 
                     CardInstances.Add(card);

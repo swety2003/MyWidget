@@ -255,7 +255,7 @@ namespace MainApp.Common
                 {
                     if (wParam.ToInt32() == (int)ABNotify.ABN_POSCHANGED)
                     {
-                        var self_bound = new Rect(new Size(_window.Width*DPIHelper.GetScale(),_window.Height));
+                        var self_bound = new Rect(new Size(_window.Width * DPIHelper.GetScale(), _window.Height));
                         var hwndSource = _hwndSourceTask.Task.Result;
                         var bounds = TransformToAppBar(hwndSource.Handle, self_bound, Edge);
                         Resize(_window, bounds);

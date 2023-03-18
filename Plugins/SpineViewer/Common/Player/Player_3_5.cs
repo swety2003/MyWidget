@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-using SpineViewer.Common.Spine;
 using SpineViewer.Common.Spine_3_5;
 
 namespace SpineViewer.Common.Player
 {
-    public class Player_3_5: Player
+    public class Player_3_5 : Player
     {
         private Atlas _atlas;
         private Skeleton _skeleton;

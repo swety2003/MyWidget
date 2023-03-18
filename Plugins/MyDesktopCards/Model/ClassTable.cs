@@ -1,9 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MyDesktopCards.Model
 {
@@ -192,7 +187,7 @@ namespace MyDesktopCards.Model
 
     }
 
-    public class AIScheduleConfig:ConfigBase
+    public class AIScheduleConfig : ConfigBase
     {
         public string TableUrl { get; set; }
         public string OverrideFile { get; set; }

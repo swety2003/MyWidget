@@ -1,5 +1,4 @@
 using PluginSDK;
-using SpineViewer.Common.Player;
 using SpineViewer.View;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ namespace SpineViewer
 {
     public class PluginInfo : IPlugin
     {
-        public string name =>"Spine查看器";
+        public string name => "Spine查看器";
 
         public Version version => new Version();
 

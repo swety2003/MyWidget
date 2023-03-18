@@ -27,22 +27,24 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using System;
+namespace SpineViewer.Common.Spine_3_8_95
+{
+    public class ClippingAttachment : VertexAttachment
+    {
+        internal SlotData endSlot;
 
-namespace SpineViewer.Common.Spine_3_8_95 {
-	public class ClippingAttachment : VertexAttachment {
-		internal SlotData endSlot;
+        public SlotData EndSlot { get { return endSlot; } set { endSlot = value; } }
 
-		public SlotData EndSlot { get { return endSlot; } set { endSlot = value; } }
+        public ClippingAttachment(string name) : base(name)
+        {
+        }
 
-		public ClippingAttachment(string name) : base(name) {
-		}
-
-		public override Attachment Copy () {
-			ClippingAttachment copy = new ClippingAttachment(this.Name);
-			CopyTo(copy);
-			copy.endSlot = endSlot;
-			return copy;
-		}
-	}
+        public override Attachment Copy()
+        {
+            ClippingAttachment copy = new ClippingAttachment(this.Name);
+            CopyTo(copy);
+            copy.endSlot = endSlot;
+            return copy;
+        }
+    }
 }

@@ -1,14 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatGPT.Models
 {
-    public class Config: ConfigBase
+    public class Config : ConfigBase
     {
         public string API_Key { get; set; } = "";
     }
@@ -28,14 +24,14 @@ namespace ChatGPT.Models
             }
         }
 
-        public static void Save<T>(string path,T obj)
+        public static void Save<T>(string path, T obj)
         {
             File.WriteAllText(JsonConvert.SerializeObject(obj), path);
         }
 
         public void Save(string path)
         {
-            File.WriteAllText(path,JsonConvert.SerializeObject(this));
+            File.WriteAllText(path, JsonConvert.SerializeObject(this));
         }
     }
 

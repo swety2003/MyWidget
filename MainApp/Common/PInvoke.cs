@@ -34,9 +34,9 @@ namespace MainApp.Common
 
         private static IntPtr GetBackground()
         {
-            var logger= Logger.LoggerFactory.CreateLogger("Find::SysListView32");
+            var logger = Logger.LoggerFactory.CreateLogger("Find::SysListView32");
 
-            IntPtr background=IntPtr.Zero;
+            IntPtr background = IntPtr.Zero;
             int count = 0;
 
             IntPtr dwndparent = FindWindowA("Progman", "Program Manager");
@@ -45,10 +45,10 @@ namespace MainApp.Common
             background = FindWindowExA(dwndviem, IntPtr.Zero, "SysListView32", "FolderView");
 
 
-            if (background == IntPtr.Zero) 
+            if (background == IntPtr.Zero)
             {
                 dwndparent = FindWindowExA(IntPtr.Zero, IntPtr.Zero, "WorkerW", "");//获得第一个WorkerW类的窗口，
-                while (background==IntPtr.Zero)//因为可能会有多个窗口类名为“WorkerW”的窗口存在，所以只能依次遍历
+                while (background == IntPtr.Zero)//因为可能会有多个窗口类名为“WorkerW”的窗口存在，所以只能依次遍历
                 {
                     count++;
                     dwndviem = FindWindowExA(dwndparent, IntPtr.Zero, "SHELLDLL_DefView", null);
@@ -58,7 +58,7 @@ namespace MainApp.Common
 
                     logger.LogDebug($"{dwndparent} {dwndviem} {background}");
 
-                    if (count>100)
+                    if (count > 100)
                     {
                         break;
                     }

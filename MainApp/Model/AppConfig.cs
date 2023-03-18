@@ -21,7 +21,7 @@ namespace MainApp.Model
         public string CanOverrideUI { get; set; }
         public bool Locked { get; set; }
 
-        public Card(string wid, CardType CardType , Point pos)
+        public Card(string wid, CardType CardType, Point pos)
         {
             Wid = wid;
             this.CardType = CardType;

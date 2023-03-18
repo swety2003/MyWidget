@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpineViewer.Common
 {
@@ -73,7 +69,8 @@ namespace SpineViewer.Common
         public bool IsEqual(int major, int minor = -1, int build = -1, int revision = -1)
         {
             if (Major != major) return false;
-            if (minor >= 0) {
+            if (minor >= 0)
+            {
                 if (minor != Minor) return false;
                 if (build >= 0)
                 {

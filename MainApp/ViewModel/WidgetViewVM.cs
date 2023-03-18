@@ -2,13 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using MainApp.Common;
 using MainApp.Model;
-using Microsoft.Extensions.Logging;
 using PluginSDK;
 using PluginSDK.Controls;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace MainApp.ViewModel
 {
@@ -36,7 +31,7 @@ namespace MainApp.ViewModel
             CardManagerService.Create(ci);
 
             App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
-            
+
 
         }
 

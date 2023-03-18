@@ -28,70 +28,80 @@
  *****************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace SpineViewer.Common.Spine_3_8_95 {
-	public interface IVertexEffect {
-		void Begin(Skeleton skeleton);
-		void Transform(ref VertexPositionColorTextureColor vertex);
-		void End();
-	}
+namespace SpineViewer.Common.Spine_3_8_95
+{
+    public interface IVertexEffect
+    {
+        void Begin(Skeleton skeleton);
+        void Transform(ref VertexPositionColorTextureColor vertex);
+        void End();
+    }
 
-	public class JitterEffect : IVertexEffect {
-		public float JitterX { get; set; }
-		public float JitterY { get; set; }
+    public class JitterEffect : IVertexEffect
+    {
+        public float JitterX { get; set; }
+        public float JitterY { get; set; }
 
-		public JitterEffect(float jitterX, float jitterY) {
-			JitterX = jitterX;
-			JitterY = jitterY;
-		}
+        public JitterEffect(float jitterX, float jitterY)
+        {
+            JitterX = jitterX;
+            JitterY = jitterY;
+        }
 
-		public void Begin(Skeleton skeleton) {
-		}
+        public void Begin(Skeleton skeleton)
+        {
+        }
 
-		public void End() {
-		}
+        public void End()
+        {
+        }
 
-		public void Transform(ref VertexPositionColorTextureColor vertex) {
-			vertex.Position.X += MathUtils.RandomTriangle(-JitterX, JitterY);
-			vertex.Position.Y += MathUtils.RandomTriangle(-JitterX, JitterY);
-		}
-	}
+        public void Transform(ref VertexPositionColorTextureColor vertex)
+        {
+            vertex.Position.X += MathUtils.RandomTriangle(-JitterX, JitterY);
+            vertex.Position.Y += MathUtils.RandomTriangle(-JitterX, JitterY);
+        }
+    }
 
-	public class SwirlEffect : IVertexEffect {
-		private float worldX, worldY, angle;
+    public class SwirlEffect : IVertexEffect
+    {
+        private float worldX, worldY, angle;
 
-		public float Radius { get; set; }
-		public float Angle { get { return angle; } set { angle = value * MathUtils.DegRad; } }
-		public float CenterX { get; set; }
-		public float CenterY { get; set; }
-		public IInterpolation Interpolation { get; set; }
+        public float Radius { get; set; }
+        public float Angle { get { return angle; } set { angle = value * MathUtils.DegRad; } }
+        public float CenterX { get; set; }
+        public float CenterY { get; set; }
+        public IInterpolation Interpolation { get; set; }
 
-		public SwirlEffect(float radius) {
-			Radius = radius;
-			Interpolation = IInterpolation.Pow2;
-		}
+        public SwirlEffect(float radius)
+        {
+            Radius = radius;
+            Interpolation = IInterpolation.Pow2;
+        }
 
-		public void Begin(Skeleton skeleton) {
-			worldX = skeleton.X + CenterX;
-			worldY = skeleton.Y + CenterY;
-		}
+        public void Begin(Skeleton skeleton)
+        {
+            worldX = skeleton.X + CenterX;
+            worldY = skeleton.Y + CenterY;
+        }
 
-		public void End() {
-		}
+        public void End()
+        {
+        }
 
-		public void Transform(ref VertexPositionColorTextureColor vertex) {
-			float x = vertex.Position.X - worldX;
-			float y = vertex.Position.Y - worldY;
-			float dist = (float)Math.Sqrt(x * x + y * y);
-			if (dist < Radius) {
-				float theta = Interpolation.Apply(0, angle, (Radius - dist) / Radius);
-				float cos = MathUtils.Cos(theta), sin = MathUtils.Sin(theta);
-				vertex.Position.X = cos * x - sin * y + worldX;
-				vertex.Position.Y = sin * x + cos * y + worldY;
-			}
-		}
-	}
+        public void Transform(ref VertexPositionColorTextureColor vertex)
+        {
+            float x = vertex.Position.X - worldX;
+            float y = vertex.Position.Y - worldY;
+            float dist = (float)Math.Sqrt(x * x + y * y);
+            if (dist < Radius)
+            {
+                float theta = Interpolation.Apply(0, angle, (Radius - dist) / Radius);
+                float cos = MathUtils.Cos(theta), sin = MathUtils.Sin(theta);
+                vertex.Position.X = cos * x - sin * y + worldX;
+                vertex.Position.Y = sin * x + cos * y + worldY;
+            }
+        }
+    }
 }

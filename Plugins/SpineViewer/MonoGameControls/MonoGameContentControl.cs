@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpineViewer.View;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -119,7 +118,7 @@ namespace SpineViewer.MonoGameControls
             if (_isInitialized)
                 return;
 
-            if (_viewModel==null)
+            if (_viewModel == null)
             {
                 throw new Exception("ViewModel 不能为null！");
             }

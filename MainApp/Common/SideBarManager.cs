@@ -1,14 +1,9 @@
 ﻿using MainApp.Model;
-using MainApp.View;
 using Microsoft.Extensions.Logging;
-using PluginSDK.Controls;
 using PluginSDK;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -79,7 +74,7 @@ namespace MainApp.Common
         {
             foreach (var item in activateItems)
             {
-                if (item.Info==info)
+                if (item.Info == info)
                 {
                     Remove(item);
                 }

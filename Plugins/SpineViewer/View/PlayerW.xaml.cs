@@ -1,20 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using PluginSDK;
+﻿using PluginSDK;
 using SpineViewer.MonoGameControls;
 using SpineViewer.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SpineViewer.View
 {
@@ -28,7 +18,7 @@ namespace SpineViewer.View
 
         Window? window => this.Parent as Window;
         private PlayerVM _vm = new PlayerVM();
-        public static CardInfo info = new CardInfo(null,"SpineViewer","",typeof(SpinePlayer),CardType.Window);
+        public static CardInfo info = new CardInfo(null, "SpineViewer", "", typeof(SpinePlayer), CardType.Window);
 
         public SpinePlayer(Guid guid)
         {
@@ -56,7 +46,7 @@ namespace SpineViewer.View
 
         public void OnEnabled()
         {
-            if (window==null)
+            if (window == null)
             {
                 throw new Exception("找不到父窗口！");
             }
@@ -64,7 +54,7 @@ namespace SpineViewer.View
             if (_isFirstLoad)
             {
                 monoGameControl = new MonoGameContentControl();
-                monoGameContainer.Child= monoGameControl;
+                monoGameContainer.Child = monoGameControl;
                 monoGameControl.MouseMove += monoGameControl_MouseMove;
                 monoGameControl.MouseDown += monoGameControl_MouseDown;
                 monoGameControl.MouseUp += monoGameControl_MouseUp;

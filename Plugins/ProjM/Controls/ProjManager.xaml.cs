@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using PluginSDK;
+﻿using PluginSDK;
 using Projm.ViewModel;
 using ProjM.Controls;
 using System;

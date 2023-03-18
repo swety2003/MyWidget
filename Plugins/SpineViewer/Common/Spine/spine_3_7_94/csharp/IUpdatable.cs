@@ -27,8 +27,10 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-namespace SpineViewer.Common.Spine_3_7_94 {
-	public interface IUpdatable {
-		void Update ();
-	}
+namespace SpineViewer.Common.Spine_3_7_94
+{
+    public interface IUpdatable
+    {
+        void Update();
+    }
 }

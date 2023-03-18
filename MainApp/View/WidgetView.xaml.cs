@@ -2,12 +2,8 @@
 using MainApp.Model;
 using MainApp.ViewModel;
 using Microsoft.Extensions.Logging;
-using Panuon.WPF.UI;
 using PluginSDK;
-using PluginSDK.Controls;
-using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace MainApp.View
@@ -43,11 +39,11 @@ namespace MainApp.View
                     var wid = ci.MainView.FullName;
 
 
-                    if (item.Value.Wid == wid&&item.Value.CardType==ci.CardType)
+                    if (item.Value.Wid == wid && item.Value.CardType == ci.CardType)
                     {
-                        if (ci.MainView.GetInterface("ICard")!=null)
+                        if (ci.MainView.GetInterface("ICard") != null)
                         {
-                            App.GetService<CardManageService>().Create(ci,item);
+                            App.GetService<CardManageService>().Create(ci, item);
 
                             break;
                         }

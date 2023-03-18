@@ -1,13 +1,9 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using SpineViewer.Common.Player;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SpineViewer.Common;
+using SpineViewer.Common.Player;
 using SpineViewer.MonoGameControls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SpineViewer.ViewModels
@@ -67,12 +63,12 @@ namespace SpineViewer.ViewModels
                 _player = null;
             }
         }
-        
+
         public void RemoveSpine()
         {
             if (_player != null) _player.RemoveFlag = true;
         }
-        
+
         public void ApplySpine()
         {
             if (_player != null)

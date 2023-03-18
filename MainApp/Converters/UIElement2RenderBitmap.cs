@@ -1,5 +1,4 @@
 ﻿using PluginSDK;
-using PluginSDK.Controls;
 using System;
 using System.Globalization;
 using System.Windows;
@@ -17,7 +16,7 @@ namespace MainApp.Converters
             try
             {
 
-                UIElement elt = ((IPreviewable)value).GetUIElement() ;
+                UIElement elt = ((IPreviewable)value).GetUIElement();
 
                 //PresentationSource source = PresentationSource.FromVisual(elt);
                 RenderTargetBitmap rtb = new RenderTargetBitmap((int)elt.RenderSize.Width,

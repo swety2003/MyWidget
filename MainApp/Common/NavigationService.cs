@@ -1,10 +1,4 @@
 ﻿using MainApp.View;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace MainApp.Common
@@ -43,20 +37,20 @@ namespace MainApp.Common
         private void Nav_menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            var lb =(ListBox)sender;
+            var lb = (ListBox)sender;
 
             var pg = lb.SelectedItem as IPageFlags;
 
             var index = Items.IndexOf(pg);
 
-            if (object.ReferenceEquals(pg,settingView.fm.Content))
+            if (object.ReferenceEquals(pg, settingView.fm.Content))
             {
                 return;
             }
 
             for (int i = Items.Count - 1; i >= 0; i--)
             {
-                if (i>index)
+                if (i > index)
                 {
                     Items.RemoveAt(i);
                 }

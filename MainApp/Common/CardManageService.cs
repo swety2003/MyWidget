@@ -6,15 +6,12 @@ using PluginSDK.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace MainApp.Common
 {
-    internal class CardManageService:INotifyPropertyChanged
+    internal class CardManageService : INotifyPropertyChanged
     {
         ILogger<CardManageService> logger;
 
@@ -30,14 +27,14 @@ namespace MainApp.Common
 
         private IList<ICard> activateCards { get; set; } = new List<ICard>();
 
-        public IList<ICard> ActiveCards { get { return activateCards;  } }
+        public IList<ICard> ActiveCards { get { return activateCards; } }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public void Create(CardInfo ci)
         {
 
-            var guid =  Guid.NewGuid();
+            var guid = Guid.NewGuid();
 
             var card = Activator.CreateInstance(ci.MainView, guid) as ICard;
 
@@ -45,7 +42,7 @@ namespace MainApp.Common
             {
                 case CardType.Window:
                     {
-                        CardWindow cw = new CardWindow { Content = card ,Height = card.HeightPix,Width = card.WidthPix };
+                        CardWindow cw = new CardWindow { Content = card, Height = card.HeightPix, Width = card.WidthPix };
                         cw.LocationChanged += Win_LocationChanged;
                         cw.Show();
                     }
@@ -72,7 +69,7 @@ namespace MainApp.Common
 
             PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(ActiveCards)));
 
-            var c = new Card(ci.MainView.FullName,ci.CardType,new Point(0,0));
+            var c = new Card(ci.MainView.FullName, ci.CardType, new Point(0, 0));
 
             Config.instances.Add(guid, c);
 
@@ -87,7 +84,7 @@ namespace MainApp.Common
                 case CardType.Window:
 
                     var w = card.GetCardWindow();
-                    if (w!=null)
+                    if (w != null)
                     {
                         w.Close();
                     }

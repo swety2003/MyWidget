@@ -27,39 +27,38 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using System;
-using System.IO;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpineViewer.Common.Spine;
+using System;
 
-namespace SpineViewer.Common.Spine_3_7_94 {
-	public class XnaTextureLoader : TextureLoader
-	{
-		bool _premultipledAlpha;
-		GraphicsDevice device;
+namespace SpineViewer.Common.Spine_3_7_94
+{
+    public class XnaTextureLoader : TextureLoader
+    {
+        bool _premultipledAlpha;
+        GraphicsDevice device;
 
-		public XnaTextureLoader(GraphicsDevice device, bool premultipedAlpha = false)
-		{
-			this.device = device;
-			_premultipledAlpha = premultipedAlpha;
-		}
+        public XnaTextureLoader(GraphicsDevice device, bool premultipedAlpha = false)
+        {
+            this.device = device;
+            _premultipledAlpha = premultipedAlpha;
+        }
 
-		public void Load(AtlasPage page, String path)
-		{
-			Texture2D texture = Util.LoadTexture(device, path, _premultipledAlpha);
-			page.rendererObject = texture;
-			if (page.width == 0 || page.height == 0)
-			{
-				page.width = texture.Width;
-				page.height = texture.Height;
-			}
-		}
+        public void Load(AtlasPage page, String path)
+        {
+            Texture2D texture = Util.LoadTexture(device, path, _premultipledAlpha);
+            page.rendererObject = texture;
+            if (page.width == 0 || page.height == 0)
+            {
+                page.width = texture.Width;
+                page.height = texture.Height;
+            }
+        }
 
-		public void Unload(Object texture)
-		{
-			((Texture2D)texture).Dispose();
-		}
-	}
+        public void Unload(Object texture)
+        {
+            ((Texture2D)texture).Dispose();
+        }
+    }
 
 }
