@@ -43,7 +43,7 @@
                             <TextBlock
                                 FontSize="12"
                                 Foreground="{DynamicResource OnSurfaceVariantBrush}"
-                                Text="2.3.4" />
+                                Text="Alpha" />
                         </DockPanel>
                         <DockPanel Margin="4,4">
                             <TextBlock
@@ -54,7 +54,7 @@
                             <TextBlock
                                 FontSize="12"
                                 Foreground="{DynamicResource OnSurfaceVariantBrush}"
-                                Text="2.3.4" />
+                                Text="Alpha" />
                         </DockPanel>
 
                         <DockPanel Margin="4,4">
