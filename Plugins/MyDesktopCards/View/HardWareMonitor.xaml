@@ -30,8 +30,8 @@
                 <Run>
                     <Run.Text>
                         <MultiBinding StringFormat="上传：{0}{1}/s">
-                            <Binding Path="Upload.size" />
-                            <Binding Path="Upload.type" />
+                            <Binding FallbackValue="0" Path="Upload.size" />
+                            <Binding FallbackValue="k" Path="Upload.type" />
                         </MultiBinding>
                     </Run.Text>
                 </Run>
@@ -41,8 +41,8 @@
                 <Run>
                     <Run.Text>
                         <MultiBinding StringFormat="下载：{0}{1}/s">
-                            <Binding Path="Download.size" />
-                            <Binding Path="Download.type" />
+                            <Binding FallbackValue="0" Path="Download.size" />
+                            <Binding FallbackValue="k" Path="Download.type" />
                         </MultiBinding>
                     </Run.Text>
                 </Run>
@@ -50,11 +50,11 @@
 
             <TextBlock Grid.Column="1">
 
-                <Run Text="{Binding CpuLoad, StringFormat=CPU: {0}%}" />
+                <Run Text="{Binding CpuLoad, StringFormat=CPU: {0}%, FallbackValue=CPU:0%}" />
 
                 <LineBreak />
 
-                <Run Text="{Binding RamLoad, StringFormat=RAM: {0}%}" />
+                <Run Text="{Binding RamLoad, StringFormat=RAM: {0}%, FallbackValue=RAM:0%}" />
 
             </TextBlock>
         </Grid>

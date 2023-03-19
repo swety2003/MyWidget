@@ -4,6 +4,7 @@ using MyDesktopCards.Model;
 using MyDesktopCards.SettingView;
 using MyDesktopCards.ViewModel;
 using PluginSDK;
+using PluginSDK.Common;
 using System;
 using System.IO;
 using System.Windows;
@@ -51,8 +52,13 @@ namespace MyDesktopCards.View
             vm = new AIScheduleVM(this);
             DataContext = vm;
             vm.Active = true;
-            this.TryLoadCustomeStyle();
+            Loaded += AISchedule_Loaded;
 
+        }
+
+        private void AISchedule_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.TryLoadCustomeStyle();
         }
 
         public void ShowSetting()

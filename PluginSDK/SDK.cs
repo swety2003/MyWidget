@@ -137,14 +137,12 @@ namespace PluginSDK
         public static void ResizeCard(this UserControl self, int h, int w)
         {
 
-            var t = self?.Parent as CardControl;
+            var t = (self as ICard)?.GetCardControl();
 
             if (t == null)
             {
                 return;
             }
-
-
             t.HeightPix = h;
             t.WidthPix = w;
         }

@@ -2,6 +2,7 @@
 using MyDesktopCards.Common;
 using MyDesktopCards.ViewModel;
 using PluginSDK;
+using PluginSDK.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,6 +49,11 @@ namespace MyDesktopCards.View
             vm.Active = true;
             DataContext = vm;
 
+            Loaded += HardWareMonitor_Loaded;
+        }
+
+        private void HardWareMonitor_Loaded(object sender, RoutedEventArgs e)
+        {
             this.TryLoadCustomeStyle();
         }
 

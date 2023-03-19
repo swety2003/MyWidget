@@ -6,12 +6,16 @@ namespace MyDesktopCards.Model
 {
     public class ConfigBase
     {
-        public static T? Load<T>(string path) where T : class
+        [JsonIgnore]
+        public string file_path { get; set; }
+
+        public static T? Load<T>(string path) where T : ConfigBase
         {
             try
             {
-
-                return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+                var cfg = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+                cfg.file_path = path;
+                return cfg;
             }
             catch (Exception ex)
             {
@@ -19,14 +23,14 @@ namespace MyDesktopCards.Model
             }
         }
 
-        public static void Save<T>(string path, T obj)
-        {
-            File.WriteAllText(JsonConvert.SerializeObject(obj), path);
-        }
+        //public static void Save<T>(string path, T obj)
+        //{
+        //    File.WriteAllText(JsonConvert.SerializeObject(obj), path);
+        //}
 
-        public void Save(string path)
+        public void Save()
         {
-            File.WriteAllText(path, JsonConvert.SerializeObject(this));
+            File.WriteAllText(file_path, JsonConvert.SerializeObject(this));
         }
 
     }

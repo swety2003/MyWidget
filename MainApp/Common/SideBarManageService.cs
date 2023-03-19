@@ -32,12 +32,11 @@ namespace MainApp.Common
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public void Create(SideBarItemInfo ci)
+        public void Create(SideBarItemInfo ci,bool first_load=false)
         {
 
 
             var card = Activator.CreateInstance(ci.MainView, ContainerPop) as ISideBarItem;
-
 
             logger.LogDebug($"创建了{ci.Name}侧栏图标");
 
@@ -52,8 +51,15 @@ namespace MainApp.Common
             //var c = new Card(ci.MainView.FullName, ci.CardType, new Point(0, 0));
 
             //Config.instances.Add(guid, c);
+            if (!first_load)
+            {
+
+                Config.EnabledSideBarItems.Add(ci.MainView.FullName);
+            }
 
         }
+
+
 
         public void Remove(ISideBarItem card)
         {
@@ -68,6 +74,9 @@ namespace MainApp.Common
             activateItems.Remove(card);
 
             //Config.instances.Remove(card.GUID);
+
+            Config.EnabledSideBarItems.Remove(card.Info.MainView.FullName);
+
         }
 
         internal void Remove(SideBarItemInfo info)

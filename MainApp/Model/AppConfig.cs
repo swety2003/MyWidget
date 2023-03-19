@@ -8,7 +8,9 @@ namespace MainApp.Model
 {
     public class AppConfig
     {
-        public Dictionary<Guid, Card> instances = new Dictionary<Guid, Card>();
+        public Dictionary<Guid, Card> CardInstances = new Dictionary<Guid, Card>();
+
+        public List<string> EnabledSideBarItems = new List<string>();
 
         public ThemeType ThemeType { get; set; } = ThemeType.Light;
     }

@@ -17,6 +17,8 @@
     <Grid>
 
         <Canvas x:Name="cv">
+
+            <TextBlock FontFamily="Century Gothic" />
             <!--<ItemsControl ItemsSource="{Binding ActiveCards}" />-->
             <!--<ui:MyThumb Background="Blue">
                 <ui:MyThumb.Content>

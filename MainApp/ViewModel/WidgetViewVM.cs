@@ -56,7 +56,7 @@ namespace MainApp.ViewModel
             if (thumb != null)
             {
                 var r = thumb.SetLocked();
-                Config.instances[thumb.GetCard().GUID].Locked = r;
+                Config.CardInstances[thumb.GetCard().GUID].Locked = r;
             }
         }
 

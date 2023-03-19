@@ -2,6 +2,7 @@
 using MyDesktopCards.Common;
 using MyDesktopCards.ViewModel;
 using PluginSDK;
+using PluginSDK.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,6 +46,12 @@ namespace MyDesktopCards.View
             DataContext = vm;
             vm.Active = true;
 
+            Loaded += DigitalClock_Loaded;
+        }
+
+        private void DigitalClock_Loaded(object sender, RoutedEventArgs e)
+        {
+
             this.TryLoadCustomeStyle();
         }
 
@@ -58,6 +65,7 @@ namespace MyDesktopCards.View
         {
             return this as UIElement;
         }
+
         //public void OverrideUI()
         //{
 

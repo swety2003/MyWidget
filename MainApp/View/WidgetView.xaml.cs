@@ -31,7 +31,7 @@ namespace MainApp.View
         {
             base.OnApplyTemplate();
 
-            foreach (var item in appConfig.instances)
+            foreach (var item in appConfig.CardInstances)
             {
                 foreach (var ci in cardInfos)
                 {

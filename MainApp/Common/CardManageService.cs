@@ -45,6 +45,7 @@ namespace MainApp.Common
                         CardWindow cw = new CardWindow { Content = card, Height = card.HeightPix, Width = card.WidthPix };
                         cw.LocationChanged += Win_LocationChanged;
                         cw.Show();
+
                     }
                     break;
                 case CardType.UserControl:
@@ -71,7 +72,7 @@ namespace MainApp.Common
 
             var c = new Card(ci.MainView.FullName, ci.CardType, new Point(0, 0));
 
-            Config.instances.Add(guid, c);
+            Config.CardInstances.Add(guid, c);
 
         }
 
@@ -108,7 +109,7 @@ namespace MainApp.Common
 
 
 
-            Config.instances.Remove(card.GUID);
+            Config.CardInstances.Remove(card.GUID);
         }
 
 
@@ -117,7 +118,7 @@ namespace MainApp.Common
             try
             {
                 var w = sender as CardWindow;
-                Config.instances[w.GetCard().GUID].Pos = new Point(w.Left, w.Top);
+                Config.CardInstances[w.GetCard().GUID].Pos = new Point(w.Left, w.Top);
             }
             catch (Exception ex)
             {
@@ -127,7 +128,7 @@ namespace MainApp.Common
 
         private void Mt_OnCardMoved(CardControl sender, Point pos)
         {
-            Config.instances[sender.GetCard().GUID].Pos = pos;
+            Config.CardInstances[sender.GetCard().GUID].Pos = pos;
         }
 
         internal void Create(CardInfo ci, KeyValuePair<Guid, Card> item)
