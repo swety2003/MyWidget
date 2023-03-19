@@ -1,5 +1,6 @@
 ﻿using MainApp.Common;
 using MainApp.Model;
+using MainApp.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -12,7 +13,6 @@ namespace MainApp.View
     /// </summary>
     public partial class DockArea : Window
     {
-        AppConfig config=> App.GetService<AppConfigManager>().Config;
 
         MainWindow mw;
         public DockArea(MainWindow f)
@@ -34,23 +34,14 @@ namespace MainApp.View
         {
             base.OnSourceInitialized(e);
 
+            //为了自动加载已启用的控件
+            var vm = App.GetService<SideBarManageVM>();
 
             //var handle = new WindowInteropHelper(this).Handle;
             //var father = new WindowInteropHelper(mw).Handle;
 
             //PInvoke.SetFather(handle, father);
-            var sbi = App.GetService<PluginLoader>().SideBarItemInfos;
-
-            foreach (var item in config.EnabledSideBarItems)
-            {
-                foreach (var info in sbi)
-                {
-                    if (info.MainView.FullName==item)
-                    {
-                        App.GetService<SideBarManageService>().Create(info,true);
-                    }
-                }
-            }
+            
         }
 
         private void SettingBtn_Click(object sender, RoutedEventArgs e)

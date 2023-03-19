@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MainApp.Common;
+using MainApp.Model;
 using PluginSDK;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -43,6 +44,9 @@ namespace MainApp.ViewModel
 
     public partial class SideBarManageVM : ObservableObject
     {
+
+        AppConfig config => App.GetService<AppConfigManager>().Config;
+
         public SideBarManageVM()
         {
             GenInstanceInfo();
@@ -50,14 +54,33 @@ namespace MainApp.ViewModel
 
         private void GenInstanceInfo()
         {
-            var sbii = App.GetService<PluginLoader>().SideBarItemInfos;
 
-            foreach (var item in sbii)
+            //foreach (var item in sbii)
+            //{
+            //    InstalledItems.Add(new SideBarInstanceInfo(item, false));
+            //}
+
+            var sbi = App.GetService<PluginLoader>().SideBarItemInfos;
+
+            foreach (var info in sbi)
             {
-                InstalledItems.Add(new SideBarInstanceInfo(item, false));
+                bool enabled = false;
+                foreach (var wid in config.EnabledSideBarItems)
+                {
+                    if (info.MainView.FullName == wid)
+                    {
+                        enabled = true;
+                        //App.GetService<SideBarManageService>().Create(info, true);
+
+                    }
+                }
+
+                InstalledItems.Add(new SideBarInstanceInfo(info, enabled));
             }
 
         }
+
+        
 
         [ObservableProperty]
         ObservableCollection<SideBarInstanceInfo> installedItems = new ObservableCollection<SideBarInstanceInfo>();
