@@ -103,14 +103,6 @@
                             Command="{Binding AskCommand}"
                             Content="发送"
                             Style="{StaticResource SimpleBtnStyle}" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.ColumnSpan="2"
-                            Margin="0,4"
-                            Command="{Binding SetSystemCommand}"
-                            CommandParameter="{Binding ElementName=MessageBox, Path=Text, Mode=OneWay}"
-                            Content="发送设定系统消息"
-                            Style="{StaticResource SimpleBtnStyle}" />
                     </Grid>
                 </Border>
             </Grid>

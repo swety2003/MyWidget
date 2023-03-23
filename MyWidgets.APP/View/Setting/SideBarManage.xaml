@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="MyWidgets.APP.View.SideBarManage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MyWidgets.APP.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:viewmodel="clr-namespace:MyWidgets.APP.ViewModel"
+    Title="侧栏管理"
+    d:DataContext="{d:DesignInstance Type=viewmodel:SideBarManageVM}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid Margin="10,0">
+        <ItemsControl ItemsSource="{Binding InstalledItems}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Margin="0,4"
+                        Padding="16"
+                        Background="{DynamicResource SecondaryContainerBrush}"
+                        BorderThickness="1"
+                        CornerRadius="16">
+                        <Grid>
+                            <DockPanel HorizontalAlignment="Left">
+                                <TextBlock
+                                    DockPanel.Dock="Top"
+                                    Foreground="{DynamicResource PrimaryBrush}"
+                                    Text="{Binding Item.Name}" />
+                                <TextBlock FontSize="14" Text="{Binding Item.Description}" />
+
+                            </DockPanel>
+
+                            <ToggleButton
+                                HorizontalAlignment="Right"
+                                pu:ToggleButtonHelper.CheckedContent=""
+                                pu:ToggleButtonHelper.CheckedForeground="{DynamicResource OnPrimaryContainerBrush}"
+                                pu:ToggleButtonHelper.CornerRadius="16"
+                                Background="Transparent"
+                                FontFamily="{DynamicResource SegoeFluentIcons}"
+                                FontSize="48"
+                                Foreground="{DynamicResource OnBackgroundBrush}"
+                                IsChecked="{Binding Enabled}">
+                                
+                            </ToggleButton>
+                        </Grid>
+
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Page>

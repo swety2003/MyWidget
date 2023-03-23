@@ -22,7 +22,7 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\PluginSDK\PluginSDK.csproj">
+		<ProjectReference Include="..\..\MyWidgets.SDK\MyWidgets.SDK.csproj">
 			<Private>false</Private>
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</ProjectReference>

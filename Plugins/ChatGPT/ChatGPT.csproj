@@ -32,7 +32,7 @@
 			<Private>false</Private>
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</ProjectReference>
-  </ItemGroup>
+	</ItemGroup>
 
 
 	<ItemGroup>

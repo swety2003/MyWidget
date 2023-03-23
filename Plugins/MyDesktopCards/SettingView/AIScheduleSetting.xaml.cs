@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Flurl.Http;
 using Microsoft.Extensions.Logging;
-using PluginSDK;
+using MyWidgets.SDK;
 using System;
 using System.IO;
 using System.Threading.Tasks;

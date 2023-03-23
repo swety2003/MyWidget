@@ -1,6 +1,7 @@
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyDesktopCards.View;
-using PluginSDK;
+using MyWidgets.SDK;
 using System;
 using System.Collections.Generic;
 
@@ -8,6 +9,7 @@ namespace MyDesktopCards
 {
     public class PluginInfo : IPlugin
     {
+
         public Version version { get; } = new Version();
         public string url { get; } = "";
         public string author { get; } = "";

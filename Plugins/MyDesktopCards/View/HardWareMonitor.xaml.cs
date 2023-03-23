@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using MyDesktopCards.Common;
 using MyDesktopCards.ViewModel;
-using PluginSDK;
-using PluginSDK.Common;
+using MyWidgets.SDK;
+using MyWidgets.SDK.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls;

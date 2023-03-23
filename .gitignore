@@ -5,6 +5,7 @@
 
 Vendor/
 build/
+Plugins/
 
 # User-specific files
 *.rsuser

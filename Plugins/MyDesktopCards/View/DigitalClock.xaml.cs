@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using MyDesktopCards.Common;
 using MyDesktopCards.ViewModel;
-using PluginSDK;
-using PluginSDK.Common;
+using MyWidgets.SDK;
+using MyWidgets.SDK.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,7 +70,7 @@ namespace MyDesktopCards.View
         //{
 
         //    DependencyObject rootElement;
-        //    using (FileStream fs = new FileStream(@"D:\Source\Repos\MyWidget\MainApp\Assets\override\DigitalClock.xaml", FileMode.Open))
+        //    using (FileStream fs = new FileStream(@"D:\Source\Repos\MyWidget\MyWidgets.APP\Assets\override\DigitalClock.xaml", FileMode.Open))
         //    {
         //        rootElement = (DependencyObject)XamlReader.Load(fs);
         //    }

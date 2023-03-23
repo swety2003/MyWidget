@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
-using PluginSDK;
+using MyWidgets.SDK;
 using ProjM;
 using System;
 using System.Collections.ObjectModel;

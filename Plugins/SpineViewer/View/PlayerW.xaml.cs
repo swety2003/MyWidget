@@ -1,4 +1,4 @@
-﻿using PluginSDK;
+﻿using MyWidgets.SDK;
 using SpineViewer.MonoGameControls;
 using SpineViewer.ViewModels;
 using System;

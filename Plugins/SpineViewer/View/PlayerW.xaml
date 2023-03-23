@@ -17,7 +17,7 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/PluginSdk;component/Styles/index.xaml" />
+                <ResourceDictionary Source="/MyWidgets.SDK;component/Styles/index.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

@@ -4,7 +4,7 @@ using MyDesktopCards.Common;
 using MyDesktopCards.Model;
 using MyDesktopCards.View;
 using Newtonsoft.Json;
-using PluginSDK;
+using MyWidgets.SDK;
 using System;
 using System.Collections.Generic;
 using System.IO;

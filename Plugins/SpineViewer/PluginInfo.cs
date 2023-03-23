@@ -1,4 +1,4 @@
-using PluginSDK;
+using MyWidgets.SDK;
 using SpineViewer.View;
 using System;
 using System.Collections.Generic;

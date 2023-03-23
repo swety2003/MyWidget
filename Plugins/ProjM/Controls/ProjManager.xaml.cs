@@ -1,4 +1,4 @@
-﻿using PluginSDK;
+﻿using MyWidgets.SDK;
 using Projm.ViewModel;
 using ProjM.Controls;
 using System;

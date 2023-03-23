@@ -1,4 +1,4 @@
-using PluginSDK;
+using MyWidgets.SDK;
 using Projm.Controls;
 using System;
 using System.Collections.Generic;

@@ -16,7 +16,7 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/PluginSDK;component/Styles/index.xaml" />
+                <ResourceDictionary Source="/MyWidgets.SDK;component/Styles/index.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -25,7 +25,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <!--<TextBlock
-                    FontFamily="{StaticResource SFI}"
+                    FontFamily="{StaticResource SegoeFluentIcons}"
                     FontSize="28"
                     Text="" />-->
                 <TextBlock
@@ -42,7 +42,7 @@
                     <TextBlock
                         Margin="0,2,4,0"
                         VerticalAlignment="Center"
-                        FontFamily="{StaticResource SFI}"
+                        FontFamily="{StaticResource SegoeFluentIcons}"
                         FontSize="18"
                         Text="" />
                     <TextBlock
@@ -54,6 +54,7 @@
                 <StackPanel DockPanel.Dock="Bottom">
 
                     <TextBox
+                        MinHeight="60"
                         Margin="0,4"
                         VerticalContentAlignment="Top"
                         pu:TextBoxHelper.CornerRadius="16"
@@ -65,34 +66,6 @@
                 </StackPanel>
             </DockPanel>
 
-
-            <DockPanel Margin="0,8">
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-
-                    <TextBlock
-                        Margin="0,2,4,0"
-                        VerticalAlignment="Center"
-                        FontFamily="{StaticResource SFI}"
-                        FontSize="18"
-                        Text="" />
-                    <TextBlock
-                        VerticalAlignment="Center"
-                        FontSize="18"
-                        Text="重写卡片样式" />
-                </StackPanel>
-                <StackPanel>
-
-                    <TextBox
-                        Margin="0,4"
-                        VerticalContentAlignment="Top"
-                        pu:TextBoxHelper.CornerRadius="16"
-                        pu:TextBoxHelper.Watermark="xaml文件路径"
-                        AcceptsReturn="True"
-                        Style="{StaticResource SimpleTextBox}"
-                        Text="{Binding OverrideUIFile}"
-                        TextWrapping="Wrap" />
-                </StackPanel>
-            </DockPanel>
 
 
             <Button

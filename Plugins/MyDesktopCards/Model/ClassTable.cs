@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MyWidgets.SDK.Common;
+using System.Collections.Generic;
 
 namespace MyDesktopCards.Model
 {
@@ -189,6 +190,10 @@ namespace MyDesktopCards.Model
 
     public class AIScheduleConfig : ConfigBase
     {
+        public AIScheduleConfig(string file_path) : base(file_path)
+        {
+        }
+
         public string TableUrl { get; set; }
         public string OverrideFile { get; set; }
     }
