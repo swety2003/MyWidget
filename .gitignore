@@ -6,6 +6,7 @@
 Vendor/
 build/
 Plugins/
+Playground/
 
 # User-specific files
 *.rsuser

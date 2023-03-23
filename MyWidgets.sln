@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{9EBE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDesktopCards", "Plugins\MyDesktopCards\MyDesktopCards.csproj", "{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{233B73C0-5F27-49C1-82DD-399C38AE61C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Playground\ConsoleApp1\ConsoleApp1.csproj", "{2D285812-B008-4DFD-BB80-41C89166C0E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +33,17 @@ Global
 		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D285812-B008-4DFD-BB80-41C89166C0E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D285812-B008-4DFD-BB80-41C89166C0E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D285812-B008-4DFD-BB80-41C89166C0E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D285812-B008-4DFD-BB80-41C89166C0E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C} = {9EBE1887-5E7E-4FD6-9108-BFBDE8087FC9}
+		{2D285812-B008-4DFD-BB80-41C89166C0E5} = {233B73C0-5F27-49C1-82DD-399C38AE61C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67D2F841-EA54-41A8-8E27-438B33D7A8E2}

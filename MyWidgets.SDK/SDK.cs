@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace MyWidgets.SDK
 {
@@ -14,24 +15,6 @@ namespace MyWidgets.SDK
 
     public record CardInfo(ImageSource Icon, string Name, string Description, Type MainView, CardType CardType = CardType.UserControl);
 
-    //public class CardInfo
-    //{
-    //    public CardInfo(ImageSource Icon, string Name, string Description, Type MainView, CardType CardType = CardType.UserControl)
-    //    {
-    //        this.Icon = Icon;
-    //        this.Name = Name;
-    //        this.Description = Description;
-    //        this.MainView = MainView;
-    //        this.CardType = CardType;
-
-    //    }
-
-    //    public ImageSource Icon { get; }
-    //    public string Name { get; }
-    //    public string Description { get; }
-    //    public Type MainView { get; }
-    //    public CardType CardType { get; }
-    //}
 
 
     public interface IPlugin
