@@ -25,7 +25,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <!--<TextBlock
-                    FontFamily="{StaticResource SegoeFluentIcons}"
+                    FontFamily="{StaticResource MaterialIconsRound}"
                     FontSize="28"
                     Text="" />-->
                 <TextBlock
@@ -42,7 +42,7 @@
                     <TextBlock
                         Margin="0,2,4,0"
                         VerticalAlignment="Center"
-                        FontFamily="{StaticResource SegoeFluentIcons}"
+                        FontFamily="{StaticResource MaterialIconsRound}"
                         FontSize="18"
                         Text="" />
                     <TextBlock
@@ -74,7 +74,7 @@
                 Command="{Binding ApplySettingCommand}"
                 Content="应用"
                 FontSize="14"
-                Style="{StaticResource SimpleBtnStyle}" />
+                Style="{StaticResource FilledButton}" />
         </StackPanel>
     </DockPanel>
 </Window>

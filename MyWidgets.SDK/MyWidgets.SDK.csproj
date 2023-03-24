@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Styles\Brush\**" />
-    <EmbeddedResource Remove="Styles\Brush\**" />
-    <None Remove="Styles\Brush\**" />
-    <Page Remove="Styles\Brush\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
     <PackageReference Include="MaterialColorUtilities" Version="0.2.0" />
@@ -21,7 +14,6 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Panuon.WPF.UI" Version="1.1.7.2" />
-    <PackageReference Include="SkiaSharp" Version="2.88.3" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 

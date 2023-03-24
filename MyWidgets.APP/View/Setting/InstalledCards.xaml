@@ -38,6 +38,19 @@
             BorderThickness="0"
             Foreground="{DynamicResource Brush98}"
             ItemsSource="{Binding CardInfos}">
+
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="10" BorderThickness="0">
@@ -59,10 +72,10 @@
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    FontFamily="{StaticResource SegoeFluentIcons}"
+                                    FontFamily="{StaticResource MaterialIconsRound}"
                                     FontSize="40"
                                     Foreground="{DynamicResource OnSurfaceVariantBrush}"
-                                    Text="" />
+                                    Text="&#xe871;" />
                             </Border>
                             <StackPanel Grid.Column="1" Margin="4">
 
@@ -87,6 +100,7 @@
 
                             <Button
                                 Grid.Column="2"
+                                Padding="12,8"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 BorderThickness="0"
@@ -94,7 +108,7 @@
                                 CommandParameter="{Binding}"
                                 Content="添加到桌面"
                                 Cursor="Hand"
-                                Style="{StaticResource SimpleBtnStyle}" />
+                                Style="{StaticResource TextButton}" />
                         </Grid>
                     </Border>
                 </DataTemplate>

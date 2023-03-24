@@ -90,7 +90,7 @@
                         BorderThickness="0"
                         FontFamily="Segoe Fluent Icons"
                         Foreground="{DynamicResource Brush98}"
-                        Style="{DynamicResource SimpleBtnStyle}" />
+                        Style="{DynamicResource FilledButton}" />
                     <Button
                     
                         Margin="0"
@@ -101,7 +101,7 @@
                         Content="&#xf746;"
                         FontFamily="Segoe Fluent Icons"
                         Foreground="{DynamicResource Brush98}"
-                        Style="{DynamicResource SimpleBtnStyle}" />
+                        Style="{DynamicResource FilledButton}" />
 
                 </StackPanel>
 

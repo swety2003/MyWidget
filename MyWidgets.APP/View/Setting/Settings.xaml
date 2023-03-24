@@ -6,6 +6,7 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:MyWidgets.APP.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md3c="clr-namespace:MaterialDesign3.Compoments;assembly=MaterialDesign3"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:sdkcontrol="clr-namespace:MyWidgets.SDK.Controls;assembly=MyWidgets.SDK"
     xmlns:viewmodel="clr-namespace:MyWidgets.APP.ViewModel"
@@ -23,14 +24,41 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
 
-        <Grid Grid.RowSpan="2">
+
+        <DockPanel Grid.RowSpan="2">
+
+
+
             <Border
-                Margin="10,92,10,0"
+                Height="80"
+                Margin="10,10,10,0"
+                CornerRadius="16"
+                DockPanel.Dock="Top">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Assets/md3-1.png" />
+                </Border.Background>
+
+                <StackPanel VerticalAlignment="Center">
+
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="MyWidgets" />
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="12"
+                            Foreground="White"
+                            Text="This is a description" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border
+                Margin="10"
                 BorderBrush="{DynamicResource OutlineBrush}"
                 BorderThickness="0">
                 <ListBox
@@ -39,29 +67,71 @@
                     HorizontalAlignment="Center"
                     HorizontalContentAlignment="Left"
                     d:SelectedIndex="0"
-                    pu:ListBoxHelper.ItemsCornerRadius="20"
-                    pu:ListBoxHelper.ItemsHeight="40"
-                    pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SurfaceVariantBrush}"
-                    pu:ListBoxHelper.ItemsMargin="4"
-                    pu:ListBoxHelper.ItemsPadding="18,8"
-                    pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource PrimaryBrush}"
-                    pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource OnPrimaryBrush}"
                     Background="Transparent"
                     BorderThickness="0"
                     Foreground="{DynamicResource OnBackgroundBrush}"
                     SelectionChanged="ListBox_SelectionChanged">
 
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+
+                            <Setter Property="Template">
+
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border
+                                            Margin="0,2"
+                                            Padding="10"
+                                            Background="{TemplateBinding Background}"
+                                            Style="{StaticResource FullCornerBorder}">
+                                            <ContentPresenter />
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource Surface1Brush}" />
+                                            </Trigger>
+
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="{DynamicResource Surface5Brush}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+                                            </Trigger>
+
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="IsMouseOver" Value="True" />
+                                                    <Condition Property="IsSelected" Value="True" />
+                                                </MultiTrigger.Conditions>
+                                                <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource Surface1Brush}" />
+                                            </MultiTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
 
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <sdkcontrol:FontIcon Text="" />
+                            <TextBlock
+                                Margin="4,2"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource MaterialIconsRound}"
+                                Text="&#xe99b;" />
                             <TextBlock Text="卡片管理" />
                         </StackPanel>
                     </ListBoxItem>
 
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <sdkcontrol:FontIcon Text="" />
+                            <TextBlock
+                                Margin="4,2"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource MaterialIconsRound}"
+                                Text="&#xe8e9;" />
                             <TextBlock Text="侧栏管理" />
                         </StackPanel>
 
@@ -69,7 +139,11 @@
 
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <sdkcontrol:FontIcon Text="" />
+                            <TextBlock
+                                Margin="4,2"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource MaterialIconsRound}"
+                                Text="&#xe3ae;" />
                             <TextBlock Text="首选项" />
                         </StackPanel>
 
@@ -77,59 +151,126 @@
 
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <sdkcontrol:FontIcon Text="" />
+                            <TextBlock
+                                Margin="4,2"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource MaterialIconsRound}"
+                                Text="&#xe99b;" />
                             <TextBlock Text="关于" />
                         </StackPanel>
                     </ListBoxItem>
                 </ListBox>
 
             </Border>
-        </Grid>
+        </DockPanel>
 
 
 
-        <Border Grid.Column="1" Padding="10">
+
+        <Border
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Margin="8"
+            Style="{StaticResource ElevatedCard}">
             <Grid>
-                <ListBox
-                    x:Name="nav_menu"
-                    d:ItemsSource="{d:SampleData ItemCount=5}"
-                    pu:ListBoxHelper.ItemsHoverBackground="Transparent"
-                    pu:ListBoxHelper.ItemsHoverForeground="{DynamicResource OnPrimaryContainerBrush}"
-                    pu:ListBoxHelper.ItemsSelectedBackground="Transparent"
-                    pu:ListBoxHelper.ItemsSelectedForeground="{DynamicResource OnPrimaryContainerBrush}"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    FontSize="24"
-                    Foreground="{DynamicResource OnSurfaceVariantBrush}"
-                    SelectedIndex="0">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-                                <TextBlock Text="{Binding Title, FallbackValue=View1}" />
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    FontFamily="{StaticResource SegoeFluentIcons}"
-                                    Text="" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Border Grid.Column="1">
+                    <Grid>
+                        <ListBox
+                            x:Name="nav_menu"
+                            Margin="0,0,0,4"
+                            d:ItemsSource="{d:SampleData ItemCount=5}"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Foreground="{DynamicResource OnSurfaceVariantBrush}"
+                            SelectedIndex="0">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
 
+                                    <Setter Property="Template">
+
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border
+                                                    Margin="0,2"
+                                                    Padding="12,4"
+                                                    Background="{TemplateBinding Background}"
+                                                    Style="{StaticResource FullCornerBorder}">
+                                                    <ContentPresenter />
+                                                </Border>
+
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource Surface1Brush}" />
+                                                    </Trigger>
+
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="{DynamicResource Surface5Brush}" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+                                                    </Trigger>
+
+                                                    <MultiTrigger>
+                                                        <MultiTrigger.Conditions>
+                                                            <Condition Property="IsMouseOver" Value="True" />
+                                                            <Condition Property="IsSelected" Value="True" />
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource Surface1Brush}" />
+                                                    </MultiTrigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding Title, FallbackValue=View1}" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontFamily="{StaticResource MaterialIconsRound}"
+                                            Text="&#xE315;" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <Border
+                            Height="0"
+                            VerticalAlignment="Bottom"
+                            Background="{DynamicResource OutlineBrush}"
+                            Opacity=".8" />
+
+
+
+                    </Grid>
+                </Border>
+
+
+                <Frame
+                    x:Name="fm"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    NavigationUIVisibility="Hidden" />
 
 
             </Grid>
         </Border>
 
-        <Frame
-            x:Name="fm"
-            Grid.Row="1"
-            Grid.Column="1"
-            NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

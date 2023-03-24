@@ -21,54 +21,21 @@
         <cv:UIElement2RenderBitmap x:Key="UIElement2RenderBitmap" />
     </Page.Resources>
 
-    <Grid x:Name="gd" Margin="10,0">
+    <Grid x:Name="gd" Margin="0">
 
 
         <Grid Name="enabledCardPanel">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
                 <RowDefinition />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <Border Padding="10,0">
-                <Grid>
-
-                    <TextBlock
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        Foreground="{DynamicResource OnBackgroundBrush}"
-                        Text="已启用的卡片" />
-
-                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-
-                        <Button
-                            Padding="22,8"
-                            Command="{Binding GetCardDetailCommand}"
-                            Content=""
-                            FontFamily="{StaticResource SegoeFluentIcons}"
-                            Style="{StaticResource SimpleBtnStyle}" />
-                        <Button
-                            Padding="22,8"
-                            Command="{Binding OpenInstalledCardPanelCommand}"
-                            Content=""
-                            FontFamily="{StaticResource SegoeFluentIcons}"
-                            Style="{StaticResource SimpleBtnStyle}" />
-
-                    </StackPanel>
-
-                </Grid>
-            </Border>
 
             <ListBox
-                Grid.Row="1"
+                Grid.Row="0"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"
-                pu:ListBoxHelper.ItemsBackground="{DynamicResource SecondaryContainerBrush}"
-                pu:ListBoxHelper.ItemsCornerRadius="16"
-                pu:ListBoxHelper.ItemsHoverBackground="{DynamicResource SecondaryContainerBrush}"
-                pu:ListBoxHelper.ItemsMargin="0 6"
-                pu:ListBoxHelper.ItemsPadding="4"
-                pu:ListBoxHelper.ItemsSelectedBackground="{DynamicResource SecondaryContainerBrush}"
+                d:ItemsSource="{d:SampleData ItemCount=5}"
                 Background="Transparent"
                 BorderThickness="0"
                 ItemsSource="{Binding CardInstances}">
@@ -77,17 +44,48 @@
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock
                                 Margin="0,0,0,8"
-                                FontSize="18"
+                                FontSize="20"
                                 Foreground="{DynamicResource PrimaryBrush}"
                                 Text="还没有启用桌面卡片喔" />
                             <Button
-                                Padding="0,10"
                                 Command="{Binding OpenInstalledCardPanelCommand}"
                                 Content="去添加"
-                                Style="{StaticResource SimpleBtnStyle}" />
+                                Style="{StaticResource FilledButton}" />
                         </StackPanel>
                     </Grid>
                 </pu:ListBoxHelper.EmptyContent>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+
+                        <Setter Property="Background" Value="{DynamicResource Surface3Brush}" />
+
+                        <Setter Property="Template">
+
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border
+                                        Margin="0,6"
+                                        Padding="10"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="16"
+                                        Style="{StaticResource OutlinedCard}">
+                                        <ContentPresenter />
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{DynamicResource Surface5Brush}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+                                        </Trigger>
+
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -103,7 +101,7 @@
                                 <controls:CornerClip CornerRadius="12">
 
                                     <Image
-                                        Width="180"
+                                        Width="140"
                                         Height="80"
                                         RenderOptions.BitmapScalingMode="Fant"
                                         Source="{Binding Converter={StaticResource ResourceKey=UIElement2RenderBitmap}}"
@@ -113,7 +111,7 @@
 
 
 
-                            <Grid Grid.Column="1" Margin="10,0">
+                            <Grid Grid.Column="1">
                                 <Grid>
                                     <StackPanel>
                                         <Grid>
@@ -121,19 +119,18 @@
                                             <TextBlock
                                                 FontSize="18"
                                                 FontWeight="Bold"
-                                                Foreground="{DynamicResource OnSurfaceBrush}"
+                                                Foreground="{DynamicResource PrimaryBrush}"
                                                 Text="{Binding Info.Name}" />
                                             <Border
-                                                Margin="4"
-                                                Padding="4,0"
+                                                Padding="12,4"
                                                 HorizontalAlignment="Right"
-                                                BorderBrush="{DynamicResource SecondaryBrush}"
+                                                BorderBrush="{DynamicResource CommonPrimaryBrush}"
                                                 BorderThickness="1"
                                                 CornerRadius="7">
                                                 <TextBlock
                                                     VerticalAlignment="Center"
                                                     FontSize="12"
-                                                    Foreground="{DynamicResource SecondaryBrush}"
+                                                    Foreground="{DynamicResource PrimaryBrush}"
                                                     Text="{Binding Info.CardType}" />
 
                                             </Border>
@@ -141,35 +138,60 @@
 
                                         <TextBlock
                                             FontSize="14"
-                                            Foreground="{DynamicResource OnSurfaceVariantBrush}"
+                                            Foreground="{DynamicResource SecondaryBrush}"
                                             Text="{Binding Info.Description}" />
 
                                     </StackPanel>
 
-                                    <UniformGrid
-                                        Margin="4,4,0,0"
+                                    <StackPanel
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
-                                        Rows="1">
+                                        Orientation="Horizontal">
                                         <Button
+                                            Padding="12,8"
                                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.SetCardLockCommand}"
                                             CommandParameter="{Binding}"
                                             Content="锁定/解锁"
-                                            Style="{StaticResource SimpleBtnStyle}" />
+                                            Style="{StaticResource TextButton}" />
                                         <Button
+                                            Padding="12,8"
                                             Background="{DynamicResource ErrorBrush}"
                                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.CloseCardCommand}"
                                             CommandParameter="{Binding}"
                                             Content="关闭"
-                                            Foreground="{DynamicResource OnErrorBrush}"
-                                            Style="{StaticResource SimpleBtnStyle}" />
-                                    </UniformGrid>
+                                            Foreground="{DynamicResource ErrorBrush}"
+                                            Style="{StaticResource TextButton}" />
+                                    </StackPanel>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
+
+
+            <Border Grid.Row="1" Padding="0">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+
+                        <Button
+                            Padding="8"
+                            Command="{Binding GetCardDetailCommand}"
+                            Content="&#xe863;"
+                            FontFamily="{StaticResource MaterialIconsRound}"
+                            Style="{StaticResource FilledButton}" />
+                        <Button
+                            Padding="8"
+                            Command="{Binding OpenInstalledCardPanelCommand}"
+                            Content="&#xe145;"
+                            FontFamily="{StaticResource MaterialIconsRound}"
+                            Style="{StaticResource FilledButton}" />
+
+                    </StackPanel>
+
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Page>

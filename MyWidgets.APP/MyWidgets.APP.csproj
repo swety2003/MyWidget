@@ -19,13 +19,17 @@
 
   <ItemGroup>
     <None Remove="Assets\avatar.png" />
+    <None Remove="Assets\md3-1.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\override\**" />
     <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="Assets\override\**" />
     <EmbeddedResource Remove="bin\**" />
+    <None Remove="Assets\override\**" />
     <None Remove="bin\**" />
-    <Page Remove="Assets\override\*.xaml" />
+    <Page Remove="Assets\override\**" />
     <Page Remove="bin\**" />
   </ItemGroup>
 
@@ -33,7 +37,7 @@
     <Content Include="Assets\avatar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Assets\override\*.xaml" />
+    <Resource Include="Assets\md3-1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MaterialDesign3\MaterialDesign3.csproj" />
     <ProjectReference Include="..\MyWidgets.SDK\MyWidgets.SDK.csproj" />
   </ItemGroup>
 

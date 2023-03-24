@@ -28,5 +28,4 @@
 
     <Color x:Key="SurfaceVariant">#49454F</Color>
     <Color x:Key="OnSurfaceVariant">#CAC4D0</Color>
-
 </ResourceDictionary>

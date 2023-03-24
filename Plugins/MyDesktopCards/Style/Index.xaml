@@ -9,6 +9,22 @@
     <cv:Time2WeekConverter x:Key="Time2WeekConverter" />
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/MyWidgets.SDK;component/Styles/index.xaml" />
+
+
+
+        <!--<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />-->
+
+
+
+
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Styles/Brushes/MD3Brush.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Themes/Generic.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Styles/Icon/MaterialIconsRound.xaml" />
+
+
+
+
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

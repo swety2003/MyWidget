@@ -30,10 +30,9 @@
                     Padding="0"
                     HorizontalContentAlignment="Stretch"
                     VerticalContentAlignment="Stretch"
-                    pu:ButtonHelper.CornerRadius="16"
-                    pu:ButtonHelper.HoverBorderBrush="{DynamicResource PrimaryBrush}"
                     BorderBrush="Transparent"
-                    BorderThickness="2">
+                    BorderThickness="2"
+                    Style="{StaticResource OutlinedButton}">
 
                     <Button.Background>
 
@@ -41,10 +40,11 @@
                     </Button.Background>
                 </Button>
 
-                <Grid
+                <Border
                     Height="2"
                     Margin="2"
-                    Background="{DynamicResource OutlineBrush}" />
+                    Background="{DynamicResource OutlineBrush}"
+                    CornerRadius="1" />
 
                 <StackPanel x:Name="sb_container" />
                 <Popup
@@ -65,27 +65,23 @@
             <!--  底部区域  -->
             <StackPanel VerticalAlignment="Bottom">
                 <StackPanel.Resources>
-                    <Style BasedOn="{StaticResource SimpleBtnStyle}" TargetType="Button">
+                    <Style BasedOn="{StaticResource TextButton}" TargetType="Button">
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
                         <Setter Property="Height" Value="40" />
                         <Setter Property="Padding" Value="8" />
+                        <Setter Property="Margin" Value="4" />
                         <Setter Property="FontSize" Value="24" />
-                        <Setter Property="FontFamily" Value="{StaticResource SegoeFluentIcons}" />
-                        <Setter Property="Foreground" Value="{DynamicResource OnBackgroundBrush}" />
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="ForceCursor" Value="{DynamicResource OnBackgroundBrush}" />
-                        <Setter Property="HorizontalAlignment" Value="Stretch" />
-                        <Setter Property="VerticalAlignment" Value="Center" />
-                        <Setter Property="pu:ButtonHelper.HoverBackground" Value="{DynamicResource SurfaceVariantBrush}" />
+                        <Setter Property="FontFamily" Value="{StaticResource MaterialIconsRound}" />
                     </Style>
                 </StackPanel.Resources>
                 <Button Click="SettingBtn_Click">
-                    
+                    &#xE8B8;
                 </Button>
 
 
 
-                <Button Click="ExitBtn_Click" FontSize="18">
-                    
+                <Button Click="ExitBtn_Click">
+                    &#xe8ac;
                 </Button>
             </StackPanel>
         </Grid>

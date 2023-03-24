@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace MyWidgets.SDK.Converters
+namespace MaterialDesign3.Converters
 {
-    internal class CornerRadiusCac : IValueConverter
+    internal class CornerRadiusFull : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var f = float.Parse(value.ToString());
-            return new CornerRadius(f / 2);
+            if (value is double h)
+            {
+                return new CornerRadius(h / 2);
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

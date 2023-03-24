@@ -11,11 +11,12 @@
     d:DataContext="{d:DesignInstance Type=viewmodel:DigitalClockVM}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Foreground="{DynamicResource Brush98}"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <cv:Time2WeekConverter x:Key="Time2WeekConverter" />
+
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/MyDesktopCards;component/Style/index.xaml" />
             </ResourceDictionary.MergedDictionaries>

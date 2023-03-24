@@ -1,22 +1,30 @@
 ﻿using MaterialColorUtilities.Schemes;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
-namespace MyWidgets.SDK.Styles
+namespace MaterialDesign3.Styles.Colors
 {
     [Localizability(LocalizationCategory.Ignore)]
     [Ambient]
     [UsableDuringInitialization(true)]
-    public class Theme : ResourceDictionary
+    public class ColorSystem : ResourceDictionary
     {
-        public static Theme? Instance;
-        public Theme()
+        public static ColorSystem? Instance;
+        public ColorSystem()
         {
             Instance = this;
+        }
+
+        public ColorSystem(ThemeType type):base ()
+        {
+            Type = type;
         }
 
         private ThemeType _type;
@@ -30,22 +38,22 @@ namespace MyWidgets.SDK.Styles
                 {
                     //浅色主题
                     case ThemeType.Light:
-                        this.Source = new Uri($"pack://application:,,,/MyWidgets.SDK;component/Styles/NewBrush/LightBrush.xaml", UriKind.Absolute);
+                        this.Source = new Uri($"pack://application:,,,/MaterialDesign3;component/Styles/Colors/LightColor.xaml", UriKind.Absolute);
                         break;
                     case ThemeType.Dark:
                         //深色主题
-                        this.Source = new Uri($"pack://application:,,,/MyWidgets.SDK;component/Styles/NewBrush/DarkBrush.xaml", UriKind.Absolute);
+                        this.Source = new Uri($"pack://application:,,,/MaterialDesign3;component/Styles/Colors/DarkColor.xaml", UriKind.Absolute);
                         break;
                     case ThemeType.DynamicDark:
 
-                        GenerateColorFormImage(true);
+                        GenerateDynamicColor(true);
                         break;
                     case ThemeType.DynamicLight:
 
-                        GenerateColorFormImage();
+                        GenerateDynamicColor();
                         break;
                     default:
-                        this.Source = new Uri($"pack://application:,,,/MyWidgets.SDK;component/Styles/NewBrush/DarkBrush.xaml", UriKind.Absolute);
+                        this.Source = new Uri($"pack://application:,,,/MaterialDesign3;component/Styles/Colors/DarkColor.xaml", UriKind.Absolute);
 
                         break;
                 }
@@ -58,18 +66,18 @@ namespace MyWidgets.SDK.Styles
             //Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Remove(Instance);
             //Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Add(new Theme { Type = themeType });
             Application.Current.Resources.MergedDictionaries.Remove(Instance);
-            Application.Current.Resources.MergedDictionaries.Add(new Theme { Type = themeType });
+            Application.Current.Resources.MergedDictionaries.Add(new ColorSystem { Type = themeType });
         }
 
-        public void GenerateColorFormImage(bool dark = false)
+        public void GenerateDynamicColor(bool dark = false)
         {
-            var colors =  ThemeUtil.Create(@"D:\SwetyCore\文档\MobileFile\f.png", dark);
-            
+            var colors = ThemeBuilder.Create( dark);
+
             foreach (PropertyInfo item in typeof(Scheme<Color>).GetProperties())
             {
                 //Console.WriteLine(item.Name);
 
-                Add($"{item.Name}Brush", new SolidColorBrush((Color)item.GetValue(colors)));
+                Add($"{item.Name}",item.GetValue(colors));
             }
         }
     }
@@ -77,9 +85,8 @@ namespace MyWidgets.SDK.Styles
 
     public enum ThemeType
     {
-        Light, Dark, Other,
+        Light, Dark,
         DynamicDark,
         DynamicLight
     }
-
 }

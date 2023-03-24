@@ -39,7 +39,7 @@
                                 pu:ToggleButtonHelper.CheckedForeground="{DynamicResource OnPrimaryContainerBrush}"
                                 pu:ToggleButtonHelper.CornerRadius="16"
                                 Background="Transparent"
-                                FontFamily="{DynamicResource SegoeFluentIcons}"
+                                FontFamily="{DynamicResource MaterialIconsRound}"
                                 FontSize="48"
                                 Foreground="{DynamicResource OnBackgroundBrush}"
                                 IsChecked="{Binding Enabled}">

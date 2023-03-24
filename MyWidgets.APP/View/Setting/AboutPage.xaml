@@ -30,7 +30,7 @@
                     <TextBlock
                         Margin="10,6"
                         FontSize="14"
-                        Foreground="{DynamicResource TertiaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"
                         Text="基本信息" />
                     <ItemsControl Background="Transparent" BorderThickness="0">
 
@@ -73,7 +73,7 @@
                     <TextBlock
                         Margin="10,6"
                         FontSize="14"
-                        Foreground="{DynamicResource TertiaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"
                         Text="使用到的组件" />
 
                     <ItemsControl Background="Transparent" BorderThickness="0">

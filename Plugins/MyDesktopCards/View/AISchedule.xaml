@@ -96,18 +96,18 @@
                                     Background="Transparent"
                                     Command="{Binding PreviousCommand}"
                                     Content="&#xf744;"
-                                    FontFamily="{StaticResource SegoeFluentIcons}"
+                                    FontFamily="{StaticResource MaterialIconsRound}"
                                     Foreground="{DynamicResource OnBackgroundBrush}"
-                                    Style="{DynamicResource SimpleBtnStyle}" />
+                                    Style="{DynamicResource FilledButton}" />
                                 <Button
                                     Margin="0"
                                     pu:ButtonHelper.CornerRadius="0"
                                     Background="Transparent"
                                     Command="{Binding NextCommand}"
                                     Content="&#xf746;"
-                                    FontFamily="{StaticResource SegoeFluentIcons}"
+                                    FontFamily="{StaticResource MaterialIconsRound}"
                                     Foreground="{DynamicResource OnBackgroundBrush}"
-                                    Style="{DynamicResource SimpleBtnStyle}" />
+                                    Style="{DynamicResource FilledButton}" />
                             </UniformGrid>
                         </sdkcontrol:CornerClip>
 

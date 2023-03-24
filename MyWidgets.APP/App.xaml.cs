@@ -6,12 +6,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Common;
 using Newtonsoft.Json;
-using MyWidgets.SDK.Styles;
 using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using MaterialDesign3.Styles.Colors;
 
 namespace MyWidgets.APP
 {
@@ -106,7 +106,7 @@ namespace MyWidgets.APP
             }
 
 
-            Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+            Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
 
 
 
@@ -116,7 +116,7 @@ namespace MyWidgets.APP
 
 
 
-            Theme.SetTheme(App.GetService<AppConfigManager>().Config.ThemeType);
+            App.SetTheme(App.GetService<AppConfigManager>().Config.ThemeType);
 
             base.OnStartup(e);
 
@@ -143,6 +143,12 @@ namespace MyWidgets.APP
             
             e.Handled = true;
 #endif
+        }
+
+        internal static void SetTheme(ThemeType themeType)
+        {
+            Application.Current.Resources.MergedDictionaries.RemoveAt(0);
+            Application.Current.Resources.MergedDictionaries.Insert(0,new ColorSystem(themeType));
         }
     }
 }

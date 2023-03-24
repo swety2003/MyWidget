@@ -13,7 +13,7 @@ namespace MyWidgets.SDK.Controls
     {
         static FontIcon()
         {
-            //FontFamilyProperty.OverrideMetadata(typeof(FontIcon), new FrameworkPropertyMetadata(Application.Current.FindResource("SegoeFluentIcons")));
+            //FontFamilyProperty.OverrideMetadata(typeof(FontIcon), new FrameworkPropertyMetadata(Application.Current.FindResource("MaterialIconsRound")));
         }
     }
 }

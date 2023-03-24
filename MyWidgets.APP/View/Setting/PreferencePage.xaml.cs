@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MaterialDesign3.Styles.Colors;
 using MyWidgets.APP.Common;
 using MyWidgets.APP.Model;
-using MyWidgets.SDK.Styles;
 using System;
 using System.Linq;
 using System.Windows.Controls;
@@ -39,12 +39,6 @@ namespace MyWidgets.APP.View.Setting
         [ObservableProperty]
         int selectedThemeIndex = 0;
 
-        //public ThemeType ThemeType
-        //{
-        //    get { return config.ThemeType; }
-        //    set { config.ThemeType = value; this.OnPropertyChanged(nameof(ThemeType)); }
-        //}
-
         public string[] AllTheme => Enum.GetNames(typeof(ThemeType));
 
 
@@ -52,7 +46,7 @@ namespace MyWidgets.APP.View.Setting
         void SaveConfig()
         {
             config.ThemeType = Enum.Parse<ThemeType>(AllTheme[SelectedThemeIndex]);
-            Theme.SetTheme(config.ThemeType);
+            App.SetTheme(config.ThemeType);
         }
 
 

@@ -1,5 +1,5 @@
-﻿using MyWidgets.SDK;
-using MyWidgets.SDK.Styles;
+﻿using MaterialDesign3.Styles.Colors;
+using MyWidgets.SDK;
 using System;
 using System.Collections.Generic;
 using System.Windows;
