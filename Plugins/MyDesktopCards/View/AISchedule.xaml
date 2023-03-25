@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MyDesktopCards.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:sdkcontrol="clr-namespace:MyWidgets.SDK.Controls;assembly=MyWidgets.SDK"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -47,20 +46,19 @@
                             Margin="4,4"
                             RenderOptions.BitmapScalingMode="Fant">
                             <Border.Background>
-                                <ImageBrush ImageSource="/MyDesktopCards;component/View/schedule-logo.png" />
+                                <ImageBrush ImageSource="/MyDesktopCards;component/Assets/schedule-logo.png" />
                             </Border.Background>
                         </Border>
 
-                        <Button
+                        <TextBlock
                             Grid.Column="2"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            Command="{Binding ReloadCommand}"
-                            Content="课程表"
                             Cursor="Hand"
                             FontSize="16"
                             FontWeight="Bold"
-                            Foreground="{DynamicResource OnSurfaceBrush}" />
+                            Foreground="{DynamicResource OnSurfaceBrush}"
+                            Text="课程表" />
 
                     </StackPanel>
 
@@ -92,22 +90,20 @@
 
                                 <Button
                                     Margin="0"
-                                    pu:ButtonHelper.CornerRadius="0"
                                     Background="Transparent"
                                     Command="{Binding PreviousCommand}"
                                     Content="&#xf744;"
                                     FontFamily="{StaticResource MaterialIconsRound}"
                                     Foreground="{DynamicResource OnBackgroundBrush}"
-                                    Style="{DynamicResource FilledButton}" />
+                                    Style="{DynamicResource TextButton}" />
                                 <Button
                                     Margin="0"
-                                    pu:ButtonHelper.CornerRadius="0"
                                     Background="Transparent"
                                     Command="{Binding NextCommand}"
                                     Content="&#xf746;"
                                     FontFamily="{StaticResource MaterialIconsRound}"
                                     Foreground="{DynamicResource OnBackgroundBrush}"
-                                    Style="{DynamicResource FilledButton}" />
+                                    Style="{DynamicResource TextButton}" />
                             </UniformGrid>
                         </sdkcontrol:CornerClip>
 

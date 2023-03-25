@@ -1,6 +1,7 @@
 ﻿using MaterialColorUtilities.Schemes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
+using Color = System.Windows.Media.Color;
 
 namespace MaterialDesign3.Styles.Colors
 {
@@ -16,10 +18,14 @@ namespace MaterialDesign3.Styles.Colors
     [UsableDuringInitialization(true)]
     public class ColorSystem : ResourceDictionary
     {
+
+        
         public static ColorSystem? Instance;
         public ColorSystem()
         {
             Instance = this;
+
+
         }
 
         public ColorSystem(ThemeType type):base ()
@@ -61,12 +67,24 @@ namespace MaterialDesign3.Styles.Colors
             }
         }
 
+        static ResourceDictionary BrushRes;
         public static void SetTheme(ThemeType themeType)
         {
-            //Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Remove(Instance);
-            //Application.Current.Resources.MergedDictionaries[1].MergedDictionaries.Add(new Theme { Type = themeType });
-            Application.Current.Resources.MergedDictionaries.Remove(Instance);
-            Application.Current.Resources.MergedDictionaries.Add(new ColorSystem { Type = themeType });
+
+            Application.Current.Resources.MergedDictionaries.Remove(BrushRes);
+
+
+            BrushRes = new ResourceDictionary { Source = new Uri("pack://application:,,,/MaterialDesign3;component/Styles/Brushes/MD3Brush.xaml", UriKind.Absolute) };
+
+            BrushRes.MergedDictionaries.Clear();
+
+            BrushRes.MergedDictionaries.Add(new ColorSystem(themeType));
+
+
+
+
+            Application.Current.Resources.MergedDictionaries.Add(BrushRes);
+
         }
 
         public void GenerateDynamicColor(bool dark = false)

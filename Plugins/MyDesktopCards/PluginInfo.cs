@@ -25,6 +25,7 @@ namespace MyDesktopCards
             DigitalClock.info,
             HardWareMonitor.info,
             AISchedule.info,
+            SimpleClock.info,
         };
 
 

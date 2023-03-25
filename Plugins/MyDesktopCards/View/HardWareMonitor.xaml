@@ -7,8 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="clr-namespace:MyDesktopCards.ViewModel"
     d:DataContext="{d:DesignInstance Type=viewmodel:HardwareMonitorVM}"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     Foreground="{DynamicResource OnBackgroundBrush}"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -29,7 +27,7 @@
 
                 <Run>
                     <Run.Text>
-                        <MultiBinding StringFormat="上传：{0}{1}/s">
+                        <MultiBinding StringFormat="上传：{0}{1}/s ">
                             <Binding FallbackValue="0" Path="Upload.size" />
                             <Binding FallbackValue="k" Path="Upload.type" />
                         </MultiBinding>
@@ -40,7 +38,7 @@
 
                 <Run>
                     <Run.Text>
-                        <MultiBinding StringFormat="下载：{0}{1}/s">
+                        <MultiBinding StringFormat="下载：{0}{1}/s ">
                             <Binding FallbackValue="0" Path="Download.size" />
                             <Binding FallbackValue="k" Path="Download.type" />
                         </MultiBinding>

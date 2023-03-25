@@ -9,19 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\schedule-logo.png" />
     <None Remove="CZGL.SystemInfo.dll" />
-    <None Remove="View\schedule-logo.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\schedule-logo.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\schedule-logo.png" />
+    <Resource Include="Assets\schedule-logo.png" />
   </ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\MaterialDesign3\MaterialDesign3.csproj">
+			<Private>false</Private>
+			<!--<ExcludeAssets>runtime</ExcludeAssets>-->
+		</ProjectReference>
 		<ProjectReference Include="..\..\MyWidgets.SDK\MyWidgets.SDK.csproj">
 			<Private>false</Private>
 			<ExcludeAssets>runtime</ExcludeAssets>

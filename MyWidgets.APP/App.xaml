@@ -6,19 +6,22 @@
     xmlns:m3c="clr-namespace:MaterialDesign3.Styles.Colors;assembly=MaterialDesign3"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+
         <ResourceDictionary>
+
 
             <ResourceDictionary.MergedDictionaries>
 
 
 
+
                 <!--<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />-->
 
-
                 <m3c:ColorSystem Type="DynamicLight" />
-
-
+                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Styles/Colors/LightColor.xaml" />-->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Styles/Brushes/MD3Brush.xaml" />
+
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Themes/Generic.xaml" />
 

@@ -7,74 +7,92 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     Title="AIScheduleSetting"
-    Width="800"
-    Height="450"
-    Background="{DynamicResource BackgroundBrush}"
-    Foreground="{DynamicResource OnBackgroundBrush}"
+    Width="500"
+    Height="350"
+    Background="Transparent"
+    ResizeMode="CanMinimize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
     mc:Ignorable="d">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="48" GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/MyWidgets.SDK;component/Styles/index.xaml" />
+
+                <ResourceDictionary Source="/MyDesktopCards;component/Style/index.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <DockPanel>
-        <Border Padding="8" DockPanel.Dock="Top">
+    <Border
+        Padding="16"
+        Background="{DynamicResource Surface5Brush}"
+        BorderBrush="{DynamicResource OutlineBrush}"
+        BorderThickness="1"
+        CornerRadius="16">
 
-            <StackPanel Orientation="Horizontal">
-                <!--<TextBlock
-                    FontFamily="{StaticResource MaterialIconsRound}"
-                    FontSize="28"
-                    Text="" />-->
-                <TextBlock
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    FontSize="26"
-                    Text="设置" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Margin="0,0,0,10"
+                DockPanel.Dock="Top"
+                FontSize="24"
+                FontWeight="Medium"><Run Language="zh-cn" Text="设置" /></TextBlock>
+
+
+            <StackPanel Grid.Row="1">
+                <DockPanel Margin="0,8">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+
+                        <TextBlock
+                            Margin="0,2,4,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{StaticResource MaterialIconsRound}"
+                            FontSize="18"
+                            Text="&#xE250;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Text="课程表链接" />
+                    </StackPanel>
+
+                    <StackPanel DockPanel.Dock="Bottom">
+
+                        <TextBox
+                            MinHeight="80"
+                            Margin="0,4"
+                            VerticalContentAlignment="Top"
+                            AcceptsReturn="True"
+                            Text="{Binding ShareUrl}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </DockPanel>
+
+
+
             </StackPanel>
-        </Border>
-        <StackPanel Margin="14,4">
-            <DockPanel Margin="0,8">
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
 
-                    <TextBlock
-                        Margin="0,2,4,0"
-                        VerticalAlignment="Center"
-                        FontFamily="{StaticResource MaterialIconsRound}"
-                        FontSize="18"
-                        Text="" />
-                    <TextBlock
-                        VerticalAlignment="Center"
-                        FontSize="18"
-                        Text="课程表链接" />
+
+            <Grid Grid.Row="2">
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+
+
+                    <Button
+                        Padding="20,12"
+                        Command="{Binding ApplySettingCommand}"
+                        Content="应用"
+                        Style="{DynamicResource TextButton}" />
                 </StackPanel>
+            </Grid>
 
-                <StackPanel DockPanel.Dock="Bottom">
+        </Grid>
+    </Border>
 
-                    <TextBox
-                        MinHeight="60"
-                        Margin="0,4"
-                        VerticalContentAlignment="Top"
-                        pu:TextBoxHelper.CornerRadius="16"
-                        pu:TextBoxHelper.Watermark="输入链接"
-                        AcceptsReturn="True"
-                        Style="{StaticResource SimpleTextBox}"
-                        Text="{Binding ShareUrl}"
-                        TextWrapping="Wrap" />
-                </StackPanel>
-            </DockPanel>
-
-
-
-            <Button
-                Padding="32,8"
-                HorizontalAlignment="Right"
-                Command="{Binding ApplySettingCommand}"
-                Content="应用"
-                FontSize="14"
-                Style="{StaticResource FilledButton}" />
-        </StackPanel>
-    </DockPanel>
 </Window>

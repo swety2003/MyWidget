@@ -3,6 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:MaterialDesign3.Styles.Colors">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Styles/Colors/LightColor.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
     <SolidColorBrush x:Key="OnPrimaryBrush" Color="{StaticResource OnPrimary}" />

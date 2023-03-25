@@ -63,7 +63,7 @@ namespace MyDesktopCards.View
 
         public UIElement GetUIElement()
         {
-            return this as UIElement;
+            return this;
         }
 
         //public void OverrideUI()

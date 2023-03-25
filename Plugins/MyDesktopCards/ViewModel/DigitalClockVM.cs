@@ -18,7 +18,6 @@ namespace MyDesktopCards.ViewModel
         {
             _Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.5) };
             this.OnActiveChanged += DigitalClockVM_OnActiveChanged;
-
         }
 
         private void DigitalClockVM_OnActiveChanged(object? sender, bool e)
@@ -37,14 +36,6 @@ namespace MyDesktopCards.ViewModel
             }
         }
 
-
-        public string GetWeek(DateTime dt)
-        {
-            string[] weekdays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
-            string week = weekdays[Convert.ToInt32(dt.DayOfWeek)];
-
-            return week;
-        }
         private string GetNow(DateTime dt)
         {
             int a = dt.Hour;
@@ -70,16 +61,33 @@ namespace MyDesktopCards.ViewModel
                 return "晚上好,";
             }
         }
+
+
+        [ObservableProperty]
+        private double hourDeg = 0;
+
+        [ObservableProperty]
+        private double minDeg = 0;
+
+        [ObservableProperty]
+        private double secondDeg = 0;
+
+
         private void _Timer_Tick(object? sender, EventArgs e)
         {
             NowTime = DateTime.Now;
-            //this.Date = now.ToString("D");
-            //this.HourAndMinute = now.ToString("t");
-            //this.Second = $":{now.ToString("ss")}";
-            //this.Week = GetWeek(now);
+
             this.Hello = $"{GetNow(NowTime)}{System.Environment.UserName}";
 
             TimeSpan m_WorkTimeTemp = new TimeSpan(Convert.ToInt64(Environment.TickCount) * 10000);
+
+
+
+            HourDeg = _NowTime.Hour * 30 + _NowTime.Minute * 30 / 60 - 90;
+
+            MinDeg = _NowTime.Minute * 6 + _NowTime.Second * 6 / 60 - 90;
+
+            SecondDeg = _NowTime.Second * 6 - 90;
         }
     }
 }

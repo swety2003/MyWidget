@@ -147,8 +147,8 @@ namespace MyWidgets.APP
 
         internal static void SetTheme(ThemeType themeType)
         {
-            Application.Current.Resources.MergedDictionaries.RemoveAt(0);
-            Application.Current.Resources.MergedDictionaries.Insert(0,new ColorSystem(themeType));
+
+            ColorSystem.SetTheme(themeType);
         }
     }
 }

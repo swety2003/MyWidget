@@ -27,7 +27,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource OnPrimaryBrush}" />
-        <Setter Property="Padding" Value="20,6" />
+        <Setter Property="Padding" Value="10,4" />
         <Setter Property="Margin" Value="8" />
         <Setter Property="Opacity" Value=".9" />
         <Setter Property="Template">
@@ -210,7 +210,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="20,10" />
-        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Margin" Value="8" />
         <Setter Property="Opacity" Value=".9" />
         <Setter Property="Template">
@@ -226,7 +226,8 @@
                         <ContentPresenter
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            TextElement.FontWeight="{TemplateBinding FontWeight}" />
                     </Grid>
 
                     <ControlTemplate.Triggers>

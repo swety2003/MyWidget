@@ -182,7 +182,7 @@
                 <Border
                     Grid.Column="1"
                     BorderBrush="{DynamicResource OutlineBrush}"
-                    BorderThickness="0,0,0,1"
+                    BorderThickness="0,0,0,0.5"
                     CornerRadius="16 16 0 0">
                     <Grid>
                         <ListBox
