@@ -1,5 +1,5 @@
-﻿using MyWidgets.APP.View.Setting;
-using MyWidgets.APP.Common;
+﻿using MyWidgets.APP.Common;
+using MyWidgets.APP.View.Setting;
 using System;
 using System.Windows;
 using System.Windows.Controls;

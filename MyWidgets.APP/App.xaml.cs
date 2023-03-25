@@ -1,17 +1,15 @@
-﻿using MyWidgets.APP.View;
-using MyWidgets.APP.View.Setting;
-using MyWidgets.APP.ViewModel;
+﻿using MaterialDesign3.Styles.Colors;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Common;
-using Newtonsoft.Json;
+using MyWidgets.APP.View;
+using MyWidgets.APP.View.Setting;
+using MyWidgets.APP.ViewModel;
 using System;
-using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
-using MaterialDesign3.Styles.Colors;
 
 namespace MyWidgets.APP
 {

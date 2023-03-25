@@ -1,5 +1,4 @@
-﻿using MyWidgets.APP;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Model;
 using MyWidgets.SDK;
 using System;

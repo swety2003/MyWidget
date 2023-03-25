@@ -1,12 +1,8 @@
-﻿using MyWidgets.APP.Model;
+﻿using MyWidgets.APP.Common;
 using MyWidgets.APP.ViewModel;
-using MyWidgets.APP.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
-using System.Windows.Interop;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 
 namespace MyWidgets.APP.View
 {
@@ -31,7 +27,7 @@ namespace MyWidgets.APP.View
             App.GetService<SideBarManageService>().Container = sb_container;
             App.GetService<SideBarManageService>().ContainerPop = sb_container_pop;
         }
-        
+
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);

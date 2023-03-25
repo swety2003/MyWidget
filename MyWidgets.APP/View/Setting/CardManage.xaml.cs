@@ -1,5 +1,5 @@
-﻿using MyWidgets.APP.ViewModel;
-using MyWidgets.APP.Common;
+﻿using MyWidgets.APP.Common;
+using MyWidgets.APP.ViewModel;
 using System.Windows.Controls;
 
 namespace MyWidgets.APP.View

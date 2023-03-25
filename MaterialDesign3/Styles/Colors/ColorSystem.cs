@@ -1,14 +1,8 @@
 ﻿using MaterialColorUtilities.Schemes;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
-using System.Windows.Media;
 using Color = System.Windows.Media.Color;
 
 namespace MaterialDesign3.Styles.Colors
@@ -19,7 +13,7 @@ namespace MaterialDesign3.Styles.Colors
     public class ColorSystem : ResourceDictionary
     {
 
-        
+
         public static ColorSystem? Instance;
         public ColorSystem()
         {
@@ -28,7 +22,7 @@ namespace MaterialDesign3.Styles.Colors
 
         }
 
-        public ColorSystem(ThemeType type):base ()
+        public ColorSystem(ThemeType type) : base()
         {
             Type = type;
         }
@@ -80,22 +74,19 @@ namespace MaterialDesign3.Styles.Colors
 
             BrushRes.MergedDictionaries.Add(new ColorSystem(themeType));
 
-
-
-
             Application.Current.Resources.MergedDictionaries.Add(BrushRes);
 
         }
 
         public void GenerateDynamicColor(bool dark = false)
         {
-            var colors = ThemeBuilder.Create( dark);
+            var colors = ThemeBuilder.Create(dark);
 
             foreach (PropertyInfo item in typeof(Scheme<Color>).GetProperties())
             {
                 //Console.WriteLine(item.Name);
 
-                Add($"{item.Name}",item.GetValue(colors));
+                Add($"{item.Name}", item.GetValue(colors));
             }
         }
     }

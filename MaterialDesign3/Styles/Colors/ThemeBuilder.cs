@@ -8,8 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using ColorConverter = System.Windows.Media.ColorConverter;
+using static System.Environment;
 using Color = System.Windows.Media.Color;
+using ColorConverter = System.Windows.Media.ColorConverter;
 
 namespace MaterialDesign3.Styles.Colors
 {
@@ -37,14 +38,26 @@ namespace MaterialDesign3.Styles.Colors
             }
             return ret.ToArray();
         }
+        static string WALLPAPER_CACHE_FOLDER = Path.Combine(GetFolderPath(SpecialFolder.ApplicationData), "WALLPAPER_CACHE");
 
         public static Scheme<Color> Create(bool isdark)
         {
+            if (!Directory.Exists(WALLPAPER_CACHE_FOLDER))
+            {
+                Directory.CreateDirectory(WALLPAPER_CACHE_FOLDER);
+
+            }
+
+            string newSource = "";
             string source = "";
             StringBuilder wallPaperPath = new StringBuilder(200);
             if (SystemParametersInfo(SPI_GETDESKWALLPAPER, 200, wallPaperPath, 0))
             {
                 source = wallPaperPath.ToString();
+                newSource = Path.Combine(WALLPAPER_CACHE_FOLDER, Path.GetFileName(source));
+
+                File.Copy(source, newSource, true);
+
             }
             else
             {
@@ -53,7 +66,7 @@ namespace MaterialDesign3.Styles.Colors
 
 
             Bitmap bitmap;
-            using (FileStream fs = new FileStream(source, FileMode.Open))
+            using (FileStream fs = new FileStream(newSource, FileMode.Open))
             {
                 bitmap = ResizeImage(Image.FromStream(fs), new Size(112, 112));
             }

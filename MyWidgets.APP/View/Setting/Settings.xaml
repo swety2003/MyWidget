@@ -115,7 +115,7 @@
                                 Margin="4,2"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource MaterialIconsRound}"
-                                Text="&#xe99b;" />
+                                Text="&#xe88e;" />
                             <TextBlock Text="关于" />
                         </StackPanel>
                     </ListBoxItem>

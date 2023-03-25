@@ -1,13 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using MyWidgets.SDK;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -22,15 +15,15 @@ namespace MyWidgets.SDK.Common
 
         public static void TryLoadCustomeStyle<T>(this T self) where T : UserControl
         {
-            var name = typeof(T).FullName+".xaml";
+            var name = typeof(T).FullName + ".xaml";
             logger.LogDebug($"卡片id:{name}");
             var abl = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
-            var baseDir = Path.Combine(abl,override_dir);
+            var baseDir = Path.Combine(abl, override_dir);
             if (!Directory.Exists(baseDir))
             {
                 Directory.CreateDirectory(baseDir);
             }
-            var xaml_file_path = Path.Combine(baseDir,name);
+            var xaml_file_path = Path.Combine(baseDir, name);
 
             if (File.Exists(xaml_file_path))
             {

@@ -80,7 +80,7 @@ namespace MyWidgets.APP.ViewModel
 
         }
 
-        
+
 
         [ObservableProperty]
         ObservableCollection<SideBarInstanceInfo> installedItems = new ObservableCollection<SideBarInstanceInfo>();

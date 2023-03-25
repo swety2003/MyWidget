@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MyWidgets.APP.View;
 using MyWidgets.APP.Common;
+using MyWidgets.APP.View;
 using MyWidgets.SDK;
 using MyWidgets.SDK.Controls;
 using System.Collections.ObjectModel;

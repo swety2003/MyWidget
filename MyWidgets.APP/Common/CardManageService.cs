@@ -1,7 +1,6 @@
-﻿using MyWidgets.APP;
-using MyWidgets.APP.View;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Model;
+using MyWidgets.APP.View;
 using MyWidgets.SDK;
 using MyWidgets.SDK.Controls;
 using System;

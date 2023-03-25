@@ -1,7 +1,7 @@
-﻿using MyWidgets.APP.ViewModel;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Common;
 using MyWidgets.APP.Model;
+using MyWidgets.APP.ViewModel;
 using MyWidgets.SDK;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;

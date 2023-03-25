@@ -1,10 +1,8 @@
-﻿using MyWidgets.APP.View;
-using MyWidgets.APP.Common;
-using MyWidgets.SDK;
+﻿using MyWidgets.APP.Common;
+using MyWidgets.APP.View;
 using System;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 //using System.Windows.Forms;
 using System.Windows.Interop;
 
