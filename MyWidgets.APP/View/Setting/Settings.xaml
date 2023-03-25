@@ -171,6 +171,7 @@
             Grid.RowSpan="2"
             Grid.Column="1"
             Margin="8"
+            Padding="0"
             Style="{StaticResource ElevatedCard}">
             <Grid>
                 <Grid.RowDefinitions>
@@ -178,11 +179,15 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Border Grid.Column="1">
+                <Border
+                    Grid.Column="1"
+                    BorderBrush="{DynamicResource OutlineBrush}"
+                    BorderThickness="0,0,0,1"
+                    CornerRadius="16 16 0 0">
                     <Grid>
                         <ListBox
                             x:Name="nav_menu"
-                            Margin="0,0,0,4"
+                            Margin="4"
                             d:ItemsSource="{d:SampleData ItemCount=5}"
                             Background="Transparent"
                             BorderThickness="0"
@@ -206,13 +211,13 @@
 
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsSelected" Value="True">
-                                                        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
-                                                        <Setter Property="Foreground" Value="{DynamicResource Surface1Brush}" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
                                                     </Trigger>
 
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Background" Value="{DynamicResource Surface5Brush}" />
-                                                        <Setter Property="Foreground" Value="{DynamicResource OnSurfaceBrush}" />
+                                                        <Setter Property="Background" Value="{DynamicResource SecondaryBrush}" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource OnSecondaryBrush}" />
                                                     </Trigger>
 
                                                     <MultiTrigger>
@@ -220,8 +225,10 @@
                                                             <Condition Property="IsMouseOver" Value="True" />
                                                             <Condition Property="IsSelected" Value="True" />
                                                         </MultiTrigger.Conditions>
-                                                        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
-                                                        <Setter Property="Foreground" Value="{DynamicResource Surface1Brush}" />
+                                                        <Setter Property="Background" Value="{DynamicResource SecondaryBrush}" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource OnSecondaryBrush}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
+
                                                     </MultiTrigger>
                                                 </ControlTemplate.Triggers>
                                             </ControlTemplate>

@@ -33,6 +33,7 @@
 
             <ListBox
                 Grid.Row="0"
+                Padding="12"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"
                 d:ItemsSource="{d:SampleData ItemCount=5}"
@@ -116,30 +117,35 @@
                                     <StackPanel>
                                         <Grid>
 
-                                            <TextBlock
-                                                FontSize="18"
-                                                FontWeight="Bold"
-                                                Foreground="{DynamicResource PrimaryBrush}"
-                                                Text="{Binding Info.Name}" />
-                                            <Border
-                                                Padding="12,4"
-                                                HorizontalAlignment="Right"
-                                                BorderBrush="{DynamicResource CommonPrimaryBrush}"
-                                                BorderThickness="1"
-                                                CornerRadius="7">
-                                                <TextBlock
-                                                    VerticalAlignment="Center"
-                                                    FontSize="12"
-                                                    Foreground="{DynamicResource PrimaryBrush}"
-                                                    Text="{Binding Info.CardType}" />
+                                            <StackPanel Orientation="Horizontal">
 
-                                            </Border>
+                                                <TextBlock
+                                                    FontSize="18"
+                                                    FontWeight="Bold"
+                                                    Foreground="{DynamicResource PrimaryBrush}"
+                                                    Text="{Binding Info.Name}" />
+                                                <Border
+                                                    Margin="4,0"
+                                                    Padding="4,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    BorderBrush="{DynamicResource CommonPrimaryBrush}"
+                                                    BorderThickness="1"
+                                                    CornerRadius="7">
+                                                    <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        FontSize="12"
+                                                        Foreground="{DynamicResource PrimaryBrush}"
+                                                        Text="{Binding Info.CardType}" />
+
+                                                </Border>
+                                            </StackPanel>
                                         </Grid>
 
                                         <TextBlock
                                             FontSize="14"
                                             Foreground="{DynamicResource SecondaryBrush}"
-                                            Text="{Binding Info.Description}" />
+                                            Text="{Binding Info.Description, StringFormat=简介:{0}}" />
 
                                     </StackPanel>
 
@@ -171,18 +177,23 @@
 
 
 
-            <Border Grid.Row="1" Padding="0">
+            <Border
+                Grid.Row="1"
+                Padding="0"
+                BorderBrush="{DynamicResource OutlineBrush}"
+                BorderThickness="0,1,0,0"
+                TextElement.FontSize="22">
                 <Grid>
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
 
                         <Button
-                            Padding="8"
+                            Padding="16,4"
                             Command="{Binding GetCardDetailCommand}"
                             Content="&#xe863;"
                             FontFamily="{StaticResource MaterialIconsRound}"
-                            Style="{StaticResource FilledButton}" />
+                            Style="{StaticResource TextButton}" />
                         <Button
-                            Padding="8"
+                            Padding="4"
                             Command="{Binding OpenInstalledCardPanelCommand}"
                             Content="&#xe145;"
                             FontFamily="{StaticResource MaterialIconsRound}"
