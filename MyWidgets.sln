@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaterialDesign3", "Material
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{A4F04DAD-015E-47BE-93D9-DC557D018754}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDesktopCards", "Plugins\MyDesktopCards\MyDesktopCards.csproj", "{EBBBD706-EA37-4017-9ED3-164B24635455}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,16 +31,9 @@ Global
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBBBD706-EA37-4017-9ED3-164B24635455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBBBD706-EA37-4017-9ED3-164B24635455}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBBBD706-EA37-4017-9ED3-164B24635455}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBBBD706-EA37-4017-9ED3-164B24635455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{EBBBD706-EA37-4017-9ED3-164B24635455} = {9EBE1887-5E7E-4FD6-9108-BFBDE8087FC9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67D2F841-EA54-41A8-8E27-438B33D7A8E2}
