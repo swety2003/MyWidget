@@ -6,6 +6,8 @@
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/Badges.xaml" />
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/Buttons.xaml" />
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/CheckBoxs.xaml" />
+        <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/ListBoxs.xaml" />
+        <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/ListBoxItems.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 

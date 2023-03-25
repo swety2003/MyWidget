@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWidgets.SDK", "MyWidgets.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{9EBE1887-5E7E-4FD6-9108-BFBDE8087FC9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDesktopCards", "Plugins\MyDesktopCards\MyDesktopCards.csproj", "{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaterialDesign3", "MaterialDesign3\MaterialDesign3.csproj", "{E5004BB2-D208-4FEA-A044-3241F58CCD3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{A4F04DAD-015E-47BE-93D9-DC557D018754}"
@@ -29,10 +27,6 @@ Global
 		{F351B89B-727E-4DA2-9E4C-BB7C8FCB91D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F351B89B-727E-4DA2-9E4C-BB7C8FCB91D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F351B89B-727E-4DA2-9E4C-BB7C8FCB91D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,9 +34,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9B55BB22-1911-48A6-AFBB-1F2C2F3DA54C} = {9EBE1887-5E7E-4FD6-9108-BFBDE8087FC9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67D2F841-EA54-41A8-8E27-438B33D7A8E2}
