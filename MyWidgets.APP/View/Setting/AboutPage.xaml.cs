@@ -1,4 +1,5 @@
 ﻿using MyWidgets.APP.Common;
+using System.Reflection;
 using System.Windows.Controls;
 
 namespace MyWidgets.APP.View
@@ -11,8 +12,18 @@ namespace MyWidgets.APP.View
         public AboutPage()
         {
             InitializeComponent();
+
+            ApplyBuildInfo();
         }
 
         public PageFlags PageFlag => PageFlags.Root;
+
+
+        public void ApplyBuildInfo()
+        {
+            var asm= Assembly.GetExecutingAssembly();
+            app_info.Text = asm.GetCustomAttribute<GitAttribute>()?.ToString();
+            
+        }
     }
 }
