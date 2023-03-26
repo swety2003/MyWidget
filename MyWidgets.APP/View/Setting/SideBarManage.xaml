@@ -33,13 +33,7 @@
 
                             </DockPanel>
 
-                            <CheckBox
-                                HorizontalAlignment="Right"
-                                Background="Transparent"
-                                FontFamily="{DynamicResource MaterialIconsRound}"
-                                FontSize="48"
-                                Foreground="{DynamicResource OnBackgroundBrush}"
-                                IsChecked="{Binding Enabled}" />
+                            <CheckBox HorizontalAlignment="Right" IsChecked="{Binding Enabled}" />
                         </Grid>
 
                     </Border>
