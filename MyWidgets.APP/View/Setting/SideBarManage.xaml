@@ -33,18 +33,13 @@
 
                             </DockPanel>
 
-                            <ToggleButton
+                            <CheckBox
                                 HorizontalAlignment="Right"
-                                pu:ToggleButtonHelper.CheckedContent=""
-                                pu:ToggleButtonHelper.CheckedForeground="{DynamicResource OnPrimaryContainerBrush}"
-                                pu:ToggleButtonHelper.CornerRadius="16"
                                 Background="Transparent"
                                 FontFamily="{DynamicResource MaterialIconsRound}"
                                 FontSize="48"
                                 Foreground="{DynamicResource OnBackgroundBrush}"
-                                IsChecked="{Binding Enabled}">
-                                
-                            </ToggleButton>
+                                IsChecked="{Binding Enabled}" />
                         </Grid>
 
                     </Border>
