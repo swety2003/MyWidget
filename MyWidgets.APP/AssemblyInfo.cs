@@ -37,14 +37,28 @@ sealed class GitAttribute : System.Attribute
     public RelType GetRelType()
     {
         var s = this.ToString();
-        switch (BuildType)
+        if (s.Contains("dev"))
         {
-            case "refs/heads/dev": return RelType.NightlyBuild;
-            case "refs/heads/main": return RelType.Release;
-            case "{{buildtype}}": return RelType.SelfBuild;
-            default:
-                return RelType.UnKnown;
+            return RelType.NightlyBuild;
         }
+        if (s.Contains("main"))
+        {
+            return RelType.Release;
+        }
+        if (s.Contains("{{buildtype}}"))
+        {
+            return RelType.SelfBuild;
+        }
+
+        return RelType.UnKnown;
+        //switch (BuildType)
+        //{
+        //    case "refs/heads/dev": return RelType.NightlyBuild;
+        //    case "refs/heads/main": return RelType.Release;
+        //    case "{{buildtype}}": return RelType.SelfBuild;
+        //    default:
+        //        return RelType.UnKnown;
+        //}
     }
 
     public string Hash
