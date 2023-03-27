@@ -38,6 +38,9 @@ Windows桌面小部件
     将下载到的主题文件 xaml 放到 Plugins\MyDesktopCards\ui_override 文件夹里,重启即可
 
 
+## 可用插件列表
++ [MyDesktopCards](https://github.com/swety2003/MyDesktopCards)
+
 
 
 ## **Develop**
