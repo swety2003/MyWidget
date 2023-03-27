@@ -42,7 +42,12 @@ namespace MyWidgets.SDK.Common
                     var width = OverrideUIInfo.GetWidth(rootElement);
                     var height = OverrideUIInfo.GetHeight(rootElement);
 
-                    self.ResizeCard(height, width);
+                    if (height>0&&width > 0)
+                    {
+
+                        self.ResizeCard(height, width);
+                    }
+
 
 
                     self.Content = rootElement;
@@ -72,7 +77,7 @@ namespace MyWidgets.SDK.Common
           "Height",
           typeof(int),
           typeof(OverrideUIInfo),
-          new FrameworkPropertyMetadata(defaultValue: 4,
+          new FrameworkPropertyMetadata(defaultValue: -1,
               flags: FrameworkPropertyMetadataOptions.AffectsRender)
         );
 

@@ -64,7 +64,8 @@ namespace MyWidgets.APP.View
             DesktopAppBar.SetAppBar(this, AppBarEdge.None);
             this.Close();
 
-            App.Current.Shutdown();
+            //App.Current.Shutdown();
+            Environment.Exit(0);
         }
 
         private void sb_container_pop_Closed(object sender, EventArgs e)

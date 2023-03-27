@@ -4,7 +4,7 @@
     xmlns:c="clr-namespace:MaterialDesign3.Styles.Colors">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Styles/Colors/LightColor.xaml" />
+        <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesign3;component/Styles/Colors/LightColor.xaml" />-->
 
     </ResourceDictionary.MergedDictionaries>
 
