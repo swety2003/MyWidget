@@ -6,7 +6,9 @@
     xmlns:local="clr-namespace:MyWidgets.APP.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:viewmodel="clr-namespace:MyWidgets.APP.ViewModel"
     Title="关于"
+    d:DataContext="{d:DesignInstance Type=viewmodel:AboutPageVM}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontSize="16"
@@ -49,14 +51,14 @@
                                 Grid.Row="1"
                                 FontSize="12"
                                 Foreground="{DynamicResource OnSurfaceVariantBrush}"
-                                Text="Alpha" />
+                                Text="{Binding AppInfo, FallbackValue=appinfo}" />
 
                             <Button
                                 Grid.RowSpan="2"
                                 Margin="0"
                                 Padding="14,4"
                                 HorizontalAlignment="Right"
-                                Click="Button_Click"
+                                Command="{Binding CheckUpdateCommand}"
                                 FontWeight="Medium"
                                 Style="{DynamicResource TextButton}">
                                 检查更新

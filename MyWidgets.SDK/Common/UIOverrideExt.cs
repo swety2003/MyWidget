@@ -42,7 +42,7 @@ namespace MyWidgets.SDK.Common
                     var width = OverrideUIInfo.GetWidth(rootElement);
                     var height = OverrideUIInfo.GetHeight(rootElement);
 
-                    if (height>0&&width > 0)
+                    if (height > 0 && width > 0)
                     {
 
                         self.ResizeCard(height, width);
