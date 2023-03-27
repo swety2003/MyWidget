@@ -34,7 +34,11 @@
                         Text="基本信息" />
                     <ItemsControl Background="Transparent" BorderThickness="0">
 
-                        <DockPanel Margin="4,4">
+                        <Grid Margin="4,4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
                             <TextBlock
                                 DockPanel.Dock="Top"
                                 FontSize="16"
@@ -42,10 +46,22 @@
                                 Text="APP版本" />
                             <TextBlock
                                 x:Name="app_info"
+                                Grid.Row="1"
                                 FontSize="12"
                                 Foreground="{DynamicResource OnSurfaceVariantBrush}"
                                 Text="Alpha" />
-                        </DockPanel>
+
+                            <Button
+                                Grid.RowSpan="2"
+                                Margin="0"
+                                Padding="14,4"
+                                HorizontalAlignment="Right"
+                                Click="Button_Click"
+                                FontWeight="Medium"
+                                Style="{DynamicResource TextButton}">
+                                检查更新
+                            </Button>
+                        </Grid>
                         <DockPanel Margin="4,4">
                             <TextBlock
                                 DockPanel.Dock="Top"

@@ -15,6 +15,13 @@ using System.Windows;
 [System.AttributeUsage(System.AttributeTargets.All, Inherited = false, AllowMultiple = false)]
 sealed class GitAttribute : System.Attribute
 {
+    public enum RelType
+    {
+        NightlyBuild,
+        SelfBuild,
+        Release,
+        UnKnown,
+    }
 
     readonly string githash;
     readonly string buildtype;
@@ -25,6 +32,19 @@ sealed class GitAttribute : System.Attribute
         this.githash = githash;
         this.buildtype = buildtype;
 
+    }
+
+    public RelType GetRelType()
+    {
+        var s = this.ToString();
+        switch (BuildType)
+        {
+            case "refs/heads/dev": return RelType.NightlyBuild;
+            case "refs/heads/main": return RelType.Release;
+            case "{{buildtype}}": return RelType.SelfBuild;
+            default:
+                return RelType.UnKnown;
+        }
     }
 
     public string Hash
