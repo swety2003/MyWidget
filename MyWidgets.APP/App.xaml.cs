@@ -65,6 +65,7 @@ namespace MyWidgets.APP
 
                     #region ViewModel
 
+                    services.AddSingleton<SideBarVM>();
                     services.AddSingleton<WidgetViewVM>();
                     services.AddSingleton<CardManageVM>();
                     services.AddSingleton<InstalledCardsVM>();
@@ -72,7 +73,6 @@ namespace MyWidgets.APP
                     services.AddSingleton<SideBarManageVM>();
 
                     #endregion
-
                     services.AddSingleton<WidgetView>();
                     services.AddTransient<CardManage>();
                     services.AddTransient<PreferencePage>();
@@ -81,6 +81,7 @@ namespace MyWidgets.APP
                     services.AddTransient<AboutPage>();
                     services.AddTransient<InstalledCards>();
                     services.AddTransient<SideBarManage>();
+
 
 
 

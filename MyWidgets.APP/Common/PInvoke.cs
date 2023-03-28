@@ -9,6 +9,94 @@ namespace MyWidgets.APP.Common
     public static class PInvoke
     {
 
+        #region Win32导入-侧栏
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+        [DllImport("user32.dll")]
+        public static extern int GetForegroundWindow();
+        [DllImport("user32.dll")]
+        public static extern int GetWindowThreadProcessId(int hwnd, int lpdwProcessId);
+        [DllImport("kernel32.dll")]
+        public static extern int GetCurrentThreadId();
+        [DllImport("user32.dll")]
+        public static extern int AttachThreadInput(int idAttach, int idAttachTo, bool fAttach);
+
+
+        [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
+        public static extern int SystemParametersInfo(int uAction, int uParam, IntPtr lpvParam, int fuWinIni);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint = "SetForegroundWindow")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);//设置此窗体为活动窗体
+
+
+        public class APIWrapper
+        {
+            [DllImport("SHELL32", CallingConvention = CallingConvention.StdCall)]
+            public static extern uint SHAppBarMessage(int dwMessage, ref APPBARDATA pData);
+            [DllImport("User32.dll", CharSet = CharSet.Auto)]
+            public static extern int RegisterWindowMessage(string msg);
+
+            //取得Shell窗口句柄函数 
+            [DllImport("user32.dll")]
+            public static extern IntPtr GetShellWindow();
+            //取得桌面窗口句柄函数 
+            [DllImport("user32.dll")]
+            public static extern IntPtr GetDesktopWindow();
+            //取得前台窗口句柄函数 
+            [DllImport("user32.dll")]
+            public static extern IntPtr GetForegroundWindow();
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int left;
+            public int top;
+            public int right;
+            public int bottom;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        public struct APPBARDATA
+        {
+            public int cbSize;
+            public IntPtr hWnd;
+            public int uCallbackMessage;
+            public int uEdge;
+            public RECT rc;
+            public IntPtr lParam;
+        }
+        public enum ABMsg : int
+        {
+            ABM_NEW = 0,
+            ABM_REMOVE,
+            ABM_QUERYPOS,
+            ABM_SETPOS,
+            ABM_GETSTATE,
+            ABM_GETTASKBARPOS,
+            ABM_ACTIVATE,
+            ABM_GETAUTOHIDEBAR,
+            ABM_SETAUTOHIDEBAR,
+            ABM_WINDOWPOSCHANGED,
+            ABM_SETSTATE
+        }
+        public enum ABNotify : int
+        {
+            ABN_STATECHANGE = 0,
+            ABN_POSCHANGED,
+            ABN_FULLSCREENAPP,
+            ABN_WINDOWARRANGE
+        }
+        public enum ABEdge : int
+        {
+            ABE_LEFT = 0,
+            ABE_TOP,
+            ABE_RIGHT,
+            ABE_BOTTOM
+        }
+
+
+        #endregion
+
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         private static extern int SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
         [DllImport("user32.dll", EntryPoint = "FindWindowA")]
@@ -72,5 +160,8 @@ namespace MyWidgets.APP.Common
             }
             return background;
         }
+
+
+
     }
 }

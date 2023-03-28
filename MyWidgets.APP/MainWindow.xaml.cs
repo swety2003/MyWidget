@@ -49,7 +49,7 @@ namespace MyWidgets.APP
 
             PInvoke.SetFather(handle);
 
-            da = new DockArea(this);
+            da = new DockArea();
             da.Show();
 
             frame.Navigate(App.GetService<WidgetView>());

@@ -55,15 +55,12 @@ namespace MyWidgets.SDK
 
     }
 
-
-
     public interface ISideBarItem : IViewBase
     {
-
-        Popup Popup { get; }
-
         public SideBarItemInfo Info { get; }
     }
+
+    
 
     public record SideBarItemInfo(string Name, string Description, Type MainView);
 
@@ -173,12 +170,30 @@ namespace MyWidgets.SDK
         }
     }
 
+
+
+
+    public delegate void ShowCard(UIElement element);
+
     public static class ISideBarItemExt
     {
+        public static ShowCard? ShowCard { get; private set; }
+
+        public static void SetMethod(ShowCard action)
+        {
+            if (ShowCard==null)
+            {
+                ShowCard = action;
+            }
+            else
+            {
+                throw new NotSupportedException();
+            }
+        }
+
         public static void Show(this ISideBarItem card, UIElement view)
         {
-            card.Popup.Child = view;
-            card.Popup.IsOpen = true;
+            ShowCard?.Invoke(view);
         }
     }
 

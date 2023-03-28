@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Model;
+using MyWidgets.APP.ViewModel;
 using MyWidgets.SDK;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace MyWidgets.APP.Common
     {
         ILogger<SideBarManageService> logger;
 
-        internal Popup ContainerPop;
+        //internal Popup ContainerPop;
 
         public SideBarManageService(ILogger<SideBarManageService> logger)
         {
@@ -38,7 +39,8 @@ namespace MyWidgets.APP.Common
             try
             {
 
-                var card = Activator.CreateInstance(ci.MainView, ContainerPop) as ISideBarItem;
+                var card = Activator.CreateInstance(ci.MainView) as ISideBarItem;
+
 
                 logger.LogDebug($"创建了{ci.Name}侧栏图标");
 
