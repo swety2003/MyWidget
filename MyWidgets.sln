@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaterialDesign3", "Material
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{A4F04DAD-015E-47BE-93D9-DC557D018754}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWidgets.Updater", "MyWidgets.Updater\MyWidgets.Updater.csproj", "{4CC63431-1CF8-42E6-95B0-F47A723218EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5004BB2-D208-4FEA-A044-3241F58CCD3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CC63431-1CF8-42E6-95B0-F47A723218EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CC63431-1CF8-42E6-95B0-F47A723218EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CC63431-1CF8-42E6-95B0-F47A723218EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CC63431-1CF8-42E6-95B0-F47A723218EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

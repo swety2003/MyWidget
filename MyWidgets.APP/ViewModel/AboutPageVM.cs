@@ -1,9 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Flurl.Http;
+using MyWidgets.APP.Common;
 using MyWidgets.APP.View;
 using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -47,8 +50,12 @@ namespace MyWidgets.APP.ViewModel
                     //    MessageBox.Show("该构建版本不支持检查更新！");
                     //break;
                     default:
+#if !DEBUG
                         MessageBox.Show($"该构建版本({self_hash.GetRelType()})不支持检查更新！");
                         return;
+
+#endif
+                        break;
                 }
 
                 var artifactsRsp = await repo.GetStringAsync();
@@ -69,7 +76,20 @@ namespace MyWidgets.APP.ViewModel
 
                         if (ret == MessageBoxResult.OK)
                         {
-                            Process.Start("explorer.exe", downloadUrl);
+                            var UpdaterPath = Path.Combine(Path.GetTempPath(), "MyWidgets.Updater.exe");
+
+                            ResFileManager.ExtractFile("Updater.MyWidgets.Updater.exe", UpdaterPath);
+
+                            ProcessStartInfo processStartInfo = new ProcessStartInfo
+                            {
+                                UseShellExecute = true,
+                                FileName = UpdaterPath,
+                                Arguments = $"{downloadUrl} {Process.GetCurrentProcess().Id}"
+                            };
+
+                            App.GetService<AppConfigManager>().Save();
+                            Process.Start(processStartInfo);
+                           
                         }
                     }
                     else

@@ -21,6 +21,7 @@
   <ItemGroup>
     <None Remove="Assets\avatar.png" />
     <None Remove="Assets\md3-1.png" />
+    <None Remove="Updater\MyWidgets.Updater.exe" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +39,7 @@
     <Content Include="Assets\avatar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Updater\MyWidgets.Updater.exe" />
     <Resource Include="Assets\md3-1.png" />
   </ItemGroup>
 
