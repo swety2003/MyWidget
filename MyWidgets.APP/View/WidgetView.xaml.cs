@@ -3,7 +3,9 @@ using MyWidgets.APP.Common;
 using MyWidgets.APP.Model;
 using MyWidgets.APP.ViewModel;
 using MyWidgets.SDK;
+using MyWidgets.SDK.Core.Card;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace MyWidgets.APP.View
@@ -14,47 +16,27 @@ namespace MyWidgets.APP.View
     public partial class WidgetView : Page
     {
         AppConfig appConfig;
-        ObservableCollection<CardInfo> cardInfos;
-        ILoggerFactory loggerFactory;
 
-        public WidgetView(ILoggerFactory loggerFactory)
+        public WidgetView()
         {
             InitializeComponent();
             DataContext = App.GetService<WidgetViewVM>();
             appConfig = App.GetService<AppConfigManager>().Config;
-            cardInfos = App.GetService<PluginLoader>().CardInfos;
-            this.loggerFactory = loggerFactory;
-
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            foreach (var item in appConfig.CardInstances)
+            var items = appConfig.CardInstances.Where(x=>x.Value.enabledProperty).ToList();
+
+            foreach (var item in items)
             {
-                foreach (var ci in cardInfos)
-                {
-                    //插件标识
-                    var wid = ci.MainView.FullName;
-
-
-                    if (item.Value.Wid == wid && item.Value.CardType == ci.CardType)
-                    {
-                        if (ci.MainView.GetInterface("ICard") != null)
-                        {
-                            App.GetService<CardManageService>().Create(ci, item);
-
-                            break;
-                        }
-
-
-                    }
-                }
+                App.GetService<CardManageService>().Enable(item.Key);
             }
 
 
-            App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
+            //App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
 
 
 

@@ -1,9 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyWidgets.APP.Common;
+using MyWidgets.APP.Model;
 using MyWidgets.APP.View;
 using MyWidgets.SDK;
 using MyWidgets.SDK.Controls;
+using MyWidgets.SDK.Core.Card;
+using Panuon.WPF;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,31 +21,23 @@ namespace MyWidgets.APP.ViewModel
 
 
         [ObservableProperty]
-        ObservableCollection<ICard>? cardInstances;
+        ObservableDictionary<Guid, Card> createdCards = new ObservableDictionary<Guid, Card>();
 
+        //[ObservableProperty]
+        //Visibility popOpen = Visibility.Visible;
 
-        [ObservableProperty]
-        Visibility popOpen = Visibility.Visible;
-
-        [RelayCommand]
-        void GetCardDetail()
+        public CardManageVM()
         {
-            CardInstances = new ObservableCollection<ICard>();
 
-            var activeCards = App.GetService<CardManageService>().ActiveCards;
+            var activeCards = App.GetService<AppConfigManager>().Config.CardInstances;
+
             foreach (var card in activeCards)
             {
-                if (card != null)
-                {
 
-                    CardInstances.Add(card);
-                }
-                else
-                {
-                    // Todo logger 
-                }
+                CreatedCards.Add(card.Key,card.Value);
+
             }
-            PopOpen = Visibility.Visible;
+            //PopOpen = Visibility.Visible;
         }
 
         [RelayCommand]
@@ -50,12 +47,12 @@ namespace MyWidgets.APP.ViewModel
         }
 
         [RelayCommand]
-        void CloseCard(ICard card)
+        void DestroyCard(Guid id)
         {
-            App.GetService<CardManageService>().Remove(card);
-
-            GetCardDetail();
+            App.GetService<CardManageService>().Remove(id);
+            //GetCardDetail();
         }
+
 
         [RelayCommand]
         void SetCardLock(ICard? card)

@@ -1,7 +1,12 @@
 ﻿using MaterialDesign3.Styles.Colors;
+using MyWidgets.APP.Common;
+using MyWidgets.APP.ViewModel;
 using MyWidgets.SDK;
+using MyWidgets.SDK.Core.Card;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace MyWidgets.APP.Model
@@ -23,11 +28,40 @@ namespace MyWidgets.APP.Model
         public string CanOverrideUI { get; set; }
         public bool Locked { get; set; }
 
-        public Card(string wid, CardType CardType, Point pos)
+        [JsonProperty("Enabled")]
+        public bool enabledProperty = false;
+
+        public Guid GUID { get; set; }
+
+        [JsonIgnore]
+        public bool Enabled
+        {
+            get { return enabledProperty; }
+            set 
+            { 
+                enabledProperty = value;
+                if (value)
+                {
+                    App.GetService<CardManageService>().Enable(GUID);
+                }
+                else
+                {
+                    App.GetService<CardManageService>().Disable(GUID);
+                }
+            }
+        }
+
+
+        public Card(string wid, CardType CardType, Point pos,Guid guid)
         {
             Wid = wid;
             this.CardType = CardType;
             Pos = pos;
+            GUID = guid;
         }
+
+        [JsonIgnore]
+        public CardInfo CardInfo => App.GetService<PluginLoader>().CardInfos
+            .Where(x => x.MainView.FullName == Wid).Select(x=>x).First();
     }
 }

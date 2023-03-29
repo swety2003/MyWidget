@@ -2,6 +2,7 @@
 using MyWidgets.APP.Common;
 using MyWidgets.APP.Model;
 using MyWidgets.SDK;
+using MyWidgets.SDK.Core.SideBar;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 

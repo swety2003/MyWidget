@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MyWidgets.APP.Common;
 using MyWidgets.SDK;
+using MyWidgets.SDK.Core.Card;
 using System.Collections.ObjectModel;
 
 namespace MyWidgets.APP.ViewModel
@@ -14,9 +15,9 @@ namespace MyWidgets.APP.ViewModel
 
 
         [RelayCommand]
-        void AddCardToDesktop(object? info)
+        void AddCardToDesktop(CardInfo? info)
         {
-            App.GetService<WidgetViewVM>().CreateCard(info as CardInfo);
+            App.GetService<WidgetViewVM>().CreateCard(info);
 
 
         }

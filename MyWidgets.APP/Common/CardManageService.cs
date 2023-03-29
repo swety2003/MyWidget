@@ -1,13 +1,18 @@
 ﻿using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Model;
 using MyWidgets.APP.View;
+using MyWidgets.APP.ViewModel;
 using MyWidgets.SDK;
 using MyWidgets.SDK.Controls;
+using MyWidgets.SDK.Core.Card;
+using MyWidgets.SDK.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 
 namespace MyWidgets.APP.Common
 {
@@ -20,7 +25,6 @@ namespace MyWidgets.APP.Common
             this.logger = logger;
         }
 
-        private AppConfig Config => App.GetService<AppConfigManager>().Config;
 
         private Canvas canvas => App.GetService<WidgetView>().cv;
 
@@ -36,7 +40,30 @@ namespace MyWidgets.APP.Common
 
             var guid = Guid.NewGuid();
 
-            var card = Activator.CreateInstance(ci.MainView, guid) as ICard;
+
+            logger.LogDebug($"创建了GUID为 {guid} 的{ci.Name}卡片");
+
+
+            var c = new Card(ci.MainView.FullName, ci.CardType, new Point(0, 0),guid);
+
+
+            App.GetService<CardManageVM>().CreatedCards.Add(guid, c);
+
+
+            c.Enabled = true;
+            //Enable(guid);
+
+        }
+
+        public void Enable(Guid guid)
+        {
+            var card_cfg = App.GetService<CardManageVM>().CreatedCards[guid];
+
+            var cis = App.GetService<PluginLoader>().CardInfos;
+
+            var ci = cis.Where(x => x.MainView.FullName == card_cfg.Wid).First();
+
+            var card = Activator.CreateInstance(ci.MainView, guid) as ICard??throw new ArgumentNullException();
 
             switch (ci.CardType)
             {
@@ -44,6 +71,8 @@ namespace MyWidgets.APP.Common
                     {
                         CardWindow cw = new CardWindow { Content = card, Height = card.HeightPix, Width = card.WidthPix };
                         cw.LocationChanged += Win_LocationChanged;
+                        cw.Left = card_cfg.Pos.X;
+                        cw.Top = card_cfg.Pos.Y;
                         cw.Show();
 
                     }
@@ -53,63 +82,82 @@ namespace MyWidgets.APP.Common
 
                         CardControl mt = new CardControl { Content = card, HeightPix = card.HeightPix, WidthPix = card.WidthPix };
                         mt.OnCardMoved += Mt_OnCardMoved;
-                        canvas.Children.Add(mt as UIElement);
+
+                        Canvas.SetLeft(mt, card_cfg.Pos.X);
+                        Canvas.SetTop(mt, card_cfg.Pos.Y);
+                        canvas.Children.Add(mt);
                     }
                     break;
                 default:
                     break;
             }
 
-            logger.LogDebug($"创建了GUID为 {guid} 的{ci.Name}卡片");
+
+
+            logger.LogDebug($"启用了GUID为 {guid} 的{ci.Name}卡片");
+
 
             activateCards.Add(card);
 
 
-
             card.OnEnabled();
+
 
             PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(ActiveCards)));
 
-            var c = new Card(ci.MainView.FullName, ci.CardType, new Point(0, 0));
-
-            Config.CardInstances.Add(guid, c);
 
         }
 
-        public void Remove(ICard card)
+        public void Disable(ICard c)
         {
-
-
-            switch (card.Info.CardType)
+            var guid = c.GUID;
+            var cc = App.GetService<CardManageVM>().CreatedCards[guid]; if (cc != null)
             {
-                case CardType.Window:
+                //cc.Enabled=false;
+                if (c.Info.CardType==CardType.UserControl)
+                {
 
-                    var w = card.GetCardWindow();
-                    if (w != null)
-                    {
-                        w.Close();
-                    }
+                    canvas.Children.Remove(c.GetCardControl());
+                }
+                else
+                {
+                    canvas.Children.Remove(c.GetCardWindow());
 
-                    break;
-                case CardType.UserControl:
-                    //var cc = (card as UserControl).Parent as CardControl;
+                }
 
-                    canvas.Children.Remove(card.GetCardControl());
-                    break;
-                default:
-                    break;
+                c.OnDisabled();
+
+                activateCards.Remove(c);
+                
+
             }
+        }
 
-            card.OnDisabled();
+        public void Disable(Guid guid)
+        {
+            try
+            {
 
-            PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(ActiveCards)));
+                var c = activateCards.Where(x => x.GUID == guid).First();
 
+                Disable(c);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "禁用失败");
+            }
+        }
 
-            activateCards.Remove(card);
+        public void Remove(Guid guid)
+        {
+            var c = activateCards.Where(x => x.GUID == guid).FirstOrDefault();
+            if (c != null)
+            {
+                Disable(c);
 
-
-
-            Config.CardInstances.Remove(card.GUID);
+                c.OnDestroyed();
+            }
+            App.GetService<CardManageVM>().CreatedCards.Remove(guid);
         }
 
 
@@ -118,7 +166,7 @@ namespace MyWidgets.APP.Common
             try
             {
                 var w = sender as CardWindow;
-                Config.CardInstances[w.GetCard().GUID].Pos = new Point(w.Left, w.Top);
+                App.GetService<CardManageVM>().CreatedCards[w.GetCard().GUID].Pos = new Point(w.Left, w.Top);
             }
             catch (Exception ex)
             {
@@ -128,52 +176,9 @@ namespace MyWidgets.APP.Common
 
         private void Mt_OnCardMoved(CardControl sender, Point pos)
         {
-            Config.CardInstances[sender.GetCard().GUID].Pos = pos;
+            App.GetService<CardManageVM>().CreatedCards[sender.GetCard().GUID].Pos = pos;
         }
 
-        internal void Create(CardInfo ci, KeyValuePair<Guid, Card> item)
-        {
-            var guid = item.Key;
 
-            var card = Activator.CreateInstance(ci.MainView, guid) as ICard;
-
-            switch (ci.CardType)
-            {
-                case CardType.Window:
-                    {
-                        CardWindow cw = new CardWindow { Content = card, Height = card.HeightPix, Width = card.WidthPix };
-                        cw.LocationChanged += Win_LocationChanged;
-                        cw.Left = item.Value.Pos.X;
-                        cw.Top = item.Value.Pos.Y;
-                        cw.Show();
-                    }
-                    break;
-                case CardType.UserControl:
-                    {
-
-                        CardControl mt = new CardControl { Content = card, HeightPix = card.HeightPix, WidthPix = card.WidthPix };
-
-                        mt.OnCardMoved += Mt_OnCardMoved;
-                        canvas.Children.Add(mt);
-
-                        Canvas.SetLeft(mt, item.Value.Pos.X);
-                        Canvas.SetTop(mt, item.Value.Pos.Y);
-                    }
-                    break;
-                default:
-                    break;
-            }
-
-            logger.LogDebug($"创建了GUID为 {guid} 的{ci.Name}卡片");
-
-            activateCards.Add(card);
-
-
-            card.OnEnabled();
-
-            PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(nameof(ActiveCards)));
-
-
-        }
     }
 }

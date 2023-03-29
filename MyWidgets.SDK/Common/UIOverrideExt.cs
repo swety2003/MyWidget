@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MyWidgets.SDK.Extensions;
 using System;
 using System.IO;
 using System.Windows;

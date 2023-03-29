@@ -184,7 +184,6 @@ namespace MyWidgets.APP.View
 
         private void SettingBtn_Click(object sender, RoutedEventArgs e)
         {
-
             new Settings().ShowDialog();
         }
 
@@ -193,6 +192,7 @@ namespace MyWidgets.APP.View
             //da.Close();
             DesktopAppBar.SetAppBar(this, AppBarEdge.None);
             this.Close();
+            App.GetService<AppConfigManager>().Save();
 
             //App.Current.Shutdown();
             Environment.Exit(0);

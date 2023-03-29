@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MyWidgets.SDK.Core.Card;
+using System.Windows;
 
 namespace MyWidgets.SDK.Controls
 {

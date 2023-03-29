@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MyWidgets.SDK;
+using MyWidgets.SDK.Core.Card;
+using MyWidgets.SDK.Core.SideBar;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -94,32 +96,26 @@ namespace MyWidgets.APP.Common
             {
                 try
                 {
-                    foreach (var c in item.GetAllCards())
+                    foreach (var c in item.GetAllTypeInfo())
                     {
-                        CardInfos.Add(c);
+                        if (c is CardInfo cinfo)
+                        {
+                            CardInfos.Add(cinfo);
+                        }
+                        else if (c is SideBarItemInfo sbinfo)
+                        {
+
+                            SideBarItemInfos.Add(sbinfo);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
 
-                    _logger.LogWarning($"加载{item.name}.GetAllCards()时发生错误：{ex.Message}");
+                    _logger.LogWarning($"加载{item.name}时发生错误：{ex.Message}");
 
                 }
 
-                try
-                {
-
-                    foreach (var s in item.GetAllSBItems())
-                    {
-                        SideBarItemInfos.Add(s);
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogWarning($"加载{item.name}.GetAllSBItems() 时发生错误：{ex.Message}");
-
-                }
             }
 
 

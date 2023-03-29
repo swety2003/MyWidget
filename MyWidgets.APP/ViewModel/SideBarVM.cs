@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MyWidgets.APP.View;
 using MyWidgets.SDK;
+using MyWidgets.SDK.Core.SideBar;
+using MyWidgets.SDK.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

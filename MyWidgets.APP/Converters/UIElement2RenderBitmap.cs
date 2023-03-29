@@ -1,4 +1,5 @@
 ﻿using MyWidgets.SDK;
+using MyWidgets.SDK.Core.Card;
 using System;
 using System.Globalization;
 using System.Windows;

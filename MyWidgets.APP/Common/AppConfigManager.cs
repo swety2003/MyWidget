@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using MyWidgets.APP.Model;
+using MyWidgets.APP.ViewModel;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -35,6 +36,10 @@ namespace MyWidgets.APP.Common
 
         public void Save()
         {
+            var createdCards = App.GetService<CardManageVM>().CreatedCards;
+
+            Config.CardInstances = createdCards;
+
             File.WriteAllText(CONFIG_FILE, JsonConvert.SerializeObject(Config));
         }
     }

@@ -4,6 +4,7 @@ using MyWidgets.APP.Common;
 using MyWidgets.APP.Model;
 using MyWidgets.SDK;
 using MyWidgets.SDK.Controls;
+using MyWidgets.SDK.Core.Card;
 
 namespace MyWidgets.APP.ViewModel
 {
@@ -30,7 +31,7 @@ namespace MyWidgets.APP.ViewModel
 
             CardManagerService.Create(ci);
 
-            App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
+            //App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
 
 
         }
@@ -39,32 +40,32 @@ namespace MyWidgets.APP.ViewModel
 
         // 被 CardControl 使用
 
-        [RelayCommand]
-        void CloseCard(object o)
-        {
+        //[RelayCommand]
+        //void CloseCard(object o)
+        //{
 
-            var thumb = o as CardControl;
-            CardManagerService.Remove(thumb.Content as ICard);
+        //    var thumb = o as CardControl;
+        //    CardManagerService.Remove((thumb.GetCard().GUID));
 
-            App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
-        }
+        //    //App.GetService<CardManageVM>().GetCardDetailCommand.Execute(null);
+        //}
 
-        [RelayCommand]
-        void LockCard(object o)
-        {
-            var thumb = o as CardControl;
-            if (thumb != null)
-            {
-                var r = thumb.SetLocked();
-                Config.CardInstances[thumb.GetCard().GUID].Locked = r;
-            }
-        }
+        //[RelayCommand]
+        //void LockCard(object o)
+        //{
+        //    var thumb = o as CardControl;
+        //    if (thumb != null)
+        //    {
+        //        var r = thumb.SetLocked();
+        //        Config.CardInstances[thumb.GetCard().GUID].Locked = r;
+        //    }
+        //}
 
 
-        [RelayCommand]
-        void ShowCardSetting(CardControl? thumb)
-        {
-            thumb?.GetCard().ShowSetting();
-        }
+        //[RelayCommand]
+        //void ShowCardSetting(CardControl? thumb)
+        //{
+        //    thumb?.GetCard().ShowSetting();
+        //}
     }
 }

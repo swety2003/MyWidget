@@ -39,7 +39,7 @@
                 d:ItemsSource="{d:SampleData ItemCount=5}"
                 Background="Transparent"
                 BorderThickness="0"
-                ItemsSource="{Binding CardInstances}">
+                ItemsSource="{Binding CreatedCards}">
                 <pu:ListBoxHelper.EmptyContent>
                     <Grid>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -67,7 +67,6 @@
                                 <ControlTemplate TargetType="ListBoxItem">
                                     <Border
                                         Margin="0,6"
-                                        Padding="10"
                                         Background="{TemplateBinding Background}"
                                         CornerRadius="16"
                                         Style="{StaticResource OutlinedCard}">
@@ -94,9 +93,10 @@
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <Border
-                                Margin="4"
+
+                            <!--<Border
                                 Padding="8"
+                                Background="{DynamicResource SurfaceVariantBrush}"
                                 CornerRadius="12">
 
                                 <controls:CornerClip CornerRadius="12">
@@ -108,13 +108,13 @@
                                         Source="{Binding Converter={StaticResource ResourceKey=UIElement2RenderBitmap}}"
                                         Stretch="Uniform" />
                                 </controls:CornerClip>
-                            </Border>
+                            </Border>-->
 
 
 
                             <Grid Grid.Column="1">
                                 <Grid>
-                                    <StackPanel>
+                                    <StackPanel VerticalAlignment="Center">
                                         <Grid>
 
                                             <StackPanel Orientation="Horizontal">
@@ -123,7 +123,7 @@
                                                     FontSize="18"
                                                     FontWeight="Bold"
                                                     Foreground="{DynamicResource PrimaryBrush}"
-                                                    Text="{Binding Info.Name}" />
+                                                    Text="{Binding Value.CardInfo.Name}" />
                                                 <Border
                                                     Margin="4,0"
                                                     Padding="4,0"
@@ -136,7 +136,7 @@
                                                         VerticalAlignment="Center"
                                                         FontSize="12"
                                                         Foreground="{DynamicResource PrimaryBrush}"
-                                                        Text="{Binding Info.CardType}" />
+                                                        Text="{Binding Value.CardInfo.CardType}" />
 
                                                 </Border>
                                             </StackPanel>
@@ -145,28 +145,32 @@
                                         <TextBlock
                                             FontSize="14"
                                             Foreground="{DynamicResource SecondaryBrush}"
-                                            Text="{Binding Info.Description, StringFormat=简介:{0}}" />
+                                            Text="{Binding Value.CardInfo.Description, StringFormat=简介:{0}}" />
 
                                     </StackPanel>
+
 
                                     <StackPanel
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Bottom"
                                         Orientation="Horizontal">
-                                        <Button
-                                            Padding="12,8"
-                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.SetCardLockCommand}"
-                                            CommandParameter="{Binding}"
-                                            Content="锁定/解锁"
-                                            Style="{StaticResource TextButton}" />
+
+
                                         <Button
                                             Padding="12,8"
                                             Background="{DynamicResource ErrorBrush}"
-                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.CloseCardCommand}"
-                                            CommandParameter="{Binding}"
-                                            Content="关闭"
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.DestroyCardCommand}"
+                                            CommandParameter="{Binding Key}"
+                                            Content="销毁"
                                             Foreground="{DynamicResource ErrorBrush}"
                                             Style="{StaticResource TextButton}" />
+                                        <CheckBox
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Content="启用"
+                                            IsChecked="{Binding Value.Enabled}" />
+
+
                                     </StackPanel>
                                 </Grid>
                             </Grid>

@@ -1,5 +1,6 @@
 ﻿using MyWidgets.SDK;
 using MyWidgets.SDK.Controls;
+using MyWidgets.SDK.Core.Card;
 using System;
 
 namespace MyWidgets.APP.Common

@@ -1,5 +1,7 @@
 using Microsoft.Extensions.Logging;
 using MyWidgets.SDK.Controls;
+using MyWidgets.SDK.Core.Card;
+using MyWidgets.SDK.Core.SideBar;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,12 +10,9 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
+
 namespace MyWidgets.SDK
 {
-
-
-    public record CardInfo(ImageSource Icon, string Name, string Description, Type MainView, CardType CardType = CardType.UserControl);
-
 
 
     public interface IPlugin
@@ -23,46 +22,20 @@ namespace MyWidgets.SDK
         public string url { get; }
         public string author { get; }
 
-        public List<CardInfo> GetAllCards();
+        public IEnumerable<object> GetAllTypeInfo();
 
-        public List<SideBarItemInfo> GetAllSBItems();
     }
 
     public interface IViewBase
     {
-
-        public Guid GUID { get; }
-
         public void OnEnabled();
         public void OnDisabled();
 
         public void ShowSetting();
     }
 
-    public enum CardType
-    {
-        Window, UserControl
-    }
 
-    public interface ICard : IViewBase, IPreviewable
-    {
 
-        public int HeightPix { get; }
-        public int WidthPix { get; }
-
-        // 不能使用 CardInfo ICard.Info => info; ，否则无法绑定成功
-        public CardInfo Info { get; }
-
-    }
-
-    public interface ISideBarItem : IViewBase
-    {
-        public SideBarItemInfo Info { get; }
-    }
-
-    
-
-    public record SideBarItemInfo(string Name, string Description, Type MainView);
 
     public static class Logger
     {
@@ -89,120 +62,8 @@ namespace MyWidgets.SDK
     }
 
 
-    public static class UCExt
-    {
-
-        public static string GetPluginConfigFilePath(this IViewBase self)
-        {
-            string ret;
-
-            var abl = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
-            try
-            {
-                ret = Path.Combine(abl, "Configs", $"{self.GUID}.json");
-            }
-            catch (Exception ex)
-            {
-                ret = Path.Combine(abl, "Configs", $"config.json");
-            }
-
-            if (!Directory.Exists(Path.GetDirectoryName(ret)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(ret));
-            }
-            return ret;
-        }
-
-        public static void ResizeCard(this UserControl self, int h, int w)
-        {
-
-            var t = (self as ICard)?.GetCardControl();
-
-            if (t == null)
-            {
-                return;
-            }
-            t.HeightPix = h;
-            t.WidthPix = w;
-        }
-    }
-
-
-    public static class ICardExt
-    {
-        /// <summary>
-        /// 查找父控件
-        /// </summary>
-        /// <typeparam name="T">父控件的类型</typeparam>
-        /// <param name="obj">要找的是obj的父控件</param>
-        /// <param name="name">想找的父控件的Name属性</param>
-        /// <returns>目标父控件</returns>
-        public static T GetParentObject<T>(DependencyObject obj) where T : FrameworkElement
-        {
-            DependencyObject parent = VisualTreeHelper.GetParent(obj);
-
-            while (parent != null)
-            {
-                if (parent is T)
-                {
-                    return (T)parent;
-                }
-
-                // 在上一级父控件中没有找到指定名字的控件，就再往上一级找
-                parent = VisualTreeHelper.GetParent(parent);
-            }
-
-            return null;
-        }
-
-
-        public static CardControl GetCardControl(this ICard card)
-        {
-            var c = GetParentObject<CardControl>(card as DependencyObject);
-            return c;
-        }
-
-        public static CardWindow GetCardWindow(this ICard card)
-        {
-
-            var win = GetParentObject<CardWindow>(card as DependencyObject);
-            return win;
-        }
-    }
 
 
 
 
-    public delegate void ShowCard(UIElement element);
-
-    public static class ISideBarItemExt
-    {
-        public static ShowCard? ShowCard { get; private set; }
-
-        public static void SetMethod(ShowCard action)
-        {
-            if (ShowCard==null)
-            {
-                ShowCard = action;
-            }
-            else
-            {
-                throw new NotSupportedException();
-            }
-        }
-
-        public static void Show(this ISideBarItem card, UIElement view)
-        {
-            ShowCard?.Invoke(view);
-        }
-    }
-
-
-
-    public interface IPreviewable
-    {
-        public UIElement GetUIElement();
-
-
-    }
 }
