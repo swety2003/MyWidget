@@ -113,6 +113,9 @@ namespace MyWidgets.APP.Common
             var guid = c.GUID;
             var cc = App.GetService<CardManageVM>().CreatedCards[guid]; if (cc != null)
             {
+
+                c.OnDisabled();
+
                 //cc.Enabled=false;
                 if (c.Info.CardType==CardType.UserControl)
                 {
@@ -121,11 +124,10 @@ namespace MyWidgets.APP.Common
                 }
                 else
                 {
-                    canvas.Children.Remove(c.GetCardWindow());
+                    c.GetCardWindow().Close();
 
                 }
 
-                c.OnDisabled();
 
                 activateCards.Remove(c);
                 
