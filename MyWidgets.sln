@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWidgets.Updater", "MyWidgets.Updater\MyWidgets.Updater.csproj", "{4CC63431-1CF8-42E6-95B0-F47A723218EA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDesktopCards", "Plugins\MyDesktopCards\MyDesktopCards.csproj", "{093D599D-6CDA-44D0-98F5-5A78AA28C374}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,16 +37,9 @@ Global
 		{4CC63431-1CF8-42E6-95B0-F47A723218EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CC63431-1CF8-42E6-95B0-F47A723218EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CC63431-1CF8-42E6-95B0-F47A723218EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{093D599D-6CDA-44D0-98F5-5A78AA28C374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{093D599D-6CDA-44D0-98F5-5A78AA28C374}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{093D599D-6CDA-44D0-98F5-5A78AA28C374}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{093D599D-6CDA-44D0-98F5-5A78AA28C374}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{093D599D-6CDA-44D0-98F5-5A78AA28C374} = {9EBE1887-5E7E-4FD6-9108-BFBDE8087FC9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67D2F841-EA54-41A8-8E27-438B33D7A8E2}
