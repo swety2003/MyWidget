@@ -41,7 +41,7 @@ Windows桌面小部件
 ## 可用插件列表
 + [MyDesktopCards](https://github.com/swety2003/MyDesktopCards)
 + [SpineViewer](https://github.com/swety2003/SpineViewer)
-
++ [ProjectManager](https://github.com/swety2003/ProjM)
 
 
 ## **Develop**
