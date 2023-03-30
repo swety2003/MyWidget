@@ -26,10 +26,10 @@ Windows桌面小部件
 
 ## 快速开始
 
-1. 从[Releases](https://github.com/Swety2003/MyWidget/releases)里下载 net6.0-windows.zip 和 PluginPack.zip
+1. 从[Releases](https://github.com/swety2003/MyWidget/actions)里下载主程序
 2. 解压 net6.0-windows.zip 并在里面新建 Plugins 文件夹
-3. 解压 PluginPack.zip 里需要的插件到 Plugins 文件夹
-4. 启动 Mainapp.exe
+3. 把需要的插件放到 Plugins 文件夹
+4. 启动 MyWidgets.APP.exe
 
 ## 高级功能
 
@@ -40,6 +40,7 @@ Windows桌面小部件
 
 ## 可用插件列表
 + [MyDesktopCards](https://github.com/swety2003/MyDesktopCards)
++ [SpineViewer](https://github.com/swety2003/SpineViewer)
 
 
 
