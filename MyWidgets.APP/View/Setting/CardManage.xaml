@@ -161,6 +161,11 @@
 
                                     <StackPanel Orientation="Horizontal">
                                         <Button Content="打开插件所在文件夹" Style="{StaticResource TextButton}" />
+                                        <Button
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.ShowCardSettingCommand}"
+                                            CommandParameter="{Binding Key}"
+                                            Content="打开卡片设置"
+                                            Style="{StaticResource TextButton}" />
 
                                         <Button
                                             Background="{DynamicResource ErrorBrush}"

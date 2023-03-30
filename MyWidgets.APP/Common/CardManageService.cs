@@ -183,6 +183,25 @@ namespace MyWidgets.APP.Common
             }
         }
 
+        public void ShowSetting(Guid guid)
+        {
+            var c = activateCards.Where(x => x.GUID == guid).FirstOrDefault();
+            if (c == null)
+            {
+                MessageBox.Show("请先启用卡片再进行设置！","不支持的操作",MessageBoxButton.OK,MessageBoxImage.Error);
+                return;
+            }
+            try
+            {
+                //可能未实现
+                c.ShowSetting();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private void Win_LocationChanged(object? sender, EventArgs e)
         {
             try

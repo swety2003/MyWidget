@@ -66,11 +66,15 @@ namespace MyWidgets.APP.ViewModel
         }
 
         [RelayCommand]
-        void ShowCardSetting(object? thumb)
+        void ShowCardSetting(Guid? guid)
         {
             // todo ShowCardSetting
             //App.GetService<WidgetViewVM>().ShowCardSettingCommand(thumb);
-
+            if (guid==null)
+            {
+                return;
+            }
+            App.GetService<CardManageService>().ShowSetting((Guid)guid);
         }
     }
 }
