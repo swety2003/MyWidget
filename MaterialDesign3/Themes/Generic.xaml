@@ -9,6 +9,7 @@
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/ListBoxs.xaml" />
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/ListBoxItems.xaml" />
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/Expanders.xaml" />
+        <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/TextBoxs.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 

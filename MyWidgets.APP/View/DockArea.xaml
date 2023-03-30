@@ -7,101 +7,118 @@
     xmlns:local="clr-namespace:MyWidgets.APP.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:sdkc="clr-namespace:MyWidgets.SDK.Controls;assembly=MyWidgets.SDK"
     xmlns:viewmodel="clr-namespace:MyWidgets.APP.ViewModel"
     Title="DockArea"
     Width="448"
     Height="450"
     d:DataContext="{d:DesignInstance Type=viewmodel:SideBarVM}"
+    Background="Transparent"
     ResizeMode="NoResize"
     ShowInTaskbar="False"
     Topmost="True"
     WindowStyle="None"
     mc:Ignorable="d">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>
 
     <Border
         Grid.Column="0"
+        Margin="0,4,0,4"
         HorizontalAlignment="Stretch"
         Background="{DynamicResource BackgroundBrush}"
-        BorderBrush="{DynamicResource OutlineBrush}"
-        BorderThickness="0,0,1,0">
-        <Grid Width="448" HorizontalAlignment="Right">
+        BorderBrush="{DynamicResource PrimaryBrush}"
+        BorderThickness="1"
+        CornerRadius="12"
+        SnapsToDevicePixels="True">
+        <Grid HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid Width="48">
-                <StackPanel>
-                    <Button
-                        Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}"
-                        Margin="6"
-                        Padding="0"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"
-                        BorderBrush="Transparent"
-                        BorderThickness="2"
-                        Style="{StaticResource OutlinedButton}">
-
-                        <Button.Background>
-
-                            <ImageBrush ImageSource="/Assets/avatar.png" />
-                        </Button.Background>
-                    </Button>
-
-                    <Border
-                        Height="2"
-                        Margin="2"
-                        Background="{DynamicResource OutlineBrush}"
-                        CornerRadius="1" />
-
-                    <StackPanel x:Name="sb_container" />
-                    <Popup
-                        x:Name="sb_container_pop"
-                        Width="400"
-                        Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=2}, Path=ActualHeight}"
-                        Closed="sb_container_pop_Closed"
-                        HorizontalOffset="0"
-                        IsOpen="False"
-                        Placement="Left"
-                        PlacementTarget="{Binding ElementName=sb_container}"
-                        PopupAnimation="Slide"
-                        StaysOpen="False"
-                        VerticalOffset="-64" />
-
-                </StackPanel>
-
-                <!--  底部区域  -->
-                <StackPanel VerticalAlignment="Bottom">
-                    <StackPanel.Resources>
-                        <Style BasedOn="{StaticResource TextButton}" TargetType="Button">
-                            <Setter Property="HorizontalAlignment" Value="Stretch" />
-                            <Setter Property="Height" Value="40" />
-                            <Setter Property="Padding" Value="8" />
-                            <Setter Property="Margin" Value="4" />
-                            <Setter Property="FontSize" Value="24" />
-                            <Setter Property="FontFamily" Value="{StaticResource MaterialIconsRound}" />
-                        </Style>
-                    </StackPanel.Resources>
-                    <Button Click="SettingBtn_Click">
-                        &#xE8B8;
-                    </Button>
-
-
-
-                    <Button Click="ExitBtn_Click">
-                        &#xe8ac;
-                    </Button>
-                </StackPanel>
-            </Grid>
-
-
-            <ContentPresenter Grid.Column="1" Content="{Binding ItemContent}" />
-
             <Border
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="0,0,1,0"
+                CornerRadius="12 0 0 12">
+
+                <Grid Width="48">
+                    <StackPanel>
+                        <Button
+                            Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}"
+                            Margin="6"
+                            Padding="0"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            BorderBrush="Transparent"
+                            BorderThickness="2"
+                            Style="{StaticResource OutlinedButton}">
+
+                            <Button.Background>
+
+                                <ImageBrush ImageSource="/Assets/avatar.png" />
+                            </Button.Background>
+                        </Button>
+
+                        <Border
+                            Height="2"
+                            Margin="2"
+                            Background="{DynamicResource OutlineBrush}"
+                            CornerRadius="1" />
+
+                        <StackPanel x:Name="sb_container" />
+                        <Popup
+                            x:Name="sb_container_pop"
+                            Width="400"
+                            Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=2}, Path=ActualHeight}"
+                            Closed="sb_container_pop_Closed"
+                            HorizontalOffset="0"
+                            IsOpen="False"
+                            Placement="Left"
+                            PlacementTarget="{Binding ElementName=sb_container}"
+                            PopupAnimation="Slide"
+                            StaysOpen="False"
+                            VerticalOffset="-64" />
+
+                    </StackPanel>
+
+                    <!--  底部区域  -->
+                    <StackPanel VerticalAlignment="Bottom">
+                        <StackPanel.Resources>
+                            <Style BasedOn="{StaticResource TextButton}" TargetType="Button">
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                <Setter Property="Height" Value="40" />
+                                <Setter Property="Padding" Value="8" />
+                                <Setter Property="Margin" Value="4" />
+                                <Setter Property="FontSize" Value="24" />
+                                <Setter Property="FontFamily" Value="{StaticResource MaterialIconsRound}" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Click="SettingBtn_Click">
+                            &#xE8B8;
+                        </Button>
+
+
+
+                        <Button Click="ExitBtn_Click">
+                            &#xe8ac;
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+
+            <sdkc:CornerClip
                 Grid.Column="1"
-                Panel.ZIndex="-1"
-                BorderBrush="{DynamicResource OutlineBrush}"
-                BorderThickness="1,0,1,0">
+                Margin="0"
+                CornerRadius="10">
+
+                <ContentPresenter HorizontalAlignment="Stretch" Content="{Binding ItemContent}" />
+            </sdkc:CornerClip>
+
+
+            <Border Grid.Column="1" Panel.ZIndex="-1">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"

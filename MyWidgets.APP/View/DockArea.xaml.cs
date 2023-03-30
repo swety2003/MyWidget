@@ -102,9 +102,10 @@ namespace MyWidgets.APP.View
 
         private void DockArea_Deactivated(object? sender, EventArgs e)
         {
+            Left = -4;
             var storyboard = new Storyboard();
             var widthAnimation = new DoubleAnimation();
-            widthAnimation.To = 1;
+            widthAnimation.To = 10;
             Storyboard.SetTarget(widthAnimation, this);
             Storyboard.SetTargetProperty(widthAnimation, new PropertyPath(Window.WidthProperty));
 
@@ -112,7 +113,7 @@ namespace MyWidgets.APP.View
 
 
             var opacityAnimation = new DoubleAnimation();
-            opacityAnimation.To = .1;
+            opacityAnimation.To = .01;
             Storyboard.SetTarget(opacityAnimation, this);
             Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(Window.OpacityProperty));
 
@@ -130,6 +131,8 @@ namespace MyWidgets.APP.View
             {
                 return;
             }
+            Left = 4;
+
             setForeground();
 
             var storyboard = new Storyboard();
