@@ -163,6 +163,26 @@ namespace MyWidgets.APP.Common
         }
 
 
+        public void SetLocked(Guid guid,bool v)
+        {
+            var c = activateCards.Where(x => x.GUID == guid).FirstOrDefault();
+            if (c==null)
+            {
+                return;
+            }
+            switch (c.Info.CardType)
+            {
+                case CardType.Window:
+                    //c.GetCardWindow()
+                    break;
+                case CardType.UserControl:
+                    c.GetCardControl().SetLocked(v);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void Win_LocationChanged(object? sender, EventArgs e)
         {
             try

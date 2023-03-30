@@ -8,6 +8,7 @@
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/CheckBoxs.xaml" />
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/ListBoxs.xaml" />
         <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/ListBoxItems.xaml" />
+        <ResourceDictionary Source="/MaterialDesign3;component/Styles/Controls/Expanders.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 

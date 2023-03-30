@@ -40,21 +40,6 @@
                 Background="Transparent"
                 BorderThickness="0"
                 ItemsSource="{Binding CreatedCards}">
-                <pu:ListBoxHelper.EmptyContent>
-                    <Grid>
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock
-                                Margin="0,0,0,8"
-                                FontSize="20"
-                                Foreground="{DynamicResource PrimaryBrush}"
-                                Text="还没有启用桌面卡片喔" />
-                            <Button
-                                Command="{Binding OpenInstalledCardPanelCommand}"
-                                Content="去添加"
-                                Style="{StaticResource FilledButton}" />
-                        </StackPanel>
-                    </Grid>
-                </pu:ListBoxHelper.EmptyContent>
 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
@@ -67,6 +52,7 @@
                                 <ControlTemplate TargetType="ListBoxItem">
                                     <Border
                                         Margin="0,6"
+                                        Padding="0"
                                         Background="{TemplateBinding Background}"
                                         CornerRadius="16"
                                         Style="{StaticResource OutlinedCard}">
@@ -88,93 +74,106 @@
                 </ListBox.ItemContainerStyle>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
 
-                            <!--<Border
-                                Padding="8"
-                                Background="{DynamicResource SurfaceVariantBrush}"
-                                CornerRadius="12">
+                        <Expander
+                            Margin="10"
+                            HorizontalContentAlignment="Stretch"
+                            Style="{StaticResource ExpanderStyle}">
 
-                                <controls:CornerClip CornerRadius="12">
+                            <Expander.Header>
 
-                                    <Image
-                                        Width="140"
-                                        Height="80"
-                                        RenderOptions.BitmapScalingMode="Fant"
-                                        Source="{Binding Converter={StaticResource ResourceKey=UIElement2RenderBitmap}}"
-                                        Stretch="Uniform" />
-                                </controls:CornerClip>
-                            </Border>-->
+                                <Border Padding="4">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
 
 
+                                        <Grid Grid.Column="1">
+                                            <Grid>
+                                                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
 
-                            <Grid Grid.Column="1">
-                                <Grid>
-                                    <StackPanel VerticalAlignment="Center">
-                                        <Grid>
 
-                                            <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Orientation="Horizontal">
 
-                                                <TextBlock
-                                                    FontSize="18"
-                                                    FontWeight="Bold"
-                                                    Foreground="{DynamicResource PrimaryBrush}"
-                                                    Text="{Binding Value.CardInfo.Name}" />
-                                                <Border
-                                                    Margin="4,0"
-                                                    Padding="4,0"
-                                                    HorizontalAlignment="Left"
-                                                    VerticalAlignment="Center"
-                                                    BorderBrush="{DynamicResource CommonPrimaryBrush}"
-                                                    BorderThickness="1"
-                                                    CornerRadius="7">
+                                                        <TextBlock
+                                                            FontSize="18"
+                                                            FontWeight="Bold"
+                                                            Foreground="{DynamicResource PrimaryBrush}"
+                                                            Text="{Binding Value.CardInfo.Name, FallbackValue=名称}" />
+                                                        <Border
+                                                            Margin="4,0"
+                                                            Padding="4,0"
+                                                            HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"
+                                                            BorderBrush="{DynamicResource CommonPrimaryBrush}"
+                                                            BorderThickness="1"
+                                                            CornerRadius="7">
+                                                            <TextBlock
+                                                                VerticalAlignment="Center"
+                                                                FontSize="12"
+                                                                Foreground="{DynamicResource PrimaryBrush}"
+                                                                Text="{Binding Value.CardInfo.CardType, FallbackValue=window}" />
+
+                                                        </Border>
+                                                    </StackPanel>
+
                                                     <TextBlock
+                                                        FontSize="14"
+                                                        Foreground="{DynamicResource SecondaryBrush}"
+                                                        Text="{Binding Value.CardInfo.Description, StringFormat=简介:{0}, FallbackValue=简介}" />
+
+                                                </StackPanel>
+
+
+                                                <StackPanel
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Bottom"
+                                                    Orientation="Horizontal">
+
+
+                                                    <CheckBox
+                                                        HorizontalAlignment="Right"
                                                         VerticalAlignment="Center"
-                                                        FontSize="12"
-                                                        Foreground="{DynamicResource PrimaryBrush}"
-                                                        Text="{Binding Value.CardInfo.CardType}" />
+                                                        Content="启用"
+                                                        IsChecked="{Binding Value.Enabled}" />
 
-                                                </Border>
-                                            </StackPanel>
+
+                                                </StackPanel>
+                                            </Grid>
                                         </Grid>
+                                    </Grid>
+                                </Border>
+                            </Expander.Header>
 
-                                        <TextBlock
-                                            FontSize="14"
-                                            Foreground="{DynamicResource SecondaryBrush}"
-                                            Text="{Binding Value.CardInfo.Description, StringFormat=简介:{0}}" />
+                            <Border
+                                Margin="0,8,0,0"
+                                Padding="0,8"
+                                BorderBrush="{DynamicResource OutlineBrush}"
+                                BorderThickness="0,1,0,0">
 
-                                    </StackPanel>
+                                <StackPanel>
+
+                                    <CheckBox Content="允许鼠标穿透" IsChecked="{Binding Value.Locked}" />
 
 
-                                    <StackPanel
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Bottom"
-                                        Orientation="Horizontal">
-
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="打开插件所在文件夹" Style="{StaticResource TextButton}" />
 
                                         <Button
-                                            Padding="12,8"
                                             Background="{DynamicResource ErrorBrush}"
                                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=DataContext.DestroyCardCommand}"
                                             CommandParameter="{Binding Key}"
-                                            Content="销毁"
+                                            Content="销毁这个实例"
                                             Foreground="{DynamicResource ErrorBrush}"
                                             Style="{StaticResource TextButton}" />
-                                        <CheckBox
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center"
-                                            Content="启用"
-                                            IsChecked="{Binding Value.Enabled}" />
-
-
                                     </StackPanel>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                                </StackPanel>
+                            </Border>
+
+                        </Expander>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -190,12 +189,12 @@
                 <Grid>
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
 
-                        <Button
+                        <!--<Button
                             Padding="16,4"
                             Command="{Binding GetCardDetailCommand}"
                             Content="&#xe863;"
                             FontFamily="{StaticResource MaterialIconsRound}"
-                            Style="{StaticResource TextButton}" />
+                            Style="{StaticResource TextButton}" />-->
                         <Button
                             Padding="4"
                             Command="{Binding OpenInstalledCardPanelCommand}"

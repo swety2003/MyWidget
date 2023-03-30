@@ -26,7 +26,21 @@ namespace MyWidgets.APP.Model
         public CardType CardType { get; }
         public Point Pos { get; set; }
         public string CanOverrideUI { get; set; }
-        public bool Locked { get; set; }
+
+        [JsonProperty("Locked")]
+        private bool lockedProperty;
+
+        [JsonIgnore]
+        public bool Locked
+        {
+            get { return lockedProperty; }
+            set 
+            {
+                lockedProperty = value;
+                App.GetService<CardManageService>().SetLocked(GUID,value);
+            }
+        }
+
 
         [JsonProperty("Enabled")]
         public bool enabledProperty = false;
